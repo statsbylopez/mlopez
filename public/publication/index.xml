@@ -13,20 +13,29 @@
     
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
+      <title>How often does the best team win? A unified approach to understanding randomness in North American sport</title>
       <link>/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/publication/person-re-identification/</guid>
       <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     
     <item>
-      <title>Mobile visual clothing search</title>
-      <link>/publication/clothing-search/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <title>How often does the best team win? A unified approach to understanding randomness in North American sport</title>
+      <link>/publication/randomness-sport/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/clothing-search/</guid>
+      <guid>/publication/randomness-sport/</guid>
+      <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
+    </item>
+    
+    <item>
+      <title>Estimation of causal effects with multiple treatments: a review and new ideas</title>
+      <link>/publication/stat-science-2017/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/stat-science-2017/</guid>
       <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     

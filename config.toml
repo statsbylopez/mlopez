@@ -58,7 +58,7 @@ defaultContentLanguageInSubdir = false
   organizations = [ { name = "Skidmore College", url = "statsbylopez.com" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "headshot.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "mlopez1@skidmore.edu"
   address = "815 N. Broadway, Saratoga Springs, NY 12866"
  
@@ -213,7 +213,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:test@example.org"
+    link = "mailto:mlopez1@skidmore.edu"
 
   [[params.social]]
     icon = "twitter"
