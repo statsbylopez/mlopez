@@ -14,6 +14,8 @@ header:
 ---
 
 Here's my first post. How's it goink?
+
+![](~/Dropbox/mlopez/mlopez/static/img/phil.png)
  
 I'm into causal inference, sports, and statistics, and am hoping Blogdown beats my [Wordpress](statsbylopez.com) site. 
 
