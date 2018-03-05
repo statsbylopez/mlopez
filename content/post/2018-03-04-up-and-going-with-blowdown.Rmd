@@ -15,4 +15,4 @@ header:
 
 Here's my first post. How's it goink?
 
-![my-image](/img/phil.png)
+![my-image](/static/img/phil.png)
