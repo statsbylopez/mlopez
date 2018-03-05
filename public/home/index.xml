@@ -28,8 +28,7 @@
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/about/</guid>
-      <description>Biography Lena Smith is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet.</description>
+      <description>Biography Michael Lopez is an Assistant Professor of Statistics at Skidmore College. His research spans causal inference &amp;ndash; with a specific focus on causal inference methods for multiple exposures or multiple exposure doses &amp;ndash; and the application of statistics to sports.</description>
     </item>
     
     <item>
@@ -83,9 +82,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristiq
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/teaching/</guid>
-      <description>This is an example of using the custom widget to create your own homepage section.
-I am a teaching instructor for the following courses at University X:
- CS101: An intro to computer science CS102: An intro to computer science CS103: An intro to computer science CS104: An intro to computer science CS105: An intro to computer science CS106: An intro to computer science CS107: An intro to computer science  </description>
+      <description>I&amp;rsquo;ve taught the following courses at Skidmore College:
+ MS 104: Intro to Statistics  </description>
     </item>
     
     <item>
