@@ -14,5 +14,6 @@ header:
 ---
 
 Here's my first post. How's it goink?
+ 
+I'm into causal inference, sports, and statistics, and am hoping Blogdown beats my [Wordpress](statsbylopez.com) site. 
 
-![my-image](/static/img/phil.png)
