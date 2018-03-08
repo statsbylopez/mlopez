@@ -2,15 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Statsbylopez</title>
-    <link>/post/</link>
+    <link>https://statsbylopez.netlify.com/post/</link>
     <description>Recent content in Posts on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0500</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://statsbylopez.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
+      <link>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
+      <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
+      <description>To err is to human In the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.
+Ruled an error on Schwarber, the play gave the a Nationals run in an eventual 9-4 win.</description>
+    </item>
     
   </channel>
 </rss>
