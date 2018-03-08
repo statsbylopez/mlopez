@@ -27,7 +27,7 @@ abstract_short = "Sporting outcomes are random. How random?"
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = true
+selected = false
 
 # Links (optional).
 url_pdf = "https://arxiv.org/abs/1701.05976"

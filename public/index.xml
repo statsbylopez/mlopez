@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statsbylopez on Statsbylopez</title>
-    <link>https://statsbylopez.netlify.com/</link>
+    <link>/</link>
     <description>Recent content in Statsbylopez on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
-      <link>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
+      <link>/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
       <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
+      <guid>/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
       <description>&lt;div id=&#34;to-err-is-to-human&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;To err is to human&lt;/h3&gt;
 &lt;p&gt;In the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.&lt;/p&gt;
@@ -106,7 +106,7 @@ p2 &amp;lt;- ggplot(df2, aes(speed.cat, ave.error)) + geom_point(size = 3) +
        subtitle = &amp;quot;% of balls in play yielding an error, with 95% intervals&amp;quot;) + theme_gray(13)
 
 grid.arrange(p1, p2, nrow = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Your eyes are not deceiving you.&lt;/p&gt;
 &lt;p&gt;On the left graph, there’s a drop in error rate with increased exit velocity – on the right, there’s an increase in the rate of errors. That is, with identical data and only a slight shift in groupings, you could make either claim and feel justified. Errors appear to both increase and decrease with harder hit balls, and both contrasts are statistically significant (those are 95% intervals included with each point).&lt;/p&gt;
 &lt;/div&gt;
@@ -152,7 +152,7 @@ p &amp;lt;- ggplot(pre, aes(x=launch_speed, y=launch_angle, z = predict)) +
   labs(title = &amp;quot;Probability of an error given exit velocity and angle&amp;quot;, 
        subtitle = &amp;quot;Singles/Doubles/Triples/HRs excluded&amp;quot;) + theme_bw(14) 
 p&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# df.bip %&amp;gt;% filter(abs(launch_angle) &amp;lt; 5, launch_speed &amp;gt; 100) %&amp;gt;% group_by(is.error) %&amp;gt;% count()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Turns out, there’s an obvious driver of the error rate weirdness – sacrifices!&lt;/p&gt;
 &lt;p&gt;A few thousand of our plays feature balls hit at roughly 40 mph going (almost) directly into the ground. While not all of these plays are attempted bunts, many appear to be (according to the Statcast play by play descriptions). Turns out, bunts are linked to high error rates (as high as 14%), likely on account of how quickly the pitcher and infielders need to react.&lt;/p&gt;
@@ -169,30 +169,30 @@ p&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>How often does the best team win? A unified approach to understanding randomness in North American sport</title>
-      <link>https://statsbylopez.netlify.com/publication/randomness-sport/</link>
+      <link>/publication/randomness-sport/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/publication/randomness-sport/</guid>
+      <guid>/publication/randomness-sport/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Estimation of causal effects with multiple treatments: a review and new ideas</title>
-      <link>https://statsbylopez.netlify.com/publication/stat-science-2017/</link>
+      <link>/publication/stat-science-2017/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/publication/stat-science-2017/</guid>
+      <guid>/publication/stat-science-2017/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>NESSIS 2017</title>
-      <link>https://statsbylopez.netlify.com/talk/example-talk/</link>
+      <link>/talk/example-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 -0500</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/talk/example-talk/</guid>
+      <guid>/talk/example-talk/</guid>
       <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
