@@ -246,7 +246,7 @@ defaultContentLanguageInSubdir = false
 
 [[menu.main]]
   name = "Publications"
-  url = "#publications"
+  url = "http://statsbylopez.netlify.com/publication/"
   weight = 2
 
 [[menu.main]]
