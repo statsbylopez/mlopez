@@ -11,6 +11,58 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The impact of make-up calls is probably bigger than you think</title>
+      <link>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
+      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
+      <description>
+
+&lt;p&gt;One of the more reliable indicators of which NHL team is likely to get the next power play has little to do with score or style of play. Instead, it&amp;rsquo;s been shown repeatedly (&lt;a href=&#34;https://fivethirtyeight.com/features/hockey-refs-are-out-to-get-you-if-they-already-got-the-other-guy/&#34; target=&#34;_blank&#34;&gt;Ex 1&lt;/a&gt;, &lt;a href=&#34;http://people.stat.sfu.ca/~tim/papers/penalty.pdf&#34; target=&#34;_blank&#34;&gt;Ex 2&lt;/a&gt;) that referees call a substantially higher number of make-up penalties than would otherwise be expected in order to maintain an overall even number of violations on each team. Call it a &lt;a href=&#34;https://creativematter.skidmore.edu/cgi/viewcontent.cgi?article=1004&amp;amp;context=math_fac_schol&#34; target=&#34;_blank&#34;&gt;$biased$ $impartiality$&lt;/a&gt; &amp;ndash; in order to appear impartial by game&amp;rsquo;s end, ref&amp;rsquo;s let previous decisions drive future ones.&lt;/p&gt;
+
+&lt;p&gt;A common line of reasoning behind call reversals is that referees would prefer to $not$ be part of the final narrative as to why a particular team won or lost. If each team has a relatively similar number of power plays, media and fans clamoring that one team was favored would have less support. Turns out, however, that by evening up penalty calls, hockey ref&amp;rsquo;s are impacting the same game narratives that they are trying to avoid being a part of. In this post, I&amp;rsquo;ll both confirm the existance of make-up calls and extend a similar analysis to look at the impact of make-up calls on game outcomes.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-make-up-call&#34;&gt;The make-up call&lt;/h2&gt;
+
+&lt;p&gt;Claiming that a call in any sport is due to anything besides an unbiased referee assessment is a non-trivial task. Fortunately, hockey boasts several settings that make looking for make-up calls somewhat feasible. Game&amp;rsquo;s are often tied, and looking at penalties in tied-game states can avoid results being impacted by changes in style of play due to the score. Second, with an average of about eight minors a game, there&amp;rsquo;s a large enough sample size within each game on which to evaluate ref choices. And finally, as the overwhelming majority of hockey infractions are at the referee&amp;rsquo;s discretion, subtle cues &amp;ndash; such as previous penalty decisions &amp;ndash; can impact most calls.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s an initial chart showing how future penalty calls are linked to current penalty differential.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; The x-axis uses the home team&amp;rsquo;s estimated pre-game win probability, as implied by betting markets (you can get that data &lt;a href=&#34;https://github.com/bigfour/competitiveness&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;). The y-axis shows the penalty differential for the home teaem after the first period (positive means more penalties), and the shade of the chart corresponds to the average penalty differential in periods 2 and 3. Only games that were tied at the end of the first period are included in this chart (the data goes from the 05-06 to 15-16 regular seasons).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/makeupF1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When home teams have two more infractions than their oppononent at the end of the first period, they can expect, on average, about 0.8 fewer infractions the rest of the game. Alternatively, when home teams have two fewer penalties at the end of the first period, they average about 0.5 more violations in periods 2 and 3. The difference between having more and fewer penalties in tied games is quite significant. Of course, if you had read a few of the links above, you probably would have guessed that there would be an impact. But the effect size (about 1.25 penalties), as well as the shading of the chart above, seemed noteworthy.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-impact-of-the-make-up-call&#34;&gt;The impact of the make-up call&lt;/h2&gt;
+
+&lt;p&gt;Make-up calls are all well and good until somebody loses a game because of it.&lt;/p&gt;
+
+&lt;p&gt;One game that I remember all-too-well came during the 2011 Cup finals between Vancouver and Boston. In Game 5, the home Canucks were called&lt;/p&gt;
+
+&lt;p&gt;To check how future games are impacted by make-up calls, I replicated the same chart. In this one, however, the shade reflects the percent of games eventually won by the home team.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/makeupF2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this version, the shading is reversed &amp;ndash; more first period penalties are linked to an increased win rate, just as fewer penalties are linked to a decreased win rate. Altogether, when the game is a relative toss-up, the difference between having two more first period penalties and two fewer first period penalties is about 7 or 8 percentage points in terms of the home team&amp;rsquo;s chances.&lt;/p&gt;
+
+&lt;p&gt;While this may seem like a relatively minor change, the fact that there&amp;rsquo;s $any$ change in win percentage based on prior penalties is interesting.
+Additionally, we may be underestimating the impact of make-up calls &amp;ndash; if a team has first period penalties, it&amp;rsquo;s also more likely to start the second period on the penalty kill, a quirk that I did not account for above that could lower that team&amp;rsquo;s win rate. Further, this isn&amp;rsquo;t a peculiar set of games  &amp;ndash; about a third of NHL games end the first period tied. Finally, although it&amp;rsquo;d require further assumptions with respect to playing style, it&amp;rsquo;s also likely that make-up calls have an impact on games that aren&amp;rsquo;t tied.&lt;/p&gt;
+
+&lt;p&gt;One limitation of this and most of sports analytics is that, in using observational data, we can never be assured that something else isn&amp;rsquo;t responsible for our finding. One alternative theory here is that teams who have taken penalties suddenly feel a need to be more aggressive, which then leads to the call reversals. However, in using tied games, I can&amp;rsquo;t imagine that the revenge factor looms too large. Further, in &lt;a href=&#34;https://creativematter.skidmore.edu/cgi/viewcontent.cgi?article=1004&amp;amp;context=math_fac_schol&#34; target=&#34;_blank&#34;&gt;previous work&lt;/a&gt;, if anything, penalty reversals were higher in the postseason, where there is almost no expectation of revense.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;I used a generalized additive model (GAM) of penalty differential as a factor of both home team win probability and first period penalty differential. In this and the example below, first period penalty differential was a significant predictor. GAMs make sense in this and other examples, as the true model fit with penalty outcomes is unknown.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;Same model as above, now with a binary outcome.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
       <link>/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
       <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
@@ -53,7 +105,6 @@
 &lt;p&gt;Of course, in light of the above charts, the link between error rates and exit velocity may be complex, and traditional logistic regression may not be sufficient. Instead, I used a generalized additive model (GAM) that included smoothed terms for both exit velocity and launch angle. GAMs can be great with sports data – they are easy to implement, explicitly include cross-validation as part of the fitting process, and don’t require an exact model specification. Given that we don’t know the best way to specify a model of errors given launch speed, GAMs are a natural fit.&lt;/p&gt;
 &lt;p&gt;One final plus? GAMs also make for nice visualizations, something that every sports analyst should always be working on. If you want to read more about GAMs, start with the Stitch Fix &lt;a href=&#34;http://multithreaded.stitchfix.com/blog/2015/07/30/gam/&#34;&gt;tutorial&lt;/a&gt;, or I’ll shamelessly promote my work on NFL referees (&lt;a href=&#34;https://statsbylopez.files.wordpress.com/2013/08/lopez-2016-economic_inquiry.pdf&#34;&gt;link&lt;/a&gt;) and Brian’s work on MLB umpires (&lt;a href=&#34;http://onlinelibrary.wiley.com/doi/10.1002/mde.2630/abstract&#34;&gt;link&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Here’s a chart showing the estimated error rate given exit velocity (x axis) and launch angle (y axis). Darker shades are linked to higher error rates.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mgcv)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: nlme&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attaching package: &amp;#39;nlme&amp;#39;&lt;/code&gt;&lt;/pre&gt;
@@ -61,25 +112,7 @@
 ## 
 ##     collapse&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## This is mgcv 1.8-22. For overview type &amp;#39;help(&amp;quot;mgcv-package&amp;quot;)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;m1 &amp;lt;- bam(is.error ~ s(launch_speed, launch_angle, k = 50), 
-          data = df.bip, method = &amp;quot;fREML&amp;quot;, 
-          discrete = TRUE, family = binomial(link=&amp;#39;logit&amp;#39;))
-
-
-
-pre &amp;lt;- expand.grid(launch_angle = seq(-80, 80, .5), launch_speed = seq(15, 115, .5))
-pre$predict &amp;lt;- predict.gam(m1, pre, type = &amp;quot;response&amp;quot;)
-
-p &amp;lt;- ggplot(pre, aes(x=launch_speed, y=launch_angle, z = predict)) + 
-  geom_tile(aes(fill = predict)) + 
-  scale_fill_gradient2(&amp;quot;Error %&amp;quot;, labels = c(&amp;quot;0%&amp;quot;, &amp;quot;5%&amp;quot;, &amp;quot;10%&amp;quot;), breaks = c(0, 0.05, 0.1)) + 
-  xlab(&amp;quot;Launch Speed&amp;quot;) + ylab(&amp;quot;Launch Angle&amp;quot;) + 
-  annotate(&amp;quot;text&amp;quot;, x = 43, y = -45, colour = &amp;quot;red&amp;quot;, label = &amp;quot;Bunts!&amp;quot;, size = 6) +
-  labs(title = &amp;quot;Probability of an error given exit velocity and angle&amp;quot;, 
-       subtitle = &amp;quot;Singles/Doubles/Triples/HRs excluded&amp;quot;) + theme_bw(14) 
-p&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# df.bip %&amp;gt;% filter(abs(launch_angle) &amp;lt; 5, launch_speed &amp;gt; 100) %&amp;gt;% group_by(is.error) %&amp;gt;% count()&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Turns out, there’s an obvious driver of the error rate weirdness – sacrifices!&lt;/p&gt;
 &lt;p&gt;A few thousand of our plays feature balls hit at roughly 40 mph going (almost) directly into the ground. While not all of these plays are attempted bunts, many appear to be (according to the Statcast play by play descriptions). Turns out, bunts are linked to high error rates (as high as 14%), likely on account of how quickly the pitcher and infielders need to react.&lt;/p&gt;
 &lt;p&gt;Returning to our original question, there does appear to be a slight increase in error rates with increased exit velocity after discarding bunt attempts. Although balls hit between 50 and 90 mph all yield roughly have the same chances of an error (somewhere around 2%) – error chances increase with the hardest hit balls. With exit velocities of 110 mph or higher, for example, our model expects error rates at several launch angles to be more than 5%.&lt;/p&gt;

@@ -116,7 +116,7 @@ One final plus? GAMs also make for nice visualizations, something that every spo
 
 Here's a chart showing the estimated error rate given exit velocity (x axis) and launch angle (y axis). Darker shades are linked to higher error rates.
 
-```{r, fig.height= 4, fig.width= 7}
+```{r, fig.height= 4, fig.width= 7, echo = FALSE, warning = FALSE}
 library(mgcv)
 m1 <- bam(is.error ~ s(launch_speed, launch_angle, k = 50), 
           data = df.bip, method = "fREML", 
