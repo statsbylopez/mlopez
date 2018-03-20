@@ -14,3 +14,6 @@ list_format = 0
 image = ""
 caption = ""
 +++
+
+A complete list of my talks can be found [here](https://statsbylopez.github.io/slides.html)
+
