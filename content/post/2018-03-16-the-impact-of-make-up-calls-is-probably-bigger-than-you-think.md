@@ -32,7 +32,7 @@ When home teams have two more infractions than their opponent at the end of the 
 
 Make-up calls are all well and good until some team loses a game because of it. 
 
-To check how future games are impacted by make-up calls, I used a same idea presented the same chart above. In this one, however, the shade reflects the percent of games eventually won by the home team.[^2]
+To check how future games are impacted by make-up calls, I used a chart similar to the one shown above. In this one, however, the shade reflects the percent of games eventually won by the home team.[^2]
 
 ![](/img/makeupF2.png)
 
