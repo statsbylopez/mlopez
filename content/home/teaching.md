@@ -18,3 +18,9 @@ weight = 60
 I've taught the following courses at Skidmore College: 
 
 - MS 104: Intro to Statistics
+- MS 204: Statistical Methods [(Github)](https://github.com/statsbylopez/StatsMethods)
+- MS 210: Data Visualization and storytelling [(Github)](https://github.com/statsbylopez/DataViz)
+- MA 204: Probability [(Github)](https://github.com/statsbylopez/Probability)
+- MS 276: Statistics and Sports [(Github)](https://statsbylopez.com/stats-sports-class/)
+- MS 376: Mathematical Statistics
+- MS 240: Regression
