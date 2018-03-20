@@ -27,11 +27,11 @@ See below for slides and other material from conference talks that I've given
 
 - [Statistics in sports](https://dl.dropboxusercontent.com/u/42748635/All%20sport%20talk/Slides.FtoFtalk.html#1) Slides from a faculty-to-faculty talk at Skidmore College: "How statistics can be used to help us better understand sports" (April, 2017)
 
-- [NFL sideline bias](statsbylopez.github.io/Slides/jsm16/Slides.JSM.html#1) Slides from the 2016 Joint Statistical Meetings: "Ref's -- they're just like us!  Adversarial and social pressures in the NFL" (August, 2016)
+- [NFL sideline bias](https://statsbylopez.github.io/Slides/jsm16/Slides.JSM.html#1) Slides from the 2016 Joint Statistical Meetings: "Ref's -- they're just like us!  Adversarial and social pressures in the NFL" (August, 2016)
 
 - [Reproducible hockey research](https://github.com/statsbylopez/Boston-Hockey-Analytics-16/blob/master/BOSHAC.pdf) Slides and code from a workshop on reproducible hockey analysis at the Boston Hockey Analytics Conference (October, 2016)
 
-- [Causal inference with multiple treatments](statsbylopez.github.io/Slides/talk_NESS_2016.ppt) Slides from the 2016 New England Statistics Symposium: "Causal inference in healthcare studies with multiple treatments" (April, 2016)
+- [Causal inference with multiple treatments](https://statsbylopez.github.io/Slides/talk_NESS_2016.ppt) Slides from the 2016 New England Statistics Symposium: "Causal inference in healthcare studies with multiple treatments" (April, 2016)
 
 - [March Madness](https://statsbylopez.files.wordpress.com/2016/03/columbia_ml_2016.pdf) Slides from a guest lecture at Columbia: "Better than lotto tickets: Analytics and NCAA tournament win probabilities" (March, 2016)
 
