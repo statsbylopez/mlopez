@@ -146,7 +146,7 @@ gammaWeek ~ dunif(0,1.5)
 }
 &amp;quot;
 model.spec&amp;lt;-textConnection(model.string)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we’re ready to fit the model. In this example, I used 3 chains, 1000 posterior draws, and a thin of 5, which yields 3 sets of 200 draws for each parameter. The model converges quite quickly, otherwise we’d want to increase the number of draws at each step.&lt;/p&gt;
+&lt;p&gt;Now we’re ready to fit the model. In this example, I used 3 chains, 1000 posterior draws, and a thin of 5, which yields 3 sets of 200 draws for each parameter. The model converges quickly, otherwise we’d want to increase the number of draws at each step.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rjags)
 n.chains &amp;lt;- 3 
 n.adapt &amp;lt;- n.update &amp;lt;- n.draws &amp;lt;- 1000
@@ -188,7 +188,7 @@ hfas %&amp;gt;% ggplot(aes(draw, X1)) +
   ggtitle(&amp;quot;Home advantage (logit scale)&amp;quot;) + 
   ylab(&amp;quot;&amp;quot;) + 
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The posterior distrbution of &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is centered at about 0.208. This suggests that home teams, when playing a similarly talented opponent, have about a &lt;span class=&#34;math inline&#34;&gt;\(\frac{e^{0.208.}}{1 + e^{0.208}} = 55\%\)&lt;/span&gt; chance of winning. For those scoring at home, the NHL has the third best home advantage among the four sports we analyzed.&lt;/p&gt;
 &lt;p&gt;Next, we examine team strengths.&lt;/p&gt;
 &lt;p&gt;In the code below, I averaged each team strength over each week of the NHL season, and highlight the Vegas Golden Knights, a team that rose from the bottom of the league towards the top.&lt;/p&gt;
@@ -212,7 +212,7 @@ ggplot(df.beta, aes(week, theta, group = team_id)) +
   ylim(c(-0.56, 0.56)) + 
   annotate(&amp;quot;text&amp;quot;,x = 5, y = -0.4, label = &amp;quot;Vegas&amp;quot;, colour = &amp;quot;gold4&amp;quot;, size = 5) + 
   xlab(&amp;quot;Week&amp;quot;) + theme_bw(14)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Vegas had a pretty incredible season.&lt;/p&gt;
 &lt;p&gt;Of course, it’d be nice to see every team. Next, we use the &lt;code&gt;teamcolors&lt;/code&gt; package &lt;a href=&#34;https://github.com/beanumber/teamcolors&#34;&gt;(link)&lt;/a&gt; and a bit of &lt;code&gt;ggplot2&lt;/code&gt; wizardry to facet each NHL division in order to observe each team.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(teamcolors)
@@ -239,9 +239,9 @@ df.overall +
   facet_wrap(~division, ncol = 2, dir = &amp;quot;v&amp;quot;) + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + ylab(&amp;quot;&amp;quot;) + xlab(&amp;quot;Week&amp;quot;) + 
   ggtitle(&amp;quot;Team strength during the 2017/2018 NHL season&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic.&lt;/p&gt;
-&lt;p&gt;Also impressive – check out Colorado’s slow improvement in the Central The Avalanche started the year as the league’s third worst team (perception-wise), and are now in the playoffs.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference. In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic.&lt;/p&gt;
+&lt;p&gt;Also impressive – check out Colorado’s slow improvement in the Central. The Avalanche started the year as the league’s third worst team (perception-wise), and are now in the playoffs.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;comparisons-among-teams&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Comparisons among teams&lt;/h2&gt;
@@ -266,7 +266,7 @@ df.matchup %&amp;gt;% ggplot(aes(beta, fill = team_id, group = team_id)) +
   ggtitle(&amp;quot;Posterior draws of team strength&amp;quot;) + 
   xlab(&amp;quot;Team strength: log-odds scale&amp;quot;) + ylab(&amp;quot;Density&amp;quot;) + 
   guides(color = FALSE, fill = FALSE) + theme_bw(14) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Above, the Penguins stand out as the best of the three teams. However, although it’s clear the Penguins are better than both the Flyers and the Hurricanes – note the lack of overlap in the density plots – it’s not as clear that the Flyers are better than the Hurricanes.&lt;/p&gt;
 &lt;p&gt;Using samples from the posterior distribution, we can be a bit more precise: there’s only about a 1 in 2000 chance that the Hurricanes are better than the Penguins, a 1 in 150 chance that the Flyers are better than the Penguins, and a 1 in 5 chance that the Hurricanes are better than the Flyers.&lt;/p&gt;
 &lt;p&gt;But here’s where the NHL is tricky (e.g, random).&lt;/p&gt;
@@ -296,7 +296,7 @@ for (i in 1:10000){
   penguins.sim.wins &amp;lt;- penguins.sim.wins + do.penguins.win
 }
 sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.6546&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.6623&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Our numbers suggest that the Penguins would beat the Flyers roughly 2 out of every 3 times they played a 7-game series. Unsurprisingly, this almost exactly matches the probability implied in sportsbook series odds, which currently price the Penguins at -225 and the Flyers at +195.&lt;/p&gt;
 &lt;p&gt;One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/983686397818298368&#34;&gt;expected&lt;/a&gt;, as 1 in 25 was the least likely of four outcomes (10, 15, 20, 25).&lt;/p&gt;
 &lt;/div&gt;

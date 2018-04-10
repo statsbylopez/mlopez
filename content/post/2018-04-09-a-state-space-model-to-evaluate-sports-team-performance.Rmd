@@ -136,7 +136,7 @@ gammaWeek ~ dunif(0,1.5)
 model.spec<-textConnection(model.string)
 ```
 
-Now we're ready to fit the model. In this example, I used 3 chains, 1000 posterior draws, and a thin of 5, which yields 3 sets of 200 draws for each parameter. The model converges quite quickly, otherwise we'd want to increase the number of draws at each step.
+Now we're ready to fit the model. In this example, I used 3 chains, 1000 posterior draws, and a thin of 5, which yields 3 sets of 200 draws for each parameter. The model converges quickly, otherwise we'd want to increase the number of draws at each step.
 
 ```{r, message = FALSE, warning = FALSE}
 library(rjags)
@@ -238,9 +238,9 @@ df.overall +
   ggtitle("Team strength during the 2017/2018 NHL season")
 ```
 
-My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic. 
+My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference. In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic. 
 
-Also impressive -- check out Colorado's slow improvement in the Central The Avalanche started the year as the league's third worst team (perception-wise), and are now in the playoffs. 
+Also impressive -- check out Colorado's slow improvement in the Central. The Avalanche started the year as the league's third worst team (perception-wise), and are now in the playoffs. 
 
 ## Comparisons among teams
 
