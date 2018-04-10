@@ -318,14 +318,6 @@ One last thought: how much is the home advantage worth for Pittsburgh? Tweaking 
 
 The above code implements a Bayesian state-space framework to etimate team strength in the NHL season using betting market numbers. Though the `rjags` package is not the most user-friendly for first-time practitioners, it provides a mechanism for fitting complex models using R. The resulting team strengths fun to graph and expore, and I encourage you to try it out yourself.
 
-In future work, there are a few questions that I hope to tackle:
-
-1) Can our model detect if certain teams have better home advantages than others?
-
-2) Was there a so-called `Vegas flu`? And when did betting markets begin to pick up on it?
-
-3) What is the probability that any given team is better than any given other team?
-
-4) How did the NHLs shifting postseason structure (to a divisional format) impact postseason chances?
+In future work, there are a few questions that I hope to tackle: Can our model detect if certain teams have better home advantages than others? Was there a so-called `Vegas flu`? And when did betting markets begin to pick up on it? What is the probability that any given team is better than any given other team? How did the NHLs shifting postseason structure (to a divisional format) impact postseason chances?
 
 
