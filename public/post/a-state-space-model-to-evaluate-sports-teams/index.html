@@ -547,7 +547,7 @@ hfas %&gt;% ggplot(aes(draw, X1)) +
   ggtitle(&quot;Home advantage (logit scale)&quot;) + 
   ylab(&quot;&quot;) + 
   theme_bw()</code></pre>
-<p><img src="2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>The posterior distrbution of <span class="math inline">\(\alpha\)</span> is centered at about 0.208. This suggests that home teams, when playing a similarly talented opponent, have about a <span class="math inline">\(\frac{e^{0.208.}}{1 + e^{0.208}} = 55\%\)</span> chance of winning. For those scoring at home, the NHL has the third best home advantage among the four sports we analyzed.</p>
 <p>Next, we examine team strengths.</p>
 <p>In the code below, I averaged each team strength over each week of the NHL season, and highlight the Vegas Golden Knights, a team that rose from the bottom of the league towards the top.</p>
@@ -571,7 +571,7 @@ ggplot(df.beta, aes(week, theta, group = team_id)) +
   ylim(c(-0.56, 0.56)) + 
   annotate(&quot;text&quot;,x = 5, y = -0.4, label = &quot;Vegas&quot;, colour = &quot;gold4&quot;, size = 5) + 
   xlab(&quot;Week&quot;) + theme_bw(14)</code></pre>
-<p><img src="2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Vegas had a pretty incredible season.</p>
 <p>Of course, it’d be nice to see every team. Next, we use the <code>teamcolors</code> package <a href="https://github.com/beanumber/teamcolors">(link)</a> and a bit of <code>ggplot2</code> wizardry to facet each NHL division in order to observe each team.</p>
 <pre class="r"><code>library(teamcolors)
@@ -598,7 +598,7 @@ df.overall +
   facet_wrap(~division, ncol = 2, dir = &quot;v&quot;) + 
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + ylab(&quot;&quot;) + xlab(&quot;Week&quot;) + 
   ggtitle(&quot;Team strength during the 2017/2018 NHL season&quot;)</code></pre>
-<p><img src="2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference. In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic.</p>
 <p>Also impressive – check out Colorado’s slow improvement in the Central. The Avalanche started the year as the league’s third worst team (perception-wise), and are now in the playoffs.</p>
 </div>
@@ -625,7 +625,7 @@ df.matchup %&gt;% ggplot(aes(beta, fill = team_id, group = team_id)) +
   ggtitle(&quot;Posterior draws of team strength&quot;) + 
   xlab(&quot;Team strength: log-odds scale&quot;) + ylab(&quot;Density&quot;) + 
   guides(color = FALSE, fill = FALSE) + theme_bw(14) </code></pre>
-<p><img src="2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Above, the Penguins stand out as the best of the three teams. However, although it’s clear the Penguins are better than both the Flyers and the Hurricanes – note the lack of overlap in the density plots – it’s not as clear that the Flyers are better than the Hurricanes.</p>
 <p>Using samples from the posterior distribution, we can be a bit more precise: there’s only about a 1 in 2000 chance that the Hurricanes are better than the Penguins, a 1 in 150 chance that the Flyers are better than the Penguins, and a 1 in 5 chance that the Hurricanes are better than the Flyers.</p>
 <p>But here’s where the NHL is tricky (e.g, random).</p>
@@ -655,7 +655,7 @@ for (i in 1:10000){
   penguins.sim.wins &lt;- penguins.sim.wins + do.penguins.win
 }
 sum(penguins.sim.wins)/10000</code></pre>
-<pre><code>## [1] 0.6623</code></pre>
+<pre><code>## [1] 0.6614</code></pre>
 <p>Our numbers suggest that the Penguins would beat the Flyers roughly 2 out of every 3 times they played a 7-game series. Unsurprisingly, this almost exactly matches the probability implied in sportsbook series odds, which currently price the Penguins at -225 and the Flyers at +195.</p>
 <p>One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers <a href="https://twitter.com/StatsbyLopez/status/983686397818298368">expected</a>, as 1 in 25 was the least likely of four outcomes (10, 15, 20, 25).</p>
 </div>
