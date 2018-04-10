@@ -1,8 +1,8 @@
 ---
-title: A state-space model to evaluate sports team performance
+title: A state-space model to evaluate sports teams
 author: ''
 date: '2018-04-09'
-slug: a-state-space-model-to-evaluate-sports-team-performance
+slug: a-state-space-model-to-evaluate-sports-teams
 categories: []
 tags:
   - NHL
@@ -16,13 +16,11 @@ A few years ago at a statistics conference, [Greg](https://www.luc.edu/math/ftfa
 
 Relative to other popular sports like basketball and football, it seemed to us at the time that the best team was winning less often in baseball and hockey. And as fans wanting skilled teams to be rewarded, it was frustrating to so often have well-constructed teams fall short of titles. 
 
-And so we decided to write a paper, now forthcoming in *Annals of Applied Statistics*, that extends Glickman and Stern's [state-space model](https://homepages.cae.wisc.edu/~dwilson/rsfc/rate/papers/a-state-space-model.pdf) to make comparisons between the NFL, NHL, NBA and MLB. You can read the full paper [here](https://arxiv.org/abs/1701.05976). 
-
-In this post, I'll describe the attraction of a state-space model, how to build one yourself (using the 2017-18 NHL season), and answer a few hockey-specific questions that I was curious about. The entire analysis is reproducible, and you should be able to copy-and-paste your way into replicating the findings below. 
+And so we decided to write a paper (pre-print [here](https://arxiv.org/abs/1701.05976)), now forthcoming in *Annals of Applied Statistics*, that extends Glickman and Stern's [state-space model](https://homepages.cae.wisc.edu/~dwilson/rsfc/rate/papers/a-state-space-model.pdf) to make comparisons between the NFL, NHL, NBA and MLB. In this post, I'll describe the attraction of a state-space model, how to build one yourself (using the 2017-18 NHL season), and use our model estimates to answer a few hockey-specific questions. The entire analysis is reproducible, and you should be able to copy-and-paste your way into replicating the findings below. 
 
 ## The role of betting market data
 
-Team quality in sports is not static. Players get hurt, traded, or decide to retire. Managers are fired. Teams rest players, switch starting goalies, rotate a pitching staff, or suddenly decide they want to tank. All of these aspects make measuring team strength a bit dicey. 
+Team quality in sports is not static. Players get hurt, traded, or decide to retire. Managers are fired. Teams rest players, switch starting goalies, rotate a pitching staff, or decide they want to tank. All of these aspects make measuring team strength a bit dicey. 
 
 Moreso than wins and losses or point differential, perhaps the best game-level metric of team strength comes not in what happens during the game, but what's known before the game begins. Indeed, it's been shown [time](https://www.jstor.org/stable/2287640) and [again](https://statsbylopez.files.wordpress.com/2013/08/jqas-2014-0058.pdf) that there's no better way to judge models in sports than to compare to betting market data. Prior to each contest, betting markets put out probabilities associated with each team winning. The reason this data is so accurate is that it takes into account all of the factors above -- injuries, opponent strength, line-ups, tanking, etc. And so as the saying goes -- ``if you can't beat em, use their data to develop a state-space model.'' Or something like that.
 
@@ -75,7 +73,7 @@ $$
 
 where $\theta_{i,w}$ and $\theta_{j,w}$ reflect the corresponding team strengths of $i$ and $j$ during week $w$, and $\alpha$ is the home advantage parameter. You'll note that as $\theta_{i,w}$ goes up, so to does team $i$'s probability of winning; followers of paired comparison comparison models will recognize this formulation as identical to Bradley-Terry. 
 
-A state-space model assumes that the team strength estimates ($\theta_{i,w}$, $\theta_{j,w}$, etc.) evolve over time, with any team's strength at week $w$ a function of both how good it was last week ($w-1$), as well as some prior noise. This is perfect for sports data -- teams generally evolve slowly, and the best predictor of how good any given team is at a given time point is likely closely related to how good it was at the time just prior.
+A state-space model assumes that the team strength estimates ($\theta_{i,w}$, $\theta_{j,w}$, etc.) evolve over time, with team $i$'s strength at week $w$ a function of both how good it was last week ($\theta_{i,(w-1)}$), as well as some prior noise. This is perfect for sports data -- teams generally evolve slowly, and the best predictor of how good any given team is at a given time point is likely closely related to how good it was at the time just prior.
 
 Formally, we assume that for any given team $i$, 
 
@@ -85,7 +83,7 @@ $$
 
 which imposes a first-order auto-regressive process to team strength (denoted by $\gamma$). Above, $\tau_w^2$ corresponds to week-level uncertainty in the evolution of team strength. In the long run, we assume $\gamma < 1$, which prevents team strengths from exploding, and corresponds to the fact that, eventually, the best and worst teams in pro-sports will revert towards the league average. 
 
-Here's how we can built the model above, where we use the `rjags` package in R to do some Bayesian inference using Gibbs sampling. First, we define our model inputs using outcome $y$, week $w$, and x-matrix $x$. For an $n$-game season played between $T$-number of teams, $x$ corresponds to an $n$ x $T$ matrix, filled with exactly one 1 (for the home team) and one -1 (for the away team) in each row. 
+Here's how we can built the model above, where we use the `rjags` package in R to do some Bayesian inference using Gibbs sampling. First, we define our model inputs using outcome $y$, week $w$, and design matrix $x$. For an $n$-game season played between $T$-number of teams, $x$ corresponds to an $n$ x $T$ matrix, where each row contains exactly one 1 (for the home team) and one -1 (for the away team). 
 
 ```{r, message = FALSE, warning = FALSE}
 y <- logit(nhl1718$p_home)
@@ -107,9 +105,9 @@ for (i in 1:dim(nhl1718)[1]) {
 } 
 ```
 
-As an example, row 1, which features a game between home team Winnipeg (the 31st NHL team, alphabetically) and away team Toronto (27th), entails that column 31 of $x$ would be a `1`, column 27 a `-1`, with the rest of the columns equal to zero.
+As an example, row 1, a game between home team Winnipeg (the 31st NHL team, alphabetically) and away team Toronto (27th), has a `1` in the 31st column and a `-1` in the 27th column, with the rest of the entries equal to zero.
 
-Next, our Bayesian approach requires prior distributions on the parameters of interest. I'm happy to answer specific questions if you'd like, but the BUGS code below corresponds to the models above, along with some additional variance parameters that use vague priors. The `rjags` package is a bit outdated, but here's [one resource](http://www.jkarreth.net/files/bayes-cph_Tutorial-JAGS.pdf) where you can learn more about the functions below.
+Next, our Bayesian approach requires prior distributions on the parameters of interest. I'm happy to answer specific questions if you'd like, but the BUGS code below corresponds to the models above, along with some additional variance parameters that use vague priors. The `rjags` package is a bit outdated, but here's [one resource](http://www.jkarreth.net/files/bayes-cph_Tutorial-JAGS.pdf) where you can learn more.
 
 Here's what the BUGS code looks like:
 
@@ -155,7 +153,7 @@ z <- jags.samples(jags, posteriorDraws, n.draws, thin = thin)
 ```
 
 
-## Examining the model
+## Examining model output
 
 Our output file `z` contains information related to each of the parameters we were interested in. In this case, we have `z$alpha` (home advantage) and `z$theta` (team strengths), which have dimensions shown below. 
 
@@ -181,7 +179,7 @@ hfas %>% ggplot(aes(draw, X1)) +
 
 The posterior distrbution of $\alpha$ is centered at about 0.208. This suggests that home teams, when playing a similarly talented opponent, have about a $\frac{e^{0.208.}}{1 + e^{0.208}} = 55\%$ chance of winning. For those scoring at home, the NHL has the third best home advantage among the four sports we analyzed.  
 
-Next, we can examine team strengths. 
+Next, we examine team strengths. 
 
 In the code below, I averaged each team strength over each week of the NHL season, and highlight the Vegas Golden Knights, a team that rose from the bottom of the league towards the top. 
 
@@ -240,9 +238,9 @@ df.overall +
   ggtitle("Team strength during the 2017/2018 NHL season")
 ```
 
-My favorite part about this graph is the distinction between the two Eastern Conference Divisions. In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other three teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic. 
+My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic. 
 
-Also impressive -- check out Colorado's slow improvement in the Central division. The Avalanche started the year as the league's third worst team (perception-wise), and are now in the playoffs. 
+Also impressive -- check out Colorado's slow improvement in the Central The Avalanche started the year as the league's third worst team (perception-wise), and are now in the playoffs. 
 
 ## Comparisons among teams
 
@@ -264,7 +262,7 @@ df.matchup %>% ggplot(aes(beta, fill = team_id, group = team_id)) +
   geom_density(alpha = 0.5) + 
   scale_fill_manual(name = NULL, values = colors) + 
   annotate("text", x = lmin, y = 4, label = "Hurricanes",colour = colors[1], size = 5) + 
-  annotate("text", x = .17, y = 4, label = "Flyers", colour = colors[2], size = 5) + 
+  annotate("text", x = .19, y = 4, label = "Flyers", colour = colors[2], size = 5) + 
   annotate("text", x = umin, y = 4, label = "Penguins", colour = colors[3], size = 5) +
   ggtitle("Posterior draws of team strength") + 
   xlab("Team strength: log-odds scale") + ylab("Density") + 
@@ -277,7 +275,7 @@ Using samples from the posterior distribution, we can be a bit more precise: the
 
 But here's where the NHL is tricky (e.g, random). 
 
-Knowing that the Penguins are better than the Flyers with probability of 99.4 percent doesn't correspond to their chances of actually beating the Flyers when the two teams square off in the 1st round of the 2018 NHL playoffs. In fact, we can use our team strength estimates to sample what a 7-game playoff series could look like, and check how often each team wins. Below, I assume that the Penguins have the home advantage.
+Knowing that the Penguins are better than the Flyers with probability 99.4 percent does not precisely correspond to their chances of actually beating the Flyers when the two teams square off in the 1st round of the 2018 NHL playoffs. In fact, we can use our team strength estimates to sample what a 7-game playoff series could look like, and check how often each team wins. Below, I assume that the Penguins have the home advantage.
 
 ```{r, message = FALSE, warning = FALSE}
 set.seed(0)
@@ -295,12 +293,13 @@ do.penguins.win
 In the example above, the Penguins emerge victorious -- congrats [Sam](https://www.nhl.com/penguins/news/penguins-hire-sam-ventura-as-director-of-hockey-research/c-289961770)!! -- but that doesn't happen every iteration. Here's what 10,000 series outcomes would look like:
 
 ```{r, message = FALSE, warning = FALSE}
+set.seed(0)
 penguins.sim.wins <- 0
 for (i in 1:10000){
   flyers.strength <- sample(team.2$beta, 7)
   penguins.strength <- sample(team.3$beta, 7)
   home.advantage <- sample(z$alpha, 7)
-  logit.games <- penguins.strength - flyers.strength + home.advantage*c(1, -1, -1, -1, 1, -1, 1)
+  logit.games <- penguins.strength - flyers.strength + home.advantage*c(1, 1, -1, -1, 1, -1, 1)
   prob.games <- exp(logit.games)/(1 + exp(logit.games))
   penguin.wins <- rbinom(7, 1, prob = prob.games)
   do.penguins.win <- sum(penguin.wins) >= 4
@@ -311,12 +310,12 @@ sum(penguins.sim.wins)/10000
 
 Our numbers suggest that the Penguins would beat the Flyers roughly 2 out of every 3 times they played a 7-game series. Unsurprisingly, this almost exactly matches the probability implied in sportsbook series odds, which currently price the Penguins at -225 and the Flyers at +195.
 
-One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4\% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose give their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers [expected](https://twitter.com/StatsbyLopez/status/983686397818298368). 
+One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4\% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers [expected](https://twitter.com/StatsbyLopez/status/983686397818298368), as 1 in 25 was the least likely of four outcomes (10, 15, 20, 25). 
 
 
 ## Summary
 
-The above code implements a Bayesian state-space framework to etimate team strength in the NHL season using betting market numbers. Though the `rjags` package is not the most user-friendly for first-time practitioners, it provides a mechanism for fitting complex models using R. The resulting team strengths fun to graph and expore, and I encourage you to try it out yourself.
+The above code implements a Bayesian state-space model to etimate team strength in the NHL season using betting market numbers. Though the `rjags` package is not the most user-friendly for first-time practitioners, it provides a mechanism for fitting complex models using R. The resulting team strengths are fun to graph and expore, and I encourage you to try it out yourself.
 
 In future work, there are a few questions that I hope to tackle: Can our model detect if certain teams have better home advantages than others? Was there a so-called `Vegas flu`? And when did betting markets begin to pick up on it? What is the probability that any given team is better than any given other team? How did the NHLs shifting postseason structure (to a divisional format) impact postseason chances?
 
