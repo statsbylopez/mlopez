@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/post/a-state-space-model-to-evaluate-sports-team-performance/</loc>
+      <lastmod>2018-04-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/post/on-log-loss-in-the-ncaa-tournament/</loc>
+      <lastmod>2018-03-26T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</loc>
       <lastmod>2018-03-16T00:00:00+00:00</lastmod>
     </url>
@@ -107,6 +125,16 @@
     
     <url>
     
+      <loc>/tags/logloss/</loc>
+      <lastmod>2018-03-26T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/mlb/</loc>
       <lastmod>2018-03-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -127,8 +155,18 @@
     
     <url>
     
+      <loc>/tags/ncaa/</loc>
+      <lastmod>2018-03-26T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/nhl/</loc>
-      <lastmod>2018-03-16T00:00:00+00:00</lastmod>
+      <lastmod>2018-04-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -138,6 +176,16 @@
     <url>
     
       <loc>/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/state-space/</loc>
+      <lastmod>2018-04-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

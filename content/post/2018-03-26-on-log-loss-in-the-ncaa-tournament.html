@@ -1,0 +1,64 @@
+---
+title: On log-loss and scoring the NCAA tournament
+author: ''
+date: '2018-03-26'
+slug: on-log-loss-in-the-ncaa-tournament
+categories: []
+tags:
+  - NCAA
+  - logloss
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<p>In 2014, <a href="www.statsinthewild.com">Greg</a> and I won the first annual Kaggle March Madness contest. This led to really cool things happening to a pair of nondescript statisticians that, to the likely detriment of our social lives, happened to know where to find good basketball data while also remembering, on a tight deadline, to enter <code>type = &quot;response&quot;</code> in our <code>glm</code> code.</p>
+<p>The Kaggle victory was simultaneously awesome – like <a href="https://www.nytimes.com/2015/03/22/opinion/sunday/making-march-madness-easy.html">New York Times</a> awesome – and embarassing, as Greg and I realized how lucky we were to have finished on top.</p>
+<p>To wit:</p>
+<ol style="list-style-type: decimal">
+<li><p>Even if we assumed that our model contained the true probabilities for every 2014 NCAA tournament game, <a href="https://statsbylopez.files.wordpress.com/2013/08/jqas-2014-0058.pdf">there was a better chance that our submission finished outside the top-10</a> than inside it. It’s humbling to know that you can have precise numbers for every possible game, and in all likelhood, not have increased your chances of winning by much more than a factor of five.</p></li>
+<li><p>We are pretty sure we actually mis-typed Ohio State as Ohio during our data wrangling process, thus giving what was a pretty good Ohio State team a fairly mediocre ranking. This helped us immensely when Ohio State lost to Dayton in a first round upset. Note the caveat that I am “pretty sure” this was the case; honestly, that’s about as good as I can get looking at our old files.</p></li>
+<li><p>We won on a disqualification, when someone who had submitted multiple entries was banned from winning.</p></li>
+</ol>
+<p>It’s a few years later now, but the luck required for us to have won the Kaggle contest has stayed with us. And it’s an important backdrop for the point of this post – <strong>it’s time for Kaggle to change its scoring rule</strong>.</p>
+<div id="log-loss-as-a-scoring-rule." class="section level2">
+<h2>Log loss as a scoring rule.</h2>
+<p>Kaggle scores contest submissions using <a href="https://www.r-bloggers.com/making-sense-of-logarithmic-loss/">log-loss (LL)</a>, and allows participants two unique submissions. As a scoring rule, LL boasts a few critical properties:</p>
+<ol style="list-style-type: decimal">
+<li><p>LL is a <a href="https://www.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf">proper scoring rule</a> – that is, in expectation, the best log-loss is obtained by reporting the true probabilities.</p></li>
+<li><p>Penalties are disproportionately larger for high-confident decisions that go wrong. As an example, giving Virginia a 97% probability against UMBC results in a LL of 3.5 (higher is worse), while a coin flip of 0.5 scores only a LL of 0.7. But note how much better 95% would have been – (LL of 3) – relative to a 99% submission (LL of 4.6).</p></li>
+</ol>
+<p>In the long run of hypothetical NCAA tournament games between a fixed number of Kaggle participants, LL makes sense as a scoring system. But the NCAA tournament scores only 63 games, and the number of Kaggle participants has nearly quadrupled in the last four years. That’s a tricky setting moving forward.</p>
+</div>
+<div id="limitations-of-log-loss" class="section level2">
+<h2>Limitations of Log loss</h2>
+<p>There are a few important limitations to log loss as a scoring rule with NCAA tournament data (see Christopher Long’s post <a href="angrystatistician.blogspot.com/2017/04/why-does-kaggle-use-log-loss.html">here</a> for more).</p>
+<p>First, the small sample of games means that submissions maximizing your chance of finishing first are <em>not</em> the same as those minimizing your expected log-loss. The 2017 winner, Andrew Landgraf, has a <a href="http://blog.kaggle.com/2017/05/19/march-machine-learning-mania-1st-place-winners-interview-andrew-landgraf/">fascinating interview</a> in which he identifies that his strategy was to <em>not</em> choose his most accurate probabilities. Instead, Andrew created hypothetical distributions of what he thought other participants would submit, and used these simulations to derive an optimal set of predictions.</p>
+<p>Second, and along similar lines, there is now a massive, and growing, incentive to predict upsets. With the 2014 data, I estimated that, under a few assumptions, picking a single first round upset with probability 1 would have increased our chances of winning from about 1 in 40 to about 1 in 15. That’s a massive gain, and its a strategy that several recent teams inside the top-5 have employed. As one example, check out the team BAYZ – in 2016, BAYZ finished <a href="https://www.kaggle.com/c/march-machine-learning-mania-2016/leaderboard">third overall</a>. <a href="https://www.kaggle.com/c/march-machine-learning-mania-2017/leaderboard">Last year</a> and <a href="https://www.kaggle.com/c/mens-machine-learning-competition-2018/leaderboard">this year</a>, however, BAYZ will finish in the bottom 15. Did BAYZ get worse? No. But it is picking upsets, and both living and dying with the results. And the more teams that pick upsets, the more of an uphill fight that those who aren’t picking upsets will have. Note that even though we know it makes our chances of winning worse, Greg and I have opted against picking upsets.</p>
+<p>Third, combining LL with the prize structure of Kaggle – only the top few finishers pay out, and the prizes are massive – encourages cheating, where people submit multiple entries under different names. As mentioned above, Greg and I only won when someone else got disqualified for multiple entries. Why did this person enter multiple times? He wanted to game LL by choosing upsets. How did this person enter multiple times? He entered the same submission, just changing one unique upset on each sheet. And why did he finish in front of us? Because Mercer beat Duke in 2014, and so instead of a typical LL penalty of about 3 (<code>log(0.05) = -3</code>), his penalty for the Duke/Mercer game was 0. Fortunately, the good folks at Kaggle were able to catch that cheater and drop him from the leaderboard … but I’m not so sure that will always be the case moving forward.</p>
+<p>Fourth, and finally, in allowing <em>two</em> entries, the current Kaggle rules are essentially doubling the options that entrants have to pick upsets. Like several other participants, Greg and I enter the same model, changing only the final game: on one sheet, we enter 1’s for the teams on the left side of the bracket, and on the other sheet, we enter 1’s for teams on the right side of the bracket. This ad-hoc scoring is not without motivation – using simulations in the 2014 tournament, I estimated that our chances of winning roughly doubled when employing this strategy – but the overall strategy as a whole does seem disingenous.</p>
+</div>
+<div id="what-other-scoring-rules-are-possible" class="section level2">
+<h2>What other scoring rules are possible?</h2>
+<p>In an ideal world, Kaggle would reward participants for accuracy and not luck. The current set-up, however, disproportionately rewards upsets and contrarion strategies. In place, here are a few options to consider.</p>
+<ol style="list-style-type: decimal">
+<li>Predict the point differential, and score using RMSE or MAE.</li>
+</ol>
+<p>Point differential is commonly mentioned in the Kaggle forums as an alternative outcome, as it boasts a few benefits over LL. First, upset-based strategies are not as obvious. If Virginia is a 20-point favorite over UMBC, a rogue Kaggler predicting a 41-point Virginia win would be taking the same risk as one predicting a one-point UMBC win. Second, point-differential tells us more about the participating teams. This is why statistical models using point differential as an outcome almost always perform better than ones that use win-loss results as an outcome.</p>
+<p>Note that a common response to this suggestion is “I don’t want results being swayed by bench players in garbage time.” However, these swings are minor in comparison to the enormous swings that are already currently occuring with won-loss outcomes. As an example, a Kaggler with Loyola 0.51 &gt; Miami assuredly had the better prediction that one with Loyola 0.99 &gt; Miami (Loyola won on a last second shot). However, the second Kaggler receives a better score than the first. This does not seem fair.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Predict the point differential, score using RMSE or MAE, and merge with current LL predictions.</li>
+</ol>
+<p>Having two scoring rules would make the contest a bit more challenging to enter, but the benefit of having multiple approaches for measuring model performance could be worth it. In this instance, whoever finishes with the best average rank under each scoring rule would be the winner.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Predict point differential and uncertainty in that point differential, and score using the normal distribution.</li>
+</ol>
+<p>I think this is my preferred scoring rule, and it is inspired by Micah’s <a href="http://hockeyviz.com/txt/predictionContest1718">Sour Candy Contest</a> in the NHL.</p>
+<p>In this set-up, participants submit a prediction for point differential as well as a standard deviation to reflect uncertainty in that point differential. The score associated with each game combines the predicted result, the observed result, and the standard deviation, by estimating the likelihood that the observed result occurs given the . Though it could be rescaled, the maximum score for any given game is 1 – this occurs when a prediction is perfectly accurate and the proposed standard deviation is 0.</p>
+<p>As a hypothetical, consider Loyola versus Miami, which finished as a two-point Loyola win.</p>
+<ul>
+<li>Submission 1: <span class="math inline">\(\hat{\mu}_1\)</span> = 2, <span class="math inline">\(\hat{\sigma}\)</span> = 1.</li>
+</ul>
+</div>
