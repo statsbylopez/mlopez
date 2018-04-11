@@ -1,6 +1,5 @@
 ---
 title: The Vegas flu looks real — but somehow the Chicago Blackhawks also got sick
-  sick
 author: ''
 date: '2018-04-11'
 slug: the-vegas-flu-looks-real
