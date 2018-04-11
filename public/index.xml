@@ -11,6 +11,65 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>The Vegas flu looks real — but somehow the Chicago Blackhawks also got sick sick</title>
+      <link>/post/the-vegas-flu-looks-real/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-vegas-flu-looks-real/</guid>
+      <description>&lt;p&gt;In yesterday’s post, I walked through the use of a &lt;a href=&#34;http://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/&#34;&gt;state-space&lt;/a&gt; model to evaluate NHL team strength over the course of an NHL season.&lt;/p&gt;
+&lt;p&gt;But analyzing team strength is just the start of how we can use this type of framework to analyze betting market data in sports. In today’s post, I’ll ask a different question – What team had the best home advantage? And did perceptions of any teams (cough cough, Vegas) change over the course of the season?&lt;/p&gt;
+&lt;div id=&#34;the-vegas-flu&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Vegas Flu&lt;/h2&gt;
+&lt;p&gt;Around mid-December – according to a Google search, &lt;a href=&#34;http://www.espn.com/nhl/story/_/id/21825994/nhl-vegas-flu-real-golden-knights-stunning-home-success&#34;&gt;December 20th&lt;/a&gt; – the public became aware of the Golden Knights’ incredible start at home. Vegas started the season 14-2-1 at T-Mobile Arena, shocking pre-season &lt;a href=&#34;http://www.espn.com/nhl/story/_/id/20841111/2017-18-nhl-season-preview-vegas-golden-knights&#34;&gt;predictions&lt;/a&gt; that had the Golden Knights as one of the worst teams in hockey.&lt;/p&gt;
+&lt;p&gt;Yesterday’s post used a time-varying model of team strength that, while able to pick up on changes in team strength with Vegas, also assumed that (i) each NHL team had the same home advantage and (ii) there was no impact of team rest on market numbers. However, both of these assumptions are testable with by adding a few more variables to our model.&lt;/p&gt;
+&lt;p&gt;Here was our initial model: &lt;span class=&#34;math display&#34;&gt;\[
+\text{E}[\text{logit}(p_{i,j,w})] = \theta_{i,w} - \theta_{j,w} + \alpha,
+\]&lt;/span&gt; We expand that model to &lt;span class=&#34;math display&#34;&gt;\[
+\text{E}[\text{logit}(p_{i,j,w})] = \theta_{i,w} - \theta_{j,w} + \alpha_i,
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which allows for each team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; to have its own intercept. But we’re not done yet. The final model,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\text{E}[\text{logit}(p_{i,j,w})] = \theta_{i,w} - \theta_{j,w} + \alpha_i + \beta_1*Rest_i + \beta_2*Rest_j,
+\]&lt;/span&gt; includes binary indicators &lt;span class=&#34;math inline&#34;&gt;\(Rest_i\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Rest_j\)&lt;/span&gt; which indicate whether or not the home (&lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;) or away (&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;) team was better rested prior to the game. Note that for rest variables, if both teams had the same rest, or both teams had at least one day of rest, these indicators were set to 0. Rest variables are important, as we hope to be able to tease out the benefit of playing at home from the benefit of playing a non-rested opponent at home.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;are-home-advantages-different&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Are home advantages different?&lt;/h2&gt;
+&lt;p&gt;Yes, it appears they are.&lt;/p&gt;
+&lt;p&gt;Here’s a plot of the posterior distribution of &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i\)&lt;/span&gt; for each team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/vegas1.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Each teams’ curve corresponds to their estimated prediction of beating an equal-caliber opponent at home. League-wide, the average is about 55%, but some teams lie above and below that average.&lt;/p&gt;
+&lt;p&gt;Overall, betting markets linked Vegas with the best home advantage during the 2017/18 season, as judged by the posterior distribution of the Golden Knights’ &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. However, we can be more precise: there’s about a 90% chance (using the overlap in the density curves) that Vegas was given a better home adjustment than the second best team (LA Kings). Altogether, the gaps between teams with the best and worst home advantages appear unlikely to be due to chance, which matches our findings in our original paper (&lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34;&gt;link&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;did-home-advantages-change&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Did home advantages change?&lt;/h2&gt;
+&lt;p&gt;I replicated the same model fit above using both games before and after December 20th. Why that date? First, it’s the date of the ESPN article that publicized the idea of the Vegas Flu. Second, it’s close enough to the halfway mark of the season that it’s likely we have enough home games to judge each team with.&lt;/p&gt;
+&lt;p&gt;Here’s the Golden Knights’ home advantage, both before (dark curve) and after (light curve) December 20th.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/vegas2.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Altogether, it looked like the Knights’ expected win percentage at home was given about a 1.75 percentage point bump after December 20th. This appears significant – but there’s also enough overlap in the two density curves that the increase could be due to chance. From a practical standpoint, this increase would plausibly effect the outcome of no more a game or two – but from a betting market standpoint, an increase of 1.75 percentage points is notable.&lt;/p&gt;
+&lt;p&gt;Of course, it’d be more precise to consider the Golden Knights’ increase in light of changes to the home advantage intercepts among other teams.&lt;/p&gt;
+&lt;p&gt;Here’s a plot with &lt;em&gt;every&lt;/em&gt; teams’ density curves, showing the home advantage both before (in dark) and after (in color) December 20th. Curves shaded in red reflect teams where the home advantage decreased – teams in blue correspond with an increase. I also organized teams in a weird order – from those with the biggest drop (Chicago) to the biggest increase (Vegas).&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/vegas3.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;I feel a bit like Jack Buck here: I can’t believe what I just saw.&lt;/p&gt;
+&lt;p&gt;The team with the biggest change in home advantage is not Vegas but Chicago, which observes an estimated win percentage drop by nearly 2 percentage points. Edmonton and Montreal, the two franchises that, combined with the Blackhawks, had the three most disappointmenting seasons in the NHL, also observe drops in perceived home advantage.&lt;/p&gt;
+&lt;p&gt;What does this suggest?&lt;/p&gt;
+&lt;p&gt;There are likely two possibilities.&lt;/p&gt;
+&lt;p&gt;First, market-perceived home advantage correlates to team strength. If the Blackhawks or Oilers stink, it is reasonable to think that playing in Chicago or Edmonton is less of worry for opponents. Fewer fans are showing up, referees are less likely to give the home team a call, and the home team is, even after accounting for team strength, a hair less likely to win.&lt;/p&gt;
+&lt;p&gt;Second, which is an important caveat, our model can’t pick up when teams play different players (e.g. backup goalies). In other words, if opponents started the year playing their backups in Chicago, but ended the year playing their starters at Chicago, we’d likely be calling what was really a change in opponent behavior a change in home advantage. Alternatively, if the Blackhawks started the year playing Corey Crawford in net for all of their home games but ended the year playing, for sake of argument, a beer-league goalie off of the street, our model would not pick up on that.&lt;/p&gt;
+&lt;p&gt;Either way, hopefully this post highlights some of the potential that can be found when analyzing market numbers. We can be sure that the market values each teams’ home advantage different, and that by years’ end, Vegas was given the biggest adjustment when playing at home. It’s also possible that how the market views each teams home advantage is tied to how good that team is at a particular time point.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A state-space model to evaluate sports teams</title>
       <link>/post/a-state-space-model-to-evaluate-sports-teams/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
@@ -296,7 +355,7 @@ for (i in 1:10000){
   penguins.sim.wins &amp;lt;- penguins.sim.wins + do.penguins.win
 }
 sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.6614&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.6634&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Our numbers suggest that the Penguins would beat the Flyers roughly 2 out of every 3 times they played a 7-game series. Unsurprisingly, this almost exactly matches the probability implied in sportsbook series odds, which currently price the Penguins at -225 and the Flyers at +195.&lt;/p&gt;
 &lt;p&gt;One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/983686397818298368&#34;&gt;expected&lt;/a&gt;, as 1 in 25 was the least likely of four outcomes (10, 15, 20, 25).&lt;/p&gt;
 &lt;/div&gt;
