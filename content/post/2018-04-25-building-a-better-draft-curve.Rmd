@@ -115,7 +115,7 @@ tab.trade <- yhat %>%
   select(pick.number, pred) %>% 
   rename(Value = pred, `Pick Number` = pick.number) %>% 
   mutate(Value = round(Value, 1), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
-kable(tab.trade)
+kable(tab.trade, align=rep('c', 3))
 ```
 
 Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers. To be more specific, the Colts aquired 112.4 points worth of draft value in exchange for 52.5 points. Or, perhaps a better way of putting this deal: had the Jets also received back the first pick in the deal, they would've just about broken even. 

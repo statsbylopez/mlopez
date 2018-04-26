@@ -379,31 +379,31 @@
 <table>
 <thead>
 <tr class="header">
-<th align="right">Pick Number</th>
-<th align="right">Value</th>
-<th align="left">Team</th>
+<th align="center">Pick Number</th>
+<th align="center">Value</th>
+<th align="center">Team</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3</td>
-<td align="right">52.5</td>
-<td align="left">to the Jets</td>
+<td align="center">3</td>
+<td align="center">52.5</td>
+<td align="center">to the Jets</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="right">50.6</td>
-<td align="left">to the Colts</td>
+<td align="center">6</td>
+<td align="center">50.6</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="odd">
-<td align="right">37</td>
-<td align="right">33.5</td>
-<td align="left">to the Colts</td>
+<td align="center">37</td>
+<td align="center">33.5</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="even">
-<td align="right">49</td>
-<td align="right">28.3</td>
-<td align="left">to the Colts</td>
+<td align="center">49</td>
+<td align="center">28.3</td>
+<td align="center">to the Colts</td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +467,7 @@
 <p>Here’s a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.</p>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;
 ## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>There are notable differences between the two curves. Primarily, the <code>superstar</code> curve on the right features a much steeper cutoff than the <code>average</code> curve. The <code>superstar</code> curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.</p>
 </div>
 <div id="revising-the-jets-trade" class="section level2">
@@ -511,7 +511,7 @@
 <p>Perhaps a better draft curve incorporates both overall average pick performance  star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1.</p>
 <p>Here’s that curve. The curve in the middle (shown in purple) reflects the average between the <code>average</code> and <code>superstar</code> curves.</p>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Using the so-called <code>blended</code> draft curve, here’s a final look at the Jets/Colts trade.</p>
 <table>
 <thead>
