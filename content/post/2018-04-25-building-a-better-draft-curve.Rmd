@@ -194,7 +194,7 @@ The Colts still made out like bandits -- roughly getting about a 60\% rate or re
 
 A blended draft curve is by no means final, but it's one approach for considering how teams aren't just drafting for average value, and that they are often looking for a superstar. I should also note that this isn't my idea at all -- Michael Schuckers wrote about it in JQAS, a paper you can read [here](http://statsportsconsulting.com/main/wp-content/uploads/Schuckers_JQAS_NFL_Draft.pdf). Schuckers uses a blend of outcomes to make a final draft curve, and there's no reason to suspect that mine is any better than his. 
 
-Teams *should* be doing deeper research into making similar curves for themselves. These &should* include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.
+Teams *should* be doing deeper research into making similar curves for themselves. These *should* include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.
 
 If you want to evaluate trades yourself using the blended curve, I uploaded a table [here](https://docs.google.com/spreadsheets/d/15_doA989vn-JoWYqktRU3yLH7ciHB4Jd8RS1m2erGZo/edit?usp=sharing)
 
