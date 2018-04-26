@@ -146,7 +146,7 @@ Among the players meeting our star criterion listed above, Westbrook, Timmons, a
 
 Here's a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.
 
-```{r, echo = FALSE, warning = FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
 p2 + p1
 ```
 
@@ -173,7 +173,7 @@ Perhaps a better draft curve incorporates both overall average pick performance 
 
 Here's that curve. The curve in the middle (shown in purple) reflects the average between the `average` and `superstar` curves.
 
-```{r, echo = FALSE, warning = FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
 p3
 ```
 

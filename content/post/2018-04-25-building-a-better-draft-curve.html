@@ -102,9 +102,7 @@ categories: []
 </table>
 <p>Among the players meeting our star criterion listed above, Westbrook, Timmons, and Thomas all made the Pro Bowl at least once in their careers, and each player was also named to at least one all-Pro team, so this seems like a reasonable cutoff to make.</p>
 <p>Here’s a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.</p>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;
-## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>There are notable differences between the two curves. Primarily, the <code>superstar</code> curve on the right features a much steeper cutoff than the <code>average</code> curve. The <code>superstar</code> curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.</p>
 </div>
 <div id="revising-the-jets-trade" class="section level2">
@@ -147,8 +145,7 @@ categories: []
 <h2>Building the best curve</h2>
 <p>Perhaps a better draft curve incorporates both overall average pick performance  star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1.</p>
 <p>Here’s that curve. The curve in the middle (shown in purple) reflects the average between the <code>average</code> and <code>superstar</code> curves.</p>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Using the so-called <code>blended</code> draft curve, here’s a final look at the Jets/Colts trade.</p>
 <table>
 <thead>
@@ -189,3 +186,76 @@ categories: []
 <p>Teams  be doing deeper research into making similar curves for themselves. These  include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.</p>
 <p>If you want to evaluate trades yourself using the blended curve, I uploaded a table <a href="https://docs.google.com/spreadsheets/d/15_doA989vn-JoWYqktRU3yLH7ciHB4Jd8RS1m2erGZo/edit?usp=sharing">here</a></p>
 </div>
+
+
+<p>Using the so-called <code>blended</code> draft curve, here’s a final look at the Jets/Colts trade.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Pick Number</th>
+<th align="center">Value</th>
+<th align="center">Team</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">27.8</td>
+<td align="center">to the Jets</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">25.4</td>
+<td align="center">to the Colts</td>
+</tr>
+<tr class="odd">
+<td align="center">37</td>
+<td align="center">10.8</td>
+<td align="center">to the Colts</td>
+</tr>
+<tr class="even">
+<td align="center">49</td>
+<td align="center">8.7</td>
+<td align="center">to the Colts</td>
+</tr>
+</tbody>
+</table>
+<p>The Colts still made out like bandits – roughly getting about a 60% rate or return on their No. 3 pick – but it doesn’t look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.</p>
+</div>
+<div id="final-thoughts" class="section level2">
+<h2>Final thoughts</h2>
+<p>A blended draft curve is by no means final, but it’s one approach for considering how teams aren’t just drafting for average value, and that they are often looking for a superstar. I should also note that this isn’t my idea at all – Michael Schuckers wrote about it in JQAS, a paper you can read <a href="http://statsportsconsulting.com/main/wp-content/uploads/Schuckers_JQAS_NFL_Draft.pdf">here</a>. Schuckers uses a blend of outcomes to make a final draft curve, and there’s no reason to suspect that mine is any better than his.</p>
+<p>Teams  be doing deeper research into making similar curves for themselves. These  include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.</p>
+<p>If you want to evaluate trades yourself using the blended curve, I uploaded a table <a href="https://docs.google.com/spreadsheets/d/15_doA989vn-JoWYqktRU3yLH7ciHB4Jd8RS1m2erGZo/edit?usp=sharing">here</a></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
