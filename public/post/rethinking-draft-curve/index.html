@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37" />
+  <meta name="author" content="Michael Lopez">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty draft curve to see what it said about the trade.
+  Pick Number Value Team    3 52.5 to the Jets  6 50.6 to the Colts  37 33.5 to the Colts  49 28.3 to the Colts    Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/rethinking-draft-curve/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/rethinking-draft-curve/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@statsbylopez">
+  <meta property="twitter:creator" content="@statsbylopez">
+  
+  <meta property="og:site_name" content="Statsbylopez">
+  <meta property="og:url" content="/post/rethinking-draft-curve/">
+  <meta property="og:title" content="Rethinking draft curves | Statsbylopez">
+  <meta property="og:description" content="When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty draft curve to see what it said about the trade.
+  Pick Number Value Team    3 52.5 to the Jets  6 50.6 to the Colts  37 33.5 to the Colts  49 28.3 to the Colts    Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-04-25T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-04-25T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Rethinking draft curves | Statsbylopez</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/"><img src="/img/fball.jpg" alt="Statsbylopez"></a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/publication/" target="_blank" rel="noopener">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/talk/" target="_blank" rel="noopener">
+            
+            <span>Talks</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/press/" target="_blank" rel="noopener">
+            
+            <span>Press</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/articles/" target="_blank" rel="noopener">
+            
+            <span>Articles</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Rethinking draft curves</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-04-25 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Apr 25, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Lopez">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Rethinking%20draft%20curves&amp;url=%2fpost%2frethinking-draft-curve%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2frethinking-draft-curve%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2frethinking-draft-curve%2f&amp;title=Rethinking%20draft%20curves"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2frethinking-draft-curve%2f&amp;title=Rethinking%20draft%20curves"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Rethinking%20draft%20curves&amp;body=%2fpost%2frethinking-draft-curve%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty <a href="https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/">draft curve</a> to see what it said about the trade.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Pick Number</th>
+<th align="right">Value</th>
+<th align="left">Team</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">52.5</td>
+<td align="left">to the Jets</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">50.6</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="right">33.5</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+<td align="right">28.3</td>
+<td align="left">to the Colts</td>
+</tr>
+</tbody>
+</table>
+<p>Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers. To be more specific, the Colts aquired 112.4 points worth of draft value in exchange for 52.5 points. Or, perhaps a better way of putting this deal: had the Jets also received back the first pick in the deal, they would’ve just about broken even.</p>
+<p>These findings accord with just about every take I saw on the trade that came from analytically-minded sources. Even on Jimmy Johnson’s outdated version of the trade chart, <a href="https://ftw.usatoday.com/2018/03/nfl-jets-colts-draft-trade-richard-thaler-nobel-prize">Indianapolis</a> comes out ahead.</p>
+<p>But still, something didn’t pass the smell test, and I figured it was worth a go at revisiting my draft curve.</p>
+<div id="what-if-a-team-wants-a-superstar" class="section level2">
+<h2>What if a team wants a superstar?</h2>
+<p>One limitation of the draft curve above is that it focuses on the  player performance. For the Jets, pick. No. 3 is worth an  value of 52.5 points over the course of a career (for those scoring at home, this is reflects a player’s career <a href="https://www.pro-football-reference.com/blog/index37a8.html">Approximate Value</a>). But a team may not be drafting for average player performance, and instead, may prefer a shot at a superstar. How can we tweak our draft curve to account for this team preference?</p>
+<p>Instead of focusing on a smoothed average at each line, we can instead set a cutoff for what it means to be a superstar, and adjust our valuation of each pick to estimate the likelihood of landing a player above that cutoff. There are several reasons to  do this, and I generally dislike setting arbitrary <a href="http://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/">cutoffs</a>. However, there are two benefits of thinking this way. First, the valuations of each pick – the likelihood of landing a superstar – are easy to interpret, which may help in the communication of results. Second, only 11 players are allowed on the field at a given time, and so even if you nail a bunch of 7th round picks, you can’t play them all at once.</p>
+<p>There are several ways to identify a super-star. For ease of implementation, I identified the players in the top <code>21/22</code> percentile, which is a very rough estimation of whether or not that player could have been identified as the best player on the field at any given time point. Using career AV as an outcome, this corresponds with players with a career AV greater than 66. Here’s a sample of players just above and just below the cutoff.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Pos</th>
+<th align="right">CarAV.projected</th>
+<th align="left">Star</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Reggie Nelson</td>
+<td align="left">DB</td>
+<td align="right">63</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Thomas Jones</td>
+<td align="left">RB</td>
+<td align="right">62</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">Adrian Wilson</td>
+<td align="left">DB</td>
+<td align="right">64</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">Brian Westbrook</td>
+<td align="left">RB</td>
+<td align="right">69</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">Lawrence Timmons</td>
+<td align="left">LB</td>
+<td align="right">72</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">Tra Thomas</td>
+<td align="left">T</td>
+<td align="right">69</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>Among the players meeting our star criterion listed above, Westbrook, Timmons, and Thomas all made the Pro Bowl at least once in their careers, and each player was also named to at least one all-Pro team, so this seems like a reasonable cutoff to make.</p>
+<p>Here’s a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.</p>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;
+## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>There are notable differences between the two curves. Primarily, the <code>superstar</code> curve on the right features a much steeper cutoff than the <code>average</code> curve. The <code>superstar</code> curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.</p>
+</div>
+<div id="revising-the-jets-trade" class="section level2">
+<h2>Revising the Jets trade</h2>
+<p>Here’s a look at the Jets/Colts trade using the superstar-based curve.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Pick Number</th>
+<th align="right">Value</th>
+<th align="left">Team</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.32</td>
+<td align="left">to the Jets</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0.29</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="right">0.09</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+<td align="right">0.07</td>
+<td align="left">to the Colts</td>
+</tr>
+</tbody>
+</table>
+<p>Although it’s not exactly quite right to simply add these percentages, the Jets’ return of pick No. 3 (32% chance of a star) looks a bit more reasonable. Using the star rates as pick values, the Jets gained 32 points worth of value in exchange for 43 points. That’s the equivalent of losing out on about the 27th pick in the draft (which is much more reasonable than losing out on the 1st pick in the draft).</p>
+</div>
+<div id="building-the-best-curve" class="section level2">
+<h2>Building the best curve</h2>
+<p>Perhaps a better draft curve incorporates both overall average pick performance  star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1.</p>
+<p>Here’s that curve. The curve in the middle (shown in purple) reflects the average between the <code>average</code> and <code>superstar</code> curves.</p>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Using the so-called <code>blended</code> draft curve, here’s a final look at the Jets/Colts trade.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Pick Number</th>
+<th align="right">Value</th>
+<th align="left">Team</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">27.8</td>
+<td align="left">to the Jets</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">25.4</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="odd">
+<td align="right">37</td>
+<td align="right">10.8</td>
+<td align="left">to the Colts</td>
+</tr>
+<tr class="even">
+<td align="right">49</td>
+<td align="right">8.7</td>
+<td align="left">to the Colts</td>
+</tr>
+</tbody>
+</table>
+<p>The Colts still made out like bandits – roughly getting about a 60% rate or return on their No. 3 pick – but it doesn’t look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.</p>
+</div>
+<div id="final-thoughts" class="section level2">
+<h2>Final thoughts</h2>
+<p>A blended draft curve is by no means final, but it’s one approach for considering how teams aren’t just drafting for average value, and that they are often looking for a superstar. I should also note that this isn’t my idea at all – Michael Schuckers wrote about it in JQAS, a paper you can read <a href="http://statsportsconsulting.com/main/wp-content/uploads/Schuckers_JQAS_NFL_Draft.pdf">here</a>. Schuckers uses a blend of outcomes to make a final draft curve, and there’s no reason to suspect that mine is any better than his.</p>
+<p>Teams  be doing deeper research into making similar curves for themselves. These  include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.</p>
+<p>If you want to evaluate trades yourself using the blended curve, I uploaded a table <a href="https://docs.google.com/spreadsheets/d/15_doA989vn-JoWYqktRU3yLH7ciHB4Jd8RS1m2erGZo/edit?usp=sharing">here</a></p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

@@ -1,0 +1,201 @@
+---
+title: Rethinking draft curves
+author: ''
+date: '2018-04-25'
+slug: rethinking-draft-curve
+categories: []
+tags: []
+header:
+  caption: ''
+  image: ''
+---
+
+When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty [draft curve](https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/) to see what it said about the trade.
+
+
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(splines)
+nfl.all <- read_csv("~/Dropbox/nfldraft18.csv")
+nfl.all1 <- nfl.all
+
+## Star player: top 21/22 percentile
+percent.star <- quantile(nfl.all1$CarAV.projected, 21/22, na.rm = TRUE)
+nfl.all1 <- nfl.all1 %>% mutate(Star.player = CarAV.projected > percent.star)
+
+
+
+## Average predictions
+fit.draft.loess <- loess(CarAV.projected ~ pick.number, data = filter(nfl.all1, year > 1999, Rnd <=7))
+nfl.all1$yhat.loess <- predict(fit.draft.loess, nfl.all1)
+
+## Star predictions
+fit.draft.glm <- glm(Star.player ~ ns(pick.number, 7), data = filter(nfl.all1, year > 1999, Rnd <=7), family = "binomial")
+nfl.all1$yhat.star <- predict(fit.draft.glm, nfl.all1, type = "response")
+
+#sample_n(ungroup(nfl.all1), 5) %>% print.data.frame()
+
+
+## Graph a comparison of curves
+yhat1 <- expand.grid(pick.number = 1:224, type = c("Star"))
+yhat1$pred <- predict(fit.draft.glm, yhat1, type = "response")
+
+yhat2 <- expand.grid(pick.number = 1:224, type = c("Average"))
+yhat2$pred <- predict(fit.draft.loess, yhat2)
+yhat <- bind_rows(yhat1, yhat2)
+
+library(patchwork)
+p1 <- yhat %>% filter(type == "Star") %>% ggplot(aes(pick.number, pred)) + geom_smooth() + scale_y_continuous(label = scales::percent) + 
+  labs(title = "Superstar probability") + ylab("") + theme_bw(15) + 
+  scale_x_continuous(breaks = c(0, 32, 64, 96, 128, 160, 192, 224)) + xlab("Pick Number")
+
+p2 <- yhat %>% filter(type == "Average") %>% ggplot(aes(pick.number, pred)) + geom_smooth() + 
+  labs(title = "Average Career AV") + ylab("") + theme_bw(15) + xlab("Pick Number")+ 
+  scale_x_continuous(breaks = c(0, 32, 64, 96, 128, 160, 192, 224)) 
+
+#yhat %>% group_by(type) %>% filter(pick.number == 1|pick.number == (32*6+1))
+yhat1 <- yhat %>% group_by(type) %>% summarise(sum.pred = sum(pred)) %>% right_join(yhat) %>% ungroup() %>% 
+  mutate(pred.scaled = pred/sum.pred) 
+
+blended <- (yhat1$pred.scaled[yhat1$type == "Star"] + yhat1$pred.scaled[yhat1$type == "Average"])/2
+df.add <- data.frame(type = "Blended", sum.pred = NA, pick.number = 1:224, pred = NA, pred.scaled = blended)
+yhat1 <- bind_rows(yhat1, df.add) %>% mutate(pred.scaled = pred.scaled/0.0007726425)
+
+p3 <- yhat1 %>% 
+  ggplot(aes(pick.number, pred.scaled, colour = type)) + geom_smooth() + 
+  scale_x_continuous(breaks = c(0, 32, 64, 96, 128, 160, 192, 224), "Pick number") + theme_bw(14) + 
+  scale_color_brewer("", type = "qual") + ylab("") + 
+  labs(title = "NFL draft value")
+
+
+## Jets haul
+jets <- yhat1 %>% filter(type == "Blended", pick.number == 3) %>% summarise(sum.worth = sum(pred.scaled))
+
+## Colts haul
+colts <- yhat1 %>% filter(type == "Blended", pick.number %in% c(6, 37, 49)) %>% summarise(sum.worth = sum(pred.scaled))
+
+diff <- colts$sum.worth - jets$sum.worth
+#yhat1 %>% filter(type == "Blended") %>% mutate(pick.diff = abs(pred.scaled - diff)) %>% arrange(pick.diff) %>% slice(1)
+
+## Colts roughly got 19th pick for free using a blended curve
+
+
+
+## Jets haul
+jets <- yhat1 %>% filter(type == "Star", pick.number == 3) %>% summarise(sum.worth = sum(pred.scaled))
+## Colts haul
+colts <- yhat1 %>% filter(type == "Star", pick.number %in% c(6, 37, 49)) %>% summarise(sum.worth = sum(pred.scaled))
+diff <- colts$sum.worth - jets$sum.worth
+#yhat1 %>% filter(type == "Star") %>% mutate(pick.diff = abs(pred.scaled - diff)) %>% arrange(pick.diff) %>% slice(1)
+## Colts roughly got 27th pick for free using a star curve
+
+
+
+## Jets haul
+jets <- yhat1 %>% filter(type == "Average", pick.number == 3) %>% summarise(sum.worth = sum(pred.scaled))
+## Colts haul
+colts <- yhat1 %>% filter(type == "Average", pick.number %in% c(6, 37, 49)) %>% summarise(sum.worth = sum(pred.scaled))
+diff <- colts$sum.worth - jets$sum.worth
+#yhat1 %>% filter(type == "Average") %>% mutate(pick.diff = abs(pred.scaled - diff)) %>% arrange(pick.diff) %>% slice(1)
+## Colts roughly got 1st pick for free using a star curve
+
+
+## Table
+
+tab.final <- yhat1 %>% 
+  filter(type == "Blended") %>% 
+  select(pick.number, pred.scaled) %>% rename(Value = pred.scaled, `Pick Number` = pick.number) %>% 
+  mutate(Value = round(Value, 1))
+```
+
+```{r, echo = FALSE}
+library(knitr)
+tab.trade <- yhat %>% 
+  filter(type == "Average", pick.number %in% c(3, 6, 37, 49)) %>% 
+  select(pick.number, pred) %>% 
+  rename(Value = pred, `Pick Number` = pick.number) %>% 
+  mutate(Value = round(Value, 1), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
+kable(tab.trade)
+```
+
+Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers. To be more specific, the Colts aquired 112.4 points worth of draft value in exchange for 52.5 points. Or, perhaps a better way of putting this deal: had the Jets also received back the first pick in the deal, they would've just about broken even. 
+
+These findings accord with just about every take I saw on the trade that came from analytically-minded sources. Even on Jimmy Johnson's outdated version of the trade chart, [Indianapolis](https://ftw.usatoday.com/2018/03/nfl-jets-colts-draft-trade-richard-thaler-nobel-prize) comes out ahead. 
+
+But still, something didn't pass the smell test, and I figured it was worth a go at revisiting my draft curve.
+
+## What if a team wants a superstar?
+
+One limitation of the draft curve above is that it focuses on the \textit{average} player performance. For the Jets, pick. No. 3 is worth an \textit{average} value of 52.5 points over the course of a career (for those scoring at home, this is reflects a player's career [Approximate Value](https://www.pro-football-reference.com/blog/index37a8.html)). But a team may not be drafting for average player performance, and instead, may prefer a shot at a superstar. How can we tweak our draft curve to account for this team preference?
+
+Instead of focusing on a smoothed average at each line, we can instead set a cutoff for what it means to be a superstar, and adjust our valuation of each pick to estimate the likelihood of landing a player above that cutoff. There are several reasons to \textit{not} do this, and I generally dislike setting arbitrary [cutoffs](http://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/). However, there are two benefits of thinking this way. First, the valuations of each pick -- the likelihood of landing a superstar -- are easy to interpret, which may help in the communication of results. Second, only 11 players are allowed on the field at a given time, and so even if you nail a bunch of 7th round picks, you can't play them all at once. 
+
+There are several ways to identify a super-star. For ease of implementation, I identified the players in the top `21/22` percentile, which is a very rough estimation of whether or not that player could have been identified as the best player on the field at any given time point. Using career AV as an outcome, this corresponds with players with a career AV greater than 66. Here's a sample of players just above and just below the cutoff. 
+
+```{r, echo = FALSE}
+set.seed(0)
+samp.players <- nfl.all %>% filter(CarAV.projected > 60, CarAV.projected < 75, year > 1995, year < 2010) %>% 
+  select(Name, Pos, CarAV.projected) %>% 
+  mutate(Star = CarAV.projected >=66) %>% 
+  group_by(Star) %>% 
+  sample_n(3)
+kable(samp.players)
+```
+
+Among the players meeting our star criterion listed above, Westbrook, Timmons, and Thomas all made the Pro Bowl at least once in their careers, and each player was also named to at least one all-Pro team, so this seems like a reasonable cutoff to make. 
+
+Here's a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.
+
+```{r, echo = FALSE}
+p2 + p1
+```
+
+There are notable differences between the two curves. Primarily, the `superstar` curve on the right features a much steeper cutoff than the `average` curve. The `superstar` curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.
+
+## Revising the Jets trade
+
+Here's a look at the Jets/Colts trade using the superstar-based curve. 
+
+```{r, echo = FALSE}
+tab.trade <- yhat %>% 
+  filter(type == "Star", pick.number %in% c(3, 6, 37, 49)) %>% 
+  select(pick.number, pred) %>% 
+  rename(Value = pred, `Pick Number` = pick.number) %>% 
+  mutate(Value = round(Value, 2), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
+kable(tab.trade)
+```
+
+Although it's not exactly quite right to simply add these percentages, the Jets' return of pick No. 3 (32\% chance of a star) looks a bit more reasonable. Using the star rates as pick values, the Jets gained 32 points worth of value in exchange for 43 points. That's the equivalent of losing out on about the 27th pick in the draft (which is much more reasonable than losing out on the 1st pick in the draft).
+
+## Building the best curve
+
+Perhaps a better draft curve incorporates both overall average pick performance \textit{and} star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1. 
+
+Here's that curve. The curve in the middle (shown in purple) reflects the average between the `average` and `superstar` curves.
+
+```{r, echo = FALSE}
+p3
+```
+
+Using the so-called `blended` draft curve, here's a final look at the Jets/Colts trade.
+
+```{r, echo = FALSE}
+tab.trade <- yhat1 %>% 
+  filter(type == "Blended", pick.number %in% c(3, 6, 37, 49)) %>% 
+  select(pick.number, pred.scaled) %>% 
+  rename(Value = pred.scaled, `Pick Number` = pick.number) %>% 
+  mutate(Value = round(Value, 1), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
+kable(tab.trade)
+```
+
+The Colts still made out like bandits -- roughly getting about a 60\% rate or return on their No. 3 pick -- but it doesn't look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.
+
+## Final thoughts
+
+A blended draft curve is by no means final, but it's one approach for considering how teams aren't just drafting for average value, and that they are often looking for a superstar. I should also note that this isn't my idea at all -- Michael Schuckers wrote about it in JQAS, a paper you can read [here](http://statsportsconsulting.com/main/wp-content/uploads/Schuckers_JQAS_NFL_Draft.pdf). Schuckers uses a blend of outcomes to make a final draft curve, and there's no reason to suspect that mine is any better than his. 
+
+Teams \textit{should} be doing deeper research into making similar curves for themselves. These \textit{should} include the salary for each pick, our could use better cutoffs to reflect what they are looking for in players (superstar, consistent starter, etc). But for now, hopefully it makes a bit of sense why an initial, smoothed draft curve may be limited.
+
+If you want to evaluate trades yourself using the blended curve, I uploaded a table [here](https://docs.google.com/spreadsheets/d/15_doA989vn-JoWYqktRU3yLH7ciHB4Jd8RS1m2erGZo/edit?usp=sharing)
+
+
