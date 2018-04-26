@@ -55,48 +55,48 @@ header:
 <table>
 <thead>
 <tr class="header">
-<th align="left">Name</th>
-<th align="left">Pos</th>
-<th align="right">CarAV.projected</th>
-<th align="left">Star</th>
+<th align="center">Name</th>
+<th align="center">Pos</th>
+<th align="center">CarAV.projected</th>
+<th align="center">Star</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Reggie Nelson</td>
-<td align="left">DB</td>
-<td align="right">63</td>
-<td align="left">FALSE</td>
+<td align="center">Reggie Nelson</td>
+<td align="center">DB</td>
+<td align="center">63</td>
+<td align="center">FALSE</td>
 </tr>
 <tr class="even">
-<td align="left">Thomas Jones</td>
-<td align="left">RB</td>
-<td align="right">62</td>
-<td align="left">FALSE</td>
+<td align="center">Thomas Jones</td>
+<td align="center">RB</td>
+<td align="center">62</td>
+<td align="center">FALSE</td>
 </tr>
 <tr class="odd">
-<td align="left">Adrian Wilson</td>
-<td align="left">DB</td>
-<td align="right">64</td>
-<td align="left">FALSE</td>
+<td align="center">Adrian Wilson</td>
+<td align="center">DB</td>
+<td align="center">64</td>
+<td align="center">FALSE</td>
 </tr>
 <tr class="even">
-<td align="left">Brian Westbrook</td>
-<td align="left">RB</td>
-<td align="right">69</td>
-<td align="left">TRUE</td>
+<td align="center">Brian Westbrook</td>
+<td align="center">RB</td>
+<td align="center">69</td>
+<td align="center">TRUE</td>
 </tr>
 <tr class="odd">
-<td align="left">Lawrence Timmons</td>
-<td align="left">LB</td>
-<td align="right">72</td>
-<td align="left">TRUE</td>
+<td align="center">Lawrence Timmons</td>
+<td align="center">LB</td>
+<td align="center">72</td>
+<td align="center">TRUE</td>
 </tr>
 <tr class="even">
-<td align="left">Tra Thomas</td>
-<td align="left">T</td>
-<td align="right">69</td>
-<td align="left">TRUE</td>
+<td align="center">Tra Thomas</td>
+<td align="center">T</td>
+<td align="center">69</td>
+<td align="center">TRUE</td>
 </tr>
 </tbody>
 </table>
@@ -104,7 +104,7 @@ header:
 <p>Here’s a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.</p>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;
 ## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>There are notable differences between the two curves. Primarily, the <code>superstar</code> curve on the right features a much steeper cutoff than the <code>average</code> curve. The <code>superstar</code> curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.</p>
 </div>
 <div id="revising-the-jets-trade" class="section level2">
@@ -113,31 +113,31 @@ header:
 <table>
 <thead>
 <tr class="header">
-<th align="right">Pick Number</th>
-<th align="right">Value</th>
-<th align="left">Team</th>
+<th align="center">Pick Number</th>
+<th align="center">Value</th>
+<th align="center">Team</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3</td>
-<td align="right">0.32</td>
-<td align="left">to the Jets</td>
+<td align="center">3</td>
+<td align="center">0.32</td>
+<td align="center">to the Jets</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="right">0.29</td>
-<td align="left">to the Colts</td>
+<td align="center">6</td>
+<td align="center">0.29</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="odd">
-<td align="right">37</td>
-<td align="right">0.09</td>
-<td align="left">to the Colts</td>
+<td align="center">37</td>
+<td align="center">0.09</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="even">
-<td align="right">49</td>
-<td align="right">0.07</td>
-<td align="left">to the Colts</td>
+<td align="center">49</td>
+<td align="center">0.07</td>
+<td align="center">to the Colts</td>
 </tr>
 </tbody>
 </table>
@@ -148,36 +148,36 @@ header:
 <p>Perhaps a better draft curve incorporates both overall average pick performance  star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1.</p>
 <p>Here’s that curve. The curve in the middle (shown in purple) reflects the average between the <code>average</code> and <code>superstar</code> curves.</p>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Using the so-called <code>blended</code> draft curve, here’s a final look at the Jets/Colts trade.</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Pick Number</th>
-<th align="right">Value</th>
-<th align="left">Team</th>
+<th align="center">Pick Number</th>
+<th align="center">Value</th>
+<th align="center">Team</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3</td>
-<td align="right">27.8</td>
-<td align="left">to the Jets</td>
+<td align="center">3</td>
+<td align="center">27.8</td>
+<td align="center">to the Jets</td>
 </tr>
 <tr class="even">
-<td align="right">6</td>
-<td align="right">25.4</td>
-<td align="left">to the Colts</td>
+<td align="center">6</td>
+<td align="center">25.4</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="odd">
-<td align="right">37</td>
-<td align="right">10.8</td>
-<td align="left">to the Colts</td>
+<td align="center">37</td>
+<td align="center">10.8</td>
+<td align="center">to the Colts</td>
 </tr>
 <tr class="even">
-<td align="right">49</td>
-<td align="right">8.7</td>
-<td align="left">to the Colts</td>
+<td align="center">49</td>
+<td align="center">8.7</td>
+<td align="center">to the Colts</td>
 </tr>
 </tbody>
 </table>

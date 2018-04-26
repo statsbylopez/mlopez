@@ -139,7 +139,7 @@ samp.players <- nfl.all %>% filter(CarAV.projected > 60, CarAV.projected < 75, y
   mutate(Star = CarAV.projected >=66) %>% 
   group_by(Star) %>% 
   sample_n(3)
-kable(samp.players)
+kable(samp.players, align=rep('c', 3))
 ```
 
 Among the players meeting our star criterion listed above, Westbrook, Timmons, and Thomas all made the Pro Bowl at least once in their careers, and each player was also named to at least one all-Pro team, so this seems like a reasonable cutoff to make. 
@@ -162,7 +162,7 @@ tab.trade <- yhat %>%
   select(pick.number, pred) %>% 
   rename(Value = pred, `Pick Number` = pick.number) %>% 
   mutate(Value = round(Value, 2), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
-kable(tab.trade)
+kable(tab.trade, align=rep('c', 3))
 ```
 
 Although it's not exactly quite right to simply add these percentages, the Jets' return of pick No. 3 (32\% chance of a star) looks a bit more reasonable. Using the star rates as pick values, the Jets gained 32 points worth of value in exchange for 43 points. That's the equivalent of losing out on about the 27th pick in the draft (which is much more reasonable than losing out on the 1st pick in the draft).
@@ -185,7 +185,7 @@ tab.trade <- yhat1 %>%
   select(pick.number, pred.scaled) %>% 
   rename(Value = pred.scaled, `Pick Number` = pick.number) %>% 
   mutate(Value = round(Value, 1), Team = ifelse(`Pick Number` < 5, "to the Jets", "to the Colts"))
-kable(tab.trade)
+kable(tab.trade, align=rep('c', 3))
 ```
 
 The Colts still made out like bandits -- roughly getting about a 60\% rate or return on their No. 3 pick -- but it doesn't look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.
