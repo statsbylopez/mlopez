@@ -1,13 +1,13 @@
 ---
-title: Rethinking draft curves
+title: "Rethinking draft curves"
 author: ''
 date: '2018-04-25'
-slug: rethinking-draft-curve
-categories: []
-tags: []
 header:
   caption: ''
   image: ''
+slug: rethinking-draft-curve
+tags: []
+categories: []
 ---
 
 When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty [draft curve](https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/) to see what it said about the trade.
