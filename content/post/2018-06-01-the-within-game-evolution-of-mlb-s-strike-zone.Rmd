@@ -43,5 +43,5 @@ Across most fringe areas of the strike zone, there's between a 5 and 10 percenta
 
 It's worth noting that the above, to this point, is but an aggregated summary of strike rates based on a few game characteristics. Thus, there may be explanations besides umpire discretion that drive differences in strike zone size late in games. As one alternative possibility, ... actually, I can't think of one. But maybe you can? 
 
-In any case, for now, we note that MLB umpires tend to call higher rates of strikes late in games when one team has a lead. Moreover, there's a particular jump in the ninth-inning. These findings are potentially explained by an effort to speed up the game, and cannot be fully explained by a preference for star releif pitchers. 
+In any case, for now, we note that MLB umpires tend to call higher rates of strikes late in games when one team has a lead. Moreover, there's a particular jump in the ninth-inning. These findings are potentially explained by an effort to speed up the game, and cannot be fully explained by a preference for star relief pitchers. 
 
