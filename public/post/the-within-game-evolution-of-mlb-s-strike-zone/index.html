@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37" />
+  <meta name="author" content="Michael Lopez">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Baseball games are too slow, too long, so damned long, and, like my seven-year old daughter getting dressed in the morning, taking forever.
+Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, calls tend to favor whichever team is closer to winning.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/the-within-game-evolution-of-mlb-s-strike-zone/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/the-within-game-evolution-of-mlb-s-strike-zone/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@statsbylopez">
+  <meta property="twitter:creator" content="@statsbylopez">
+  
+  <meta property="og:site_name" content="Statsbylopez">
+  <meta property="og:url" content="/post/the-within-game-evolution-of-mlb-s-strike-zone/">
+  <meta property="og:title" content="The within-game evolution of MLB’s strike zone | Statsbylopez">
+  <meta property="og:description" content="Baseball games are too slow, too long, so damned long, and, like my seven-year old daughter getting dressed in the morning, taking forever.
+Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, calls tend to favor whichever team is closer to winning.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-06-01T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-06-01T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>The within-game evolution of MLB’s strike zone | Statsbylopez</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/"><img src="/img/fball.jpg" alt="Statsbylopez"></a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/publication/" target="_blank" rel="noopener">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/talk/" target="_blank" rel="noopener">
+            
+            <span>Talks</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/press/" target="_blank" rel="noopener">
+            
+            <span>Press</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/articles/" target="_blank" rel="noopener">
+            
+            <span>Articles</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">The within-game evolution of MLB’s strike zone</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-06-01 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Jun 1, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Lopez">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=The%20within-game%20evolution%20of%20MLB%e2%80%99s%20strike%20zone&amp;url=%2fpost%2fthe-within-game-evolution-of-mlb-s-strike-zone%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fthe-within-game-evolution-of-mlb-s-strike-zone%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fthe-within-game-evolution-of-mlb-s-strike-zone%2f&amp;title=The%20within-game%20evolution%20of%20MLB%e2%80%99s%20strike%20zone"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fthe-within-game-evolution-of-mlb-s-strike-zone%2f&amp;title=The%20within-game%20evolution%20of%20MLB%e2%80%99s%20strike%20zone"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=The%20within-game%20evolution%20of%20MLB%e2%80%99s%20strike%20zone&amp;body=%2fpost%2fthe-within-game-evolution-of-mlb-s-strike-zone%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Baseball games are <a href="https://www.nytimes.com/2017/03/01/sports/baseball/baseballs-too-slow-heres-how-you-fix-it.html">too slow</a>, <a href="https://slate.com/culture/2018/05/major-league-baseball-games-are-too-long-heres-how-to-make-them-longer.html">too long</a>, <a href="https://www.sbnation.com/a/mlb-2017-season-preview/game-length">so damned long</a>, and, like my seven-year old daughter getting dressed in the morning, <a href="https://fivethirtyeight.com/features/baseballs-biggest-games-are-taking-forever/">taking forever</a>.</p>
+<p>Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084">calls tend to favor</a> whichever team is closer to winning. By that point in the game, we argue, <a href="https://fivethirtyeight.com/features/everyone-wants-to-go-home-during-extra-innings-maybe-even-the-umps/">everyone wants to go home</a>.</p>
+<p>Although our evidence is strong that umpires react to the scoreline in extra innings, given the frequency with which these games happen, such extra bits of discretion are only likely to impact a game or two a week. Meanwhile, innings one through nine have, to date, gone unanalyzed with respect to a varying strike zone. But with the score-state for each game now available on <a href="https://baseballsavant.mlb.com/">baseballsavant</a>, I figured a look at all innings would be more appropriate.</p>
+<p>First, I used the <code>baseballr</code> package (scraping code <a href="https://github.com/statsbylopez/mlb-shirking/blob/master/Code/scraping.R">here</a>) to acquire pitch-level data for all balls and strike calls between the 2008 and 2017 seasons. For each pitch, I adjusted the corresponding vertical coordinate to standardize for each batter personal strike zone.</p>
+<p>Next, I averaged across each of the nine-innings and each three-inch window of a strike zone grid to identify the likelihood of a pitch in a given part of the zone being called a strike. Finally, as a baseline, I focused on the differences between each score state where one team is leading (by 1 to 3 runs, or by 4 runs or more), relative to the game being tied.</p>
+<p>Here’s a gif that works through how the strike zone changes by inning and score state. Shades of the graph in green correspond to more strikes, while purple reflects fewer strikes. You shouldn’t see much early. But please wait for the 9th-inning.</p>
+<div class="figure">
+<img src="/img/output_inning.gif" />
+
+</div>
+<p>Late in games, beginning with the 8th-inning, there’s a marked increase in strike calls when one of the teams is leading. Differences are as large as 30 percentage points in the 9th-inning, and seem somewhat consistent between types of leads. This latter point is particularly important – if the strike zone expands as equally with a 2-run lead as it does with a 12-run lead, we can be more confident that what’s driving the expansion isn’t the insertion of a star closer, as they are only likely to be pitching with smaller leads.</p>
+<p>Why does this matter?</p>
+<p>For starters, let’s think about closers. MLB managers traditionally save their best relief pitcher for the 9th inning, with several of these players turning into generational stars. But if part of why closers are perceived to be so valuable is that, in general, it’s easier to pitch in the 9th inning, perhaps that may say something about the fluidity of this role.</p>
+<p>Precisely answering this question is less straightforward, however, as there are several pitchers who have only performed in one type of spot (set-up or closer), but not both. This can be problematic from a causation standpoint, as perhaps there are different characteristics about pitchers who pitch the 9th-inning – ones that also lead to more strike calls – that are responsible for the increase. However, one way around this issue is to look only at pitchers who have performed in both roles.</p>
+<p>Here’s a chart comparing differences in strike rates between the 9th and 8th innings, using situations where the pitcher’s team has a small lead (defined as between one and four runs). In the 9th-inning, this is traditionally the spot where teams use a closer. To lessen the worry about the impact of certain pitchers, I used only the 113 pitchers who threw at least 250 pitches in each inning in this specific situation (tight lead) between 2008 and 2017.</p>
+<div class="figure">
+<img src="/img/output_98.png" />
+
+</div>
+<p>Across most fringe areas of the strike zone, there’s between a 5 and 10 percentage point increase in the likelihood of a strike when looking in 9th-inning pitches. In other words, even among the pitchers who tend to pitch the most, and even when considering only one specific type of situation (pitching with a tight lead), it’s better to be on the mound in the 9th-inning than in the 8th-inning.</p>
+<p>It’s worth noting that the above, to this point, is but an aggregated summary of strike rates based on a few game characteristics. Thus, there may be explanations besides umpire disrcretion that drive differences in strike zone size late in games. As one alternative possibility, … actually, I can’t think of one. But maybe you can?</p>
+<p>In any case, for now, we note that MLB umpires tend to call higher rates of strikes late in games when one team has a lead. This is potentially in an effort to speed up the game, and cannot be fully explained by a preference for star releif pitchers. So when</p>
+<p>in this <a href="https://thebiglead.com/2013/05/15/mariano-rivera-gets-quite-a-generous-strike-zone/">strike-call</a> that Mariana Rivera got when the ball crossed the batter’s box.</p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/gam">GAM</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/mlb">MLB</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/">The impact of make-up calls is probably bigger than you think</a></li>
+        
+        <li><a href="/post/on-the-risks-of-categorizing-a-continuous-variable/">On the risks of categorizing a continuous variable (with an application to baseball data)</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

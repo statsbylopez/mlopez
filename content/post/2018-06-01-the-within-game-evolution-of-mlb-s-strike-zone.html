@@ -1,0 +1,39 @@
+---
+title: "The within-game evolution of MLB’s strike zone"
+author: ''
+date: '2018-06-01'
+header:
+  caption: ''
+  image: ''
+slug: the-within-game-evolution-of-mlb-s-strike-zone
+tags:
+- GAM
+- MLB
+categories: []
+---
+
+
+
+<p>Baseball games are <a href="https://www.nytimes.com/2017/03/01/sports/baseball/baseballs-too-slow-heres-how-you-fix-it.html">too slow</a>, <a href="https://slate.com/culture/2018/05/major-league-baseball-games-are-too-long-heres-how-to-make-them-longer.html">too long</a>, <a href="https://www.sbnation.com/a/mlb-2017-season-preview/game-length">so damned long</a>, and, like my seven-year old daughter getting dressed in the morning, <a href="https://fivethirtyeight.com/features/baseballs-biggest-games-are-taking-forever/">taking forever</a>.</p>
+<p>Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084">calls tend to favor</a> whichever team is closer to winning. By that point in the game, we argue, <a href="https://fivethirtyeight.com/features/everyone-wants-to-go-home-during-extra-innings-maybe-even-the-umps/">everyone wants to go home</a>.</p>
+<p>Although our evidence is strong that umpires react to the scoreline in extra innings, given the frequency with which these games happen, such extra bits of discretion are only likely to impact a game or two a week. Meanwhile, innings one through nine have, to date, gone unanalyzed with respect to a varying strike zone. But with the score-state for each game now available on <a href="https://baseballsavant.mlb.com/">baseballsavant</a>, I figured a look at all innings would be more appropriate.</p>
+<p>First, I used the <code>baseballr</code> package (scraping code <a href="https://github.com/statsbylopez/mlb-shirking/blob/master/Code/scraping.R">here</a>) to acquire pitch-level data for all balls and strike calls between the 2008 and 2017 seasons. For each pitch, I adjusted the corresponding vertical coordinate to standardize for each batter personal strike zone.</p>
+<p>Next, I averaged across each of the nine-innings and each three-inch window of a strike zone grid to identify the likelihood of a pitch in a given part of the zone being called a strike. Finally, as a baseline, I focused on the differences between each score state where one team is leading (by 1 to 3 runs, or by 4 runs or more), relative to the game being tied.</p>
+<p>Here’s a gif that works through how the strike zone changes by inning and score state. Shades of the graph in green correspond to more strikes, while purple reflects fewer strikes. You shouldn’t see much early. But please wait for the 9th-inning.</p>
+<div class="figure">
+<img src="/img/output_inning.gif" />
+
+</div>
+<p>Late in games, beginning with the 8th-inning, there’s a marked increase in strike calls when one of the teams is leading. Differences are as large as 30 percentage points in the 9th-inning, and seem somewhat consistent between types of leads. This latter point is particularly important – if the strike zone expands as equally with a 2-run lead as it does with a 12-run lead, we can be more confident that what’s driving the expansion isn’t the insertion of a star closer, as they are only likely to be pitching with smaller leads.</p>
+<p>Why does this matter?</p>
+<p>For starters, let’s think about closers. MLB managers traditionally save their best relief pitcher for the 9th inning, with several of these players turning into generational stars. But if part of why closers are perceived to be so valuable is that, in general, it’s easier to pitch in the 9th inning, perhaps that may say something about the fluidity of this role.</p>
+<p>Precisely answering this question is less straightforward, however, as there are several pitchers who have only performed in one type of spot (set-up or closer), but not both. This can be problematic from a causation standpoint, as perhaps there are different characteristics about pitchers who pitch the 9th-inning – ones that also lead to more strike calls – that are responsible for the increase. However, one way around this issue is to look only at pitchers who have performed in both roles.</p>
+<p>Here’s a chart comparing differences in strike rates between the 9th and 8th innings, using situations where the pitcher’s team has a small lead (defined as between one and four runs). In the 9th-inning, this is traditionally the spot where teams use a closer. To lessen the worry about the impact of certain pitchers, I used only the 113 pitchers who threw at least 250 pitches in each inning in this specific situation (tight lead) between 2008 and 2017.</p>
+<div class="figure">
+<img src="/img/output_98.png" />
+
+</div>
+<p>Across most fringe areas of the strike zone, there’s between a 5 and 10 percentage point increase in the likelihood of a strike when looking in 9th-inning pitches. In other words, even among the pitchers who tend to pitch the most, and even when considering only one specific type of situation (pitching with a tight lead), it’s better to be on the mound in the 9th-inning than in the 8th-inning.</p>
+<p>It’s worth noting that the above, to this point, is but an aggregated summary of strike rates based on a few game characteristics. Thus, there may be explanations besides umpire disrcretion that drive differences in strike zone size late in games. As one alternative possibility, … actually, I can’t think of one. But maybe you can?</p>
+<p>In any case, for now, we note that MLB umpires tend to call higher rates of strikes late in games when one team has a lead. This is potentially in an effort to speed up the game, and cannot be fully explained by a preference for star releif pitchers. So when</p>
+<p>in this <a href="https://thebiglead.com/2013/05/15/mariano-rivera-gets-quite-a-generous-strike-zone/">strike-call</a> that Mariana Rivera got when the ball crossed the batter’s box.</p>
