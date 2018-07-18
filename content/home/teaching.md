@@ -15,7 +15,7 @@ weight = 60
 
 +++
 
-I've taught the following courses at Skidmore College: 
+I taught the following courses at Skidmore College: 
 
 - MS 104: Intro to Statistics
 - MS 204: Statistical Methods [(Github)](https://github.com/statsbylopez/StatsMethods)

@@ -34,4 +34,4 @@ weight = 5
 
 # Biography
 
-Michael Lopez is an Assistant Professor of Statistics at Skidmore College. His research spans causal inference -- with a specific focus on causal inference methods for multiple exposures or multiple exposure doses -- and the application of statistics to sports. 
+Michael Lopez is the Director of Data and Analytics at the National Football League, and holds an adjunct role as a statistics professor at Skidmore College. His research spans causal inference -- with a specific focus on causal inference methods for multiple exposures or multiple exposure doses -- and the application of statistics to sports. 

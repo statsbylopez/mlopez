@@ -51,16 +51,16 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Michael Lopez"
-  role = "Assistant Professor of Statistics"
+  role = "Director of Data and Analytics"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "Skidmore College", url = "statsbylopez.com" } ]
+  organizations = [ { name = "National Football League", url = "www.nfl.com" }]
+
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "headshot.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "mlopez1@skidmore.edu"
-  address = "815 N. Broadway, Saratoga Springs, NY 12866"
  
   # Enable Keybase in Contact widget by entering your keybase.io username.
   keybase = ""
