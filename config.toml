@@ -60,7 +60,7 @@ defaultContentLanguageInSubdir = false
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "headshot.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "mlopez1@skidmore.edu"
+  email = "Michael.Lopez@nfl.com"
  
   # Enable Keybase in Contact widget by entering your keybase.io username.
   keybase = ""
@@ -213,7 +213,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:mlopez1@skidmore.edu"
+    link = "mailto:michael.lopez@nfl.com"
 
   [[params.social]]
     icon = "twitter"
