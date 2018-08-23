@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Statsbylopez</title>
-    <link>/post/</link>
+    <link>https://statsbylopez.netlify.com/post/</link>
     <description>Recent content in Posts on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0500</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://statsbylopez.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lessons hidden in sports betting markets</title>
-      <link>/post/lessons-hidden-in-sports-betting-markets/</link>
+      <link>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/lessons-hidden-in-sports-betting-markets/</guid>
+      <guid>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</guid>
       <description>With sports betting now legal in several US states, I might as well give away my number one piece of advice for amatuers looking to gamble:
 Don&amp;rsquo;t bet.
 It&amp;rsquo;s an easy recommendation. Numbers implied by betting markets are too good, too close to the truth that, when accounting for the vig, it&amp;rsquo;s nearly impossible to make a long term profit.
@@ -26,98 +26,98 @@ But just because your local statistician tells you not to bet doesn&amp;rsquo;t 
     
     <item>
       <title>Part I: Randomness of regular season competition</title>
-      <link>/post/part-i-randomness-of-regular-season-competition/</link>
+      <link>https://statsbylopez.netlify.com/post/part-i-randomness-of-regular-season-competition/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-i-randomness-of-regular-season-competition/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-i-randomness-of-regular-season-competition/</guid>
       <description>One of the most humbling aspects of being a sports fan is that the better team doesn&amp;rsquo;t always win.
 It could happen for a few reasons. The better team might get unlucky, whether it&amp;rsquo;s a missed foul call or bad bounce. The better team might play poorly, missing open three-pointers, field goals, or easy saves. Or the &amp;ldquo;better&amp;rdquo;&amp;rdquo; team might simply be so close in terms of talent to the &amp;ldquo;worse&amp;rdquo; team that any number of plays, shots, or referee decisions could play into the game&amp;rsquo;s outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.</description>
     </item>
     
     <item>
       <title>The within-game evolution of MLB’s strike zone</title>
-      <link>/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
+      <link>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
       <description>Baseball games are too slow, too long, so damned long, and, like my seven-year old daughter getting dressed in the morning, taking forever.
 Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, calls tend to favor whichever team is closer to winning.</description>
     </item>
     
     <item>
       <title>Rethinking draft curves</title>
-      <link>/post/rethinking-draft-curve/</link>
+      <link>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/rethinking-draft-curve/</guid>
+      <guid>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</guid>
       <description>When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty draft curve to see what it said about the trade.
   Pick Number Value Team    3 52.5 to the Jets  6 50.6 to the Colts  37 33.5 to the Colts  49 28.3 to the Colts    Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers.</description>
     </item>
     
     <item>
       <title>The Vegas flu looks real — but somehow the Chicago Blackhawks also got sick</title>
-      <link>/post/the-vegas-flu-looks-real/</link>
+      <link>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-vegas-flu-looks-real/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</guid>
       <description>In yesterday’s post, I walked through the use of a state-space model to evaluate NHL team strength over the course of an NHL season.
 But analyzing team strength is just the start of how we can use this type of framework to analyze betting market data in sports. In today’s post, I’ll ask a different question – What team had the best home advantage? And did perceptions of any teams (cough cough, Vegas) change over the course of the season?</description>
     </item>
     
     <item>
       <title>A state-space model to evaluate sports teams</title>
-      <link>/post/a-state-space-model-to-evaluate-sports-teams/</link>
+      <link>https://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/a-state-space-model-to-evaluate-sports-teams/</guid>
+      <guid>https://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/</guid>
       <description>A few years ago at a statistics conference, Greg, Ben and I sat down to air a few greviences about our favorite sports. They were upset about baseball, and I was irked about hockey. Why the irritation?
 Relative to other popular sports like basketball and football, it seemed to us at the time that the best team was winning less often in baseball and hockey. And as fans wanting skilled teams to be rewarded, it was frustrating to so often have well-constructed teams fall short of titles.</description>
     </item>
     
     <item>
       <title>On log-loss and scoring the NCAA tournament</title>
-      <link>/post/on-log-loss-in-the-ncaa-tournament/</link>
+      <link>https://statsbylopez.netlify.com/post/on-log-loss-in-the-ncaa-tournament/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/on-log-loss-in-the-ncaa-tournament/</guid>
+      <guid>https://statsbylopez.netlify.com/post/on-log-loss-in-the-ncaa-tournament/</guid>
       <description>In 2014, Greg and I won the first annual Kaggle March Madness contest. This led to really cool things happening to a pair of nondescript statisticians that, to the likely detriment of our social lives, happened to know where to find good basketball data while also remembering, on a tight deadline, to enter type = &amp;quot;response&amp;quot; in our glm code.
 The Kaggle victory was simultaneously awesome – like New York Times awesome – and embarassing, as Greg and I realized how lucky we were to have finished on top.</description>
     </item>
     
     <item>
       <title>The impact of make-up calls is probably bigger than you think</title>
-      <link>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
+      <link>https://statsbylopez.netlify.com/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
       <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
       <description>One of the more reliable indicators of which NHL team is likely to get the next power play has little to do with score or style of play. Instead, it&amp;rsquo;s been shown repeatedly (Ex 1, Ex 2) that referees call a substantially higher number of make-up penalties than would otherwise be expected in order to maintain an overall even number of violations on each team. Call it a biased impartiality &amp;ndash; in order to appear impartial by game&amp;rsquo;s end, ref&amp;rsquo;s let previous decisions drive future ones.</description>
     </item>
     
     <item>
       <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
-      <link>/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
+      <link>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
       <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
+      <guid>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
       <description>To err is to human In the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.
 Ruled an error on Schwarber, the play gave the a Nationals run in an eventual 9-4 win.</description>
     </item>
     
     <item>
       <title></title>
-      <link>/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</link>
+      <link>https://statsbylopez.netlify.com/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</guid>
+      <guid>https://statsbylopez.netlify.com/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</guid>
       <description>Lessons hidden in sports betting markets       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
     </item>
     
     <item>
       <title></title>
-      <link>/post/2018-08-22-part-i-randomness-of-regular-season-competition/</link>
+      <link>https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018-08-22-part-i-randomness-of-regular-season-competition/</guid>
+      <guid>https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition/</guid>
       <description>Part I: Randomness of regular season competition /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */ !function(a,b){&#34;object&#34;==typeof module&amp;&amp;&#34;object&#34;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&#34;jQuery requires a window with a document&#34;);return b(a)}:b(a)}(&#34;undefined&#34;!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l=&#34;1.11.3&#34;,m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:&#34;&#34;,length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0a?b:0);return this.pushStack(c=0&amp;&amp;bc?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for(&#34;boolean&#34;==typeof g&amp;&amp;(j=g,g=arguments[h]||{},h++),&#34;object&#34;==typeof g||m.isFunction(g)||(g={}),h===i&amp;&amp;(g=this,h--);ih;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&amp;&amp;(j&amp;&amp;c&amp;&amp;(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&amp;&amp;m.isArray(a)?a:[]):f=a&amp;&amp;m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&amp;&amp;(g[d]=c));return g},m.extend({expando:&#34;jQuery&#34;+(l+Math.random()).replace(/\D/g,&#34;&#34;),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return&#34;function&#34;===m.type(a)},isArray:Array.isArray||function(a){return&#34;array&#34;===m.type(a)},isWindow:function(a){return null!=a&amp;&amp;a==a.window},isNumeric:function(a){return!m.isArray(a)&amp;&amp;a-parseFloat(a)+1=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||&#34;object&#34;!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&amp;&amp;!j.call(a,&#34;constructor&#34;)&amp;&amp;!j.call(a.constructor.prototype,&#34;isPrototypeOf&#34;))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.</description>
     </item>
     
