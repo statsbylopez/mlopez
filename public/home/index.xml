@@ -2,50 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Statsbylopez</title>
-    <link>https://statsbylopez.netlify.com/home/</link>
+    <link>/home/</link>
     <description>Recent content in Homes on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://statsbylopez.netlify.com/home/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://statsbylopez.netlify.com/home/about/</link>
+      <link>/home/about/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/home/about/</guid>
+      <guid>/home/about/</guid>
       <description>Biography Michael Lopez is the Director of Data and Analytics at the National Football League, and holds an adjunct role as a statistics professor at Skidmore College. His research spans causal inference &amp;ndash; with a specific focus on causal inference methods for multiple exposures or multiple exposure doses &amp;ndash; and the application of statistics to sports.</description>
     </item>
     
     <item>
       <title>Recent Posts</title>
-      <link>https://statsbylopez.netlify.com/home/posts/</link>
+      <link>/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/home/posts/</guid>
+      <guid>/home/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Teaching</title>
-      <link>https://statsbylopez.netlify.com/home/teaching/</link>
+      <link>/home/teaching/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/home/teaching/</guid>
+      <guid>/home/teaching/</guid>
       <description>I taught the following courses at Skidmore College:
  MS 104: Intro to Statistics MS 204: Statistical Methods (Github) MS 210: Data Visualization and storytelling (Github) MA 204: Probability (Github) MS 276: Statistics and Sports (Github) MS 376: Mathematical Statistics MS 240: Regression  </description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://statsbylopez.netlify.com/home/contact/</link>
+      <link>/home/contact/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://statsbylopez.netlify.com/home/contact/</guid>
+      <guid>/home/contact/</guid>
       <description></description>
     </item>
     
