@@ -28,7 +28,7 @@ In a recent paper, [Ben](http://www.science.smith.edu/~bbaumer/w/), [Greg](https
 
 I'll provide several ideas in the following set of posts.
 
-- Part I: Randomness of regular season competition
+- Part I: [Randomness of regular season competition](http://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition.html)
 
 - Part II: Randomness of postseason competition
 
