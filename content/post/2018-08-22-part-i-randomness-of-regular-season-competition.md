@@ -17,13 +17,15 @@ header:
 ---
 
 
-One of the more humbling aspects of being a sports fan is that the better team doesn't always win. It could happen for a few reasons. The better team might get unlucky, whether it's a missed foul call or bad bounce. The better team might play poorly, missing open three-pointers, field goals, or easy saves. Or the "better"" team might simply be so close in terms of talent to the "worse" team that any number of plays, shots, or referee decisions could play into the game's outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.
+One of the most humbling aspects of being a sports fan is that the better team doesn't always win. 
 
-When the three of us set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Though tempting, answering a question like this [can't be done using win percentages](https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports), because win percentages are effected by things like schedule strength and number of games. But it can be done with the help of a statistical modeling framework, in particular one that picks up on factors like the home advantage, relative team strength, and changes in team strength over time. And it can be done with betting market data, which when combined with our modeling framework, can provide unbiased, low-variance estimates of how good each team is at a particular point in time.
+It could happen for a few reasons. The better team might get unlucky, whether it's a missed foul call or bad bounce. The better team might play poorly, missing open three-pointers, field goals, or easy saves. Or the "better"" team might simply be so close in terms of talent to the "worse" team that any number of plays, shots, or referee decisions could play into the game's outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.
+
+When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Though tempting, answering a question like this [can't be done using win percentages](https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports), because win percentages are effected by things like schedule strength and number of games. But it can be done with the help of a statistical modeling framework, in particular one that picks up on factors like the home advantage, relative team strength, and changes in team strength over time. And it can be done with betting market data, which when combined with our modeling framework, can provide unbiased, low-variance estimates of how good each team is at a particular point in time.
 
 Here's our main take-home, which summarizes the game-level randomness of each league.
 
-![](/img/parity2.png)
+![](img/parity2.png)
 
 On the far left, the NHL and MLB cluster closer to coin flips; that is, if we were to randomly take a game between two randomly drawn teams, it's less likely that the best team will win. As referenced above, part of this is luck -- one can surmise that given the low amounts of scoring involved in baseball and hockey, more breaks are needed to win -- but a related part of it is also because the best teams in the MLB and in the NHL can still lose to the worse teams and fans wouldn't be *that* surprised. The gaps in talent in those leagues are, at least relatively, not as wide. 
 
