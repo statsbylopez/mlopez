@@ -23,7 +23,7 @@ When the three of us set out to compare North American sports, our principal goa
 
 Here's our main take-home, which summarizes the game-level randomness of each league.
 
-![](/img/parity2.png)
+![](parity2.png)
 
 On the far left, the NHL and MLB cluster closer to coin flips; that is, if we were to randomly take a game between two randomly drawn teams, it's less likely that the best team will win. As referenced above, part of this is luck -- one can surmise that given the low amounts of scoring involved in baseball and hockey, more breaks are needed to win -- but a related part of it is also because the best teams in the MLB and in the NHL can still lose to the worse teams and fans wouldn't be *that* surprised. The gaps in talent in those leagues are, at least relatively, not as wide. 
 
