@@ -36,3 +36,4 @@ I'll provide several ideas in the following set of posts.
 
 - Part IV: On schedule strength (or why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West)
 
+Hopefully you'll be able to use these posts to learn a bit of insight into how each sports leagues compare to one another, and how various factors can play a major role in team success. 
