@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Statsbylopez</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Statsbylopez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Content tagged as &#39;Academic&#39;</title>
+      <link>/tags/academic/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/academic/</guid>
+      <description>Here is a list of all the content that has been tagged as academic.</description>
+    </item>
+    
+    <item>
+      <title>GAM</title>
+      <link>/tags/gam/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logloss</title>
+      <link>/tags/logloss/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/logloss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MLB</title>
+      <link>/tags/mlb/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mlb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Make-up calls</title>
+      <link>/tags/make-up-calls/</link>
+      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/make-up-calls/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NBA</title>
+      <link>/tags/nba/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NCAA</title>
+      <link>/tags/ncaa/</link>
+      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ncaa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NFL</title>
+      <link>/tags/nfl/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nfl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NHL</title>
+      <link>/tags/nhl/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nhl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paired comparisons</title>
+      <link>/tags/paired-comparisons/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/paired-comparisons/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>State space</title>
+      <link>/tags/state-space/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/state-space/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>State-space</title>
+      <link>/tags/state-space/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/state-space/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

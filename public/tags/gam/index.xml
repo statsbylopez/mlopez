@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GAM on Statsbylopez</title>
+    <link>/tags/gam/</link>
+    <description>Recent content in GAM on Statsbylopez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/gam/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The within-game evolution of MLB’s strike zone</title>
+      <link>/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
+      <description>Baseball games are too slow, too long, so damned long, and, like my seven-year old daughter getting dressed in the morning, taking forever.
+Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, calls tend to favor whichever team is closer to winning.</description>
+    </item>
+    
+    <item>
+      <title>The impact of make-up calls is probably bigger than you think</title>
+      <link>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
+      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
+      <description>One of the more reliable indicators of which NHL team is likely to get the next power play has little to do with score or style of play. Instead, it&amp;rsquo;s been shown repeatedly (Ex 1, Ex 2) that referees call a substantially higher number of make-up penalties than would otherwise be expected in order to maintain an overall even number of violations on each team. Call it a biased impartiality &amp;ndash; in order to appear impartial by game&amp;rsquo;s end, ref&amp;rsquo;s let previous decisions drive future ones.</description>
+    </item>
+    
+  </channel>
+</rss>
