@@ -1,7 +1,7 @@
 ---
 title: Lessons hidden in sports betting markets
 author: ''
-date: '2018-08-12'
+date: '2018-08-22'
 slug: lessons-hidden-in-sports-betting-markets
 categories: []
 tags:
