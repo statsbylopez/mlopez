@@ -12,7 +12,7 @@ categories: []
 
 
 
-<p>When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty <a href="https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/">draft curve</a> to see what it said about the trade.</p>
+<p>When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty <a href="https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/">draft curve</a> to see what it said about the trade.</p>
 <table>
 <thead>
 <tr class="header">
@@ -49,7 +49,7 @@ categories: []
 <p>But still, something didn’t pass the smell test, and I figured it was worth a go at revisiting my draft curve.</p>
 <div id="what-if-a-team-wants-a-superstar" class="section level2">
 <h2>What if a team wants a superstar?</h2>
-<p>One limitation of the draft curve above is that it focuses on the <em>average</em> player performance. For the Jets, pick. No. 3 is worth an <em>average</em> value of 52.5 points over the course of a career (for those scoring at home, this is reflects a player’s career <a href="https://www.pro-football-reference.com/blog/index37a8.html">Approximate Value</a>). But a team may not be drafting for average player performance, and instead, may prefer a shot at a superstar. How can we tweak our draft curve to account for this team preference?</p>
+<p>One limitation of the draft curve above is that it focuses on the <em>average</em> player performance. For the Jets, pick. No. 3 is worth an <em>average</em> value of 52.5 points over the course of a career (for those scoring at home, this is reflects a player’s career <a href="https://www.pro-football-reference.com/blog/index37a8.html">Approximate Value</a>). But a team may not be drafting for average player performance, and instead, may prefer a shot at a superstar. How can we tweak our draft curve to account for this team preference?</p>
 <p>Instead of focusing on a smoothed average at each line, we can instead set a cutoff for what it means to be a superstar, and adjust our valuation of each pick to estimate the likelihood of landing a player above that cutoff. There are several reasons to  do this, and I generally dislike setting arbitrary <a href="http://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/">cutoffs</a>. However, there are two benefits of thinking this way. First, the valuations of each pick – the likelihood of landing a superstar – are easy to interpret, which may help in the communication of results. Second, only 11 players are allowed on the field at a given time, and so even if you nail a bunch of 7th round picks, you can’t play them all at once.</p>
 <p>There are several ways to identify a super-star. For ease of implementation, I identified the players in the top <code>21/22</code> percentile, which is a very rough estimation of whether or not that player could have been identified as the best player on the field at any given time point. Using career AV as an outcome, this corresponds with players with a career AV greater than 66. Here’s a sample of players just above and just below the cutoff.</p>
 <table>
@@ -139,7 +139,7 @@ categories: []
 </tr>
 </tbody>
 </table>
-<p>Although it’s not exactly quite right to simply add these percentages, the Jets’ return of pick No. 3 (32% chance of a star) looks a bit more reasonable. Using the star rates as pick values, the Jets gained 32 points worth of value in exchange for 43 points. That’s the equivalent of losing out on about the 27th pick in the draft (which is much more reasonable than losing out on the 1st pick in the draft).</p>
+<p>Although it’s not exactly quite right to simply add these percentages, the Jets’ return of pick No. 3 (32% chance of a star) looks a bit more reasonable. Using the star rates as pick values, the Jets gained 32 points worth of value in exchange for 43 points. That’s the equivalent of losing out on about the 27th pick in the draft (which is much more reasonable than losing out on the 1st pick in the draft).</p>
 </div>
 <div id="building-the-best-curve" class="section level2">
 <h2>Building the best curve</h2>
@@ -178,7 +178,7 @@ categories: []
 </tr>
 </tbody>
 </table>
-<p>The Colts still made out like bandits – roughly getting about a 60% rate or return on their No. 3 pick – but it doesn’t look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.</p>
+<p>The Colts still made out like bandits – roughly getting about a 60% rate or return on their No. 3 pick – but it doesn’t look as egregious as it initially did. Roughly, the Colts got value worth about the 20th pick in the draft for free by this blended approach.</p>
 </div>
 <div id="final-thoughts" class="section level2">
 <h2>Final thoughts</h2>
