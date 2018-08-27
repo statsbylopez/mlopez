@@ -16,7 +16,7 @@ header:
   image: ''
 ---
 
-With sports betting now legal in several US states, I might as well give away my number one piece of advice for amatuers looking to gamble:  
+With sports betting now legal in several US states, I might as well give away my number one piece of advice for amateurs looking to gamble:  
 
 Don't bet.
 
