@@ -22,20 +22,20 @@
 
 &lt;p&gt;It&amp;rsquo;s an easy recommendation. Numbers implied by betting markets are too good, too close to the truth that, when accounting for the vig, it&amp;rsquo;s nearly impossible to make a long term profit.&lt;/p&gt;
 
-&lt;p&gt;But just because your local statistician tells you not to bet doesn&amp;rsquo;t mean you shouldn&amp;rsquo;t check out betting market odds. In fact, it&amp;rsquo;s just the opposite. There&amp;rsquo;s no single piece of public information that is more accurate and informative with respect to a professional sports game than the closing odds.  Related: there no better standard with which sports scientists can compare prediction models than to compare to betting odds.&lt;/p&gt;
+&lt;p&gt;But just because your local statistician tells you not to bet doesn&amp;rsquo;t mean you shouldn&amp;rsquo;t check out betting market odds. In fact, it&amp;rsquo;s just the opposite. There&amp;rsquo;s no single piece of public information that is more accurate and informative with respect to a professional sports game than the closing odds.  Related: there is no better standard with which sports scientists can compare prediction models than to compare to betting odds.&lt;/p&gt;
 
 &lt;p&gt;In a recent paper, &lt;a href=&#34;http://www.science.smith.edu/~bbaumer/w/&#34; target=&#34;_blank&#34;&gt;Ben&lt;/a&gt;, &lt;a href=&#34;https://statsinthewild.com/&#34; target=&#34;_blank&#34;&gt;Greg&lt;/a&gt;, and I took a deep dive to learn about what betting odds tell us about the four major North American pro sports leagues, the NBA, NHL, NFL, and MLB (sorry, MLS, but three-way odds are a different story). It&amp;rsquo;s titled &amp;ldquo;How often does the best team win? A unified approach to understanding randomness in North American sport,&amp;rdquo; but our alternate title might as well be &amp;ldquo;Betting markets: if you can&amp;rsquo;t beat em, use them in a statistical model.&amp;rdquo; I&amp;rsquo;d welcome readers to check out a pre-print of the &lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34; target=&#34;_blank&#34;&gt;manuscipt&lt;/a&gt;, forthcoming in &lt;a href=&#34;https://www.imstat.org/journals-and-publications/annals-of-applied-statistics/&#34; target=&#34;_blank&#34;&gt;Annals of Applied Statistics&lt;/a&gt;, if they are interested in more details. As the paper&amp;rsquo;s focus more on the technical side, what&amp;rsquo;s missing is a cohesive summary of what it all means. In other words, how can we use our results &amp;ndash; built using betting market data &amp;ndash; to make better decisions in sports?&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ll provide several ideas in the following set of posts.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Part I: &lt;a href=&#34;http://statsbylopez.netlify.com/post/part-i-randomness-of-regular-season-competition.html&#34; target=&#34;_blank&#34;&gt;Randomness of regular season competition&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Part I: &lt;a href=&#34;http://statsbylopez.netlify.com/post/part-i-randomness-of-games/&#34; target=&#34;_blank&#34;&gt;Why I feel bad for Max Scherzer (on the game-level randomness in sports)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Part II: Randomness of postseason competition&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Part III: The benefit of playing at home&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Part IV: On schedule strength (or why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Part IV: Why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Hopefully you&amp;rsquo;ll be able to use these posts to learn a bit of insight into how each sports leagues compare to one another, and how various factors can play a major role in team success.&lt;/p&gt;
@@ -43,33 +43,73 @@
     </item>
     
     <item>
-      <title>Part I: Randomness of regular season competition</title>
-      <link>/post/part-i-randomness-of-regular-season-competition/</link>
+      <title>Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</title>
+      <link>/post/part-i-randomness-of-games/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-i-randomness-of-regular-season-competition/</guid>
-      <description>&lt;p&gt;One of the most humbling aspects of being a sports fan is that the better team doesn&amp;rsquo;t always win.&lt;/p&gt;
+      <guid>/post/part-i-randomness-of-games/</guid>
+      <description>&lt;p&gt;The best team in baseball during the 2013 season was the Detroit Tigers.&lt;/p&gt;
 
-&lt;p&gt;It could happen for a few reasons. The better team might get unlucky, whether it&amp;rsquo;s a missed foul call or bad bounce. The better team might play poorly, missing open three-pointers, field goals, or easy saves. Or the &amp;ldquo;better&amp;rdquo;&amp;rdquo; team might simply be so close in terms of talent to the &amp;ldquo;worse&amp;rdquo; team that any number of plays, shots, or referee decisions could play into the game&amp;rsquo;s outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.&lt;/p&gt;
+&lt;p&gt;Detroit&amp;rsquo;s rotation featured the eventual Cy Young award winner (Max Scherzer), alongside both the 2011 and 2016 Cy winners (Justin Verlander and Rick Porcello, respectively). The Tigers line-up was spearheaded by Prince Fielder and Miguel Cabrera, the latter of whom would win his second consecutive MVP. Indeed, betting market rankings had the Tigers atop the sport from &lt;a href=&#34;https://statsbylopez.github.io/NESSIS2017_files/NESSIS_2017.html#section-2&#34; target=&#34;_blank&#34;&gt;April through October&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Though tempting, answering a question like this &lt;a href=&#34;https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports&#34; target=&#34;_blank&#34;&gt;can&amp;rsquo;t be done using win percentages&lt;/a&gt;, because win percentages are effected by things like schedule strength and number of games. But it can be done with the help of a statistical modeling framework, in particular one that picks up on factors like the home advantage, relative team strength, and changes in team strength over time. And it can be done with betting market data, which when combined with our modeling framework, can provide unbiased, low-variance estimates of how good each team is at a particular point in time.&lt;/p&gt;
+&lt;p&gt;But on October 19th of that year, the best team in baseball was fighting to save its season. The Tigers trailed the Boston Red Sox three games to two in Game 6 the American League Championship series, with each of Detroit&amp;rsquo;s losses coming by one run. Needing a win to force a game 7, Scherzer gave the Tigers a bit of hope, in the form of a 2-1 lead as the teams went to the bottom of the 7th inning.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s our main take-home, which summarizes the game-level randomness of each league.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s at that point in the game that the best team in baseball was also its unluckiest.&lt;/p&gt;
+
+&lt;p&gt;It started with a runner on second, one out, and Xander Bogaerts at the plate. With a full count, Scherzer threw a pitch that umpires almost always call a strike 3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4 (for the record, umps call pitches in that location a strike about six out of every seven times). And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna&amp;rsquo;s call dropped the Tigers&amp;rsquo; win expectency by about 12\%.&lt;/p&gt;
+
+&lt;p&gt;Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It&amp;rsquo;s the type of play Iglesias often starts a double play on. Worst, one would think, he&amp;rsquo;d record only one out.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/jose.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But Iglesias bumbled the ball, recording no outs and leaving the bases loaded. Allowing for one out on the play, the error was worth about a 20\% drop in win expectency for Detroit.&lt;/p&gt;
+
+&lt;p&gt;Scherzer and the Tigers, without a doubt, should&amp;rsquo;ve been out of the inning but for a few bad breaks. But they weren&amp;rsquo;t, which allowed Shane Victorino to step to the plate with the bases loaded. Victorino&amp;rsquo;s at-bat involved a little less luck; he hit a grand slam, and the Tigers season was effectively over.&lt;/p&gt;
+
+&lt;p&gt;The Tigers&amp;rsquo; final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn&amp;rsquo;t always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it&amp;rsquo;s just luck &amp;ndash; a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly &amp;ndash; missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the &amp;ldquo;better&amp;rdquo; team might simply be so close in terms of talent to the &amp;ldquo;worse&amp;rdquo; team, that any number of plays, shots, or referee decisions could play into the game&amp;rsquo;s outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.&lt;/p&gt;
+
+&lt;p&gt;When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Here&amp;rsquo;s our main take-home, which summarizes the game-level randomness of each league.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/parity2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;On the far left, the NHL and MLB cluster closer to coin flips; that is, if we were to randomly take a game between two randomly drawn teams, it&amp;rsquo;s less likely that the best team will win. As referenced above, part of this is luck &amp;ndash; one can surmise that given the low amounts of scoring involved in baseball and hockey, more breaks are needed to win &amp;ndash; but a related part of it is also because the best teams in the MLB and in the NHL can still lose to the worse teams and fans wouldn&amp;rsquo;t be &lt;em&gt;that&lt;/em&gt; surprised. The gaps in talent in those leagues are, at least relatively, not as wide.&lt;/p&gt;
+&lt;p&gt;On the far left, the NHL and MLB games cluster closer to coin flips; that is, if we were to randomly take a game between two randomly drawn teams, it&amp;rsquo;s less likely that the best team will win. As referenced above, part of this is luck &amp;ndash; one can surmise that given the low amounts of scoring involved in baseball and hockey, more breaks are needed to win &amp;ndash; but a related part of it is also because the best teams in the MLB and in the NHL can still lose to the worse teams and fans wouldn&amp;rsquo;t be &lt;em&gt;that&lt;/em&gt; surprised. The gaps in talent in those leagues are, at least relatively, not as wide.&lt;/p&gt;
 
-&lt;p&gt;Alternatively, the NFL and NBA roughly live in a world in between coin-flips and pre-determined outcomes.&lt;/p&gt;
+&lt;p&gt;Alternatively, the NFL and NBA roughly live in a world halfway between coin-flips and pre-determined outcomes.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s what decision-makers in sports should be aware of:&lt;/p&gt;
+&lt;p&gt;Our findings are somewhat unique. There&amp;rsquo;s a whole literature on competitive balance that&amp;rsquo;s out there, with which we are only in partial agreement. For example, though tempting, answering a question like ours &lt;a href=&#34;https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports&#34; target=&#34;_blank&#34;&gt;can&amp;rsquo;t be done using win percentages&lt;/a&gt;, because win percentages are effected by things like schedule strength and number of games.&lt;/p&gt;
+
+&lt;p&gt;And our findings highlight the immense power of betting market data which, when combined with a statistical modeling framework the can account for changes to team strength, allows us to capture league-level and team-level traits that have, to-date, mostly been unknown.&lt;/p&gt;
+
+&lt;p&gt;Scherzer&amp;rsquo;s bad break is but one anecdote behind several ways in which our work can inform decision makers.&lt;/p&gt;
+
+&lt;p&gt;Indeed, here&amp;rsquo;s a list of several questions that, when armed with betting market information and an understanding of probability, one can answer.&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Betting market metrics of team strength are better predictors of future won-loss percentage than current won-loss percentage. Is your team going to make the playoffs? Should you trade for a certain player? Should you fire a coach? What are your chances of winning a title if you do make the playoffs? All questions where the use of betting market data &amp;ndash; in terms of how it can assess team strength &amp;ndash; is more appropriate than using traditional, public metrics. Meanwhile, the traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics vital to understanding team strength.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Looking at the standings to determine team strength? Stop &amp;ndash; you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I&amp;rsquo;ll have more accurate predictions of the rest of the season that you will (and I don&amp;rsquo;t even have to know win percentage to make that claim).&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;li&gt;&lt;p&gt;Similar metrics can also be used to better understand opponent strength. Worried about a team catching you for a playoff spot? Simulate the rest of the season, which is easy to do when you have estimates of team strength and variability.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;1a. Afraid of our modeling? Use Mike Beuey&amp;rsquo;s ratings at &lt;a href=&#34;http://www.inpredictable.com/&#34; target=&#34;_blank&#34;&gt;Inpredictable&lt;/a&gt;. Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data&amp;rsquo;s that good. If you want to know how good a team is, check to see when it&amp;rsquo;s a favorite or when it&amp;rsquo;s an underdog.&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?&lt;/p&gt;&lt;/li&gt;
+&lt;ol&gt;
+&lt;li&gt;The traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics vital to understanding team strength. Here&amp;rsquo;s some specific ways that decision makers can use betting market information.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Is your team going to make the playoffs? Start with betting market data, estimate probabilities for each game and each team, simulate the rest of the season, and find out.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Should you trade for a certain player? Compare how betting odds for this player compare when he is and isn&amp;rsquo;t in the line-up. It&amp;rsquo;s an easy, back-of-the-envelope estimate of how valuable a player is.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Should you fire a coach? It&amp;rsquo;s tempting to use winning percentage here. But if your team wasn&amp;rsquo;t that good, or if it played a challenging schedule with several road games, you may want to check how betting markets have viewed how good your team actually has been.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;What are your chances of winning a title if you do make the playoffs? Simulate the postseason (hint: I&amp;rsquo;ll do that in my next post)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans, perhaps the knowledge that NHL and MLB games are so close to coin flips can both (i) provide a modicum of comfort when your favorite team falls or (ii) a glimmer of hope when a game is about to start and your team is an underdog.&lt;/p&gt;
