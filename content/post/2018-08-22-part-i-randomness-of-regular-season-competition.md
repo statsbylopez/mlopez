@@ -57,7 +57,7 @@ Indeed, Scherzer's bad break is but one anecdote behind several ways in which ou
 
 1. Luck (or just generally uncertainty) plays an enormous role in MLB and NHL outcomes. The worse team can beat the better team. Sometimes, shit just happens. 
 
-2. Looking at standings to determine how good each team is? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
+2. Looking at standings to determine how good each team is? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of how the rest of the season will shake out than you will (and I don't even need to know win percentages to make that claim). 
 
 3. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
 
