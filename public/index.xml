@@ -60,7 +60,7 @@
 
 &lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna&amp;rsquo;s call dropped the Tigers&amp;rsquo; win expectency by about 12 percentage points.&lt;/p&gt;
+&lt;p&gt;But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna&amp;rsquo;s decision &amp;ndash; one umpires only call a ball about 1 in 7 times &amp;ndash; dropped the Tigers&amp;rsquo; win expectency by about 12 percentage points.&lt;/p&gt;
 
 &lt;p&gt;Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It&amp;rsquo;s the type of play Iglesias often starts a double play on. Worst case for the Tigers, one would think, he&amp;rsquo;d record only one out.&lt;/p&gt;
 
@@ -70,7 +70,7 @@
 
 &lt;p&gt;Scherzer and the Tigers should&amp;rsquo;ve been out of the inning but for a few bad breaks. But they weren&amp;rsquo;t, which allowed Shane Victorino to step to the plate with the bases loaded. Victorino&amp;rsquo;s at-bat involved a little less luck; he hit a grand slam, and the Tigers season was effectively over.&lt;/p&gt;
 
-&lt;p&gt;The Tigers&amp;rsquo; final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn&amp;rsquo;t always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it&amp;rsquo;s just luck &amp;ndash; a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly &amp;ndash; missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the &amp;ldquo;better&amp;rdquo; team might simply be so close in terms of talent to the &amp;ldquo;worse&amp;rdquo; team, that any number of plays, shots, or referee decisions could play into the game&amp;rsquo;s outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.&lt;/p&gt;
+&lt;p&gt;The Tigers&amp;rsquo; final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn&amp;rsquo;t always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it&amp;rsquo;s just luck &amp;ndash; a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly &amp;ndash; missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the &amp;ldquo;better&amp;rdquo; team might simply be so close in terms of talent to the &amp;ldquo;worse&amp;rdquo; team, that any number of plays, shots, or referee decisions could play into the game&amp;rsquo;s outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent. However it happens, being the better team doesn&amp;rsquo;t exactly equate to always being the team with more runs, goals, or points.&lt;/p&gt;
 
 &lt;p&gt;When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Here&amp;rsquo;s our main take-home, which summarizes the game-level randomness of each league.&lt;/p&gt;
 
@@ -82,13 +82,15 @@
 
 &lt;p&gt;Our findings are somewhat unique. There&amp;rsquo;s a whole literature on competitive balance that&amp;rsquo;s out there, with which we are only in partial agreement. For example, though tempting, answering a question like ours &lt;a href=&#34;https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports&#34; target=&#34;_blank&#34;&gt;can&amp;rsquo;t be done using win percentages&lt;/a&gt;, because win percentages are effected by things like schedule strength and number of games.&lt;/p&gt;
 
-&lt;p&gt;And our findings highlight the immense power of betting market data which, when combined with a statistical modeling framework the can account for changes to team strength, allows us to capture league-level and team-level traits that have, to-date, mostly been unknown.&lt;/p&gt;
+&lt;p&gt;And our findings highlight the immense power of betting market data which, when combined with a statistical modeling framework that can account for changes to team strength, allows us to capture league-level and team-level traits that have, to-date, mostly been unknown.&lt;/p&gt;
 
 &lt;p&gt;Scherzer&amp;rsquo;s bad break is but one anecdote behind several ways in which our work can inform decision makers.&lt;/p&gt;
 
 &lt;p&gt;Indeed, here&amp;rsquo;s a list of several questions that, when armed with betting market information and an understanding of probability, one can answer.&lt;/p&gt;
 
 &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;Looking at the standings to determine team strength? Stop &amp;ndash; you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I&amp;rsquo;ll have more accurate predictions of the rest of the season will shake out than you will (and I don&amp;rsquo;t even have to know win percentages to make that claim).&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Afraid of our modeling? Use Mike Beuey&amp;rsquo;s ratings at &lt;a href=&#34;http://www.inpredictable.com/&#34; target=&#34;_blank&#34;&gt;Inpredictable&lt;/a&gt;. Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data&amp;rsquo;s that good. If you want to know how good a team is, check to see when it&amp;rsquo;s a favorite or when it&amp;rsquo;s an underdog.&lt;/p&gt;&lt;/li&gt;
@@ -106,11 +108,7 @@
 &lt;li&gt;&lt;p&gt;What are your chances of winning a title if you do make the playoffs? Simulate the postseason. Don&amp;rsquo;t be surprised if your team doesn&amp;rsquo;t win, even if it&amp;rsquo;s the best team (hint: I&amp;rsquo;ll do this in my next post)&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-&lt;li&gt;On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans (and perhaps Max Scherzer), perhaps the knowledge that NHL and MLB games are so close to coin flips can both (i) provide a modicum of comfort when your favorite team falls or (ii) a glimmer of hope when a game is about to start and your team is an underdog.&lt;/p&gt;
+&lt;p&gt;Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans (and perhaps Max Scherzer), perhaps the knowledge that NHL and MLB games are so close to coin flips can provide a modicum of comfort when your favorite team falls short.&lt;/p&gt;
 </description>
     </item>
     

@@ -28,7 +28,7 @@ It started with a runner on second, one out, and Xander Bogaerts at the plate. W
 
 ![](/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif)
 
-But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna's call dropped the Tigers' win expectency by about 12 percentage points. 
+But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna's decision -- one umpires only call a ball about 1 in 7 times -- dropped the Tigers' win expectency by about 12 percentage points. 
 
 Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It's the type of play Iglesias often starts a double play on. Worst case for the Tigers, one would think, he'd record only one out.
 
@@ -38,7 +38,7 @@ But Iglesias bumbled the ball, recording no outs and leaving the bases loaded. A
 
 Scherzer and the Tigers should've been out of the inning but for a few bad breaks. But they weren't, which allowed Shane Victorino to step to the plate with the bases loaded. Victorino's at-bat involved a little less luck; he hit a grand slam, and the Tigers season was effectively over. 
 
-The Tigers' final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn't always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it's just luck -- a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly -- missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the "better" team might simply be so close in terms of talent to the "worse" team, that any number of plays, shots, or referee decisions could play into the game's outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.
+The Tigers' final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn't always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it's just luck -- a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly -- missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the "better" team might simply be so close in terms of talent to the "worse" team, that any number of plays, shots, or referee decisions could play into the game's outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent. However it happens, being the better team doesn't exactly equate to always being the team with more runs, goals, or points. 
 
 When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Here's our main take-home, which summarizes the game-level randomness of each league.
 
@@ -50,17 +50,20 @@ Alternatively, the NFL and NBA roughly live in a world halfway between coin-flip
 
 Our findings are somewhat unique. There's a whole literature on competitive balance that's out there, with which we are only in partial agreement. For example, though tempting, answering a question like ours [can't be done using win percentages](https://www.vox.com/videos/2017/6/5/15740632/luck-skill-sports), because win percentages are effected by things like schedule strength and number of games. 
 
-And our findings highlight the immense power of betting market data which, when combined with a statistical modeling framework the can account for changes to team strength, allows us to capture league-level and team-level traits that have, to-date, mostly been unknown. 
+And our findings highlight the immense power of betting market data which, when combined with a statistical modeling framework that can account for changes to team strength, allows us to capture league-level and team-level traits that have, to-date, mostly been unknown. 
 
 Scherzer's bad break is but one anecdote behind several ways in which our work can inform decision makers. 
 
 Indeed, here's a list of several questions that, when armed with betting market information and an understanding of probability, one can answer. 
 
-1. Looking at the standings to determine team strength? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
 
-2. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
+1. On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?
 
-2. The traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics vital to understanding team strength. Here's some specific ways that decision makers can use betting market information. 
+2. Looking at the standings to determine team strength? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
+
+3. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
+
+4. The traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics vital to understanding team strength. Here's some specific ways that decision makers can use betting market information. 
 
 - Is your team going to make the playoffs? Start with betting market data, estimate probabilities for each game and each team, simulate the rest of the season, and find out.
 
@@ -70,8 +73,6 @@ Indeed, here's a list of several questions that, when armed with betting market 
 
 - What are your chances of winning a title if you do make the playoffs? Simulate the postseason. Don't be surprised if your team doesn't win, even if it's the best team (hint: I'll do this in my next post)
 
-3. On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?
-
-Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans (and perhaps Max Scherzer), perhaps the knowledge that NHL and MLB games are so close to coin flips can both (i) provide a modicum of comfort when your favorite team falls or (ii) a glimmer of hope when a game is about to start and your team is an underdog. 
+Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans (and perhaps Max Scherzer), perhaps the knowledge that NHL and MLB games are so close to coin flips can provide a modicum of comfort when your favorite team falls short.
 
 
