@@ -28,15 +28,15 @@ It started with a runner on second, one out, and Xander Bogaerts at the plate. W
 
 ![](/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif)
 
-But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4 (for the record, umps call pitches in that location a strike about six out of every seven times). And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna's call dropped the Tigers' win expectency by about 12\%. 
+But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna's call dropped the Tigers' win expectency by about 12 percentage points. 
 
-Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It's the type of play Iglesias often starts a double play on. Worst, one would think, he'd record only one out.
+Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It's the type of play Iglesias often starts a double play on. Worst case for the Tigers, one would think, he'd record only one out.
 
 ![](/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/jose.gif)
 
-But Iglesias bumbled the ball, recording no outs and leaving the bases loaded. Allowing for one out on the play, the error was worth about a 20\% drop in win expectency for Detroit.
+But Iglesias bumbled the ball, recording no outs and leaving the bases loaded. Allowing for one out on the play, the error was worth about a 20 perentage point drop in win expectency for Detroit.
 
-Scherzer and the Tigers, without a doubt, should've been out of the inning but for a few bad breaks. But they weren't, which allowed Shane Victorino to step to the plate with the bases loaded. Victorino's at-bat involved a little less luck; he hit a grand slam, and the Tigers season was effectively over. 
+Scherzer and the Tigers should've been out of the inning but for a few bad breaks. But they weren't, which allowed Shane Victorino to step to the plate with the bases loaded. Victorino's at-bat involved a little less luck; he hit a grand slam, and the Tigers season was effectively over. 
 
 The Tigers' final game was heartbreaking, and indicative of one of the most humbling aspects of being a sports fan: the better team doesn't always win, even when it may deserve to. It happened for the Tigers in 2013, but it happens for all teams in all seasons and in almost all sports. Sometimes it's just luck -- a referee call, a bad bounce, poor conditions, or, like the Tigers, a missed strike three. Or sometimes the better team just plays poorly -- missing open three-pointers, field goals, saves, or, like the Tigers, easy ground balls up the middle. Or sometimes the "better" team might simply be so close in terms of talent to the "worse" team, that any number of plays, shots, or referee decisions could play into the game's outcome, actions that, by and large, are largely noise and not indicative of any particular skill or talent.
 
@@ -56,22 +56,22 @@ Scherzer's bad break is but one anecdote behind several ways in which our work c
 
 Indeed, here's a list of several questions that, when armed with betting market information and an understanding of probability, one can answer. 
 
-1. Looking at the standings to determine team strength? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season that you will (and I don't even have to know win percentage to make that claim). 
+1. Looking at the standings to determine team strength? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
 
-1a. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
+2. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
 
 2. The traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics vital to understanding team strength. Here's some specific ways that decision makers can use betting market information. 
 
 - Is your team going to make the playoffs? Start with betting market data, estimate probabilities for each game and each team, simulate the rest of the season, and find out.
 
-- Should you trade for a certain player? Compare how betting odds for this player compare when he is and isn't in the line-up. It's an easy, back-of-the-envelope estimate of how valuable a player is.
+- Should you trade for a certain player?  Here's an easy, back-of-the-envelope way to estimate how valuable a player is: compare how betting odds stack up when this player is and isn't in the lineup. 
 
-- Should you fire a coach? It's tempting to use winning percentage here. But if your team wasn't that good, or if it played a challenging schedule with several road games, you may want to check how betting markets have viewed how good your team actually has been. 
+- Should you fire a coach? It's tempting to use winning percentage here. But if your team wasn't that good to begin with, or if it played a challenging schedule with several road games, you may want to check how betting markets have viewed how good your team actually has been. 
 
-- What are your chances of winning a title if you do make the playoffs? Simulate the postseason (hint: I'll do that in my next post)
+- What are your chances of winning a title if you do make the playoffs? Simulate the postseason. Don't be surprised if your team doesn't win, even if it's the best team (hint: I'll do this in my next post)
 
 3. On a league level, understanding how gaps in team strength have widened or narrowed can be used to better explore topics like parity, attendence, and fan interest. As examples, does increased or decreased game uncertainty leads to more interest?  How much higher are TV ratings when games are closer?
 
-Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans, perhaps the knowledge that NHL and MLB games are so close to coin flips can both (i) provide a modicum of comfort when your favorite team falls or (ii) a glimmer of hope when a game is about to start and your team is an underdog. 
+Altogether, at critical moments in a team’s evolution, we recommend that teams look past wins and losses to better understand team strength in the context of their own league. And for fans (and perhaps Max Scherzer), perhaps the knowledge that NHL and MLB games are so close to coin flips can both (i) provide a modicum of comfort when your favorite team falls or (ii) a glimmer of hope when a game is about to start and your team is an underdog. 
 
 
