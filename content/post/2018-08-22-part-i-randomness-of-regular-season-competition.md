@@ -55,15 +55,13 @@ But more importantly, our findings highlight the immense power of betting market
 Indeed, Scherzer's bad break is but one anecdote behind several ways in which our work can inform decision makers and fans alike. Here's a list of several take-homes that come with a better understanding of the randomness of sporting outcomes. 
 
 
-1. Nothing has changed my view of baseball and hockey quite like this project did. Luck plays an enormous role in the outcomes of those sports. Sometimes, shit just happens. 
+1. Luck (or just generally uncertainty) plays an enormous role in MLB and NHL outcomes. The worse team can beat the better team. Sometimes, shit just happens. 
 
-2. From a business perspective, betting market data can be used to explore topics like parity, attendence, and fan interest. Example: are TV ratings and attendence higher when games are expected to be closer? 
+2. Looking at standings to determine how good each team is? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
 
-3. Looking at standings to determine how good each team is? Stop -- you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I'll have more accurate predictions of the rest of the season will shake out than you will (and I don't even have to know win percentages to make that claim). 
+3. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
 
-4. Afraid of our modeling? Use Mike Beuey's ratings at [Inpredictable](http://www.inpredictable.com/). Bookmark his site. Market ratings like this are more on point than just about any public metric out there, and certainly better than standings or most power rankings. The data's that good. If you want to know how good a team is, check to see when it's a favorite or when it's an underdog. 
-
-5. Here are a few specific ways that decision-makers could use betting market information. 
+4. Here are a few specific ways that decision-makers could use betting market information. 
 
 - Is your team going to make the playoffs? Start with betting market data, estimate probabilities for each game and each team, simulate the rest of the season, and find out.
 

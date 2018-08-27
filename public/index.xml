@@ -87,9 +87,7 @@
 &lt;p&gt;Indeed, Scherzer&amp;rsquo;s bad break is but one anecdote behind several ways in which our work can inform decision makers and fans alike. Here&amp;rsquo;s a list of several take-homes that come with a better understanding of the randomness of sporting outcomes.&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Nothing has changed my view of baseball and hockey quite like this project did. Luck plays an enormous role in the outcomes of those sports. Sometimes, shit just happens.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;From a business perspective, betting market data can be used to explore topics like parity, attendence, and fan interest. Example: are TV ratings and attendence higher when games are expected to be closer?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Luck (or just generally uncertainty) plays an enormous role in MLB and NHL outcomes. The worse team can beat the better team. Sometimes, shit just happens.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Looking at standings to determine how good each team is? Stop &amp;ndash; you can do better. Our betting market metrics of how good each team is are better predictors of future won-loss percentage than current won-loss percentage is. In other words, if you look at the standings, and I look at betting market data, I&amp;rsquo;ll have more accurate predictions of the rest of the season will shake out than you will (and I don&amp;rsquo;t even have to know win percentages to make that claim).&lt;/p&gt;&lt;/li&gt;
 
