@@ -91,9 +91,9 @@ Well, here's where the list gets long.
 
 - Consider tweaks to current playoff formats. The NBA begins its playoffs with a "best-of-7" series between No. 1 and No. 8 seeds. Sweeps in these matchups are often more likely than *any* wins from the No. 8 seed. Meanwhile, MLB starts with a one-game play-in game and a "best-of-5" series between a No. 1 seed and roughly the equivalent of a No. 4 seed. In some years, however, MLB's No. 4 seed may be nearly as good as its No. 1 (that may happen this year with the Yankees). Altogether, MLB and NHL postseason formats don't do enough to reward good teams, while the NBA arguably does too much.**
 
-- Stop the all-consuming allocation of credit and skill to teams that win titles and to teams that win titles alone. This is particularly biting in the MLB and NHL, where a third strike call or crossbar can make a difference between winning a ring and not winning one. 
+- Stop the all-consuming allocation of credit and skill to teams that win titles and to teams that win titles alone. This is particularly biting in the NFL, MLB and NHL, where a fumble recovery, third strike call, or crossbar can make a difference between winning a ring and not winning one. 
 
-- Conversely, labeling once-in-a-generation players as chokers isn't quite appropriate in sports where it's tougher to win in the postseason, as [Rolling Stone](https://www.rollingstone.com/culture/culture-lists/10-biggest-chokers-in-sports-history-108696/alexander-ovechkin-109184/) did in 2017 with Alex Ovechkin.
+- Conversely, labeling once-in-a-generation players as chokers isn't quite appropriate, particularly in sports where it's tougher to win in the postseason. See this from [Rolling Stone](https://www.rollingstone.com/culture/culture-lists/10-biggest-chokers-in-sports-history-108696/alexander-ovechkin-109184/) in 2017 on Alex Ovechkin.
 
 - Beware of snake oil when it comes to postseason predictions. If it seems to good to be true, it probably is. As a hypothetical example, if a company says it can predict MLB or NHL series outcomes with 85-percent accuracy, perhaps avoid hiring that company to be the official sponsor of your league's stats page.
 
