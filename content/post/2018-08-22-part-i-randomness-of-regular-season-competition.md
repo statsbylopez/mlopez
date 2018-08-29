@@ -72,3 +72,6 @@ Indeed, Scherzer's bad break is but one anecdote behind several ways in which ou
 Altogether, the traditional mechanism by which we evaluate teams — wins and losses - can belie characteristics that are vital to understanding team strength. Turns out, NHL and MLB outcomes are closer to 50-50 calls than those in the NFL and NBA, and the difference between those two pairs of leagues is fairly large.  For fans, and perhaps Max Scherzer, hopefully this provides a modicum of comfort when your favorite team falls short.
 
 
+*Note: This is Part I in a set of posts of how betting markets can inform sports fans. To return to the series homepage, click [here](http://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/).* 
+
+

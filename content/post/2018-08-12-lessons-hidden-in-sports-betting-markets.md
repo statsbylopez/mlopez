@@ -30,10 +30,13 @@ I'll provide several ideas in the following set of posts.
 
 - Part I: [Why I feel bad for Max Scherzer (on the game-level randomness in sports)](http://statsbylopez.netlify.com/post/part-i-randomness-of-games/)
 
-- Part II: Randomness of postseason competition
+- Part II: [Rethinking our playoff philosophy (on the role of chance in the postseason)](http://statsbylopez.netlify.com/post/part-ii-randomness-of-series/)
 
 - Part III: The benefit of playing at home
 
 - Part IV: Why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)
 
 Hopefully you'll be able to use these posts to learn a bit of insight into how each sports leagues compare to one another, and how various factors can play a major role in team success. 
+
+
+*Note: this series of post is based off of a forthcoming academic paper and does not reflect views of my current employer (the NFL).* 
