@@ -32,6 +32,15 @@
     
     <url>
     
+      <loc>/post/playing-at-home/</loc>
+      <lastmod>2018-08-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/the-within-game-evolution-of-mlb-s-strike-zone/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
     </url>
@@ -95,17 +104,6 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
-    
-      <loc>/post/</loc>
-      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
@@ -151,6 +149,16 @@
     <url>
     
       <loc>/post/2018-08-22-part-i-randomness-of-regular-season-competition/</loc>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
+    
+      <loc>/post/</loc>
     </url>
     
   
