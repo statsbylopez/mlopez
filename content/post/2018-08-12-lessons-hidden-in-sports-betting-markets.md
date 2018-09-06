@@ -34,7 +34,7 @@ I'll provide several ideas in the following set of posts.
 
 - Part III: [The benefit of playing at home](http://statsbylopez.netlify.com/post/playing-at-home/)
 
-- Part IV: Why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)
+- Part IV: Why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength) 
 
 Hopefully you'll be able to use these posts to learn a bit of insight into how each sports leagues compare to one another, and how various factors can play a major role in team success. 
 
