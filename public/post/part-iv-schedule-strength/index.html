@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37" />
+  <meta name="author" content="Michael Lopez">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Taking a step back The primary goal of this series of posts was to summarize a few of the ways betting market data can tell us about sports. One overarching theme revolved around randomness &ndash; that is, before a game starts, and conditional on all we know about the participating teams, much of the game&rsquo;s eventual outcome comes down to chance.
+Fans of any team can assuredly point to ways in which luck manifests itself in sport.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/part-iv-schedule-strength/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/part-iv-schedule-strength/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@statsbylopez">
+  <meta property="twitter:creator" content="@statsbylopez">
+  
+  <meta property="og:site_name" content="Statsbylopez">
+  <meta property="og:url" content="/post/part-iv-schedule-strength/">
+  <meta property="og:title" content="Part IV: The Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength) | Statsbylopez">
+  <meta property="og:description" content="Taking a step back The primary goal of this series of posts was to summarize a few of the ways betting market data can tell us about sports. One overarching theme revolved around randomness &ndash; that is, before a game starts, and conditional on all we know about the participating teams, much of the game&rsquo;s eventual outcome comes down to chance.
+Fans of any team can assuredly point to ways in which luck manifests itself in sport.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-09-05T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-09-05T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Part IV: The Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength) | Statsbylopez</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/"><img src="/img/fball.jpg" alt="Statsbylopez"></a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/publication/" target="_blank" rel="noopener">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/talk/" target="_blank" rel="noopener">
+            
+            <span>Talks</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/press/" target="_blank" rel="noopener">
+            
+            <span>Press</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/articles/" target="_blank" rel="noopener">
+            
+            <span>Articles</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Part IV: The Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-09-05 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Sep 5, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Lopez">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Part%20IV%3a%20The%20Orioles%20should%20have%20traded%20Manny%20Machado%20to%20the%20Dodgers%20for%20a%20spot%20in%20the%20NL%20West%20%28on%20schedule%20strength%29&amp;url=%2fpost%2fpart-iv-schedule-strength%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fpart-iv-schedule-strength%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fpart-iv-schedule-strength%2f&amp;title=Part%20IV%3a%20The%20Orioles%20should%20have%20traded%20Manny%20Machado%20to%20the%20Dodgers%20for%20a%20spot%20in%20the%20NL%20West%20%28on%20schedule%20strength%29"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fpart-iv-schedule-strength%2f&amp;title=Part%20IV%3a%20The%20Orioles%20should%20have%20traded%20Manny%20Machado%20to%20the%20Dodgers%20for%20a%20spot%20in%20the%20NL%20West%20%28on%20schedule%20strength%29"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Part%20IV%3a%20The%20Orioles%20should%20have%20traded%20Manny%20Machado%20to%20the%20Dodgers%20for%20a%20spot%20in%20the%20NL%20West%20%28on%20schedule%20strength%29&amp;body=%2fpost%2fpart-iv-schedule-strength%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h2 id="taking-a-step-back">Taking a step back</h2>
+
+<p>The primary goal of this series of posts was to summarize a few of the ways betting market data can tell us about sports. One overarching theme revolved around randomness &ndash; that is, before a game starts, and conditional on all we know about the participating teams, much of the game&rsquo;s eventual outcome comes down to chance.</p>
+
+<p>Fans of any team can assuredly point to ways in which luck manifests itself in sport. In examples posted in this series, I <a href="http://statsbylopez.netlify.com/post/part-i-randomness-of-games/" target="_blank">recalled</a> how both an umpire&rsquo;s missed third strike call and an infielder&rsquo;s misplay bumped up the Red Sox&rsquo;s win probability in a 2013 ALCS contest versus the Tigers by more than 10 percentage points. Ref call? The hard-hit liner that finds sa glove? Shot off the post? Missed fumble recovery? All plays that may leave us shrugging our shoulders and wondering when the breaks will come.</p>
+
+<p>But as your mind starts to wander to similar examples, it&rsquo;s worth taking a step back to analyze what can be a substantially larger, more dominant force of luck that pervades sporting results: who you opponent is.</p>
+
+<h2 id="the-best-fans-in-baseball-are-also-the-luckiest">The best fans in baseball are also the luckiest.</h2>
+
+<p>Hard to imagine now, but just seven years ago, the Houston Astros were the laughingstock of baseball. Houston went 56-106 that year with an amazingly bad run differential of -181. At that point, it was the worst record in franchise history.</p>
+
+<p>And not only were the Astros bad, but they were also in the National League. So while it was a good year</p>
+
+<p>56-106 with a -181 run differential and had what was then the worst record in franchise history.</p>
+
+<p>In 2011, for example, when the Cardinals (90 wins) were in the same division as the Astros (56 wins), St. Louis made the playoffs as a wild card team by exactly one game over the Atlanta Braves (89 wins). In a playoff spot they likely only got with an easy schedule, that 2011 Cardinals team went on to win the World Series.</p>
+
+<p>Throughout our paper, there were quite a few findings that moved the needle. The magnitude of the home advantage for the Denver Nuggets and the Utah Jazz, the similarity of the MLB to the NHL and of the NBA to the NFL, and the randomness of the postseason in every league <em>but</em> the NBA stand out as ways in which the application of our model of betting market data has made me a substantially smarter sports fan.</p>
+
+<p>However, nothing quite prepared me for what I found when I used our estimates of team strength to contrast the fairness of each team&rsquo;s schedule. Note that this finding is not in our paper, but is at the heart of a talk I gave at the <a href="https://statsbylopez.github.io/Toronto18/Toronto18.html" target="_blank">Fields Sports Analytics Conference in May.</a></p>
+
+<p>To sum: given their schedules, no set of teams has been more consistently and more strongly screwed that those in the American League East.</p>
+
+<p>Here&rsquo;s a chart that shows the yearly impact for each AL East team that comes as a function of them simply playing in the AL East (as opposed to playing a league average schedule).</p>
+
+<p><img src="/img/ALEast1.png" alt="" /></p>
+
+<p>The y-axis is change in wins, so, in other words, by playing in the AL East, the Orioles lose, on average, about three wins a year than what they&rsquo;re talent suggests they otherwise deserve. The rest of the AL East isn&rsquo;t far behind.</p>
+
+<p>The explanation is somewhat obvious: MLB requires teams to play each intra-divisional opponent 19 times. That means each of the Orioles, Blue Jays, and Rays have to face the Red Sox or Yankees, two of the league&rsquo;s top teams in most years, in about 1 in 4 contests..</p>
+
+<p>Such a set up is unfair for two reasons. First, because these AL East teams are winning less often than they otherwise should be, they are less likely to qualify for the playoffs on account of a more difficult schedule. And second, because the only way to earn an automatic MLB playoff spot is to win your division, these teams have an uphill battle in that sense in that they also have to overtake the Red Sox or Yankees.</p>
+
+<p>Quite frankly, nothing would have been more valuable for the Orioles to have obtained in a Manny Machado trade than a spot in another division.</p>
+
+<p>On the other side of things lie the teams that have lucked out. For example, without question, the luckiest team in pro sports (schedule wise) over the last decade is the St. Louis Cardinals.</p>
+
+<p>First, St. Louis has averaged +2.2 annual wins added due to an easy schedule that, up until the Cubs in the last few years, never had a team nearly as good as the Red Sox or Yankees (including the Cardinals themselves). That schedule even had the Houston Astros on it, but only when the Astros were really bad.</p>
+
+<p>Second, those wins added for the Cardinals have been extra valuable: as a team that frequently hovered around the 90-win mark, a few extra wins due to an easy schedule could have been the difference between making the playoffs and staying home. In 2011, for example, when the Cardinals (90 wins) were in the same division as the Astros (56 wins), St. Louis made the playoffs as a wild card team by exactly one game over the Atlanta Braves (89 wins). In a playoff spot they likely only got with an easy schedule, that 2011 Cardinals team went on to win the World Series.</p>
+
+<p>As smaller, and other notable findings regarding schedule strength, here&rsquo;s a brief list:</p>
+
+<ol>
+<li><p>The impact of MLBs schedule, at least relative to other sports, is also larger than in other sports even when accounting for its longer regular season.</p></li>
+
+<li><p>The NFL ranks second in terms of the relative impact of a team&rsquo;s schedule on its number of wins; however, by and large, changes in schedule strength from one year to the next are mostly noise, and more sympotmatic of the relatively small number of games each team plays.</p></li>
+
+<li><p>Schedule strength plays a smaller role in both the NBA and NHL. In that regard, wins (or points) at the end of the regular season make for a decent proxy for overall team skill.</p></li>
+
+<li><p>The impact of rest &ndash; that is, having more rest than your opponent &ndash; is largest in the NBA, followed, in order, by the NHL, NFL, and MLB. Recent steps taken by the NBA to both reduce the frequency of back-to-backs and the differences between teams in terms of number of back-to-backs are appreciated in this regard, and clearly supported by the data.</p></li>
+
+<li><p>West coast teams, in general, are given more rest advantages than their East coast brethren. This likely has contributed to why West coast teams often show up as having the largest home advantages: what was really a rest advantage was often perceived as a home advantage.</p></li>
+</ol>
+
+<p>Altogether, the accurate nature of our team strength metrics has allowed us to consider outside-the-box comparisons like those presented above. In particular, the unbalanced schedule of MLB stands out as one league-level factor that, while potentially good for Sunday Night Baseball ratings, may unfairly penalize certain teams.</p>
+
+    </div>
+
+    
+
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
