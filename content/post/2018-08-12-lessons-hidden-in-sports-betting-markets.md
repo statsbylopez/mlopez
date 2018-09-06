@@ -32,7 +32,7 @@ I'll provide several ideas in the following set of posts.
 
 - Part II: [Rethinking our playoff philosophy (on the role of chance in the postseason)](http://statsbylopez.netlify.com/post/part-ii-randomness-of-series/)
 
-- Part III: The benefit of playing at home
+- Part III: [The benefit of playing at home](http://statsbylopez.netlify.com/post/playing-at-home/)
 
 - Part IV: Why the Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)
 
