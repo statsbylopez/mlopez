@@ -15,7 +15,7 @@ categories: []
 
 One way in which professional sports are relatively fair is that, in each season, teams are almost always given an identical number of home games. This seems like an obvious way to run a sports organization, until you remember that postseason berths in NCAA hoops and football often hinge on incredibly unbalanced schedules.
 
-Playing at home is a big benefit, and while the reasons for the advantage are still up for [debate](https://www.amazon.com/dp/B004C43GC4/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1), there *are* obvious and unique advantages that make playing at home different each sport.
+Playing at home is a benefit, and while the reasons for the overall advantage are somewhat up for [debate](https://www.amazon.com/dp/B004C43GC4/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1), there *are* obvious and unique advantages that make playing at home different each sport.
 
 In our cross-sport paper, Ben designed a pretty amazing chart that highlights, on a probability scale, how the home advantage compares both by sport and franchise. Bars for each term correspond to 95% credible intervals.
 
