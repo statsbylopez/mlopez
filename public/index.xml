@@ -40,7 +40,7 @@ df.text &amp;lt;- data.frame(lab.text = c(&amp;quot;Run +, Pass -&amp;quot;, &am
 ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) + 
   geom_point() + 
   geom_text_repel() + 
-  xlab(&amp;quot;Rush: average offensive EPA&amp;quot;) + 
+  xlab(&amp;quot;Run: average offensive EPA&amp;quot;) + 
   ylab(&amp;quot;Pass: average offensive EPA&amp;quot;) + 
   theme_minimal() + 
   labs(title = &amp;quot;Offensive performance, 2018 season&amp;quot;, subtitle = &amp;quot;Data courtesy: nflscrapR&amp;quot;) + 
@@ -64,7 +64,7 @@ scrimmage.plays.summary &amp;lt;- scrimmage.plays.summary %&amp;gt;%
 
 ggplot(scrimmage.plays.summary, aes(run, pass)) + 
   geom_image(aes(image = url), size = 0.05) + 
-  xlab(&amp;quot;Rush: average offensive EPA&amp;quot;) + 
+  xlab(&amp;quot;Run: average offensive EPA&amp;quot;) + 
   ylab(&amp;quot;Pass: average offensive EPA&amp;quot;) + 
   theme_minimal() + 
   labs(title = &amp;quot;Offensive performance, 2018 season&amp;quot;, subtitle = &amp;quot;Data courtesy: nflscrapR&amp;quot;) + 
@@ -73,7 +73,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
   xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
   geom_text(data = df.text, aes(x, y, label = lab.text), colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Same chart as we initially had, and one-less line of code.&lt;/p&gt;
+&lt;p&gt;Same chart as we initially had, and one-less line of code. The key command is &lt;code&gt;geom_image&lt;/code&gt;, which functions similar to &lt;code&gt;geom_point&lt;/code&gt; but requires a url to draw an image from.&lt;/p&gt;
 &lt;p&gt;Feel free to use the logo file in similar fashion – and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that’s for another day.&lt;/p&gt;
 &lt;/div&gt;
 </description>

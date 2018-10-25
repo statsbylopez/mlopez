@@ -39,7 +39,7 @@ df.text &lt;- data.frame(lab.text = c(&quot;Run +, Pass -&quot;, &quot;Run +, Pa
 ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) + 
   geom_point() + 
   geom_text_repel() + 
-  xlab(&quot;Rush: average offensive EPA&quot;) + 
+  xlab(&quot;Run: average offensive EPA&quot;) + 
   ylab(&quot;Pass: average offensive EPA&quot;) + 
   theme_minimal() + 
   labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
@@ -63,7 +63,7 @@ scrimmage.plays.summary &lt;- scrimmage.plays.summary %&gt;%
 
 ggplot(scrimmage.plays.summary, aes(run, pass)) + 
   geom_image(aes(image = url), size = 0.05) + 
-  xlab(&quot;Rush: average offensive EPA&quot;) + 
+  xlab(&quot;Run: average offensive EPA&quot;) + 
   ylab(&quot;Pass: average offensive EPA&quot;) + 
   theme_minimal() + 
   labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
@@ -72,6 +72,6 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
   xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
   geom_text(data = df.text, aes(x, y, label = lab.text), colour = &quot;red&quot;)</code></pre>
 <p><img src="/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Same chart as we initially had, and one-less line of code.</p>
+<p>Same chart as we initially had, and one-less line of code. The key command is <code>geom_image</code>, which functions similar to <code>geom_point</code> but requires a url to draw an image from.</p>
 <p>Feel free to use the logo file in similar fashion – and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that’s for another day.</p>
 </div>

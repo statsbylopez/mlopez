@@ -42,7 +42,7 @@ df.text <- data.frame(lab.text = c("Run +, Pass -", "Run +, Pass +", "Run -, Pas
 ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) + 
   geom_point() + 
   geom_text_repel() + 
-  xlab("Rush: average offensive EPA") + 
+  xlab("Run: average offensive EPA") + 
   ylab("Pass: average offensive EPA") + 
   theme_minimal() + 
   labs(title = "Offensive performance, 2018 season", subtitle = "Data courtesy: nflscrapR") + 
@@ -72,7 +72,7 @@ scrimmage.plays.summary <- scrimmage.plays.summary %>%
 
 ggplot(scrimmage.plays.summary, aes(run, pass)) + 
   geom_image(aes(image = url), size = 0.05) + 
-  xlab("Rush: average offensive EPA") + 
+  xlab("Run: average offensive EPA") + 
   ylab("Pass: average offensive EPA") + 
   theme_minimal() + 
   labs(title = "Offensive performance, 2018 season", subtitle = "Data courtesy: nflscrapR") + 
@@ -82,6 +82,6 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
   geom_text(data = df.text, aes(x, y, label = lab.text), colour = "red")
 ```
 
-Same chart as we initially had, and one-less line of code. 
+Same chart as we initially had, and one-less line of code. The key command is `geom_image`, which functions similar to `geom_point` but requires a url to draw an image from. 
 
 Feel free to use the logo file in similar fashion -- and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that's for another day. 
