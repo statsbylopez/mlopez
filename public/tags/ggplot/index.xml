@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ggplot on Statsbylopez</title>
+    <link>/tags/ggplot/</link>
+    <description>Recent content in Ggplot on Statsbylopez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ggplot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NFL team logos using ggimage</title>
+      <link>/post/nfl-team-logos-using-ggimage/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nfl-team-logos-using-ggimage/</guid>
+      <description>Brian, Alex, and a host of others have done nice work recently when it comes to creating better scatter plots using images in ggplot in R. In this post, I’ll show how easy it is to use the ggimage package and do the same.
+What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.</description>
+    </item>
+    
+  </channel>
+</rss>

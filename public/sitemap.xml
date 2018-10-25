@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/nfl-team-logos-using-ggimage/</loc>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/lessons-hidden-in-sports-betting-markets/</loc>
       <lastmod>2018-08-22T00:00:00+00:00</lastmod>
     </url>
@@ -186,7 +195,7 @@
       <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
     
       <loc>/post/</loc>
-      <lastmod>2018-08-22T00:00:00+00:00</lastmod>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -225,6 +234,16 @@
     
       <loc>/tags/gam/</loc>
       <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/ggplot/</loc>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -284,7 +303,7 @@
     <url>
     
       <loc>/tags/nfl/</loc>
-      <lastmod>2018-08-22T00:00:00+00:00</lastmod>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -314,6 +333,16 @@
     <url>
     
       <loc>/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/r/</loc>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

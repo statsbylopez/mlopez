@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>Ggplot</title>
+      <link>/tags/ggplot/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ggplot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Logloss</title>
       <link>/tags/logloss/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
@@ -78,7 +87,7 @@
     <item>
       <title>NFL</title>
       <link>/tags/nfl/</link>
-      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/nfl/</guid>
       <description></description>
@@ -99,6 +108,15 @@
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/paired-comparisons/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     

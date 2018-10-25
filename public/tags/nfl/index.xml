@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 22 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/nfl/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NFL team logos using ggimage</title>
+      <link>/post/nfl-team-logos-using-ggimage/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nfl-team-logos-using-ggimage/</guid>
+      <description>Brian, Alex, and a host of others have done nice work recently when it comes to creating better scatter plots using images in ggplot in R. In this post, I’ll show how easy it is to use the ggimage package and do the same.
+What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.</description>
+    </item>
     
     <item>
       <title>Lessons hidden in sports betting markets</title>
@@ -32,6 +42,27 @@ But just because your local statistician tells you not to bet doesn&amp;rsquo;t 
       <guid>/post/part-i-randomness-of-games/</guid>
       <description>The best team in baseball during the 2013 season was the Detroit Tigers.
 Detroit&amp;rsquo;s rotation featured the eventual Cy Young award winner (Max Scherzer), alongside both the 2011 and 2016 Cy winners (Justin Verlander and Rick Porcello, respectively). The Tigers line-up was spearheaded by Prince Fielder and Miguel Cabrera, the latter of whom would win his second consecutive MVP. Indeed, betting market rankings had the Tigers atop the sport for basically the entire season.</description>
+    </item>
+    
+    <item>
+      <title>Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</title>
+      <link>/post/part-ii-randomness-of-series/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/part-ii-randomness-of-series/</guid>
+      <description>In the 2016-17 season, the Washington Capitals dominated the NHL like few teams in recent history, winning the Presidents&amp;rsquo; Trophy with 118 points.
+The Caps entered a 2nd-round playoff series with Pittsburgh as decent-sized favorites (58 percent), and sure enough, Washington outplayed its rivals. In each of seven consecutive games, the Capitals outshot the Penguins, finishing with 70 total more shots on goal.
+Unfortunately for Washington, not enough shots turned into goals, and because hockey games are decided by goals, it was the Penguins that moved onto the Eastern Conference Finals.</description>
+    </item>
+    
+    <item>
+      <title>Part III: Rocky Mountain High (the benefit of playing at home)</title>
+      <link>/post/playing-at-home/</link>
+      <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/playing-at-home/</guid>
+      <description>One way in which professional sports are relatively fair is that, in each season, teams are almost always given an identical number of home games. This seems like an obvious way to run a sports organization, until you remember that postseason berths in NCAA hoops and football often hinge on incredibly unbalanced schedules.
+Playing at home is a benefit, and while the reasons for the overall advantage are somewhat up for debate, there are obvious and unique advantages that make playing at home different each sport.</description>
     </item>
     
   </channel>

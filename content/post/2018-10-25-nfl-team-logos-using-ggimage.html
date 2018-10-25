@@ -1,0 +1,77 @@
+---
+title: NFL team logos using ggimage
+author: ''
+date: '2018-10-25'
+slug: nfl-team-logos-using-ggimage
+categories: []
+tags:
+  - NFL
+  - R
+  - ggplot
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<p><a href="https://twitter.com/bburkeESPN/status/1055150920340774912">Brian</a>, <a href="https://twitter.com/abresler/status/1055446174730240000">Alex</a>, and a host of others have done nice work recently when it comes to creating better scatter plots using images in <code>ggplot</code> in <a href="https://cran.r-project.org/">R</a>. In this post, I’ll show how easy it is to use the <code>ggimage</code> package and do the same.</p>
+<div id="what-data-to-use" class="section level2">
+<h2>What data to use?</h2>
+<p>Ron, Sam, Max, and the folks at <a href="https://github.com/maksimhorowitz/nflscrapR">nflscrapR</a> have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play. In my example, I’ll use this data to contrast team run and pass performance, as measured through expected points added. For more on expected points, see Trey’s series <a href="http://thespread.us/expected-points.html">here</a>, or the nfl WAR paper <a href="https://arxiv.org/abs/1802.00998">here</a>.</p>
+<p>First, we read in the data, and create what would be a typical plot that highlights run and pass performance for each offense.</p>
+<pre class="r"><code>library(RCurl)
+library(tidyverse)
+library(ggrepel)
+url.18 &lt;- getURL(&quot;https://raw.githubusercontent.com/ryurko/nflscrapR-data/master/play_by_play_data/regular_season/reg_pbp_2018.csv&quot;)
+pbp &lt;- read.csv(text = url.18)
+scrimmage.plays &lt;- pbp %&gt;% filter(play_type == &quot;pass&quot;|play_type == &quot;run&quot;)
+scrimmage.plays.summary &lt;- scrimmage.plays %&gt;% 
+  group_by(posteam, play_type) %&gt;% 
+  summarise(ave.epa = mean(epa, na.rm = TRUE)) %&gt;%
+  spread(play_type, ave.epa)
+
+bound.label &lt;- 0.38
+df.text &lt;- data.frame(lab.text = c(&quot;Run +, Pass -&quot;, &quot;Run +, Pass +&quot;, &quot;Run -, Pass +&quot;, &quot;Run -, Pass -&quot;), 
+                      x = c(bound.label, bound.label, -1*bound.label, -1*bound.label), 
+                      y = c(-1*bound.label, bound.label, bound.label, -1*bound.label))
+
+ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) + 
+  geom_point() + 
+  geom_text_repel() + 
+  xlab(&quot;Rush: average offensive EPA&quot;) + 
+  ylab(&quot;Pass: average offensive EPA&quot;) + 
+  theme_minimal() + 
+  labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
+  geom_hline(aes(yintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5)+ 
+  geom_vline(aes(xintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5) + 
+  xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
+  geom_text(data = df.text, aes(x, y, label = lab.text), colour = &quot;red&quot;)</code></pre>
+<p><img src="/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>There’s a bunch that can be gleamed from the chart above. As one example, the team-to-team variability in average pass EPA is greater than that of the team-to-team variability in average rush EPA. As another, 23 of 32 teams boast a greater-than-0 average pass EPA, compared to 14 of 32 teams that have an average rush EPA greater than 0. This doesn’t exactly mean teams should pass more – averages are impacted by skewness, and the distribution of play-level EPA on passes is strongly skewed right.</p>
+<p>None of these findings are particularly new, however, and to date, there is a large amount of literature regarding the run versus pass debate. In fact, there’s someone who has probably already made the exact graph above.</p>
+</div>
+<div id="adding-in-team-logos" class="section level2">
+<h2>Adding in team logos</h2>
+<p>It’s perhaps more visually appealing to use team logos (or helmets) in place of three letter team codes. For ages, adding images to <code>ggplot</code> R graphs required the use of several lines of code: using the <code>ggimage</code> package, that process is (fortunately) no longer needed.</p>
+<p>In the code below, I link to a file (eventually stored as <code>df.logos</code>) that has up-to-date NFL logos (drawn via Wikipedia png’s), and merge with the data above.</p>
+<pre class="r"><code>library(ggimage)
+url.logo &lt;- getURL(&quot;https://raw.githubusercontent.com/statsbylopez/BlogPosts/master/nfl_teamlogos.csv&quot;)
+df.logos &lt;- read.csv(text = url.logo)
+scrimmage.plays.summary &lt;- scrimmage.plays.summary %&gt;% 
+  left_join(df.logos, by = c(&quot;posteam&quot; = &quot;team_code&quot;))
+
+ggplot(scrimmage.plays.summary, aes(run, pass)) + 
+  geom_image(aes(image = url), size = 0.05) + 
+  xlab(&quot;Rush: average offensive EPA&quot;) + 
+  ylab(&quot;Pass: average offensive EPA&quot;) + 
+  theme_minimal() + 
+  labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
+  geom_hline(aes(yintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5)+ 
+  geom_vline(aes(xintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5) + 
+  xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
+  geom_text(data = df.text, aes(x, y, label = lab.text), colour = &quot;red&quot;)</code></pre>
+<p><img src="/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Same chart as we initially had, and one-less line of code.</p>
+<p>Feel free to use the logo file in similar fashion – and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that’s for another day.</p>
+</div>
