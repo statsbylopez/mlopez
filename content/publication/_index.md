@@ -19,11 +19,11 @@ caption = ""
 
 ## In press
 
--  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport," Annals of Applied Statistics, 2018. [(link,](https://projecteuclid.org/euclid.aoas/1542078053), [preprint)](https://arxiv.org/abs/1701.05976)
+-  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport," Annals of Applied Statistics, 2018. [(link](https://projecteuclid.org/euclid.aoas/1542078053), [preprint)](https://arxiv.org/abs/1701.05976)
 
 - Jessica Sullivan, Corrine Moss-Racusin, **Michael J. Lopez**, Katherine Williams, "Backlash against gender stereotype-violating preschool children", PLOS ONE, 2018. [(link)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195503)
 
--	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2018. [(link,](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
+-	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2018. [(link](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
 
 - **Michael J. Lopez**, Roee Gutman, "Estimation of causal effects with multiple treatments: a review and new ideas," Statistical Science, 2017 [(link)](https://arxiv.org/pdf/1701.05132.pdf)
 
