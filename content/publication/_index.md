@@ -19,6 +19,12 @@ caption = ""
 
 ## In press
 
+-  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport," Annals of Applied Statistics, 2018. [(link,](https://projecteuclid.org/euclid.aoas/1542078053), [preprint)](https://arxiv.org/abs/1701.05976)
+
+- Jessica Sullivan, Corrine Moss-Racusin, **Michael J. Lopez**, Katherine Williams, "Backlash against gender stereotype-violating preschool children", PLOS ONE, 2018. [(link)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195503)
+
+-	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2018. [(link,](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
+
 - **Michael J. Lopez**, Roee Gutman, "Estimation of causal effects with multiple treatments: a review and new ideas," Statistical Science, 2017 [(link)](https://arxiv.org/pdf/1701.05132.pdf)
 
 - **Michael J. Lopez**, Michael Schuckers, "Predicting coin flips: using resampling and hierarchical modeling to untangle the NHL’s shootout." Journal of Sports Sciences, 2016 [(link)](https://statsbylopez.files.wordpress.com/2013/08/jss_nhl-21.pdf)
@@ -48,21 +54,12 @@ caption = ""
 
 ## Submitted
 
-- Derrick Yam, **Michael J. Lopez**, "Quantifying the Causal Effects of Conservative Fourth Down Decision Making in the National Football League", 2018. [(link)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3114242)
+- Derrick Yam, **Michael J. Lopez**, "Quantifying the Causal Effects of Conservative Fourth Down Decision Making in the National Football League", 2018. Forthcoming in Journal of Sports Analytics. [(link)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3114242)
 
--  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport" arXiv preprint, 2017. [(link)](https://arxiv.org/abs/1701.05976)
-
-- **Michael J. Lopez**, Sarah Markiewicz, Mackenzie Furman, "Correlates of graduate rate and GPA at two liberal arts colleges in the Northeast United States", 2017.  
-
-- Jessica Sullivan, Corrine Moss-Racusin, **Michael J. Lopez**, Katherine Williams, "Backlash against gender stereotype-violating preschool children", 2018.  
-
--	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", 2018. 
-
+- Chenyang Gu, **Michael J. Lopez**, Liangyuan Hu, "Non-parametric Bayesian approaches to estimating the causal effects of multiple treatments"
 
 ## In production
 
-- **Michael J. Lopez**, Roee Gutman, "Causal inference and provider profiling" 
-
-- **Michael J. Lopez**, Chenyang Gu, Liangyuan Hu, "Non-parametric Bayesian approaches to estimating the causal effects of multiple treatments"
+- Katherine Evans, **Michael J. Lopez**, "Treatment Effect Heterogeneity in MLB Bunting Strategies" 
 
 
