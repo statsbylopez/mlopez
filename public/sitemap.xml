@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/next-nhl-event/</loc>
+      <lastmod>2019-04-19T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/nfl-team-logos-using-ggimage/</loc>
       <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     </url>
@@ -302,7 +311,7 @@
     <url>
     
       <loc>/tags/nhl/</loc>
-      <lastmod>2018-08-22T00:00:00+00:00</lastmod>
+      <lastmod>2019-04-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -321,10 +330,20 @@
     
     <url>
     
+      <loc>/tags/penalties/</loc>
+      <lastmod>2019-04-19T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
     
       <loc>/post/</loc>
-      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+      <lastmod>2019-04-19T00:00:00+00:00</lastmod>
     </url>
     
   
