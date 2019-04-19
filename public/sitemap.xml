@@ -192,17 +192,6 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
-    
-      <loc>/post/</loc>
-      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <xhtml:link rel="alternate" href="/talk/" hreflang="en"/>
     
       <loc>/talk/</loc>
@@ -325,6 +314,17 @@
       <loc>/tags/paired-comparisons/</loc>
       <lastmod>2018-08-22T00:00:00+00:00</lastmod>
       <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
+    
+      <loc>/post/</loc>
+      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     </url>
     
   
