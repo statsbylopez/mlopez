@@ -28,7 +28,7 @@
 
 &lt;p&gt;Two aspects stand out.&lt;/p&gt;
 
-&lt;p&gt;First, the rates shown in the penalty plot are both more extreme and show more consistent of a pattern than in the goal plot. If you want to predict the first penalty of the second period, that&amp;rsquo;s likely an easier task than predicting the first goal. Second, many of the differences in the goal plot are driven not by goal differential, but by penalty differential. The pattern looking left to right seems stronger than the pattern looking bottom to top. Thinking more broadly, we&amp;rsquo;ve long known that score effects impact NHL team behavior &amp;ndash; I wonder if part of this is due to the fact that score effects are somewhat of a proxy for penalty differential.&lt;/p&gt;
+&lt;p&gt;First, the rates shown in the penalty plot are both more extreme and show more consistent of a pattern than in the goal plot. If you want to predict the first penalty of the second period, that&amp;rsquo;s likely an easier task than predicting the first goal. Second, many of the differences in the goal plot are driven not by goal differential, but by penalty differential. In the goal plot, the pattern looking left to right seems stronger than the pattern looking bottom to top. Thinking more broadly, we&amp;rsquo;ve long known that score effects impact NHL team behavior &amp;ndash; I wonder if part of this is due to the fact that score effects are somewhat of a proxy for penalty differential.&lt;/p&gt;
 
 &lt;p&gt;Technical postscripts:&lt;/p&gt;
 

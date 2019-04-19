@@ -24,7 +24,7 @@ Using all games from 2005-2016, here's the likelihood that (i) the first penalty
 
 Two aspects stand out. 
 
-First, the rates shown in the penalty plot are both more extreme and show more consistent of a pattern than in the goal plot. If you want to predict the first penalty of the second period, that's likely an easier task than predicting the first goal. Second, many of the differences in the goal plot are driven not by goal differential, but by penalty differential. The pattern looking left to right seems stronger than the pattern looking bottom to top. Thinking more broadly, we've long known that score effects impact NHL team behavior -- I wonder if part of this is due to the fact that score effects are somewhat of a proxy for penalty differential.
+First, the rates shown in the penalty plot are both more extreme and show more consistent of a pattern than in the goal plot. If you want to predict the first penalty of the second period, that's likely an easier task than predicting the first goal. Second, many of the differences in the goal plot are driven not by goal differential, but by penalty differential. In the goal plot, the pattern looking left to right seems stronger than the pattern looking bottom to top. Thinking more broadly, we've long known that score effects impact NHL team behavior -- I wonder if part of this is due to the fact that score effects are somewhat of a proxy for penalty differential.
 
 Technical postscripts: 
 
