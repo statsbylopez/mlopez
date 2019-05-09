@@ -105,9 +105,9 @@ for (i in 1:n.sim){
 &lt;/div&gt;
 &lt;div id=&#34;what-a-simulated-drive-looks-like&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;What a simulated drive looks like&lt;/h3&gt;
-&lt;p&gt;Here’s one sampled drive. It starts with an Andy Dalton pass on 1st-10, and ends a few plays later with a long pass to Dez Bryant. Keep in mind that this &lt;em&gt;should&lt;/em&gt; look weird – we’re sampling plays across the last decade of play, and will jump back and forth between offenses.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;More important, this particular drive shows the importance of replicating what &lt;strong&gt;could&lt;/strong&gt; happen in overtime. Above, the offense went for it on 4th-2 in its own territory, a Mike Gillislee run that is shown in red. In a typical game, most teams in this situation would have punted the ball away. By being forced to be aggressive, this is a touchdown drive in overtime that otherwise wouldn’t exist.&lt;/p&gt;
+&lt;p&gt;Here’s one sampled drive. It starts with an Andy Dalton pass on 1st-10, and ends a few plays later with a long pass to Dez Bryant. Keep in mind that this &lt;em&gt;should&lt;/em&gt; look weird – we’re sampling plays across the last decade of play, and will jump back and forth between offenses.
+&lt;img src=&#34;/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;More importantly, this particular drive shows the importance of replicating what &lt;strong&gt;could&lt;/strong&gt; happen in overtime. Above, the offense went for it on 4th-2 in its own territory, a Mike Gillislee run that is shown in red. In a typical game, most teams in this situation would have punted the ball away. By being forced to be aggressive, what was otherwise a likely punt became a touchdown.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;aggregating-across-drives&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Aggregating across drives&lt;/h3&gt;
@@ -116,7 +116,7 @@ for (i in 1:n.sim){
 &lt;p&gt;How’s this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/1118236788974342146&#34;&gt;game&lt;/a&gt;. In other words, the &lt;em&gt;need&lt;/em&gt; to score a touchdown increases a team’s chance of scoring that touchdown by about a factor of 1.5.&lt;/p&gt;
 &lt;p&gt;But wait, there’s more.&lt;/p&gt;
 &lt;p&gt;The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30% I got above.&lt;/p&gt;
-&lt;p&gt;For now, hopefully this gives you a sense of how resampling can help better understand circumstances in NFL games that don’t exist. In our case, we used sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work.&lt;/p&gt;
+&lt;p&gt;For now, hopefully this gives you a sense of how resampling can help project rules in NFL games that don’t exist. In our case, we sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
