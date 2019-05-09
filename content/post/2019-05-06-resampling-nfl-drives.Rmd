@@ -12,7 +12,7 @@ header:
   caption: ''
   image: ''
 ---
-
+ 
 *How do you estimate outcomes under a set of rules that don't yet exist?* In this post, I'll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.
 
 ## Background
