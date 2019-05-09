@@ -16,7 +16,8 @@
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/resampling-nfl-drives/</guid>
-      <description>&lt;p&gt;&lt;em&gt;How do you estimate outcomes under a set of rules that don’t yet exist?&lt;/em&gt; In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;How do you estimate outcomes under a set of rules that don’t yet exist?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.&lt;/p&gt;
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Background&lt;/h2&gt;
 &lt;p&gt;Back in March, the NFL’s competition committee and owners debated the merits of a rule change, proposed by &lt;a href=&#34;https://operations.nfl.com/updates/football-ops/2019-playing-rules-proposals/&#34;&gt;Kansas City&lt;/a&gt;, that would allow both teams the opportunity to possess the ball at least one time in overtime. This would create a scenario unlike any other in football. If the game starts with an opening drive touchdown, the receiving team would:&lt;/p&gt;
