@@ -463,47 +463,18 @@ for (i in 1:n.sim){
 </div>
 <div id="what-a-simulated-drive-looks-like" class="section level3">
 <h3>What a simulated drive looks like</h3>
-<p>Here’s one sampled drive.</p>
+<p>Here’s one sampled drive. It starts with an Andy Dalton pass on 1st-10, and ends a few plays later with a long pass to Dez Bryant. Keep in mind that this <em>should</em> look weird – we’re sampling plays across the last decade of play, and will jump back and forth between offenses.</p>
 <p><img src="/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
-<p>What a drive!</p>
-<p>The offense started with a Andy Dalton pass and ended with a Dez Bryant touchdown. In between – and in what shows the importance of replicating what would happen in overtime – the offense went for it on 4th-2 in its own territory. That play, a Mike Gillislee run, is shown in red.</p>
+<p>More important, this particular drive shows the importance of replicating what <strong>could</strong> happen in overtime. Above, the offense went for it on 4th-2 in its own territory, a Mike Gillislee run that is shown in red. In a typical game, most teams in this situation would have punted the ball away. By being forced to be aggressive, this is a touchdown drive in overtime that otherwise wouldn’t exist.</p>
 </div>
 <div id="aggregating-across-drives" class="section level3">
 <h3>Aggregating across drives</h3>
-<p>So, how often would an offense score a touchdown in overtime? Here’s a plot of drive outcomes – each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives.</p>
-<pre class="r"><code>last.plays &lt;- all.drives.store %&gt;% group_by(sim.id) %&gt;% slice(n())
-last.plays &lt;- last.plays %&gt;% 
-  ungroup() %&gt;% 
-  mutate(drive.end = case_when(is.td.offense == TRUE ~ &quot;Offensive TD&quot;, 
-                               is.turnover == TRUE ~ &quot;Turnover&quot;, 
-                               TRUE ~ &quot;Downs&quot;))
-
-last.plays$drive.end1 &lt;- as.numeric(as.factor(last.plays$drive.end)) + rnorm(nrow(last.plays), 0, 0.1)
-drive.sum &lt;- last.plays %&gt;% count(drive.end) %&gt;% mutate(rate.sim = n/nrow(last.plays))
-drive.sum &lt;- drive.sum %&gt;% 
-  mutate(lab.paste = paste0(drive.end, &quot;\n (&quot;, round(rate.sim*100, 1), &quot;%)&quot;))
-
-
-library(ggbeeswarm)
-ggplot(data = last.plays, 
-       mapping=aes(drive.end1, 1, colour = drive.end)) + 
-  geom_quasirandom(groupOnX = FALSE, bandwidth=.6, size = .00000004) + 
-  theme_minimal(14) + 
-  theme(panel.grid = element_blank(), axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank(), 
-        plot.title = element_text(hjust = 0.5), 
-        plot.subtitle = element_text(hjust = 0.5)) + 
-  labs(title = &quot;WHAT WOULD HAPPEN ON THE SECOND DRIVE OF OT?&quot;, 
-       subtitle = &quot;10,000 simulations where a TD is needed&quot;, 
-       caption = &quot;data h/t: nflscrapR&quot;) + 
-  scale_colour_brewer(palette = &quot;Set1&quot;, guide = FALSE) + 
-  scale_x_continuous(breaks = 1:3, &quot;&quot;, labels = drive.sum$lab.paste)</code></pre>
+<p>So, how often would an offense score a touchdown in overtime? Here’s a plot of drive outcomes. Each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives.</p>
 <p><img src="/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>How’s this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the <a href="https://twitter.com/StatsbyLopez/status/1118236788974342146">game</a>. In other words, the <em>need</em> to score a touchdown increases a team’s chance of scoring that touchdown by about a factor of 1.5.</p>
 <p>But wait, there’s more.</p>
-<p>The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30.2% I got above.</p>
-<p>For now, hopefully this gives you a sense of how resampling can help better understand circumstances in games that don’t exist. In our case,</p>
+<p>The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30% I got above.</p>
+<p>For now, hopefully this gives you a sense of how resampling can help better understand circumstances in NFL games that don’t exist. In our case, we used sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work.</p>
 </div>
 </div>
 
@@ -534,13 +505,13 @@ ggplot(data = last.plays,
         
         <li><a href="/post/nfl-team-logos-using-ggimage/">NFL team logos using ggimage</a></li>
         
-        <li><a href="/post/part-ii-randomness-of-series/">Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</a></li>
+        <li><a href="/post/part-i-randomness-of-games/">Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</a></li>
         
-        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
+        <li><a href="/post/part-ii-randomness-of-series/">Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</a></li>
         
         <li><a href="/post/playing-at-home/">Part III: Rocky Mountain High (the benefit of playing at home)</a></li>
         
-        <li><a href="/post/part-i-randomness-of-games/">Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</a></li>
+        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
         
       </ul>
     </div>

@@ -165,7 +165,7 @@ all.drives.store <- read_csv("samp.drives.csv")
 
 ### What a simulated drive looks like
 
-Here's one sampled drive.
+Here's one sampled drive. It starts with an Andy Dalton pass on 1st-10, and ends a few plays later with a long pass to Dez Bryant. Keep in mind that this *should* look weird -- we're sampling plays across the last decade of play, and will jump back and forth between offenses. 
 
 ```{r, fig.height=5, fig.width=8, echo = FALSE}
 plot.chart.data <- all.drives.store %>% filter(sim.id == 108) 
@@ -202,15 +202,13 @@ ggplot() +
   theme(axis.line.y = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank())
 ```
 
-What a drive! 
-
-The offense started with a Andy Dalton pass and ended with a Dez Bryant touchdown. In between -- and in what shows the importance of replicating what would happen in overtime -- the offense went for it on 4th-2 in its own territory. That play, a Mike Gillislee run, is shown in red.
+More important, this particular drive shows the importance of replicating what **could** happen in overtime. Above, the offense went for it on 4th-2 in its own territory, a Mike Gillislee run that is shown in red. In a typical game, most teams in this situation would have punted the ball away. By being forced to be aggressive, this is a touchdown drive in overtime that otherwise wouldn't exist. 
 
 ### Aggregating across drives
 
-So, how often would an offense score a touchdown in overtime? Here's a plot of drive outcomes -- each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives. 
+So, how often would an offense score a touchdown in overtime? Here's a plot of drive outcomes. Each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives. 
 
-```{r}
+```{r, echo = FALSE}
 last.plays <- all.drives.store %>% group_by(sim.id) %>% slice(n())
 last.plays <- last.plays %>% 
   ungroup() %>% 
@@ -245,6 +243,6 @@ How's this compare to non-overtime drives? Well, teams score a touchdown on the 
 
 But wait, there's more.
 
-The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you'll likely get a rate higher than the 30.2% I got above. 
+The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you'll likely get a rate higher than the 30% I got above. 
 
-For now, hopefully this gives you a sense of how resampling can help better understand circumstances in games that don't exist. In our case, 
+For now, hopefully this gives you a sense of how resampling can help better understand circumstances in NFL games that don't exist. In our case, we used sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work. 
