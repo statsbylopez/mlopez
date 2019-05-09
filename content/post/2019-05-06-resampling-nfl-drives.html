@@ -15,7 +15,7 @@ header:
 
 
 
-<p><em>How do you estimate outcomes under a set of rules that don’t (yet) exist?</em></p>
+<p><strong>How do you estimate outcomes under a set of rules that don’t (yet) exist?</strong></p>
 <p>In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.</p>
 <div id="background" class="section level2">
 <h2>Background</h2>
@@ -114,7 +114,7 @@ for (i in 1:n.sim){
 <p><img src="/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>How’s this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the <a href="https://twitter.com/StatsbyLopez/status/1118236788974342146">game</a>. In other words, the <em>need</em> to score a touchdown increases a team’s chance of scoring that touchdown by about a factor of 1.5.</p>
 <p>But wait, there’s more.</p>
-<p>The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30% I got above.</p>
-<p>For now, hopefully this gives you a sense of how resampling can help project rules in NFL games that don’t exist. In our case, we sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work.</p>
+<p>The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30% I got above. Additionally, changes to the game (recently, more passing) and potential changes in third-down behavior (perhaps teams would run more if they know they are going to go for it?) are two weaknesses that jump out in the above approach.</p>
+<p>For now, however, hopefully this gives you a sense of how resampling helped project rules in NFL games that don’t exist. In our case, we sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work.</p>
 </div>
 </div>

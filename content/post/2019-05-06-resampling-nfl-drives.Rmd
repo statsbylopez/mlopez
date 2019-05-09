@@ -13,7 +13,7 @@ header:
   image: ''
 ---
  
-*How do you estimate outcomes under a set of rules that don't (yet) exist?* 
+**How do you estimate outcomes under a set of rules that don't (yet) exist?**
 
 In this post, I'll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.
 
@@ -244,6 +244,6 @@ How's this compare to non-overtime drives? Well, teams score a touchdown on the 
 
 But wait, there's more.
 
-The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you'll likely get a rate higher than the 30% I got above. 
+The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you'll likely get a rate higher than the 30% I got above. Additionally, changes to the game (recently, more passing) and potential changes in third-down behavior (perhaps teams would run more if they know they are going to go for it?) are two weaknesses that jump out in the above approach.  
 
-For now, hopefully this gives you a sense of how resampling can help project rules in NFL games that don't exist. In our case, we sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work. 
+For now, however, hopefully this gives you a sense of how resampling helped project rules in NFL games that don't exist. In our case, we sampled from the empirical distribution of actual plays to simulate an offense moving down the field in overtime. Given the forced aggressiveness, we identified a touchdown scoring rate that we could use to better assess what could happen under a rules proposal that would change how NFL overtimes work. 
