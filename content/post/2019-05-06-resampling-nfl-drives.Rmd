@@ -28,7 +28,7 @@ Back in March, the NFL's competition committee and owners debated the merits of 
 
 Points (ii) and (iii) are key. It is not uncommon for teams to need a touchdown when trailing late, but in those situations, a number of other factors also play a role in decision making, including timeouts, team quality, and game clock. 
 
-In overtime, meanwhile, a team needing a touchdown would never punt or kick a field goal. **So how often would they score a touchdown?**
+In overtime, meanwhile, a team needing a touchdown would never punt or kick a field goal. *So how often would they score a touchdown?*
 
 ## Resampling plays
 
