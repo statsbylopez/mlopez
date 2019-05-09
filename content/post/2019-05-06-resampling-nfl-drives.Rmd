@@ -1,0 +1,252 @@
+---
+title: Resampling NFL drives
+author: 'Michael Lopez'
+date: '2019-05-06'
+slug: resampling-nfl-drives
+categories: []
+tags:
+  - resampling
+  - bootstrap
+  - NFL
+header:
+  caption: ''
+  image: ''
+---
+
+As part of the NFL's offseason, the league's competition committee and owners debated the merits of a rule change, proposed by [Kansas City](https://operations.nfl.com/updates/football-ops/2019-playing-rules-proposals/), that would allow both teams the opportunity to possess the ball at least one time in overtime. In the current rulebook, if the team possessing the ball first scores a touchdown on its opening drive, the game ends. 
+
+There were a few ways in which the league used statistics to supplement offseason conversations regarding overtime. Given that the Chiefs' amendment was tabled until 2020, it's also likely a topic that will be revisted. But in the meantime, a funky question came up on our analytics side --  
+
+**How do you estimate NFL outcomes under a set of rules that don't exist?**
+
+Kansas City's proposed format could create a scenario unlike any other in football. If the game starts with an opening drive touchdown, the receiving team would: 
+
+(i) Needs a touchdown to extend the game
+(ii) Avoid punts altogether
+(iii) Avoid field goals altogether
+(iv) Not particularly care about the clock
+
+Points (ii) and (iii) are key. It is not uncommon for teams to need a touchdown when trailing late, but in those situations, a number of other factors also play a role in decision making, including timeouts, the likelihood of getting a defensive stop after a possible punt or field goal attempt, and number of timeouts. 
+
+In overtime, meanwhile, a team needing a touchdown would never punt or kick a field goal. So how often would they score a touchdown? 
+
+## Resampling plays
+
+We'll need more granular data than drive outcomes to estimate touchdown likelihood. So, let's use plays.
+
+One possibility would be to estimate a conditional distribution of play outcomes given down, distance, and field position. That is, given play-level characteristics, estimate the likelihood of gaining certain yardage on the next play. Using that, one could build a drive simulator. 
+
+But football's not that easy. Once you modeled yardage gained, you'd realize you should have started with modeling turnover likelihood. Once you model turnover likelihood, you'd realize you should have started with penalty likelihood. And once you modeled penalty likelihood, you'd realize you should have built a model to estimate where the drive would start in the first place. Basically, a statistics version of [If you give a mouse a cookie](https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie). 
+
+In absence of building several such models, a second, simpler approach would use the observed set of plays and some resampling. That is, for each play, we'll sample from the emperical distribution of similar plays to estimate everything that would happen on that play. 
+
+Here's a version of what this looks. Given that our internal data is a slightly more enhanced than what's out there publicly, for this post I modified our code to accomodate the public play-by-play data from [nflscrapr](https://github.com/maksimhorowitz/nflscrapR). Each of these plays are stored in a data frame `df.plays`, grabbed using code [here](https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R). 
+
+### Pre-processing
+
+First, to ensure team motivations roughly fall in line with those participating in an overtime game, I'll strip the entire set of NFL plays into scrimmage plays run in one possession games, outside of the last two minutes of each half. I also drop two-point conversions, create indicator for whether a fumble or interception occured (`is.turnover`), whether an offensive (`is.td.offense`) or defensive (`is.td.defense`) touchdown occured, and add a variable for line-of-scrimmage (yards from own goal, or `yfog`). 
+
+
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+scrapr.plays <- read_csv("scrapr_plays.csv")
+
+df.scrimmage <- scrapr.plays %>% 
+  filter(play_type == "pass"|play_type == "run", half_seconds_remaining >= 120) %>% 
+  mutate(p.diff = total_home_score - total_away_score, 
+         is.two.point = grepl("TWO-POINT CONVERSION", desc), 
+         is.fumble = !is.na(fumble_recovery_1_team), 
+         is.turnover = grepl("INTERCEPTED", desc)|(is.fumble & fumble_recovery_1_team!=posteam), 
+         is.td.offense = rush_touchdown|pass_touchdown, 
+         yfog = 100 - yardline_100) %>% 
+  filter(abs(p.diff) <= 8, !is.two.point, 
+         !is.na(yards_gained))
+```
+
+### Sampling plays
+
+Next, I write a function, `sample.rp.drive.needs.TD`, to sample `df.scrimmage` based on down, distance, and line of scrimmage. The code for that is [here](https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R). Given that 1st-10 plays from midfield are similar to 1st-10 plays from, say, the 47-yard line, the sampling process gives a bit of wiggle room to increase the number of plays available at each down and distance. In this example, I use +/- 3 yards, +/- 2 yards, +/- 1 yard, and 0 yards for (1-70), (71-90), (91-97), (98-99) yards-from-own-goal intervals, respectively. I don't want to add three yards of wiggle room when a team has 3rd-goal from the one, but I'm okay sampling a 3rd-5 play from the 40 yard-line when a team is actually at the 42. To allow for larger samples of plays, 4th-down plays are treated as 3rd-downs. 
+
+```{r, echo = FALSE}
+## Initial parameters
+set.seed(0)
+sample.rp.drive.needs.TD <- function(down, yards.to.go, yards.from.own.goal) {
+  
+  down.original <- down
+  if (yards.from.own.goal <= 5){yards.from.own.goal <- 5}
+  if (down == 4 & yards.to.go >= 3){down <- 3}
+  if (yards.to.go >= 20){yards.to.go <- 20}
+  
+  if (yards.from.own.goal <= 70) {
+      data.RP <- filter(df.scrimmage, yfog <= yards.from.own.goal + 3, 
+                        yfog >= yards.from.own.goal - 3,
+                        down == down, ydstogo == yards.to.go)
+    } else if (yards.from.own.goal <= 90) {
+      data.RP <- filter(df.scrimmage, yfog >= yards.from.own.goal - 2,
+                        yfog <= yards.from.own.goal + 2,
+                        down == down, ydstogo == yards.to.go)
+    } else if (yards.from.own.goal <= 97) {
+      data.RP <- filter(df.scrimmage, yfog >= yards.from.own.goal - 1,
+                        yfog <= yards.from.own.goal + 1,
+                        down == down, ydstogo == yards.to.go)
+    } else {
+      data.RP <- filter(df.scrimmage, yfog == yards.from.own.goal,
+                        down == down, ydstogo == yards.to.go)
+    }
+    sim.RP <- sample_n(data.RP, 1)
+    yds.gained <- sim.RP$yards_gained
+    new.yfog <- yards.from.own.goal + yds.gained
+    new.down <- ifelse(yds.gained >= yards.to.go, 1, down.original + 1)
+    new.distance <- ifelse(yds.gained >= yards.to.go & new.yfog <= 90, 10, 
+                           ifelse(yds.gained >= yards.to.go & new.yfog > 90, 100-new.yfog, 
+                                  yards.to.go - yds.gained))
+    if (new.distance <= 0){new.distance <- 1} 
+    if (new.yfog >= 100){new.yfog <- 99}
+    keep.drive <- data.frame(down.original, yards.to.go, yards.from.own.goal, 
+                             yds.gained, play = sim.RP$desc, new.yfog, new.down, new.distance, 
+                             is.turnover = sim.RP$is.turnover, 
+                             is.td.offense = sim.RP$is.td.offense, 
+                             end.drive = new.down > 4 | sim.RP$is.turnover | sim.RP$is.td.offense)
+    return(keep.drive)
+}  
+```
+
+As an example, here's the type of outcome you'd get from the function above. On one 1st-10, Mitchell Trubisky hits Taylor Gabriel for a 54-yard catch! On the next, Joe Flacco is picked off by Steve Gregory. 
+
+```{r}
+sample.play <- sample.rp.drive.needs.TD(down = 1, yards.to.go = 10, yards.from.own.goal = 25)
+sample.play$play
+sample.play <- sample.rp.drive.needs.TD(down = 1, yards.to.go = 10, yards.from.own.goal = 25)
+sample.play$play
+```
+
+### Sampling entire drives
+
+We'll want to iteratively build out drives, so that after each play, the offensive team continues to try and move down the field. After Gabriel's catch above, for example, the offense would have 1st-10 from the opponent 21-yard line. Note that for simplicity in this post, I'll assume each drive started at a team's 25-yard line -- in overtime, roughly 70% of drives start here. 
+
+The key part of the loop below is the `while()` command: we continue to sample plays until (i) a turnover (ii) an offensive touchdown or (iii) a team goes for it on 4th-down and fails, any of which would formally signal the end of the drive (`end.of.drive`). 
+
+```{r, eval = FALSE}
+set.seed(0)
+all.drives.store <- NULL
+n.sim <- 10000
+yfog.start <- 25
+for (i in 1:n.sim){
+  drive.store <- NULL
+  new.down <- 1
+  new.distance <- 10
+  new.yfog <- yfog.start
+  end.of.drive <- FALSE
+  play.num <- 1
+  while (!end.of.drive){
+    run.play <- sample.rp.drive.needs.TD(down = new.down, 
+                                         yards.to.go = new.distance, 
+                                         yards.from.own.goal = new.yfog)
+    run.play$play.num <- play.num
+    drive.store <- bind_rows(drive.store, run.play)
+    new.down <- run.play$new.down
+    new.distance <- run.play$new.distance
+    new.yfog <- run.play$new.yfog
+    end.of.drive <- run.play$end.drive
+    play.num <- play.num + 1
+    drive.store
+  }
+  i <- i + 1
+  drive.store$sim.id <- i
+  drive.store
+  
+  if (i %% 100 == 0){print(i)}
+  all.drives.store <- bind_rows(all.drives.store, drive.store)
+}
+```
+
+```{r, echo = FALSE, warning=FALSE, message = FALSE}
+#write_csv(all.drives.store, "samp.drives.csv")
+all.drives.store <- read_csv("samp.drives.csv")
+```
+
+### What a simulated drive looks like
+
+Here's one sampled drive.
+
+```{r, fig.height=5, fig.width=8, echo = FALSE}
+plot.chart.data <- all.drives.store %>% filter(sim.id == 108) 
+plot.chart.data <- plot.chart.data %>% 
+  mutate(rate.play.num = 1 - play.num/nrow(plot.chart.data))
+plot.chart.data$play <- gsub("\\(Shotgun\\)", "", plot.chart.data$play)
+plot.chart.data$play <- stringi::stri_sub(plot.chart.data$play, 8)
+ggplot() +
+  geom_segment(data = filter(plot.chart.data, abs(yds.gained) > 2), 
+               aes(x = yards.from.own.goal, xend = new.yfog, y = rate.play.num, yend = rate.play.num, colour = as.factor(down.original)), 
+               arrow = arrow(length = unit(0.03, "npc")), lwd = 1)+
+  geom_point(data = plot.chart.data, 
+               aes(x = yards.from.own.goal, y = rate.play.num, colour = as.factor(down.original)))+
+  geom_text(data = plot.chart.data, 
+             aes(x = yards.from.own.goal, y = rate.play.num, colour = as.factor(down.original), 
+                 label = play), hjust = 0, vjust = 1.4, size = 3.5)+
+  geom_text(data = plot.chart.data, 
+            aes(x = yards.from.own.goal, y = rate.play.num, colour = as.factor(down.original), 
+                label = paste0(down.original, "-", yards.to.go)), hjust = 0, vjust = -0.4, size = 3.5) + 
+  theme_classic(15) + 
+  scale_color_manual(values = c("black", "black", "black", "red"), guide = FALSE) + 
+  geom_vline(aes(xintercept = 20), lty = 2, colour = "gray45") + 
+  geom_vline(aes(xintercept = 40), lty = 2, colour = "gray45") + 
+  geom_vline(aes(xintercept = 60), lty = 2, colour = "gray45") + 
+  geom_vline(aes(xintercept = 80), lty = 2, colour = "gray45") + 
+  geom_vline(aes(xintercept = 100), lty = 1, colour = "gray45") + 
+  geom_vline(aes(xintercept = 30), lty = 2, colour = "gray45", alpha = 0.4) + 
+  geom_vline(aes(xintercept = 50), lty = 2, colour = "gray45", alpha = 0.4) + 
+  geom_vline(aes(xintercept = 70), lty = 2, colour = "gray45", alpha = 0.4) + 
+  geom_vline(aes(xintercept = 90), lty = 2, colour = "gray45", alpha = 0.4) +
+  ylim(c(-0.05, .95)) + 
+  scale_x_continuous(breaks = c(20, 40, 60, 80, 100), "Yards from own end zone", lim = c(20, 200)) + 
+  labs(title = "Sample drive", y = "", subtitle = "Bootstrapping plays via nflscrapR") +
+  theme(axis.line.y = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank())
+```
+
+What a drive! 
+
+The offense started with a Andy Dalton pass and ended with a Dez Bryant touchdown. In between -- and in what shows the importance of replicating what would happen in overtime -- the offense went for it on 4th-2 in its own territory. That play, a Mike Gillislee run, is shown in red.
+
+### Aggregating across drives
+
+So, how often would an offense score a touchdown in overtime? Here's a plot of drive outcomes -- each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives. 
+
+```{r}
+last.plays <- all.drives.store %>% group_by(sim.id) %>% slice(n())
+last.plays <- last.plays %>% 
+  ungroup() %>% 
+  mutate(drive.end = case_when(is.td.offense == TRUE ~ "Offensive TD", 
+                               is.turnover == TRUE ~ "Turnover", 
+                               TRUE ~ "Downs"))
+
+last.plays$drive.end1 <- as.numeric(as.factor(last.plays$drive.end)) + rnorm(nrow(last.plays), 0, 0.1)
+drive.sum <- last.plays %>% count(drive.end) %>% mutate(rate.sim = n/nrow(last.plays))
+drive.sum <- drive.sum %>% 
+  mutate(lab.paste = paste0(drive.end, "\n (", round(rate.sim*100, 1), "%)"))
+
+
+library(ggbeeswarm)
+ggplot(data = last.plays, 
+       mapping=aes(drive.end1, 1, colour = drive.end)) + 
+  geom_quasirandom(groupOnX = FALSE, bandwidth=.6, size = .00000004) + 
+  theme_minimal(14) + 
+  theme(panel.grid = element_blank(), axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(), 
+        plot.title = element_text(hjust = 0.5), 
+        plot.subtitle = element_text(hjust = 0.5)) + 
+  labs(title = "WHAT WOULD HAPPEN ON THE SECOND DRIVE OF OT?", 
+       subtitle = "10,000 simulations where a TD is needed", 
+       caption = "data h/t: nflscrapR") + 
+  scale_colour_brewer(palette = "Set1", guide = FALSE) + 
+  scale_x_continuous(breaks = 1:3, "", labels = drive.sum$lab.paste)
+```
+
+How's this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the [game](https://twitter.com/StatsbyLopez/status/1118236788974342146). In other words, the *need* to score a touchdown increases a team's chance of scoring that touchdown by about a factor of 1.5.
+
+But wait, there's more.
+
+The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you'll likely get a rate higher than the 30.2% I got above. 
+
+For now, hopefully this gives you a sense of how resampling can help better understand circumstances in games that don't exist. In our case, 
