@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/resampling-nfl-drives/</loc>
+      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/next-nhl-event/</loc>
       <lastmod>2019-04-19T00:00:00+00:00</lastmod>
     </url>
@@ -191,16 +200,6 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
-    
-      <loc>/post/</loc>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <xhtml:link rel="alternate" href="/talk/" hreflang="en"/>
     
       <loc>/talk/</loc>
@@ -214,6 +213,16 @@
       <xhtml:link rel="alternate" href="/talk/" hreflang="en"/>
     
       <loc>/talk/</loc>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/bootstrap/</loc>
+      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -301,7 +310,7 @@
     <url>
     
       <loc>/tags/nfl/</loc>
-      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -340,10 +349,8 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/post/" hreflang="en"/>
-    
       <loc>/post/</loc>
-      <lastmod>2019-04-19T00:00:00+00:00</lastmod>
+      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -362,6 +369,16 @@
     
       <loc>/tags/r/</loc>
       <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/resampling/</loc>
+      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

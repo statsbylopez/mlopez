@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.37" />
+  <meta name="author" content="Michael Lopez">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="As part of the NFL’s offseason, the league’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime. In the current rulebook, if the team possessing the ball first scores a touchdown on its opening drive, the game ends.
+There were a few ways in which the league used statistics to supplement offseason conversations regarding overtime.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/resampling-nfl-drives/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Statsbylopez">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/resampling-nfl-drives/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@statsbylopez">
+  <meta property="twitter:creator" content="@statsbylopez">
+  
+  <meta property="og:site_name" content="Statsbylopez">
+  <meta property="og:url" content="/post/resampling-nfl-drives/">
+  <meta property="og:title" content="Resampling NFL drives | Statsbylopez">
+  <meta property="og:description" content="As part of the NFL’s offseason, the league’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime. In the current rulebook, if the team possessing the ball first scores a touchdown on its opening drive, the game ends.
+There were a few ways in which the league used statistics to supplement offseason conversations regarding overtime.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-05-06T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-05-06T00:00:00&#43;00:00">
+  
+
+  
+
+  <title>Resampling NFL drives | Statsbylopez</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/"><img src="/img/fball.jpg" alt="Statsbylopez"></a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/publication/" target="_blank" rel="noopener">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/talk/" target="_blank" rel="noopener">
+            
+            <span>Talks</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/press/" target="_blank" rel="noopener">
+            
+            <span>Press</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="http://statsbylopez.netlify.com/articles/" target="_blank" rel="noopener">
+            
+            <span>Articles</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Resampling NFL drives</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2019-05-06 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      May 6, 2019
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Michael Lopez">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Resampling%20NFL%20drives&amp;url=%2fpost%2fresampling-nfl-drives%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fresampling-nfl-drives%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Resampling%20NFL%20drives"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Resampling%20NFL%20drives"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Resampling%20NFL%20drives&amp;body=%2fpost%2fresampling-nfl-drives%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>As part of the NFL’s offseason, the league’s competition committee and owners debated the merits of a rule change, proposed by <a href="https://operations.nfl.com/updates/football-ops/2019-playing-rules-proposals/">Kansas City</a>, that would allow both teams the opportunity to possess the ball at least one time in overtime. In the current rulebook, if the team possessing the ball first scores a touchdown on its opening drive, the game ends.</p>
+<p>There were a few ways in which the league used statistics to supplement offseason conversations regarding overtime. Given that the Chiefs’ amendment was tabled until 2020, it’s also likely a topic that will be revisted. But in the meantime, a funky question came up on our analytics side –</p>
+<p><strong>How do you estimate NFL outcomes under a set of rules that don’t exist?</strong></p>
+<p>Kansas City’s proposed format could create a scenario unlike any other in football. If the game starts with an opening drive touchdown, the receiving team would:</p>
+<ol style="list-style-type: lower-roman">
+<li>Needs a touchdown to extend the game</li>
+<li>Avoid punts altogether</li>
+<li>Avoid field goals altogether</li>
+<li>Not particularly care about the clock</li>
+</ol>
+<p>Points (ii) and (iii) are key. It is not uncommon for teams to need a touchdown when trailing late, but in those situations, a number of other factors also play a role in decision making, including timeouts, the likelihood of getting a defensive stop after a possible punt or field goal attempt, and number of timeouts.</p>
+<p>In overtime, meanwhile, a team needing a touchdown would never punt or kick a field goal. So how often would they score a touchdown?</p>
+<div id="resampling-plays" class="section level2">
+<h2>Resampling plays</h2>
+<p>We’ll need more granular data than drive outcomes to estimate touchdown likelihood. So, let’s use plays.</p>
+<p>One possibility would be to estimate a conditional distribution of play outcomes given down, distance, and field position. That is, given play-level characteristics, estimate the likelihood of gaining certain yardage on the next play. Using that, one could build a drive simulator.</p>
+<p>But football’s not that easy. Once you modeled yardage gained, you’d realize you should have started with modeling turnover likelihood. Once you model turnover likelihood, you’d realize you should have started with penalty likelihood. And once you modeled penalty likelihood, you’d realize you should have built a model to estimate where the drive would start in the first place. Basically, a statistics version of <a href="https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie">If you give a mouse a cookie</a>.</p>
+<p>In absence of building several such models, a second, simpler approach would use the observed set of plays and some resampling. That is, for each play, we’ll sample from the emperical distribution of similar plays to estimate everything that would happen on that play.</p>
+<p>Here’s a version of what this looks. Given that our internal data is a slightly more enhanced than what’s out there publicly, for this post I modified our code to accomodate the public play-by-play data from <a href="https://github.com/maksimhorowitz/nflscrapR">nflscrapr</a>. Each of these plays are stored in a data frame <code>df.plays</code>, grabbed using code <a href="https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R">here</a>.</p>
+<div id="pre-processing" class="section level3">
+<h3>Pre-processing</h3>
+<p>First, to ensure team motivations roughly fall in line with those participating in an overtime game, I’ll strip the entire set of NFL plays into scrimmage plays run in one possession games, outside of the last two minutes of each half. I also drop two-point conversions, create indicator for whether a fumble or interception occured (<code>is.turnover</code>), whether an offensive (<code>is.td.offense</code>) or defensive (<code>is.td.defense</code>) touchdown occured, and add a variable for line-of-scrimmage (yards from own goal, or <code>yfog</code>).</p>
+<pre class="r"><code>library(tidyverse)
+scrapr.plays &lt;- read_csv(&quot;scrapr_plays.csv&quot;)
+
+df.scrimmage &lt;- scrapr.plays %&gt;% 
+  filter(play_type == &quot;pass&quot;|play_type == &quot;run&quot;, half_seconds_remaining &gt;= 120) %&gt;% 
+  mutate(p.diff = total_home_score - total_away_score, 
+         is.two.point = grepl(&quot;TWO-POINT CONVERSION&quot;, desc), 
+         is.fumble = !is.na(fumble_recovery_1_team), 
+         is.turnover = grepl(&quot;INTERCEPTED&quot;, desc)|(is.fumble &amp; fumble_recovery_1_team!=posteam), 
+         is.td.offense = rush_touchdown|pass_touchdown, 
+         yfog = 100 - yardline_100) %&gt;% 
+  filter(abs(p.diff) &lt;= 8, !is.two.point, 
+         !is.na(yards_gained))</code></pre>
+</div>
+<div id="sampling-plays" class="section level3">
+<h3>Sampling plays</h3>
+<p>Next, I write a function, <code>sample.rp.drive.needs.TD</code>, to sample <code>df.scrimmage</code> based on down, distance, and line of scrimmage. The code for that is <a href="https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R">here</a>. Given that 1st-10 plays from midfield are similar to 1st-10 plays from, say, the 47-yard line, the sampling process gives a bit of wiggle room to increase the number of plays available at each down and distance. In this example, I use +/- 3 yards, +/- 2 yards, +/- 1 yard, and 0 yards for (1-70), (71-90), (91-97), (98-99) yards-from-own-goal intervals, respectively. I don’t want to add three yards of wiggle room when a team has 3rd-goal from the one, but I’m okay sampling a 3rd-5 play from the 40 yard-line when a team is actually at the 42. To allow for larger samples of plays, 4th-down plays are treated as 3rd-downs.</p>
+<p>As an example, here’s the type of outcome you’d get from the function above. On one 1st-10, Mitchell Trubisky hits Taylor Gabriel for a 54-yard catch! On the next, Joe Flacco is picked off by Steve Gregory.</p>
+<pre class="r"><code>sample.play &lt;- sample.rp.drive.needs.TD(down = 1, yards.to.go = 10, yards.from.own.goal = 25)
+sample.play$play</code></pre>
+<pre><code>## [1] (7:50) (Shotgun) M.Trubisky pass deep left to T.Gabriel to MIA 21 for 54 yards (T.McTyer).
+## Levels: (7:50) (Shotgun) M.Trubisky pass deep left to T.Gabriel to MIA 21 for 54 yards (T.McTyer).</code></pre>
+<pre class="r"><code>sample.play &lt;- sample.rp.drive.needs.TD(down = 1, yards.to.go = 10, yards.from.own.goal = 25)
+sample.play$play</code></pre>
+<pre><code>## [1] (7:42) J.Flacco pass deep middle intended for D.Pitta INTERCEPTED by S.Gregory at BAL 42. S.Gregory to BAL 6 for 36 yards (R.Rice).
+## Levels: (7:42) J.Flacco pass deep middle intended for D.Pitta INTERCEPTED by S.Gregory at BAL 42. S.Gregory to BAL 6 for 36 yards (R.Rice).</code></pre>
+</div>
+<div id="sampling-entire-drives" class="section level3">
+<h3>Sampling entire drives</h3>
+<p>We’ll want to iteratively build out drives, so that after each play, the offensive team continues to try and move down the field. After Gabriel’s catch above, for example, the offense would have 1st-10 from the opponent 21-yard line. Note that for simplicity in this post, I’ll assume each drive started at a team’s 25-yard line – in overtime, roughly 70% of drives start here.</p>
+<p>The key part of the loop below is the <code>while()</code> command: we continue to sample plays until (i) a turnover (ii) an offensive touchdown or (iii) a team goes for it on 4th-down and fails, any of which would formally signal the end of the drive (<code>end.of.drive</code>).</p>
+<pre class="r"><code>set.seed(0)
+all.drives.store &lt;- NULL
+n.sim &lt;- 10000
+yfog.start &lt;- 25
+for (i in 1:n.sim){
+  drive.store &lt;- NULL
+  new.down &lt;- 1
+  new.distance &lt;- 10
+  new.yfog &lt;- yfog.start
+  end.of.drive &lt;- FALSE
+  play.num &lt;- 1
+  while (!end.of.drive){
+    run.play &lt;- sample.rp.drive.needs.TD(down = new.down, 
+                                         yards.to.go = new.distance, 
+                                         yards.from.own.goal = new.yfog)
+    run.play$play.num &lt;- play.num
+    drive.store &lt;- bind_rows(drive.store, run.play)
+    new.down &lt;- run.play$new.down
+    new.distance &lt;- run.play$new.distance
+    new.yfog &lt;- run.play$new.yfog
+    end.of.drive &lt;- run.play$end.drive
+    play.num &lt;- play.num + 1
+    drive.store
+  }
+  i &lt;- i + 1
+  drive.store$sim.id &lt;- i
+  drive.store
+  
+  if (i %% 100 == 0){print(i)}
+  all.drives.store &lt;- bind_rows(all.drives.store, drive.store)
+}</code></pre>
+</div>
+<div id="what-a-simulated-drive-looks-like" class="section level3">
+<h3>What a simulated drive looks like</h3>
+<p>Here’s one sampled drive.</p>
+<p><img src="/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p>What a drive!</p>
+<p>The offense started with a Andy Dalton pass and ended with a Dez Bryant touchdown. In between – and in what shows the importance of replicating what would happen in overtime – the offense went for it on 4th-2 in its own territory. That play, a Mike Gillislee run, is shown in red.</p>
+</div>
+<div id="aggregating-across-drives" class="section level3">
+<h3>Aggregating across drives</h3>
+<p>So, how often would an offense score a touchdown in overtime? Here’s a plot of drive outcomes – each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives.</p>
+<pre class="r"><code>last.plays &lt;- all.drives.store %&gt;% group_by(sim.id) %&gt;% slice(n())
+last.plays &lt;- last.plays %&gt;% 
+  ungroup() %&gt;% 
+  mutate(drive.end = case_when(is.td.offense == TRUE ~ &quot;Offensive TD&quot;, 
+                               is.turnover == TRUE ~ &quot;Turnover&quot;, 
+                               TRUE ~ &quot;Downs&quot;))
+
+last.plays$drive.end1 &lt;- as.numeric(as.factor(last.plays$drive.end)) + rnorm(nrow(last.plays), 0, 0.1)
+drive.sum &lt;- last.plays %&gt;% count(drive.end) %&gt;% mutate(rate.sim = n/nrow(last.plays))
+drive.sum &lt;- drive.sum %&gt;% 
+  mutate(lab.paste = paste0(drive.end, &quot;\n (&quot;, round(rate.sim*100, 1), &quot;%)&quot;))
+
+
+library(ggbeeswarm)
+ggplot(data = last.plays, 
+       mapping=aes(drive.end1, 1, colour = drive.end)) + 
+  geom_quasirandom(groupOnX = FALSE, bandwidth=.6, size = .00000004) + 
+  theme_minimal(14) + 
+  theme(panel.grid = element_blank(), axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(), 
+        plot.title = element_text(hjust = 0.5), 
+        plot.subtitle = element_text(hjust = 0.5)) + 
+  labs(title = &quot;WHAT WOULD HAPPEN ON THE SECOND DRIVE OF OT?&quot;, 
+       subtitle = &quot;10,000 simulations where a TD is needed&quot;, 
+       caption = &quot;data h/t: nflscrapR&quot;) + 
+  scale_colour_brewer(palette = &quot;Set1&quot;, guide = FALSE) + 
+  scale_x_continuous(breaks = 1:3, &quot;&quot;, labels = drive.sum$lab.paste)</code></pre>
+<p><img src="/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>How’s this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the <a href="https://twitter.com/StatsbyLopez/status/1118236788974342146">game</a>. In other words, the <em>need</em> to score a touchdown increases a team’s chance of scoring that touchdown by about a factor of 1.5.</p>
+<p>But wait, there’s more.</p>
+<p>The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30.2% I got above.</p>
+<p>For now, hopefully this gives you a sense of how resampling can help better understand circumstances in games that don’t exist. In our case,</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/resampling">resampling</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/bootstrap">bootstrap</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/nfl">NFL</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/nfl-team-logos-using-ggimage/">NFL team logos using ggimage</a></li>
+        
+        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
+        
+        <li><a href="/post/part-i-randomness-of-games/">Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</a></li>
+        
+        <li><a href="/post/playing-at-home/">Part III: Rocky Mountain High (the benefit of playing at home)</a></li>
+        
+        <li><a href="/post/part-ii-randomness-of-series/">Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
