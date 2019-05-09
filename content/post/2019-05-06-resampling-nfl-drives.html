@@ -1,5 +1,5 @@
 ---
-title: Resampling NFL drives
+title: Estimating NFL outcomes under rules that don't exist
 author: 'Michael Lopez'
 date: '2019-05-06'
 slug: resampling-nfl-drives
@@ -15,17 +15,15 @@ header:
 
 
 
-<p>As part of the NFL’s offseason, the league’s competition committee and owners debated the merits of a rule change, proposed by <a href="https://operations.nfl.com/updates/football-ops/2019-playing-rules-proposals/">Kansas City</a>, that would allow both teams the opportunity to possess the ball at least one time in overtime. In the current rulebook, if the team possessing the ball first scores a touchdown on its opening drive, the game ends.</p>
-<p>There were a few ways in which the league used statistics to supplement offseason conversations regarding overtime. Given that the Chiefs’ amendment was tabled until 2020, it’s also likely a topic that will be revisted. But in the meantime, a funky question came up on our analytics side –</p>
-<p><strong>How do you estimate NFL outcomes under a set of rules that don’t exist?</strong></p>
-<p>Kansas City’s proposed format could create a scenario unlike any other in football. If the game starts with an opening drive touchdown, the receiving team would:</p>
+<p>How do you estimate NFL outcomes under a set of rules that don’t exist?</p>
+<p>As part of the NFL’s offseason, the league’s competition committee and owners debated the merits of a rule change, proposed by <a href="https://operations.nfl.com/updates/football-ops/2019-playing-rules-proposals/">Kansas City</a>, that would allow both teams the opportunity to possess the ball at least one time in overtime. This create a scenario unlike any other in football. If the game starts with an opening drive touchdown, the receiving team would:</p>
 <ol style="list-style-type: lower-roman">
-<li>Needs a touchdown to extend the game</li>
-<li>Avoid punts altogether</li>
-<li>Avoid field goals altogether</li>
-<li>Not particularly care about the clock</li>
+<li>Need a touchdown to extend the game</li>
+<li>Never punt</li>
+<li>Never attempt a field goal</li>
+<li>Not care much about the clock</li>
 </ol>
-<p>Points (ii) and (iii) are key. It is not uncommon for teams to need a touchdown when trailing late, but in those situations, a number of other factors also play a role in decision making, including timeouts, the likelihood of getting a defensive stop after a possible punt or field goal attempt, and number of timeouts.</p>
+<p>Points (ii) and (iii) are key. It is not uncommon for teams to need a touchdown when trailing late, but in those situations, a number of other factors also play a role in decision making, including timeouts, team quality, and game clock.</p>
 <p>In overtime, meanwhile, a team needing a touchdown would never punt or kick a field goal. So how often would they score a touchdown?</p>
 <div id="resampling-plays" class="section level2">
 <h2>Resampling plays</h2>
