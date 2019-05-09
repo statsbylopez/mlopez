@@ -17,7 +17,7 @@
       
     
   
-  <meta name="description" content="How do you estimate outcomes under a set of rules that don’t yet exist?
+  <meta name="description" content="How do you estimate outcomes under a set of rules that don’t (yet) exist?
 In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.
 Background Back in March, the NFL’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime.">
 
@@ -80,8 +80,8 @@ Background Back in March, the NFL’s competition committee and owners debated t
   
   <meta property="og:site_name" content="Statsbylopez">
   <meta property="og:url" content="/post/resampling-nfl-drives/">
-  <meta property="og:title" content="Estimating NFL outcomes under rules that don&#39;t exist | Statsbylopez">
-  <meta property="og:description" content="How do you estimate outcomes under a set of rules that don’t yet exist?
+  <meta property="og:title" content="Estimating NFL drive outcomes under rules that don&#39;t exist | Statsbylopez">
+  <meta property="og:description" content="How do you estimate outcomes under a set of rules that don’t (yet) exist?
 In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.
 Background Back in March, the NFL’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime.">
   <meta property="og:locale" content="en-us">
@@ -93,7 +93,7 @@ Background Back in March, the NFL’s competition committee and owners debated t
 
   
 
-  <title>Estimating NFL outcomes under rules that don&#39;t exist | Statsbylopez</title>
+  <title>Estimating NFL drive outcomes under rules that don&#39;t exist | Statsbylopez</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -298,7 +298,7 @@ Background Back in March, the NFL’s competition committee and owners debated t
 
 
   <div class="article-container">
-    <h1 itemprop="name">Estimating NFL outcomes under rules that don&#39;t exist</h1>
+    <h1 itemprop="name">Estimating NFL drive outcomes under rules that don&#39;t exist</h1>
 
     
 
@@ -335,7 +335,7 @@ Background Back in March, the NFL’s competition committee and owners debated t
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Estimating%20NFL%20outcomes%20under%20rules%20that%20don%27t%20exist&amp;url=%2fpost%2fresampling-nfl-drives%2f"
+         href="https://twitter.com/intent/tweet?text=Estimating%20NFL%20drive%20outcomes%20under%20rules%20that%20don%27t%20exist&amp;url=%2fpost%2fresampling-nfl-drives%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
@@ -349,21 +349,21 @@ Background Back in March, the NFL’s competition committee and owners debated t
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Estimating%20NFL%20outcomes%20under%20rules%20that%20don%27t%20exist"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Estimating%20NFL%20drive%20outcomes%20under%20rules%20that%20don%27t%20exist"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Estimating%20NFL%20outcomes%20under%20rules%20that%20don%27t%20exist"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fresampling-nfl-drives%2f&amp;title=Estimating%20NFL%20drive%20outcomes%20under%20rules%20that%20don%27t%20exist"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Estimating%20NFL%20outcomes%20under%20rules%20that%20don%27t%20exist&amp;body=%2fpost%2fresampling-nfl-drives%2f">
+         href="mailto:?subject=Estimating%20NFL%20drive%20outcomes%20under%20rules%20that%20don%27t%20exist&amp;body=%2fpost%2fresampling-nfl-drives%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -377,7 +377,7 @@ Background Back in March, the NFL’s competition committee and owners debated t
 
 
     <div class="article-style" itemprop="articleBody">
-      <p><em>How do you estimate outcomes under a set of rules that don’t yet exist?</em></p>
+      <p><em>How do you estimate outcomes under a set of rules that don’t (yet) exist?</em></p>
 <p>In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.</p>
 <div id="background" class="section level2">
 <h2>Background</h2>
@@ -395,7 +395,7 @@ Background Back in March, the NFL’s competition committee and owners debated t
 <h2>Resampling plays</h2>
 <p>We’ll need more granular data than drive outcomes to estimate touchdown likelihood. So, let’s use plays.</p>
 <p>One possibility would be to estimate a conditional distribution of play outcomes given down, distance, and field position. That is, given play-level characteristics, estimate the likelihood of gaining certain yardage on the next play. Using that, one could build a drive simulator.</p>
-<p>But football’s not that easy. Once you modeled yardage gained, you’d realize you should have started with modeling turnover likelihood. Once you model turnover likelihood, you’d realize you should have started with penalty likelihood. And once you modeled penalty likelihood, you’d realize you should have built a model to estimate where the drive would start in the first place. Basically, a statistics version of <a href="https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie">“If you give a mouse a cookie”</a>.</p>
+<p>But football’s not that easy. Once you modeled yardage gained, you’d realize you should have started with modeling turnover likelihood. Once you model turnover likelihood, you’d realize you should have started with penalty likelihood. And once you modeled penalty likelihood, you’d realize you should have built a model to estimate where the drive would start in the first place. Basically, a statistics version of <a href="https://en.wikipedia.org/wiki/If_You_Give_a_Mouse_a_Cookie">“If you give a mouse a cookie”</a>. You could also model a joint distribution here, but, at this point, that’s an area for future work.</p>
 <p>In absence of building several such models, a second, simpler approach would use the observed set of plays and some resampling. That is, at each down, distance, and yard line, we’ll sample from the empirical distribution of similar plays to simulate a play that could happen.</p>
 <p>Here’s a version of what this looks. Given that our internal data is a slightly more enhanced than what’s out there publicly, for this post I modified our code to accomodate the public play-by-play data from <a href="https://github.com/maksimhorowitz/nflscrapR">nflscrapr</a>. Each of these plays are stored in a data frame <code>scrapr.plays</code>, grabbed using code <a href="https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R">here</a>.</p>
 <div id="pre-processing" class="section level3">
@@ -417,7 +417,7 @@ df.scrimmage &lt;- scrapr.plays %&gt;%
 </div>
 <div id="sampling-plays" class="section level3">
 <h3>Sampling plays</h3>
-<p>Next, I write a function, <code>sample.rp.drive.needs.TD</code>, to sample <code>df.scrimmage</code> based on down, distance, and line of scrimmage. The code for that is <a href="https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R">here</a>. Given that 1st-10 plays from midfield are similar to 1st-10 plays from, say, the 47-yard line, the sampling process gives a bit of wiggle room to increase the number of plays available at each down and distance. In this example, I use +/- 3 yards, +/- 2 yards, +/- 1 yard, and 0 yards for (1-70), (71-90), (91-97), and (98-99) yards-from-own-goal intervals, respectively. I don’t want to add three yards of wiggle room when a team has 3rd-goal from the one, but I’m okay sampling a 3rd-5 play from the 40 yard-line when a team is actually at the 42. To allow for larger samples of plays, 4th-down plays are treated as 3rd-downs.</p>
+<p>Next, I write a function, <code>sample.rp.drive.needs.TD</code>, to sample <code>df.scrimmage</code> based on down, distance, and line of scrimmage. The code for that is <a href="https://github.com/statsbylopez/BlogPosts/blob/master/scrapr-data.R">here</a>. Given that 1st-10 plays from midfield are similar to 1st-10 plays from, say, the 47-yard line, the sampling process gives a bit of wiggle room around yard line to increase the number of plays available at each down and distance. In this example, I use +/- 3 yards, +/- 2 yards, +/- 1 yard, and 0 yards for (1-70), (71-90), (91-97), and (98-99) yards-from-own-goal intervals, respectively. I don’t want to add three yards when a team has 3rd-goal from the one, but I’m okay sampling a 3rd-5 play from the 40 yard-line when a team is actually at the 42. To allow for larger samples of plays, 4th-down plays are treated as 3rd-downs.</p>
 <p>As an example, here’s the type of outcome you’d get from the function above. On one 1st-10, Mitchell Trubisky hits Taylor Gabriel for a 54-yard catch! On the next, Joe Flacco is picked off by Steve Gregory.</p>
 <pre class="r"><code>sample.play &lt;- sample.rp.drive.needs.TD(down = 1, yards.to.go = 10, yards.from.own.goal = 25)
 sample.play$play</code></pre>
@@ -508,13 +508,13 @@ for (i in 1:n.sim){
         
         <li><a href="/post/nfl-team-logos-using-ggimage/">NFL team logos using ggimage</a></li>
         
-        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
-        
         <li><a href="/post/part-ii-randomness-of-series/">Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</a></li>
         
-        <li><a href="/post/playing-at-home/">Part III: Rocky Mountain High (the benefit of playing at home)</a></li>
+        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
         
         <li><a href="/post/part-i-randomness-of-games/">Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</a></li>
+        
+        <li><a href="/post/playing-at-home/">Part III: Rocky Mountain High (the benefit of playing at home)</a></li>
         
       </ul>
     </div>
