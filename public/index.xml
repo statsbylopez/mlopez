@@ -316,7 +316,7 @@ df_punts_keep %&amp;gt;%
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Maps&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/hex_college.png&#34; width=&#34;550px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/hex_college.PNG&#34; width=&#34;550px&#34; /&gt;&lt;/p&gt;
 &lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Team logos with &lt;code&gt;ggimage&lt;/code&gt;: &lt;a href=&#34;https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -324,7 +324,7 @@ df_punts_keep %&amp;gt;%
 &lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Competition committee work: resampling plays to estimate overtime outcomes&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/drive_sim.png&#34; width=&#34;650px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/drive_sim.PNG&#34; width=&#34;650px&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-can-we-do-with-next-gen-stats&#34; class=&#34;section level3&#34;&gt;
@@ -428,7 +428,7 @@ play.length.ex &amp;lt;- length(unique(example.play$frame.id))
 &lt;/div&gt;
 &lt;div id=&#34;rb-locations&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;RB locations&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/bell.png&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/bell.PNG&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;big-data-bowl&#34; class=&#34;section level2&#34;&gt;
@@ -450,7 +450,7 @@ play.length.ex &amp;lt;- length(unique(example.play$frame.id))
 &lt;ul&gt;
 &lt;li&gt;SFU college:&lt;a href=&#34;https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf&#34; class=&#34;uri&#34;&gt;https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/sfu.png&#34; width=&#34;600px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/sfu.PNG&#34; width=&#34;600px&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

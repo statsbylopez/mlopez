@@ -279,7 +279,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/m
 2. Maps
 
 ```{r, echo = FALSE, out.width = "550px"}
-knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/hex_college.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/hex_college.PNG")
 ```
 
 
@@ -294,7 +294,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/m
 
 
 ```{r, echo = FALSE, out.width = "650px"}
-knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/drive_sim.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/drive_sim.PNG")
 ```
 
 
@@ -413,7 +413,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/m
 ### RB locations
 
 ```{r, echo = FALSE, out.width = "500px"}
-knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/bell.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/bell.PNG")
 ```
 
 
@@ -437,9 +437,8 @@ knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/m
 knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/burris.gif")
 ```
 
-
 - SFU college:[https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf](https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf)
 
 ```{r, echo = FALSE, out.width = "600px"}
-knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/sfu.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/sfu.PNG")
 ```
