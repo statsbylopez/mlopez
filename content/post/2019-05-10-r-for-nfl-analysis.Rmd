@@ -19,8 +19,10 @@ header:
 options(warning = FALSE, message = FALSE, eval = FALSE)
 ```
 
+As part of the NFL's technology conference held last week, I presented to club staffers various approaches on how R could be used to explore NFL data. Here's a slightly abridged version. Note that the audience featured both novice and expert R users. Given that a semester's long course would be needed to truly cover the breadth of how R could help explore football, note that this particular document is more an overview than anything else. 
 
-## Summary of today
+
+## Summary of session
 
 1. Tidyverse and NFL analytics
 
