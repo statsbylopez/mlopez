@@ -16,7 +16,7 @@
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/r-for-nfl-analysis/</guid>
-      <description>&lt;p&gt;As part of the NFL’s technology conference held last week, I presented to club staffers various approaches on how R could be used to explore NFL data. Here’s a slightly abridged version. Note that the audience featured both novice and expert R users. Given that a semester’s long course would be needed to truly cover the breadth of how R could help explore football, note that this particular document is more an overview than anything else.&lt;/p&gt;
+      <description>&lt;p&gt;As part of the NFL’s technology conference held last week, I presented to club staffers various approaches on how R could be used to explore NFL data. Here’s a slightly abridged version. This specific audience featured both novice and expert R users. Given that a semester’s long course would be needed to truly cover the breadth of how R could help explore football, note that this particular document is more an overview than anything else. Finally, most of the code is not meant to be run from an outsiders’ perspective, and instead uses a few internal databases. I’m sharing publicly in case it spurs any ideas for analysis or visualization.&lt;/p&gt;
 &lt;div id=&#34;summary-of-session&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary of session&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
