@@ -11,6 +11,451 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R for NFL analysis</title>
+      <link>/post/r-for-nfl-analysis/</link>
+      <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-for-nfl-analysis/</guid>
+      <description>&lt;div id=&#34;summary-of-today&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Summary of today&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Tidyverse and NFL analytics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sample visualizations using &lt;code&gt;ggplot2&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Big Data Bowl insight&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidyverse-and-nfl-analytics&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidyverse and NFL analytics&lt;/h2&gt;
+&lt;div id=&#34;packages&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Packages&lt;/h3&gt;
+&lt;p&gt;Favorite packages to use for manipulation, tidying, data viz, analysis&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;tidyverse&lt;/code&gt; : Data manipulation and graphing&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lubridate&lt;/code&gt; : Handling dates&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggbeeswarm&lt;/code&gt; : Fun plots&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggridges&lt;/code&gt; : Fun plots&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gganimate&lt;/code&gt; : Fun animations&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tidyr&lt;/code&gt; : Tidy data (wide to long/long to wide)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nflscrapr&lt;/code&gt; : Public win probabilities and expected points&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;caret&lt;/code&gt; : Machine learning tools&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lme4&lt;/code&gt; : Statistical modeling&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;teamcolors&lt;/code&gt;: Team specific hex codes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install.packages(&amp;quot;tidyverse&amp;quot;)
+library(tidyverse) 
+library(lubridate) 
+library(beeswarm)  
+library(gganimate) 
+library(ggridges)  
+library(tidyr)     &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reading-in-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Reading in data&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+df_games &amp;lt;- read_csv(&amp;quot;prodb/dbo.Game.csv&amp;quot;)
+df_plays &amp;lt;- read_csv(&amp;quot;prodb/dbo.VideoDirectorReport.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;joining-data-sets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Joining data sets&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Online cheat-sheet&lt;/em&gt;: &lt;a href=&#34;https://stat545.com/bit001_dplyr-cheatsheet.html&#34; class=&#34;uri&#34;&gt;https://stat545.com/bit001_dplyr-cheatsheet.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;left_join&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;inner_join&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;right_join&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;anti_join&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-manipulation-using-the-tidyverse&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Data manipulation using the tidyverse&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Online cheat-sheet&lt;/em&gt;: &lt;a href=&#34;https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Key commands:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;select()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;head()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tail()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;filter()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep &amp;lt;- df_plays %&amp;gt;% 
+  filter(HomeTeamFile == 1) %&amp;gt;% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, 
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+df_games &amp;lt;- df_games %&amp;gt;% select(GameKey, Season, Season_Type, Week, LeagueType)
+
+df_plays_keep &amp;lt;- df_plays_keep %&amp;gt;% left_join(df_games, by = c(&amp;quot;GameKey&amp;quot; = &amp;quot;GameKey&amp;quot;))
+df_plays_keep %&amp;gt;% head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;chr&amp;gt;             &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         
+## 1     745 TEN          PIT                   2 TEN           
+## 2     745 TEN          PIT                   2 TEN           
+## 3     745 TEN          PIT                   4 PIT           
+## 4     745 TEN          PIT                   4 PIT           
+## 5     745 TEN          PIT                   4 PIT           
+## 6     745 TEN          PIT                   4 PIT           
+## # … with 10 more variables: PlayNullifiedByPenalty &amp;lt;chr&amp;gt;,
+## #   SpecialTeamsPlayType &amp;lt;chr&amp;gt;, PlayResult &amp;lt;int&amp;gt;, Down &amp;lt;int&amp;gt;,
+## #   Distance &amp;lt;int&amp;gt;, PlayDescription &amp;lt;chr&amp;gt;, Season &amp;lt;int&amp;gt;,
+## #   Season_Type &amp;lt;chr&amp;gt;, Week &amp;lt;int&amp;gt;, LeagueType &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% tail()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;chr&amp;gt;             &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         
+## 1   57464 NE           BUF                   3 BUF           
+## 2   57469 SF           JAX                   2 JAX           
+## 3   57466 NYJ          LAC                   1 LAC           
+## 4   57462 CIN          DET                   4 DET           
+## 5   57442 IND          DEN                   4 DEN           
+## 6   57467 TEN          LA                    4 LA            
+## # … with 10 more variables: PlayNullifiedByPenalty &amp;lt;chr&amp;gt;,
+## #   SpecialTeamsPlayType &amp;lt;chr&amp;gt;, PlayResult &amp;lt;int&amp;gt;, Down &amp;lt;int&amp;gt;,
+## #   Distance &amp;lt;int&amp;gt;, PlayDescription &amp;lt;chr&amp;gt;, Season &amp;lt;int&amp;gt;,
+## #   Season_Type &amp;lt;chr&amp;gt;, Week &amp;lt;int&amp;gt;, LeagueType &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;More &lt;code&gt;filter()&lt;/code&gt;: Categorical variables&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% 
+  filter(Down == 4, Quarter == 1, Distance == 12, 
+         PlayNullifiedByPenalty == &amp;quot;N&amp;quot;, SpecialTeamsPlayType == &amp;quot;NULL&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;chr&amp;gt;             &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         
+## 1   26558 NE           BUF                   1 BUF           
+## 2   29406 CLV          BUF                   1 BUF           
+## 3   54993 CIN          NO                    1 CIN           
+## 4   29772 GB           DET                   1 GB            
+## # … with 10 more variables: PlayNullifiedByPenalty &amp;lt;chr&amp;gt;,
+## #   SpecialTeamsPlayType &amp;lt;chr&amp;gt;, PlayResult &amp;lt;int&amp;gt;, Down &amp;lt;int&amp;gt;,
+## #   Distance &amp;lt;int&amp;gt;, PlayDescription &amp;lt;chr&amp;gt;, Season &amp;lt;int&amp;gt;,
+## #   Season_Type &amp;lt;chr&amp;gt;, Week &amp;lt;int&amp;gt;, LeagueType &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep &amp;lt;- df_plays_keep  %&amp;gt;% 
+  filter(Season_Type == &amp;quot;Reg&amp;quot;, Season &amp;gt;= 2005, Season &amp;lt;= 2018, LeagueType == &amp;quot;NFL&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;What data set did we create?&lt;/strong&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;arrange()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% 
+  filter(PossessionTeam == &amp;quot;MIN&amp;quot;, Season == 2018) %&amp;gt;% 
+  arrange(-PlayResult) %&amp;gt;% 
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;chr&amp;gt;             &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         
+## 1   57812 MIN          CHI                   2 MIN           
+## 2   57586 GB           MIN                   4 MIN           
+## 3   57607 MIN          BUF                   2 MIN           
+## 4   57694 MIN          DET                   2 MIN           
+## 5   57640 PHI          MIN                   3 MIN           
+## 6   57668 NYJ          MIN                   3 MIN           
+## # … with 10 more variables: PlayNullifiedByPenalty &amp;lt;chr&amp;gt;,
+## #   SpecialTeamsPlayType &amp;lt;chr&amp;gt;, PlayResult &amp;lt;int&amp;gt;, Down &amp;lt;int&amp;gt;,
+## #   Distance &amp;lt;int&amp;gt;, PlayDescription &amp;lt;chr&amp;gt;, Season &amp;lt;int&amp;gt;,
+## #   Season_Type &amp;lt;chr&amp;gt;, Week &amp;lt;int&amp;gt;, LeagueType &amp;lt;chr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;What plays are these?&lt;/strong&gt;?&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;mutate()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep &amp;lt;- df_plays_keep %&amp;gt;% 
+  mutate(is_first_down = PlayResult &amp;gt;= Distance, 
+         scrimmage_play = SpecialTeamsPlayType == &amp;quot;NULL&amp;quot;)
+
+df_plays_keep %&amp;gt;% 
+  filter(PossessionTeam == &amp;quot;MIN&amp;quot;, Season == 2018, Down == 4, scrimmage_play, Quarter == 1) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 4 x 17
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;        &amp;lt;chr&amp;gt;             &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt;         
+## 1   57694 MIN          DET                   1 MIN           
+## 2   57686 MIN          NO                    1 MIN           
+## 3   57741 MIN          GB                    1 MIN           
+## 4   57651 MIN          ARZ                   1 MIN           
+## # … with 12 more variables: PlayNullifiedByPenalty &amp;lt;chr&amp;gt;,
+## #   SpecialTeamsPlayType &amp;lt;chr&amp;gt;, PlayResult &amp;lt;int&amp;gt;, Down &amp;lt;int&amp;gt;,
+## #   Distance &amp;lt;int&amp;gt;, PlayDescription &amp;lt;chr&amp;gt;, Season &amp;lt;int&amp;gt;,
+## #   Season_Type &amp;lt;chr&amp;gt;, Week &amp;lt;int&amp;gt;, LeagueType &amp;lt;chr&amp;gt;, is_first_down &amp;lt;lgl&amp;gt;,
+## #   scrimmage_play &amp;lt;lgl&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;What do these four plays represent?&lt;/strong&gt;&lt;/p&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;group_by()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;summarize()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% 
+  filter(scrimmage_play, Season == 2018) %&amp;gt;% 
+  group_by(PossessionTeam) %&amp;gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&amp;gt;% 
+  arrange(-ave_yds_gained) %&amp;gt;% 
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 2
+##   PossessionTeam ave_yds_gained
+##   &amp;lt;chr&amp;gt;                   &amp;lt;dbl&amp;gt;
+## 1 KC                       6.25
+## 2 LA                       6.04
+## 3 ATL                      5.78
+## 4 PIT                      5.76
+## 5 TB                       5.70
+## 6 LAC                      5.67&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Identify the leaderboard above&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% 
+  filter(scrimmage_play) %&amp;gt;% 
+  group_by(PossessionTeam, Season) %&amp;gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&amp;gt;% 
+  arrange(-ave_yds_gained) %&amp;gt;% 
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season ave_yds_gained
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;          &amp;lt;dbl&amp;gt;
+## 1 ATL              2016           6.29
+## 2 NO               2011           6.26
+## 3 KC               2018           6.25
+## 4 GB               2011           6.08
+## 5 LA               2018           6.04
+## 6 ARZ              2015           5.96&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Identify the leaderboard above&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_plays_keep %&amp;gt;% 
+  filter(scrimmage_play) %&amp;gt;% 
+  group_by(PossessionTeam, Season) %&amp;gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&amp;gt;% 
+  arrange(-ave_yds_gained) %&amp;gt;% 
+  tail()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 3
+## # Groups:   PossessionTeam [5]
+##   PossessionTeam Season ave_yds_gained
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;          &amp;lt;dbl&amp;gt;
+## 1 HST              2005           3.81
+## 2 CIN              2008           3.80
+## 3 ARZ              2012           3.74
+## 4 SF               2005           3.61
+## 5 SF               2007           3.59
+## 6 OAK              2006           3.50&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Identify the leaderboard above&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data visualization&lt;/h2&gt;
+&lt;div id=&#34;sample-q1-how-often-do-teams-go-for-it-on-4th-short-in-each-season&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Sample Q1: How often do teams go for it on 4th-short in each season?&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fourth_down_rates &amp;lt;- df_plays_keep %&amp;gt;% 
+  filter(Down == 4, Distance &amp;lt;= 2) %&amp;gt;% 
+  group_by(PossessionTeam, Season) %&amp;gt;% 
+  summarise(go_forit_rate = mean(scrimmage_play), 
+            n_chances = n())
+
+
+fourth_down_rates %&amp;gt;% 
+  arrange(-go_forit_rate) %&amp;gt;% 
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season go_forit_rate n_chances
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;     &amp;lt;int&amp;gt;
+## 1 JAX              2013         0.692        26
+## 2 BUF              2018         0.688        16
+## 3 NE               2007         0.682        22
+## 4 CLV              2017         0.667        15
+## 5 MIN              2018         0.654        26
+## 6 BLT              2018         0.65         20&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fourth_down_rates %&amp;gt;% 
+  arrange(go_forit_rate) %&amp;gt;% 
+  head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 4
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season go_forit_rate n_chances
+##   &amp;lt;chr&amp;gt;           &amp;lt;int&amp;gt;         &amp;lt;dbl&amp;gt;     &amp;lt;int&amp;gt;
+## 1 BUF              2012        0.05          20
+## 2 CIN              2007        0.0526        19
+## 3 SL               2015        0.0588        17
+## 4 CAR              2006        0.0714        28
+## 5 ATL              2012        0.0938        32
+## 6 MIN              2005        0.1           30&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggbeeswarm)
+fourth_down_rates %&amp;gt;% 
+  ggplot(aes(x = Season, y = go_forit_rate, fill = go_forit_rate)) + 
+  geom_quasirandom(pch = 21, size = 3) + 
+  scale_fill_viridis_c(&amp;quot;&amp;quot;,  guide = FALSE) + 
+  theme_classic(15) +  
+  scale_x_continuous(labels = 2005:2018, breaks = 2005:2018) + 
+  scale_y_continuous(labels = scales::percent) + 
+  labs(title = &amp;quot;Go-for-it rate, 4th-1 or 4th-2&amp;quot;, y = &amp;quot;&amp;quot;, x = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sample-q2-whats-going-on-on-the-punt-play&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Sample Q2: What’s going on on the punt play?&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_punts_keep &amp;lt;- df_plays %&amp;gt;% 
+  filter(HomeTeamFile == 1, SpecialTeamsPlayType == &amp;quot;Punt&amp;quot;|SpecialTeamsPlayType == &amp;quot;Punt Return&amp;quot;) %&amp;gt;% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, KickoffResult,
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+
+df_punts_keep &amp;lt;- df_punts_keep %&amp;gt;% left_join(df_games, by = c(&amp;quot;GameKey&amp;quot; = &amp;quot;GameKey&amp;quot;))
+
+## Penalty rate on punt plays using `grepl`
+df_punts_keep %&amp;gt;% 
+  mutate(is_penalty = grepl(&amp;quot;PENALTY&amp;quot;, PlayDescription)) %&amp;gt;% 
+  summarise(p_rate = mean(is_penalty))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 1
+##   p_rate
+##    &amp;lt;dbl&amp;gt;
+## 1  0.138&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_punts_keep %&amp;gt;% 
+  filter(Season &amp;gt;= 2001) %&amp;gt;% 
+  ggplot(aes(Season, fill = KickoffResult)) + 
+  geom_bar(position = &amp;quot;fill&amp;quot;) + 
+  scale_fill_brewer(palette = &amp;quot;Set1&amp;quot;) + 
+  scale_y_continuous(labels = scales::percent, &amp;quot;Rate&amp;quot;) + 
+  labs(title = &amp;quot;Punt outcomes over time&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-charts-of-interest&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Other charts of interest&lt;/h3&gt;
+&lt;div id=&#34;examples-from-league-office&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Examples from league office&lt;/h4&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Tyler Lockett funnel plot&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/lockett.png&#34; width=&#34;550px&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Maps&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/hex_college.PNG&#34; width=&#34;550px&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Team logos with &lt;code&gt;ggimage&lt;/code&gt;: &lt;a href=&#34;https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/ggimage.png&#34; width=&#34;550px&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Competition committee work: resampling plays to estimate overtime outcomes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/drive_sim.PNG&#34; width=&#34;650px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-can-we-do-with-next-gen-stats&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What can we do with Next Gen Stats?&lt;/h3&gt;
+&lt;p&gt;General processes for NGS data&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Start small. Identify play-type of interest and find 5-10 examples using &lt;code&gt;playId&lt;/code&gt;/&lt;code&gt;gameId&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Scrape data using &lt;a href=&#34;https://docs.ngs.nfl.com&#34; class=&#34;uri&#34;&gt;https://docs.ngs.nfl.com&lt;/a&gt; and personal credentials&lt;/li&gt;
+&lt;li&gt;Build animation/summary metrics within the sample of plays&lt;/li&gt;
+&lt;li&gt;Re-center data using &lt;code&gt;playDirection&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Re-orgin data using location where (player/ball) started&lt;/li&gt;
+&lt;li&gt;Cross-check with video&lt;/li&gt;
+&lt;li&gt;Expand across larger sample of plays&lt;/li&gt;
+&lt;li&gt;Sample large sample of plays to cross-check for accuracy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;play-animation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Play animation&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;file_tracking &amp;lt;- &amp;quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/tracking_gameId_2017090700.csv&amp;quot;
+tracking_example &amp;lt;- read_csv(file_tracking)
+
+file_game &amp;lt;- &amp;quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/games.csv&amp;quot;
+games_sum &amp;lt;- read_csv(file_game) 
+
+file_plays &amp;lt;- &amp;quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/plays.csv&amp;quot;
+plays_sum &amp;lt;- read_csv(file_plays) 
+
+tracking_example_merged &amp;lt;- tracking_example %&amp;gt;% inner_join(games_sum) %&amp;gt;% inner_join(plays_sum) 
+
+example_play &amp;lt;- tracking_example_merged %&amp;gt;% filter(playId == 938)
+example_play %&amp;gt;% select(playDescription) %&amp;gt;% slice(1)
+
+library(gganimate)
+library(cowplot)
+
+## General field boundaries
+xmin &amp;lt;- 0
+xmax &amp;lt;- 160/3
+hash.right &amp;lt;- 38.35
+hash.left &amp;lt;- 12
+hash.width &amp;lt;- 3.3
+
+
+## Specific boundaries for a given play
+ymin &amp;lt;- max(round(min(example_play$x, na.rm = TRUE) - 10, -1), 0)
+ymax &amp;lt;- min(round(max(example_play$x, na.rm = TRUE) + 10, -1), 120)
+df_hash &amp;lt;- expand.grid(x = c(0, 23.36667, 29.96667, xmax), y = (10:110))
+df_hash &amp;lt;- df_hash %&amp;gt;% filter(!(floor(y %% 5) == 0))
+df_hash &amp;lt;- df_hash %&amp;gt;% filter(y &amp;lt; ymax, y &amp;gt; ymin)
+
+animate_play &amp;lt;- ggplot() +
+  scale_size_manual(values = c(6, 4, 6), guide = FALSE) + 
+  scale_shape_manual(values = c(21, 16, 21), guide = FALSE) +
+  scale_fill_manual(values = c(&amp;quot;#e31837&amp;quot;, &amp;quot;#654321&amp;quot;, &amp;quot;#002244&amp;quot;), guide = FALSE) + 
+  scale_colour_manual(values = c(&amp;quot;black&amp;quot;, &amp;quot;#654321&amp;quot;, &amp;quot;#c60c30&amp;quot;), guide = FALSE) + 
+  annotate(&amp;quot;text&amp;quot;, x = df_hash$x[df_hash$x &amp;lt; 55/2], 
+           y = df_hash$y[df_hash$x &amp;lt; 55/2], label = &amp;quot;_&amp;quot;, hjust = 0, vjust = -0.2) + 
+  annotate(&amp;quot;text&amp;quot;, x = df_hash$x[df_hash$x &amp;gt; 55/2], 
+           y = df_hash$y[df_hash$x &amp;gt; 55/2], label = &amp;quot;_&amp;quot;, hjust = 1, vjust = -0.2) + 
+  annotate(&amp;quot;segment&amp;quot;, x = xmin, 
+           y = seq(max(10, ymin), min(ymax, 110), by = 5), 
+           xend =  xmax, 
+           yend = seq(max(10, ymin), min(ymax, 110), by = 5)) + 
+  annotate(&amp;quot;text&amp;quot;, x = rep(hash.left, 11), y = seq(10, 110, by = 10), 
+                    label = c(&amp;quot;G   &amp;quot;, seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), &amp;quot;   G&amp;quot;), 
+                    angle = 270, size = 4) + 
+  annotate(&amp;quot;text&amp;quot;, x = rep((xmax - hash.left), 11), y = seq(10, 110, by = 10), 
+           label = c(&amp;quot;   G&amp;quot;, seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), &amp;quot;G   &amp;quot;), 
+           angle = 90, size = 4) + 
+  annotate(&amp;quot;segment&amp;quot;, x = c(xmin, xmin, xmax, xmax), 
+           y = c(ymin, ymax, ymax, ymin), 
+           xend = c(xmin, xmax, xmax, xmin), 
+           yend = c(ymax, ymax, ymin, ymin), colour = &amp;quot;black&amp;quot;) + 
+  geom_point(data = example_play, aes(x = (xmax-y), y = x, shape = team,
+                                 fill = team, group = nflId, size = team, colour = team), alpha = 0.7) + 
+  geom_text(data = example_play, aes(x = (xmax-y), y = x, label = jerseyNumber), colour = &amp;quot;white&amp;quot;, 
+            vjust = 0.36, size = 3.5) + 
+  ylim(ymin, ymax) + 
+  coord_fixed() +  
+  theme_nothing() + 
+  transition_time(frame.id)  +
+  ease_aes(&amp;#39;linear&amp;#39;) + 
+  NULL
+
+## Ensure timing of play matches 10 frames-per-second
+play.length.ex &amp;lt;- length(unique(example.play$frame.id))
+#animate(animate.play, fps = 10, nframe = play.length.ex)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/kc_ne.gif&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;target-maps&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Target maps&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Shiny app built in R&lt;/em&gt;: &lt;a href=&#34;https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/&#34; class=&#34;uri&#34;&gt;https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/&lt;/a&gt;, &lt;a href=&#34;https://sarahmallepalle.shinyapps.io/next-gen-scrapy/&#34; class=&#34;uri&#34;&gt;https://sarahmallepalle.shinyapps.io/next-gen-scrapy/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;win-probability&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Win probability&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/no_pit.gif&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;spray-chartsqb-paths&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Spray charts/qb paths&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/passes_mahomes.gif&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rb-locations&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;RB locations&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/bell.PNG&#34; width=&#34;500px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;big-data-bowl&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Big Data Bowl&lt;/h2&gt;
+&lt;div id=&#34;background&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Background&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Football Ops website with rules and winners: &lt;a href=&#34;https://operations.nfl.com/the-game/big-data-bowl/&#34; class=&#34;uri&#34;&gt;https://operations.nfl.com/the-game/big-data-bowl/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(Static) Github page that hosted the data: &lt;a href=&#34;https://github.com/nfl-football-ops/Big-Data-Bowl&#34; class=&#34;uri&#34;&gt;https://github.com/nfl-football-ops/Big-Data-Bowl&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Forthcoming link: each submission, linked with participants and select resumes&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sample-entries-and-code&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Sample entries and code:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Kyle Burris:&lt;a href=&#34;https://github.com/burrisk/Big-Data-Bowl&#34; class=&#34;uri&#34;&gt;https://github.com/burrisk/Big-Data-Bowl&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/burris.gif&#34; width=&#34;400px&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SFU college:&lt;a href=&#34;https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf&#34; class=&#34;uri&#34;&gt;https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;/Users/mlopez1/Dropbox/NFL_Random_Pats/sfu.PNG&#34; width=&#34;600px&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Estimating NFL drive outcomes under rules that don&#39;t exist</title>
       <link>/post/resampling-nfl-drives/</link>
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
@@ -1199,70 +1644,6 @@ sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
 &lt;li id=&#34;fn:2&#34;&gt;Same model as above, now with a binary outcome.
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
-      <link>/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
-      <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
-      <description>&lt;div id=&#34;to-err-is-to-human&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;To err is to human&lt;/h3&gt;
-&lt;p&gt;In the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/Kyle.gif&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Ruled an error on Schwarber, the play gave the a Nationals run in an eventual 9-4 win. This struck me as an odd ruling. Schwarber could have easily stood still, retrieved the ball on a hop, and not been given an error. Instead, by trying to field the hard hit ball and missing, he was punished. Note that Goodwin did not reach second after Schwarber’s mishap.&lt;/p&gt;
-&lt;p&gt;Intracacies of the baseball rulebook are out of my realm of expertise, but that specific play got me thinking about what goes into decisions to reward an error. Primarily – is the difficulty of the play (including the exit velocity of the hit) taken into account? Fielding a sharp ground ball or line drive, no matter where its hit, would seem excessively more difficult than fielding a dribbler or pop fly. Alternatively, one could argue that its the slowest ground balls that are the most problematic, given that a fielder may need to rush his throw.&lt;/p&gt;
-&lt;p&gt;The point of this post will be to identify a few predictors of error rates, starting with a sidebar about categorizing continuous variables.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;exit-velocity-is-so-good-..-it-predicts-higher-and-lower-error-rates.&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Exit velocity is so good .. it predicts higher &lt;em&gt;and&lt;/em&gt; lower error rates.&lt;/h3&gt;
-&lt;p&gt;Using the last two seasons of Statcast data, and with a huge hat tip to Bill Petti’s &lt;a href=&#34;http://billpetti.github.io/baseballr/&#34;&gt;baseballr&lt;/a&gt; package, I grabbed all potential putouts (any play ruled an out, error, sac fly, bunt, etc). The Statcast data is super useful, as for games since 2015, it contains exit velocity and launch angle for each ball in play.&lt;/p&gt;
-&lt;p&gt;My first interest lies in whether or not exit velocity is linked to error chances. One popular strategy (both in and outside of sports analytics) is to categorize data. In other words, group balls in play together, bin hits with similar velocities, and check for the frequency of errors within each bin. That was my first step with the Statcast data. But because I was unsure what categories to use, I tried two different sets: (i) 70 mph or less, 70-85, 85 or more and (ii) 80 or less, 80-95, 95 or more. Each was roughly meant to align with softly hit, medium hit, and sharply hit balls, and each contained several thousand balls in play.&lt;/p&gt;
-&lt;p&gt;Here’s a chart showing the fraction of plays resulting in an error in each bin. The point in each graph is the average number of errors on all balls in play for each bin.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Your eyes are not deceiving you.&lt;/p&gt;
-&lt;p&gt;On the left graph, there’s a drop in error rate with increased exit velocity – on the right, there’s an increase in the rate of errors. That is, with identical data and only a slight shift in groupings, you could make either claim and feel justified. Errors appear to both increase and decrease with harder hit balls, and both contrasts are statistically significant (those are 95% intervals included with each point).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;so-which-is-it&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;So which is it?&lt;/h3&gt;
-&lt;p&gt;In fairness to the above analysis, both charts are correct. In unfairness to the above, such analysis is often problematic, and its no accident that the findings conflict.&lt;/p&gt;
-&lt;p&gt;Specifically, categorizing a continuous variable and looking within each category or bin can lead to a host of statistical problems. For an excellent overview, see a Vanderbilt biostat write-up &lt;a href=&#34;http://biostat.mc.vanderbilt.edu/wiki/Main/CatContinuous&#34;&gt;here&lt;/a&gt;, or read a more thorough paper by Caroline Bennette and Andrew Vickers &lt;a href=&#34;https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-12-21&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Two problems discussed above specifically come into play with respect to our binning above.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Categorization assumes that there is a discontinuity in response (error rates) as interval boundaries are crossed.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Categorization assumes that the relationship between the predictor (exit velocity) and the response (error rates) is flat within intervals.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Indeed, error rates have a slightly more complicated relationship with exit velocity than can be explained by intervals, and when diving deeper, it’s evident that there’s no natural discontinuity in the rates of errors that we could even try to use.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;an-alternative-strategy-for-measuring-error-rates.&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;An alternative strategy for measuring error rates.&lt;/h3&gt;
-&lt;p&gt;Instead of binning, a more appropriate technique would involve modeling the rates of errors given exit velocity.&lt;/p&gt;
-&lt;p&gt;Of course, in light of the above charts, the link between error rates and exit velocity may be complex, and traditional logistic regression may not be sufficient. Instead, I used a generalized additive model (GAM) that included smoothed terms for both exit velocity and launch angle. GAMs can be great with sports data – they are easy to implement, explicitly include cross-validation as part of the fitting process, and don’t require an exact model specification. Given that we don’t know the best way to specify a model of errors given launch speed, GAMs are a natural fit.&lt;/p&gt;
-&lt;p&gt;One final plus? GAMs also make for nice visualizations, something that every sports analyst should always be working on. If you want to read more about GAMs, start with the Stitch Fix &lt;a href=&#34;http://multithreaded.stitchfix.com/blog/2015/07/30/gam/&#34;&gt;tutorial&lt;/a&gt;, or I’ll shamelessly promote my work on NFL referees (&lt;a href=&#34;https://statsbylopez.files.wordpress.com/2013/08/lopez-2016-economic_inquiry.pdf&#34;&gt;link&lt;/a&gt;) and Brian’s work on MLB umpires (&lt;a href=&#34;http://onlinelibrary.wiley.com/doi/10.1002/mde.2630/abstract&#34;&gt;link&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Here’s a chart showing the estimated error rate given exit velocity (x axis) and launch angle (y axis). Darker shades are linked to higher error rates.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: nlme&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Attaching package: &amp;#39;nlme&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:dplyr&amp;#39;:
-## 
-##     collapse&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## This is mgcv 1.8-24. For overview type &amp;#39;help(&amp;quot;mgcv-package&amp;quot;)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-03-07-on-the-risks-of-categorizing-a-continuous-variable_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Turns out, there’s an obvious driver of the error rate weirdness – sacrifices!&lt;/p&gt;
-&lt;p&gt;A few thousand of our plays feature balls hit at roughly 40 mph going (almost) directly into the ground. While not all of these plays are attempted bunts, many appear to be (according to the Statcast play by play descriptions). Turns out, bunts are linked to high error rates (as high as 14%), likely on account of how quickly the pitcher and infielders need to react.&lt;/p&gt;
-&lt;p&gt;Returning to our original question, there does appear to be a slight increase in error rates with increased exit velocity after discarding bunt attempts. Although balls hit between 50 and 90 mph all yield roughly have the same chances of an error (somewhere around 2%) – error chances increase with the hardest hit balls. With exit velocities of 110 mph or higher, for example, our model expects error rates at several launch angles to be more than 5%.&lt;/p&gt;
-&lt;p&gt;Note that one downside of the chart is that we don’t get to see how many balls are hit at each launch speed and angle. For example, the dark right corner of the chart only includes a few fieldable plays, and these estimates likely come with substantial error. However, we can crosscheck some of the dark spots using the actual data. Sure enough, balls hit with an exit velocity of 100 mph or higher within +/5 degrees of 0 yield an error rate of 4.9% (there were about 5400 such instances). Hit it 105 mph or harder in that same zone, and the error rate jumps to 6%.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;whats-the-take-home&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;What’s the take home?&lt;/h3&gt;
-&lt;p&gt;From a statistical perspective, hopefully you can recognize both the dangers of categorizing continuous data, as well as the attractive features offered by a GAM (and if you want to try a GAM yourself – the code is up &lt;a href=&#34;https://github.com/statsbylopez/statsbylopez.github.io&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;From a baseball perspective, the hardest hit balls do increase error rates. Additionally, with my intuition being that errors are often discarded from the perspective of analyzing hitter talent, this type of error creation could be worth thinking more about. In addition to a side benefit of someone who hits the ball as hard as Aaron Judge or Giancarlo Stanton, having good, capable bunters &lt;em&gt;could&lt;/em&gt; actually be undervalued. Putting down a sacrifice is generally not considered worth it (trading an out for moving up a base), but with error rates as high as 14%, there may be more to the story.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

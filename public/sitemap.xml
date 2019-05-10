@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/r-for-nfl-analysis/</loc>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/resampling-nfl-drives/</loc>
       <lastmod>2019-05-06T00:00:00+00:00</lastmod>
     </url>
@@ -250,7 +259,7 @@
     <url>
     
       <loc>/tags/ggplot/</loc>
-      <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -310,7 +319,7 @@
     <url>
     
       <loc>/tags/nfl/</loc>
-      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -350,7 +359,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -379,6 +388,16 @@
     
       <loc>/tags/resampling/</loc>
       <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/rstats/</loc>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

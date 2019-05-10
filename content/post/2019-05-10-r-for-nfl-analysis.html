@@ -1,0 +1,453 @@
+---
+title: R for NFL analysis
+author: ''
+date: '2019-05-10'
+slug: r-for-nfl-analysis
+categories: []
+tags:
+  - NFL
+  - rstats
+  - ggplot
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<div id="summary-of-today" class="section level2">
+<h2>Summary of today</h2>
+<ol style="list-style-type: decimal">
+<li><p>Tidyverse and NFL analytics</p></li>
+<li><p>Sample visualizations using <code>ggplot2</code></p></li>
+<li><p>Big Data Bowl insight</p></li>
+</ol>
+</div>
+<div id="tidyverse-and-nfl-analytics" class="section level2">
+<h2>Tidyverse and NFL analytics</h2>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<p>Favorite packages to use for manipulation, tidying, data viz, analysis</p>
+<ol style="list-style-type: decimal">
+<li><code>tidyverse</code> : Data manipulation and graphing</li>
+<li><code>lubridate</code> : Handling dates</li>
+<li><code>ggbeeswarm</code> : Fun plots</li>
+<li><code>ggridges</code> : Fun plots</li>
+<li><code>gganimate</code> : Fun animations</li>
+<li><code>tidyr</code> : Tidy data (wide to long/long to wide)</li>
+<li><code>nflscrapr</code> : Public win probabilities and expected points</li>
+<li><code>caret</code> : Machine learning tools</li>
+<li><code>lme4</code> : Statistical modeling</li>
+<li><code>teamcolors</code>: Team specific hex codes</li>
+</ol>
+<pre class="r"><code>#install.packages(&quot;tidyverse&quot;)
+library(tidyverse) 
+library(lubridate) 
+library(beeswarm)  
+library(gganimate) 
+library(ggridges)  
+library(tidyr)     </code></pre>
+</div>
+<div id="reading-in-data" class="section level3">
+<h3>Reading in data</h3>
+<pre class="r"><code>library(tidyverse)
+df_games &lt;- read_csv(&quot;prodb/dbo.Game.csv&quot;)
+df_plays &lt;- read_csv(&quot;prodb/dbo.VideoDirectorReport.csv&quot;)</code></pre>
+</div>
+<div id="joining-data-sets" class="section level3">
+<h3>Joining data sets</h3>
+<p><em>Online cheat-sheet</em>: <a href="https://stat545.com/bit001_dplyr-cheatsheet.html" class="uri">https://stat545.com/bit001_dplyr-cheatsheet.html</a></p>
+<p><code>left_join</code>:</p>
+<p><code>inner_join</code>:</p>
+<p><code>right_join</code>:</p>
+<p><code>anti_join</code>:</p>
+</div>
+<div id="data-manipulation-using-the-tidyverse" class="section level3">
+<h3>Data manipulation using the tidyverse</h3>
+<p><em>Online cheat-sheet</em>: <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf</a></p>
+<p>Key commands:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>select()</code></p></li>
+<li><p><code>head()</code></p></li>
+<li><p><code>tail()</code></p></li>
+<li><p><code>filter()</code></p></li>
+</ol>
+<pre class="r"><code>df_plays_keep &lt;- df_plays %&gt;% 
+  filter(HomeTeamFile == 1) %&gt;% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, 
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+df_games &lt;- df_games %&gt;% select(GameKey, Season, Season_Type, Week, LeagueType)
+
+df_plays_keep &lt;- df_plays_keep %&gt;% left_join(df_games, by = c(&quot;GameKey&quot; = &quot;GameKey&quot;))
+df_plays_keep %&gt;% head()</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;         
+## 1     745 TEN          PIT                   2 TEN           
+## 2     745 TEN          PIT                   2 TEN           
+## 3     745 TEN          PIT                   4 PIT           
+## 4     745 TEN          PIT                   4 PIT           
+## 5     745 TEN          PIT                   4 PIT           
+## 6     745 TEN          PIT                   4 PIT           
+## # … with 10 more variables: PlayNullifiedByPenalty &lt;chr&gt;,
+## #   SpecialTeamsPlayType &lt;chr&gt;, PlayResult &lt;int&gt;, Down &lt;int&gt;,
+## #   Distance &lt;int&gt;, PlayDescription &lt;chr&gt;, Season &lt;int&gt;,
+## #   Season_Type &lt;chr&gt;, Week &lt;int&gt;, LeagueType &lt;chr&gt;</code></pre>
+<pre class="r"><code>df_plays_keep %&gt;% tail()</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;         
+## 1   57464 NE           BUF                   3 BUF           
+## 2   57469 SF           JAX                   2 JAX           
+## 3   57466 NYJ          LAC                   1 LAC           
+## 4   57462 CIN          DET                   4 DET           
+## 5   57442 IND          DEN                   4 DEN           
+## 6   57467 TEN          LA                    4 LA            
+## # … with 10 more variables: PlayNullifiedByPenalty &lt;chr&gt;,
+## #   SpecialTeamsPlayType &lt;chr&gt;, PlayResult &lt;int&gt;, Down &lt;int&gt;,
+## #   Distance &lt;int&gt;, PlayDescription &lt;chr&gt;, Season &lt;int&gt;,
+## #   Season_Type &lt;chr&gt;, Week &lt;int&gt;, LeagueType &lt;chr&gt;</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>More <code>filter()</code>: Categorical variables</li>
+</ol>
+<pre class="r"><code>df_plays_keep %&gt;% 
+  filter(Down == 4, Quarter == 1, Distance == 12, 
+         PlayNullifiedByPenalty == &quot;N&quot;, SpecialTeamsPlayType == &quot;NULL&quot;) </code></pre>
+<pre><code>## # A tibble: 4 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;         
+## 1   26558 NE           BUF                   1 BUF           
+## 2   29406 CLV          BUF                   1 BUF           
+## 3   54993 CIN          NO                    1 CIN           
+## 4   29772 GB           DET                   1 GB            
+## # … with 10 more variables: PlayNullifiedByPenalty &lt;chr&gt;,
+## #   SpecialTeamsPlayType &lt;chr&gt;, PlayResult &lt;int&gt;, Down &lt;int&gt;,
+## #   Distance &lt;int&gt;, PlayDescription &lt;chr&gt;, Season &lt;int&gt;,
+## #   Season_Type &lt;chr&gt;, Week &lt;int&gt;, LeagueType &lt;chr&gt;</code></pre>
+<pre class="r"><code>df_plays_keep &lt;- df_plays_keep  %&gt;% 
+  filter(Season_Type == &quot;Reg&quot;, Season &gt;= 2005, Season &lt;= 2018, LeagueType == &quot;NFL&quot;)</code></pre>
+<p><strong>What data set did we create?</strong></p>
+<ol start="5" style="list-style-type: decimal">
+<li><code>arrange()</code></li>
+</ol>
+<pre class="r"><code>df_plays_keep %&gt;% 
+  filter(PossessionTeam == &quot;MIN&quot;, Season == 2018) %&gt;% 
+  arrange(-PlayResult) %&gt;% 
+  head()</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;         
+## 1   57812 MIN          CHI                   2 MIN           
+## 2   57586 GB           MIN                   4 MIN           
+## 3   57607 MIN          BUF                   2 MIN           
+## 4   57694 MIN          DET                   2 MIN           
+## 5   57640 PHI          MIN                   3 MIN           
+## 6   57668 NYJ          MIN                   3 MIN           
+## # … with 10 more variables: PlayNullifiedByPenalty &lt;chr&gt;,
+## #   SpecialTeamsPlayType &lt;chr&gt;, PlayResult &lt;int&gt;, Down &lt;int&gt;,
+## #   Distance &lt;int&gt;, PlayDescription &lt;chr&gt;, Season &lt;int&gt;,
+## #   Season_Type &lt;chr&gt;, Week &lt;int&gt;, LeagueType &lt;chr&gt;</code></pre>
+<p><strong>What plays are these?</strong>?</p>
+<ol start="6" style="list-style-type: decimal">
+<li><code>mutate()</code></li>
+</ol>
+<pre class="r"><code>df_plays_keep &lt;- df_plays_keep %&gt;% 
+  mutate(is_first_down = PlayResult &gt;= Distance, 
+         scrimmage_play = SpecialTeamsPlayType == &quot;NULL&quot;)
+
+df_plays_keep %&gt;% 
+  filter(PossessionTeam == &quot;MIN&quot;, Season == 2018, Down == 4, scrimmage_play, Quarter == 1) </code></pre>
+<pre><code>## # A tibble: 4 x 17
+##   GameKey HomeClubCode VisitorClubCode Quarter PossessionTeam
+##     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;         
+## 1   57694 MIN          DET                   1 MIN           
+## 2   57686 MIN          NO                    1 MIN           
+## 3   57741 MIN          GB                    1 MIN           
+## 4   57651 MIN          ARZ                   1 MIN           
+## # … with 12 more variables: PlayNullifiedByPenalty &lt;chr&gt;,
+## #   SpecialTeamsPlayType &lt;chr&gt;, PlayResult &lt;int&gt;, Down &lt;int&gt;,
+## #   Distance &lt;int&gt;, PlayDescription &lt;chr&gt;, Season &lt;int&gt;,
+## #   Season_Type &lt;chr&gt;, Week &lt;int&gt;, LeagueType &lt;chr&gt;, is_first_down &lt;lgl&gt;,
+## #   scrimmage_play &lt;lgl&gt;</code></pre>
+<p><strong>What do these four plays represent?</strong></p>
+<ol start="7" style="list-style-type: decimal">
+<li><p><code>group_by()</code></p></li>
+<li><p><code>summarize()</code></p></li>
+</ol>
+<pre class="r"><code>df_plays_keep %&gt;% 
+  filter(scrimmage_play, Season == 2018) %&gt;% 
+  group_by(PossessionTeam) %&gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&gt;% 
+  arrange(-ave_yds_gained) %&gt;% 
+  head()</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   PossessionTeam ave_yds_gained
+##   &lt;chr&gt;                   &lt;dbl&gt;
+## 1 KC                       6.25
+## 2 LA                       6.04
+## 3 ATL                      5.78
+## 4 PIT                      5.76
+## 5 TB                       5.70
+## 6 LAC                      5.67</code></pre>
+<p><strong>Identify the leaderboard above</strong>:</p>
+<pre class="r"><code>df_plays_keep %&gt;% 
+  filter(scrimmage_play) %&gt;% 
+  group_by(PossessionTeam, Season) %&gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&gt;% 
+  arrange(-ave_yds_gained) %&gt;% 
+  head()</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season ave_yds_gained
+##   &lt;chr&gt;           &lt;int&gt;          &lt;dbl&gt;
+## 1 ATL              2016           6.29
+## 2 NO               2011           6.26
+## 3 KC               2018           6.25
+## 4 GB               2011           6.08
+## 5 LA               2018           6.04
+## 6 ARZ              2015           5.96</code></pre>
+<p><strong>Identify the leaderboard above</strong>:</p>
+<pre class="r"><code>df_plays_keep %&gt;% 
+  filter(scrimmage_play) %&gt;% 
+  group_by(PossessionTeam, Season) %&gt;% 
+  summarise(ave_yds_gained = mean(PlayResult)) %&gt;% 
+  arrange(-ave_yds_gained) %&gt;% 
+  tail()</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   PossessionTeam [5]
+##   PossessionTeam Season ave_yds_gained
+##   &lt;chr&gt;           &lt;int&gt;          &lt;dbl&gt;
+## 1 HST              2005           3.81
+## 2 CIN              2008           3.80
+## 3 ARZ              2012           3.74
+## 4 SF               2005           3.61
+## 5 SF               2007           3.59
+## 6 OAK              2006           3.50</code></pre>
+<p><strong>Identify the leaderboard above</strong>:</p>
+
+</div>
+</div>
+<div id="data-visualization" class="section level2">
+<h2>Data visualization</h2>
+<div id="sample-q1-how-often-do-teams-go-for-it-on-4th-short-in-each-season" class="section level3">
+<h3>Sample Q1: How often do teams go for it on 4th-short in each season?</h3>
+<pre class="r"><code>fourth_down_rates &lt;- df_plays_keep %&gt;% 
+  filter(Down == 4, Distance &lt;= 2) %&gt;% 
+  group_by(PossessionTeam, Season) %&gt;% 
+  summarise(go_forit_rate = mean(scrimmage_play), 
+            n_chances = n())
+
+
+fourth_down_rates %&gt;% 
+  arrange(-go_forit_rate) %&gt;% 
+  head()</code></pre>
+<pre><code>## # A tibble: 6 x 4
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season go_forit_rate n_chances
+##   &lt;chr&gt;           &lt;int&gt;         &lt;dbl&gt;     &lt;int&gt;
+## 1 JAX              2013         0.692        26
+## 2 BUF              2018         0.688        16
+## 3 NE               2007         0.682        22
+## 4 CLV              2017         0.667        15
+## 5 MIN              2018         0.654        26
+## 6 BLT              2018         0.65         20</code></pre>
+<pre class="r"><code>fourth_down_rates %&gt;% 
+  arrange(go_forit_rate) %&gt;% 
+  head()</code></pre>
+<pre><code>## # A tibble: 6 x 4
+## # Groups:   PossessionTeam [6]
+##   PossessionTeam Season go_forit_rate n_chances
+##   &lt;chr&gt;           &lt;int&gt;         &lt;dbl&gt;     &lt;int&gt;
+## 1 BUF              2012        0.05          20
+## 2 CIN              2007        0.0526        19
+## 3 SL               2015        0.0588        17
+## 4 CAR              2006        0.0714        28
+## 5 ATL              2012        0.0938        32
+## 6 MIN              2005        0.1           30</code></pre>
+<pre class="r"><code>library(ggbeeswarm)
+fourth_down_rates %&gt;% 
+  ggplot(aes(x = Season, y = go_forit_rate, fill = go_forit_rate)) + 
+  geom_quasirandom(pch = 21, size = 3) + 
+  scale_fill_viridis_c(&quot;&quot;,  guide = FALSE) + 
+  theme_classic(15) +  
+  scale_x_continuous(labels = 2005:2018, breaks = 2005:2018) + 
+  scale_y_continuous(labels = scales::percent) + 
+  labs(title = &quot;Go-for-it rate, 4th-1 or 4th-2&quot;, y = &quot;&quot;, x = &quot;&quot;)</code></pre>
+<p><img src="/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="sample-q2-whats-going-on-on-the-punt-play" class="section level3">
+<h3>Sample Q2: What’s going on on the punt play?</h3>
+<pre class="r"><code>df_punts_keep &lt;- df_plays %&gt;% 
+  filter(HomeTeamFile == 1, SpecialTeamsPlayType == &quot;Punt&quot;|SpecialTeamsPlayType == &quot;Punt Return&quot;) %&gt;% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, KickoffResult,
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+
+df_punts_keep &lt;- df_punts_keep %&gt;% left_join(df_games, by = c(&quot;GameKey&quot; = &quot;GameKey&quot;))
+
+## Penalty rate on punt plays using `grepl`
+df_punts_keep %&gt;% 
+  mutate(is_penalty = grepl(&quot;PENALTY&quot;, PlayDescription)) %&gt;% 
+  summarise(p_rate = mean(is_penalty))</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   p_rate
+##    &lt;dbl&gt;
+## 1  0.138</code></pre>
+<pre class="r"><code>df_punts_keep %&gt;% 
+  filter(Season &gt;= 2001) %&gt;% 
+  ggplot(aes(Season, fill = KickoffResult)) + 
+  geom_bar(position = &quot;fill&quot;) + 
+  scale_fill_brewer(palette = &quot;Set1&quot;) + 
+  scale_y_continuous(labels = scales::percent, &quot;Rate&quot;) + 
+  labs(title = &quot;Punt outcomes over time&quot;)</code></pre>
+<p><img src="/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="other-charts-of-interest" class="section level3">
+<h3>Other charts of interest</h3>
+<div id="examples-from-league-office" class="section level4">
+<h4>Examples from league office</h4>
+<ol style="list-style-type: decimal">
+<li>Tyler Lockett funnel plot</li>
+</ol>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/lockett.png" width="550px" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Maps</li>
+</ol>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/hex_college.PNG" width="550px" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Team logos with <code>ggimage</code>: <a href="https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/">link</a></li>
+</ol>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/ggimage.png" width="550px" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Competition committee work: resampling plays to estimate overtime outcomes</li>
+</ol>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/drive_sim.PNG" width="650px" /></p>
+</div>
+</div>
+<div id="what-can-we-do-with-next-gen-stats" class="section level3">
+<h3>What can we do with Next Gen Stats?</h3>
+<p>General processes for NGS data</p>
+<ol style="list-style-type: decimal">
+<li>Start small. Identify play-type of interest and find 5-10 examples using <code>playId</code>/<code>gameId</code></li>
+<li>Scrape data using <a href="https://docs.ngs.nfl.com" class="uri">https://docs.ngs.nfl.com</a> and personal credentials</li>
+<li>Build animation/summary metrics within the sample of plays</li>
+<li>Re-center data using <code>playDirection</code></li>
+<li>Re-orgin data using location where (player/ball) started</li>
+<li>Cross-check with video</li>
+<li>Expand across larger sample of plays</li>
+<li>Sample large sample of plays to cross-check for accuracy</li>
+</ol>
+</div>
+<div id="play-animation" class="section level3">
+<h3>Play animation</h3>
+<pre class="r"><code>file_tracking &lt;- &quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/tracking_gameId_2017090700.csv&quot;
+tracking_example &lt;- read_csv(file_tracking)
+
+file_game &lt;- &quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/games.csv&quot;
+games_sum &lt;- read_csv(file_game) 
+
+file_plays &lt;- &quot;https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/plays.csv&quot;
+plays_sum &lt;- read_csv(file_plays) 
+
+tracking_example_merged &lt;- tracking_example %&gt;% inner_join(games_sum) %&gt;% inner_join(plays_sum) 
+
+example_play &lt;- tracking_example_merged %&gt;% filter(playId == 938)
+example_play %&gt;% select(playDescription) %&gt;% slice(1)
+
+library(gganimate)
+library(cowplot)
+
+## General field boundaries
+xmin &lt;- 0
+xmax &lt;- 160/3
+hash.right &lt;- 38.35
+hash.left &lt;- 12
+hash.width &lt;- 3.3
+
+
+## Specific boundaries for a given play
+ymin &lt;- max(round(min(example_play$x, na.rm = TRUE) - 10, -1), 0)
+ymax &lt;- min(round(max(example_play$x, na.rm = TRUE) + 10, -1), 120)
+df_hash &lt;- expand.grid(x = c(0, 23.36667, 29.96667, xmax), y = (10:110))
+df_hash &lt;- df_hash %&gt;% filter(!(floor(y %% 5) == 0))
+df_hash &lt;- df_hash %&gt;% filter(y &lt; ymax, y &gt; ymin)
+
+animate_play &lt;- ggplot() +
+  scale_size_manual(values = c(6, 4, 6), guide = FALSE) + 
+  scale_shape_manual(values = c(21, 16, 21), guide = FALSE) +
+  scale_fill_manual(values = c(&quot;#e31837&quot;, &quot;#654321&quot;, &quot;#002244&quot;), guide = FALSE) + 
+  scale_colour_manual(values = c(&quot;black&quot;, &quot;#654321&quot;, &quot;#c60c30&quot;), guide = FALSE) + 
+  annotate(&quot;text&quot;, x = df_hash$x[df_hash$x &lt; 55/2], 
+           y = df_hash$y[df_hash$x &lt; 55/2], label = &quot;_&quot;, hjust = 0, vjust = -0.2) + 
+  annotate(&quot;text&quot;, x = df_hash$x[df_hash$x &gt; 55/2], 
+           y = df_hash$y[df_hash$x &gt; 55/2], label = &quot;_&quot;, hjust = 1, vjust = -0.2) + 
+  annotate(&quot;segment&quot;, x = xmin, 
+           y = seq(max(10, ymin), min(ymax, 110), by = 5), 
+           xend =  xmax, 
+           yend = seq(max(10, ymin), min(ymax, 110), by = 5)) + 
+  annotate(&quot;text&quot;, x = rep(hash.left, 11), y = seq(10, 110, by = 10), 
+                    label = c(&quot;G   &quot;, seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), &quot;   G&quot;), 
+                    angle = 270, size = 4) + 
+  annotate(&quot;text&quot;, x = rep((xmax - hash.left), 11), y = seq(10, 110, by = 10), 
+           label = c(&quot;   G&quot;, seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), &quot;G   &quot;), 
+           angle = 90, size = 4) + 
+  annotate(&quot;segment&quot;, x = c(xmin, xmin, xmax, xmax), 
+           y = c(ymin, ymax, ymax, ymin), 
+           xend = c(xmin, xmax, xmax, xmin), 
+           yend = c(ymax, ymax, ymin, ymin), colour = &quot;black&quot;) + 
+  geom_point(data = example_play, aes(x = (xmax-y), y = x, shape = team,
+                                 fill = team, group = nflId, size = team, colour = team), alpha = 0.7) + 
+  geom_text(data = example_play, aes(x = (xmax-y), y = x, label = jerseyNumber), colour = &quot;white&quot;, 
+            vjust = 0.36, size = 3.5) + 
+  ylim(ymin, ymax) + 
+  coord_fixed() +  
+  theme_nothing() + 
+  transition_time(frame.id)  +
+  ease_aes(&#39;linear&#39;) + 
+  NULL
+
+## Ensure timing of play matches 10 frames-per-second
+play.length.ex &lt;- length(unique(example.play$frame.id))
+#animate(animate.play, fps = 10, nframe = play.length.ex)</code></pre>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/kc_ne.gif" width="500px" /></p>
+</div>
+<div id="target-maps" class="section level3">
+<h3>Target maps</h3>
+<p><em>Shiny app built in R</em>: <a href="https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/" class="uri">https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/</a>, <a href="https://sarahmallepalle.shinyapps.io/next-gen-scrapy/" class="uri">https://sarahmallepalle.shinyapps.io/next-gen-scrapy/</a></p>
+</div>
+<div id="win-probability" class="section level3">
+<h3>Win probability</h3>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/no_pit.gif" width="500px" /></p>
+</div>
+<div id="spray-chartsqb-paths" class="section level3">
+<h3>Spray charts/qb paths</h3>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/passes_mahomes.gif" width="500px" /></p>
+</div>
+<div id="rb-locations" class="section level3">
+<h3>RB locations</h3>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/bell.PNG" width="500px" /></p>
+</div>
+</div>
+<div id="big-data-bowl" class="section level2">
+<h2>Big Data Bowl</h2>
+<div id="background" class="section level3">
+<h3>Background</h3>
+<ol style="list-style-type: decimal">
+<li><p>Football Ops website with rules and winners: <a href="https://operations.nfl.com/the-game/big-data-bowl/" class="uri">https://operations.nfl.com/the-game/big-data-bowl/</a></p></li>
+<li><p>(Static) Github page that hosted the data: <a href="https://github.com/nfl-football-ops/Big-Data-Bowl" class="uri">https://github.com/nfl-football-ops/Big-Data-Bowl</a></p></li>
+<li><p>Forthcoming link: each submission, linked with participants and select resumes</p></li>
+</ol>
+</div>
+<div id="sample-entries-and-code" class="section level3">
+<h3>Sample entries and code:</h3>
+<ul>
+<li>Kyle Burris:<a href="https://github.com/burrisk/Big-Data-Bowl" class="uri">https://github.com/burrisk/Big-Data-Bowl</a></li>
+</ul>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/burris.gif" width="400px" /></p>
+<ul>
+<li>SFU college:<a href="https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf" class="uri">https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf</a></li>
+</ul>
+<p><img src="/Users/mlopez1/Dropbox/NFL_Random_Pats/sfu.PNG" width="600px" /></p>
+</div>
+</div>

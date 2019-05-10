@@ -1,0 +1,443 @@
+---
+title: R for NFL analysis
+author: ''
+date: '2019-05-10'
+slug: r-for-nfl-analysis
+categories: []
+tags:
+  - NFL
+  - rstats
+  - ggplot
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+```{r setup, include=FALSE}
+options(warning = FALSE, message = FALSE, eval = FALSE)
+```
+
+
+## Summary of today
+
+1. Tidyverse and NFL analytics
+
+2. Sample visualizations using `ggplot2`
+
+3. Big Data Bowl insight
+
+## Tidyverse and NFL analytics
+
+### Packages
+
+Favorite packages to use for manipulation, tidying, data viz, analysis
+
+1. `tidyverse`  : Data manipulation and graphing
+2. `lubridate`  : Handling dates
+3. `ggbeeswarm`   : Fun plots
+4. `ggridges`   : Fun plots
+5. `gganimate`  : Fun animations
+6. `tidyr`      : Tidy data (wide to long/long to wide)
+7. `nflscrapr`   : Public win probabilities and expected points
+8. `caret`      : Machine learning tools
+9. `lme4`       : Statistical modeling 
+10. `teamcolors`: Team specific hex codes
+
+```{r, warning = FALSE, message = FALSE}
+#install.packages("tidyverse")
+library(tidyverse) 
+library(lubridate) 
+library(beeswarm)  
+library(gganimate) 
+library(ggridges)  
+library(tidyr)     
+```
+
+
+### Reading in data
+
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+df_games <- read_csv("~/Dropbox/NFL_Random_Pats/dbo.Game.csv")
+df_plays <- read_csv("~/Dropbox/NFL_Random_Pats/dbo.VideoDirectorReport.csv")
+```
+
+
+```{r, warning = FALSE, message = FALSE, eval = FALSE}
+library(tidyverse)
+df_games <- read_csv("prodb/dbo.Game.csv")
+df_plays <- read_csv("prodb/dbo.VideoDirectorReport.csv")
+```
+
+
+### Joining data sets
+
+
+*Online cheat-sheet*: [https://stat545.com/bit001_dplyr-cheatsheet.html](https://stat545.com/bit001_dplyr-cheatsheet.html)
+
+
+`left_join`: 
+
+`inner_join`: 
+
+`right_join`: 
+
+`anti_join`: 
+
+
+### Data manipulation using the tidyverse
+
+*Online cheat-sheet*: [https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+Key commands: 
+
+1. `select()`
+
+2. `head()`
+
+3. `tail()`
+
+4. `filter()`
+
+
+```{r, warning = FALSE, message = FALSE}
+df_plays_keep <- df_plays %>% 
+  filter(HomeTeamFile == 1) %>% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, 
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+df_games <- df_games %>% select(GameKey, Season, Season_Type, Week, LeagueType)
+
+df_plays_keep <- df_plays_keep %>% left_join(df_games, by = c("GameKey" = "GameKey"))
+df_plays_keep %>% head()
+df_plays_keep %>% tail()
+```
+
+
+
+4. More `filter()`: Categorical variables
+
+```{r, warning = FALSE, message = FALSE}
+df_plays_keep %>% 
+  filter(Down == 4, Quarter == 1, Distance == 12, 
+         PlayNullifiedByPenalty == "N", SpecialTeamsPlayType == "NULL") 
+
+df_plays_keep <- df_plays_keep  %>% 
+  filter(Season_Type == "Reg", Season >= 2005, Season <= 2018, LeagueType == "NFL")
+```
+
+**What data set did we create?** 
+
+5. `arrange()`
+
+```{r, warning = FALSE, message = FALSE}
+df_plays_keep %>% 
+  filter(PossessionTeam == "MIN", Season == 2018) %>% 
+  arrange(-PlayResult) %>% 
+  head()
+```
+
+**What plays are these?**?
+
+6. `mutate()`
+
+```{r, warning = FALSE, message = FALSE}
+df_plays_keep <- df_plays_keep %>% 
+  mutate(is_first_down = PlayResult >= Distance, 
+         scrimmage_play = SpecialTeamsPlayType == "NULL")
+
+df_plays_keep %>% 
+  filter(PossessionTeam == "MIN", Season == 2018, Down == 4, scrimmage_play, Quarter == 1) 
+```
+
+**What do these four plays represent?**
+
+7. `group_by()`
+
+8. `summarize()`
+
+```{r, warning = FALSE, message = FALSE}
+df_plays_keep %>% 
+  filter(scrimmage_play, Season == 2018) %>% 
+  group_by(PossessionTeam) %>% 
+  summarise(ave_yds_gained = mean(PlayResult)) %>% 
+  arrange(-ave_yds_gained) %>% 
+  head()
+```
+
+**Identify the leaderboard above**: 
+
+```{r}
+df_plays_keep %>% 
+  filter(scrimmage_play) %>% 
+  group_by(PossessionTeam, Season) %>% 
+  summarise(ave_yds_gained = mean(PlayResult)) %>% 
+  arrange(-ave_yds_gained) %>% 
+  head()
+```
+
+
+**Identify the leaderboard above**: 
+
+```{r}
+df_plays_keep %>% 
+  filter(scrimmage_play) %>% 
+  group_by(PossessionTeam, Season) %>% 
+  summarise(ave_yds_gained = mean(PlayResult)) %>% 
+  arrange(-ave_yds_gained) %>% 
+  tail()
+```
+
+
+**Identify the leaderboard above**:  
+
+
+\newpage
+
+## Data visualization
+
+
+### Sample Q1: How often do teams go for it on 4th-short in each season?
+
+
+
+```{r, warning = FALSE, message = FALSE, fig.width= 7, fig.height=4.5}
+fourth_down_rates <- df_plays_keep %>% 
+  filter(Down == 4, Distance <= 2) %>% 
+  group_by(PossessionTeam, Season) %>% 
+  summarise(go_forit_rate = mean(scrimmage_play), 
+            n_chances = n())
+
+
+fourth_down_rates %>% 
+  arrange(-go_forit_rate) %>% 
+  head()
+
+
+fourth_down_rates %>% 
+  arrange(go_forit_rate) %>% 
+  head()
+
+
+library(ggbeeswarm)
+fourth_down_rates %>% 
+  ggplot(aes(x = Season, y = go_forit_rate, fill = go_forit_rate)) + 
+  geom_quasirandom(pch = 21, size = 3) + 
+  scale_fill_viridis_c("",  guide = FALSE) + 
+  theme_classic(15) +  
+  scale_x_continuous(labels = 2005:2018, breaks = 2005:2018) + 
+  scale_y_continuous(labels = scales::percent) + 
+  labs(title = "Go-for-it rate, 4th-1 or 4th-2", y = "", x = "")
+```
+
+
+
+
+### Sample Q2: What's going on on the punt play?
+
+```{r, warning = FALSE, message = FALSE, fig.width= 7, fig.height=4.5}
+df_punts_keep <- df_plays %>% 
+  filter(HomeTeamFile == 1, SpecialTeamsPlayType == "Punt"|SpecialTeamsPlayType == "Punt Return") %>% 
+  select(GameKey, HomeClubCode, VisitorClubCode, Quarter, KickoffResult,
+        PossessionTeam, PlayNullifiedByPenalty, 
+        SpecialTeamsPlayType, PlayResult, Down, Distance, PlayDescription)
+
+df_punts_keep <- df_punts_keep %>% left_join(df_games, by = c("GameKey" = "GameKey"))
+
+## Penalty rate on punt plays using `grepl`
+df_punts_keep %>% 
+  mutate(is_penalty = grepl("PENALTY", PlayDescription)) %>% 
+  summarise(p_rate = mean(is_penalty))
+
+
+
+df_punts_keep %>% 
+  filter(Season >= 2001) %>% 
+  ggplot(aes(Season, fill = KickoffResult)) + 
+  geom_bar(position = "fill") + 
+  scale_fill_brewer(palette = "Set1") + 
+  scale_y_continuous(labels = scales::percent, "Rate") + 
+  labs(title = "Punt outcomes over time")
+
+```
+
+### Other charts of interest
+
+
+#### Examples from league office
+
+1. Tyler Lockett funnel plot
+
+```{r, echo = FALSE, out.width = "550px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/lockett.png")
+```
+
+
+2. Maps
+
+```{r, echo = FALSE, out.width = "550px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/hex_college.png")
+```
+
+
+3. Team logos with `ggimage`: [link](https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/)
+
+
+```{r, echo = FALSE, out.width = "550px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/ggimage.png")
+```
+
+4. Competition committee work: resampling plays to estimate overtime outcomes
+
+
+```{r, echo = FALSE, out.width = "650px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/drive_sim.png")
+```
+
+
+
+### What can we do with Next Gen Stats?
+
+General processes for NGS data
+
+1. Start small. Identify play-type of interest and find 5-10 examples using `playId`/`gameId`
+2. Scrape data using [https://docs.ngs.nfl.com](https://docs.ngs.nfl.com) and personal credentials
+3. Build animation/summary metrics within the sample of plays
+4. Re-center data using `playDirection`
+5. Re-orgin data using location where (player/ball) started
+6. Cross-check with video
+7. Expand across larger sample of plays
+8. Sample large sample of plays to cross-check for accuracy
+
+### Play animation
+
+```{r, warning = FALSE, message = FALSE, eval = FALSE}
+file_tracking <- "https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/tracking_gameId_2017090700.csv"
+tracking_example <- read_csv(file_tracking)
+
+file_game <- "https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/games.csv"
+games_sum <- read_csv(file_game) 
+
+file_plays <- "https://raw.githubusercontent.com/nfl-football-ops/Big-Data-Bowl/master/Data/plays.csv"
+plays_sum <- read_csv(file_plays) 
+
+tracking_example_merged <- tracking_example %>% inner_join(games_sum) %>% inner_join(plays_sum) 
+
+example_play <- tracking_example_merged %>% filter(playId == 938)
+example_play %>% select(playDescription) %>% slice(1)
+
+library(gganimate)
+library(cowplot)
+
+## General field boundaries
+xmin <- 0
+xmax <- 160/3
+hash.right <- 38.35
+hash.left <- 12
+hash.width <- 3.3
+
+
+## Specific boundaries for a given play
+ymin <- max(round(min(example_play$x, na.rm = TRUE) - 10, -1), 0)
+ymax <- min(round(max(example_play$x, na.rm = TRUE) + 10, -1), 120)
+df_hash <- expand.grid(x = c(0, 23.36667, 29.96667, xmax), y = (10:110))
+df_hash <- df_hash %>% filter(!(floor(y %% 5) == 0))
+df_hash <- df_hash %>% filter(y < ymax, y > ymin)
+
+animate_play <- ggplot() +
+  scale_size_manual(values = c(6, 4, 6), guide = FALSE) + 
+  scale_shape_manual(values = c(21, 16, 21), guide = FALSE) +
+  scale_fill_manual(values = c("#e31837", "#654321", "#002244"), guide = FALSE) + 
+  scale_colour_manual(values = c("black", "#654321", "#c60c30"), guide = FALSE) + 
+  annotate("text", x = df_hash$x[df_hash$x < 55/2], 
+           y = df_hash$y[df_hash$x < 55/2], label = "_", hjust = 0, vjust = -0.2) + 
+  annotate("text", x = df_hash$x[df_hash$x > 55/2], 
+           y = df_hash$y[df_hash$x > 55/2], label = "_", hjust = 1, vjust = -0.2) + 
+  annotate("segment", x = xmin, 
+           y = seq(max(10, ymin), min(ymax, 110), by = 5), 
+           xend =  xmax, 
+           yend = seq(max(10, ymin), min(ymax, 110), by = 5)) + 
+  annotate("text", x = rep(hash.left, 11), y = seq(10, 110, by = 10), 
+                    label = c("G   ", seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), "   G"), 
+                    angle = 270, size = 4) + 
+  annotate("text", x = rep((xmax - hash.left), 11), y = seq(10, 110, by = 10), 
+           label = c("   G", seq(10, 50, by = 10), rev(seq(10, 40, by = 10)), "G   "), 
+           angle = 90, size = 4) + 
+  annotate("segment", x = c(xmin, xmin, xmax, xmax), 
+           y = c(ymin, ymax, ymax, ymin), 
+           xend = c(xmin, xmax, xmax, xmin), 
+           yend = c(ymax, ymax, ymin, ymin), colour = "black") + 
+  geom_point(data = example_play, aes(x = (xmax-y), y = x, shape = team,
+                                 fill = team, group = nflId, size = team, colour = team), alpha = 0.7) + 
+  geom_text(data = example_play, aes(x = (xmax-y), y = x, label = jerseyNumber), colour = "white", 
+            vjust = 0.36, size = 3.5) + 
+  ylim(ymin, ymax) + 
+  coord_fixed() +  
+  theme_nothing() + 
+  transition_time(frame.id)  +
+  ease_aes('linear') + 
+  NULL
+
+## Ensure timing of play matches 10 frames-per-second
+play.length.ex <- length(unique(example.play$frame.id))
+#animate(animate.play, fps = 10, nframe = play.length.ex)
+```
+
+
+```{r, echo = FALSE, out.width = "500px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/kc_ne.gif")
+```
+
+
+### Target maps
+
+*Shiny app built in R*: [https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/](https://www.cmusportsanalytics.com/introduction-to-next-gen-scrapy/), [https://sarahmallepalle.shinyapps.io/next-gen-scrapy/](https://sarahmallepalle.shinyapps.io/next-gen-scrapy/)
+
+### Win probability
+
+```{r, echo = FALSE, out.width = "500px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/no_pit.gif")
+```
+
+
+### Spray charts/qb paths
+
+```{r, echo = FALSE, out.width = "500px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/passes_mahomes.gif")
+```
+
+
+### RB locations
+
+```{r, echo = FALSE, out.width = "500px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/bell.png")
+```
+
+
+
+## Big Data Bowl
+
+### Background 
+
+1. Football Ops website with rules and winners: [https://operations.nfl.com/the-game/big-data-bowl/](https://operations.nfl.com/the-game/big-data-bowl/) 
+
+
+2. (Static) Github page that hosted the data:  [https://github.com/nfl-football-ops/Big-Data-Bowl](https://github.com/nfl-football-ops/Big-Data-Bowl) 
+
+3. Forthcoming link: each submission, linked with participants and select resumes
+
+### Sample entries and code:
+
+- Kyle Burris:[https://github.com/burrisk/Big-Data-Bowl](https://github.com/burrisk/Big-Data-Bowl)
+
+```{r, echo = FALSE, out.width = "400px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/burris.gif")
+```
+
+
+- SFU college:[https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf](https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf)
+
+```{r, echo = FALSE, out.width = "600px"}
+knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/sfu.png")
+```
