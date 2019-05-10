@@ -272,14 +272,14 @@ df_punts_keep %>%
 1. Tyler Lockett funnel plot
 
 ```{r, echo = FALSE, out.width = "550px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/lockett.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/lockett.png")
 ```
 
 
 2. Maps
 
 ```{r, echo = FALSE, out.width = "550px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/hex_college.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/hex_college.png")
 ```
 
 
@@ -287,14 +287,14 @@ knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/hex_college.png"
 
 
 ```{r, echo = FALSE, out.width = "550px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/ggimage.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/ggimage.png")
 ```
 
 4. Competition committee work: resampling plays to estimate overtime outcomes
 
 
 ```{r, echo = FALSE, out.width = "650px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/drive_sim.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/drive_sim.png")
 ```
 
 
@@ -388,7 +388,7 @@ play.length.ex <- length(unique(example.play$frame.id))
 
 
 ```{r, echo = FALSE, out.width = "500px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/kc_ne.gif")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/kc_ne.gif")
 ```
 
 
@@ -399,21 +399,21 @@ knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/kc_ne.gif")
 ### Win probability
 
 ```{r, echo = FALSE, out.width = "500px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/no_pit.gif")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/no_pit.gif")
 ```
 
 
 ### Spray charts/qb paths
 
 ```{r, echo = FALSE, out.width = "500px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/passes_mahomes.gif")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/passes_mahomes.gif")
 ```
 
 
 ### RB locations
 
 ```{r, echo = FALSE, out.width = "500px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/bell.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/bell.png")
 ```
 
 
@@ -434,12 +434,12 @@ knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/bell.png")
 - Kyle Burris:[https://github.com/burrisk/Big-Data-Bowl](https://github.com/burrisk/Big-Data-Bowl)
 
 ```{r, echo = FALSE, out.width = "400px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/burris.gif")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/burris.gif")
 ```
 
 
 - SFU college:[https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf](https://operations.nfl.com/media/3670/big-data-bowl-sfu.pdf)
 
 ```{r, echo = FALSE, out.width = "600px"}
-knitr::include_graphics("/Users/mlopez1/Dropbox/NFL_Random_Pats/sfu.png")
+knitr::include_graphics("https://raw.githubusercontent.com/statsbylopez/mlopez/master/public/img/sfu.png")
 ```
