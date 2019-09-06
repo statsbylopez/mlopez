@@ -18,7 +18,7 @@ weight = 5
 [[education.courses]]
   course = "PhD in Biostatistics"
   institution = "Brown University"
-  year = 2010
+  year = 2014
 
 [[education.courses]]
   course = "MS in Statistics"
