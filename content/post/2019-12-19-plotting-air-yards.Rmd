@@ -202,9 +202,8 @@ p_dome
 
 ```
 
-## An example
 
-Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, [Josh](http://airyards.com/) and [Ben](https://twitter.com/benbbaldwin/status/1207369445720690690) have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.
+Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, [Josh](http://airyards.com/) and [Ben](https://twitter.com/benbbaldwin/status/1207369445720690690) have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than simply looking at completion percentage alone. 
 
 Here's one example of an air yards plot, using a pair of players from the 2019 season.
 
@@ -224,7 +223,7 @@ How is that possible? Let's dive a bit deeper into plots similar to these.
 
 ## Air yards ~ integer distance
 
-One common approach for assessing the link between completion rate and air yards is to averages completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.
+One common approach for assessing the link between completion rate and air yards is to average completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.
 
 Here's the example with Brady above.
 
@@ -291,25 +290,25 @@ Alternative models (logistic regressions with/without spline terms, hierarchical
 
 Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts. 
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.height=8, fig.width=8}
 p_all + p_legend + plot_layout(heights = c(5, 1), ncol = 1)
 ```
 
-The dark blue-line corresponds to the traditional approach (average by integer), while the dotted line represents estimates from a GAM (separate for each QB). 
+The dark blue-line corresponds to the traditional approach (averages by integer), while the dotted line represents estimates from a GAM (separate for each QB). 
 
-As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz has 1 pass at -8 air yards, which fell incomplete. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. Thus, a model-based approach is much less likely to care about his one incompletion at -8 air yards. 
+As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz attempted 1 pass at -8 air yards, which fell incomplete, and no other passes at -7 air yards or less. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. A model-based approach is less likely to be sensitive to that one incompletion at -8 air yards. 
 
 ## For fun
 
-Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts, no player has posted a single-game completion percentage higher than Brees.
+Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts in one game, no player has posted a single-game completion percentage higher than Brees.
 
 It got me thinking about one thing that assuredly did not hurt Brees reach that mark -- the game took place in the Mercedes-Benz Superdome. 
 
-So, using a separate function for games played in the eight NFL stadia with domes, here's how the air-yards curves compare. 
+So, using a separate function for games played in the eight NFL stadia with domes, and one for games that are not played in domes, here's how the air-yards curves compare. This uses data from 2017 through 2019.  
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 p_dome
 ```
 
-For what it's worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing away teams only yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights. 
+For what it's worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). It's a fairly consistent difference of roughly 4 percentage points. A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing only quarterbacks on away teams yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights. 
 
