@@ -279,7 +279,7 @@ fit_predict %>%
   coord_cartesian(ylim = c(0,1))
 ```
 
-```{r, eval = echo, message = FALSE, warning = FALSE, eval = TRUE}
+```{r, eval = TRUE, message = FALSE, warning = FALSE, echo = FALSE}
 p_new
 ```
 

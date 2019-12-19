@@ -72,7 +72,6 @@ fit_predict %&gt;%
   scale_y_continuous(labels = scales::percent)+
   scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
   coord_cartesian(ylim = c(0,1))</code></pre>
-<pre class="r"><code>p_new</code></pre>
 <p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>When comparing the two versions, it’s less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive.</p>
 <p>Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.</p>
