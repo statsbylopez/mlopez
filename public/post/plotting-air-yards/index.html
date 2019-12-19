@@ -17,11 +17,11 @@
       
     
   
-  <meta name="description" content="Brian, Alex, and a host of others have done nice work recently when it comes to creating better scatter plots using images in ggplot in R. In this post, I’ll show how easy it is to use the ggimage package and do the same.
-What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.">
+  <meta name="description" content="An example Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, Josh and Ben have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.
+Here’s one example of an air yards plot, using a pair of players from the 2019 season.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/nfl-team-logos-using-ggimage/">
+  <link rel="alternate" hreflang="en-us" href="/post/plotting-air-yards/">
 
   
 
@@ -70,7 +70,7 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/nfl-team-logos-using-ggimage/">
+  <link rel="canonical" href="/post/plotting-air-yards/">
 
   <meta property="twitter:card" content="summary_large_image">
   
@@ -78,20 +78,20 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
   <meta property="twitter:creator" content="@statsbylopez">
   
   <meta property="og:site_name" content="Statsbylopez">
-  <meta property="og:url" content="/post/nfl-team-logos-using-ggimage/">
-  <meta property="og:title" content="NFL team logos using ggimage | Statsbylopez">
-  <meta property="og:description" content="Brian, Alex, and a host of others have done nice work recently when it comes to creating better scatter plots using images in ggplot in R. In this post, I’ll show how easy it is to use the ggimage package and do the same.
-What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.">
+  <meta property="og:url" content="/post/plotting-air-yards/">
+  <meta property="og:title" content="Plotting air yards | Statsbylopez">
+  <meta property="og:description" content="An example Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, Josh and Ben have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.
+Here’s one example of an air yards plot, using a pair of players from the 2019 season.">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-10-25T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-12-19T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2018-10-25T00:00:00&#43;00:00">
-  
-
+  <meta property="article:modified_time" content="2019-12-19T00:00:00&#43;00:00">
   
 
-  <title>NFL team logos using ggimage | Statsbylopez</title>
+  
+
+  <title>Plotting air yards | Statsbylopez</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -296,7 +296,7 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
 
 
   <div class="article-container">
-    <h1 itemprop="name">NFL team logos using ggimage</h1>
+    <h1 itemprop="name">Plotting air yards</h1>
 
     
 
@@ -304,8 +304,8 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
 
   <span class="article-date">
     
-    <time datetime="2018-10-25 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
-      Oct 25, 2018
+    <time datetime="2019-12-19 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Dec 19, 2019
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -315,7 +315,7 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -333,35 +333,35 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=NFL%20team%20logos%20using%20ggimage&amp;url=%2fpost%2fnfl-team-logos-using-ggimage%2f"
+         href="https://twitter.com/intent/tweet?text=Plotting%20air%20yards&amp;url=%2fpost%2fplotting-air-yards%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=%2fpost%2fnfl-team-logos-using-ggimage%2f"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fplotting-air-yards%2f"
          target="_blank" rel="noopener">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fnfl-team-logos-using-ggimage%2f&amp;title=NFL%20team%20logos%20using%20ggimage"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fplotting-air-yards%2f&amp;title=Plotting%20air%20yards"
          target="_blank" rel="noopener">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fnfl-team-logos-using-ggimage%2f&amp;title=NFL%20team%20logos%20using%20ggimage"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fplotting-air-yards%2f&amp;title=Plotting%20air%20yards"
          target="_blank" rel="noopener">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=NFL%20team%20logos%20using%20ggimage&amp;body=%2fpost%2fnfl-team-logos-using-ggimage%2f">
+         href="mailto:?subject=Plotting%20air%20yards&amp;body=%2fpost%2fplotting-air-yards%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -375,65 +375,81 @@ What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty 
 
 
     <div class="article-style" itemprop="articleBody">
-      <p><a href="https://twitter.com/bburkeESPN/status/1055150920340774912">Brian</a>, <a href="https://twitter.com/abresler/status/1055446174730240000">Alex</a>, and a host of others have done nice work recently when it comes to creating better scatter plots using images in <code>ggplot</code> in <a href="https://cran.r-project.org/">R</a>. In this post, I’ll show how easy it is to use the <code>ggimage</code> package and do the same.</p>
-<div id="what-data-to-use" class="section level2">
-<h2>What data to use?</h2>
-<p>Ron, Sam, Max, and the folks at <a href="https://github.com/maksimhorowitz/nflscrapR">nflscrapR</a> have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play. In my example, I’ll use this data to contrast team run and pass performance, as measured through expected points added. For more on expected points, see Trey’s series <a href="http://thespread.us/expected-points.html">here</a>, or the nfl WAR paper <a href="https://arxiv.org/abs/1802.00998">here</a>.</p>
-<p>First, we read in the data, and create what would be a typical plot that highlights run and pass performance for each offense.</p>
-<pre class="r"><code>library(RCurl)
-library(tidyverse)
-library(ggrepel)
-url.18 &lt;- getURL(&quot;https://raw.githubusercontent.com/ryurko/nflscrapR-data/master/play_by_play_data/regular_season/reg_pbp_2018.csv&quot;)
-pbp &lt;- read.csv(text = url.18)
-scrimmage.plays &lt;- pbp %&gt;% filter(play_type == &quot;pass&quot;|play_type == &quot;run&quot;)
-scrimmage.plays.summary &lt;- scrimmage.plays %&gt;% 
-  group_by(posteam, play_type) %&gt;% 
-  summarise(ave.epa = mean(epa, na.rm = TRUE)) %&gt;%
-  spread(play_type, ave.epa)
-
-bound.label &lt;- 0.38
-df.text &lt;- data.frame(lab.text = c(&quot;Run +, Pass -&quot;, &quot;Run +, Pass +&quot;, &quot;Run -, Pass +&quot;, &quot;Run -, Pass -&quot;), 
-                      x = c(bound.label, bound.label, -1*bound.label, -1*bound.label), 
-                      y = c(-1*bound.label, bound.label, bound.label, -1*bound.label))
-
-ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) + 
-  geom_point() + 
-  geom_text_repel() + 
-  xlab(&quot;Run: average offensive EPA&quot;) + 
-  ylab(&quot;Pass: average offensive EPA&quot;) + 
-  theme_minimal() + 
-  labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
-  geom_hline(aes(yintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5)+ 
-  geom_vline(aes(xintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5) + 
-  xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
-  geom_text(data = df.text, aes(x, y, label = lab.text), colour = &quot;red&quot;)</code></pre>
-<p><img src="/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>There’s a bunch that can be gleamed from the chart above. As one example, the team-to-team variability in average pass EPA is greater than that of the team-to-team variability in average rush EPA. As another, 23 of 32 teams boast a greater-than-0 average pass EPA, compared to 14 of 32 teams that have an average rush EPA greater than 0. This doesn’t exactly mean teams should pass more – averages are impacted by skewness, and the distribution of play-level EPA on passes is strongly skewed right.</p>
-<p>None of these findings are particularly new, however, and to date, there is a large amount of literature regarding the run versus pass debate. In fact, there’s someone who has probably already made the exact graph above.</p>
+      <div id="an-example" class="section level2">
+<h2>An example</h2>
+<p>Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, <a href="http://airyards.com/">Josh</a> and <a href="https://twitter.com/benbbaldwin/status/1207369445720690690">Ben</a> have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.</p>
+<p>Here’s one example of an air yards plot, using a pair of players from the 2019 season.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The blue player tends to be slightly worse than the red player at short throws, better than than the red player at distances around 20 yards, and similar for longer distances. Both players are slightly worse than the league average for shorter throws, but better than the league average at longer throws.</p>
+<p>Can you guess who Players A and B are?</p>
+<p>Player A is Tom Brady in 2019.</p>
+<p>Player B is Tom Brady in 2019.</p>
+<p>How is that possible? Let’s dive a bit deeper into plots similar to these.</p>
 </div>
-<div id="adding-in-team-logos" class="section level2">
-<h2>Adding in team logos</h2>
-<p>It’s perhaps more visually appealing to use team logos (or helmets) in place of three letter team codes. For ages, adding images to <code>ggplot</code> R graphs required the use of several lines of code: using the <code>ggimage</code> package, that process is (fortunately) no longer needed.</p>
-<p>In the code below, I link to a file (eventually stored as <code>df.logos</code>) that has up-to-date NFL logos (drawn via Wikipedia png’s), and merge with the data above.</p>
-<pre class="r"><code>library(ggimage)
-url.logo &lt;- getURL(&quot;https://raw.githubusercontent.com/statsbylopez/BlogPosts/master/nfl_teamlogos.csv&quot;)
-df.logos &lt;- read.csv(text = url.logo)
-scrimmage.plays.summary &lt;- scrimmage.plays.summary %&gt;% 
-  left_join(df.logos, by = c(&quot;posteam&quot; = &quot;team_code&quot;))
+<div id="air-yards-integer-distance" class="section level2">
+<h2>Air yards ~ integer distance</h2>
+<p>One common approach for assessing the link between completion rate and air yards is to averages completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.</p>
+<p>Here’s the example with Brady above.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Each of the dots in blue represent Brady’s completion rate at each of the yardage distances he has thrown to in 2019. You’ll notice higher variability in the dots after 30 yards – he doesn’t often throw that far, so averages at 0 or 1 will be more common.</p>
+<p>This traditional approach is usually sufficient at highlighting how quarterbacks perform.</p>
+<p>However, there are a few limitations.</p>
+<ol style="list-style-type: decimal">
+<li><p>The trend line corresponds to each dot. But each dot represents a different number of passes, something that the trend line doesn’t know.</p></li>
+<li><p>Standard errors (if shown) reflect uncertainty in the trend line between the dots, not in the uncertainty in a quarterback’s completion percentage at a certain air yards.</p></li>
+</ol>
+</div>
+<div id="making-improvements" class="section level2">
+<h2>Making improvements</h2>
+<p>There are several approaches that can leverage the number of passes at each air yards integer. I’ll use a generalized additive model (GAM), where a completion (Yes/No) is my outcome and air-yards is my explanatory variable. GAMs are attractive to measure the effect of any <span class="math inline">\(x\)</span>-variable that might be related to <span class="math inline">\(y\)</span> in a non-linear fashion, as they allow for a more flexible association. Additionally, GAMs include cross-validation by default to help prevent overfitting.</p>
+<p>Here’s what a GAM would look like for Brady (with calculations for uncertainty also shown).</p>
+<pre class="r"><code>library(mgcv)
+### ay_all contains nflscrapr data from the 2017-19 seasons
+ay_brady &lt;- ay_all %&gt;%
+  filter(season == 2019, passer_player_name == &quot;T.Brady&quot;)
 
-ggplot(scrimmage.plays.summary, aes(run, pass)) + 
-  geom_image(aes(image = url), size = 0.05) + 
-  xlab(&quot;Run: average offensive EPA&quot;) + 
-  ylab(&quot;Pass: average offensive EPA&quot;) + 
-  theme_minimal() + 
-  labs(title = &quot;Offensive performance, 2018 season&quot;, subtitle = &quot;Data courtesy: nflscrapR&quot;) + 
-  geom_hline(aes(yintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5)+ 
-  geom_vline(aes(xintercept = 0), lty = 2, col = &quot;red&quot;, alpha = 0.5) + 
-  xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
-  geom_text(data = df.text, aes(x, y, label = lab.text), colour = &quot;red&quot;)</code></pre>
-<p><img src="/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Same chart as we initially had, and one-less line of code. The key command is <code>geom_image</code>, which functions similar to <code>geom_point</code> but requires a url to draw an image from.</p>
-<p>Feel free to use the logo file in similar fashion – and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that’s for another day.</p>
+model_player_gam &lt;- bam(complete_pass ~ s(air_yards), data = ay_brady,
+                    method = &quot;fREML&quot;, discrete = TRUE, family = binomial(link=&#39;logit&#39;))
+fit_predict &lt;- expand.grid(air_yards = -10:50)
+fit_predict$comp_logit = predict(model_player_gam, fit_predict)
+fit_predict$comp_error = predict(model_player_gam, fit_predict, se = TRUE)$se.fit
+fit_predict &lt;- fit_predict %&gt;%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+fit_predict %&gt;%
+  ggplot(aes(air_yards, comp_hat)) +
+  geom_line(colour = &quot;red&quot;) +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high), fill = &quot;red&quot;, alpha = 0.3) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = &quot;grey70&quot;, se = FALSE) +
+  labs(title = &quot;Completion % ~ Air yards, 2019&quot;, y = &quot;&quot;, x = &quot;Air yards&quot;,
+       subtitle = &quot;Alternative method: model estimates (GAM)&quot;) +
+  annotate(x = 50, y = 0.31, &quot;text&quot;, label = expression(italic(&quot;League Avg&quot;)), colour = &quot;grey70&quot;) +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))</code></pre>
+<pre class="r"><code>p_new</code></pre>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>When comparing the two versions, it’s less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive.</p>
+<p>Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.</p>
+</div>
+<div id="extrapolating" class="section level2">
+<h2>Extrapolating</h2>
+<p>Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The dark blue-line corresponds to the traditional approach (average by integer), while the dotted line represents estimates from a GAM (separate for each QB).</p>
+<p>As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz has 1 pass at -8 air yards, which fell incomplete. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. Thus, a model-based approach is much less likely to care about his one incompletion at -8 air yards.</p>
+</div>
+<div id="for-fun" class="section level2">
+<h2>For fun</h2>
+<p>Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts, no player has posted a single-game completion percentage higher than Brees.</p>
+<p>It got me thinking about one thing that assuredly did not hurt Brees reach that mark – the game took place in the Mercedes-Benz Superdome.</p>
+<p>So, using a separate function for games played in the eight NFL stadia with domes, here’s how the air-yards curves compare.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>For what it’s worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing away teams only yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights.</p>
 </div>
 
     </div>
@@ -443,9 +459,9 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/nfl">NFL</a>
+  <a class="btn btn-primary btn-outline" href="/tags/nfl">nfl</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  <a class="btn btn-primary btn-outline" href="/tags/gam">GAM</a>
   
   <a class="btn btn-primary btn-outline" href="/tags/ggplot">ggplot</a>
   
@@ -461,13 +477,13 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
       <h3>Related</h3>
       <ul>
         
-        <li><a href="/post/lessons-hidden-in-sports-betting-markets/">Lessons hidden in sports betting markets</a></li>
+        <li><a href="/post/r-for-nfl-analysis/">R for NFL analysis</a></li>
         
-        <li><a href="/post/part-ii-randomness-of-series/">Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</a></li>
+        <li><a href="/post/nfl-team-logos-using-ggimage/">NFL team logos using ggimage</a></li>
         
-        <li><a href="/post/playing-at-home/">Part III: Rocky Mountain High (the benefit of playing at home)</a></li>
+        <li><a href="/post/the-within-game-evolution-of-mlb-s-strike-zone/">The within-game evolution of MLB’s strike zone</a></li>
         
-        <li><a href="/post/part-i-randomness-of-games/">Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</a></li>
+        <li><a href="/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/">The impact of make-up calls is probably bigger than you think</a></li>
         
       </ul>
     </div>

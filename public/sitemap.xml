@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/plotting-air-yards/</loc>
+      <lastmod>2019-12-19T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/r-for-nfl-analysis/</loc>
       <lastmod>2019-05-10T00:00:00+00:00</lastmod>
     </url>
@@ -249,7 +258,7 @@
     <url>
     
       <loc>/tags/gam/</loc>
-      <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -259,7 +268,7 @@
     <url>
     
       <loc>/tags/ggplot/</loc>
-      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-19T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -338,6 +347,16 @@
     
     <url>
     
+      <loc>/tags/nfl/</loc>
+      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/paired-comparisons/</loc>
       <lastmod>2018-08-22T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -359,7 +378,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <lastmod>2019-12-19T00:00:00+00:00</lastmod>
     </url>
     
   

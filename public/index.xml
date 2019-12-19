@@ -11,6 +11,91 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Plotting air yards</title>
+      <link>/post/plotting-air-yards/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plotting-air-yards/</guid>
+      <description>&lt;div id=&#34;an-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
+&lt;p&gt;Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, &lt;a href=&#34;http://airyards.com/&#34;&gt;Josh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/benbbaldwin/status/1207369445720690690&#34;&gt;Ben&lt;/a&gt; have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.&lt;/p&gt;
+&lt;p&gt;Here’s one example of an air yards plot, using a pair of players from the 2019 season.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The blue player tends to be slightly worse than the red player at short throws, better than than the red player at distances around 20 yards, and similar for longer distances. Both players are slightly worse than the league average for shorter throws, but better than the league average at longer throws.&lt;/p&gt;
+&lt;p&gt;Can you guess who Players A and B are?&lt;/p&gt;
+&lt;p&gt;Player A is Tom Brady in 2019.&lt;/p&gt;
+&lt;p&gt;Player B is Tom Brady in 2019.&lt;/p&gt;
+&lt;p&gt;How is that possible? Let’s dive a bit deeper into plots similar to these.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;air-yards-integer-distance&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Air yards ~ integer distance&lt;/h2&gt;
+&lt;p&gt;One common approach for assessing the link between completion rate and air yards is to averages completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.&lt;/p&gt;
+&lt;p&gt;Here’s the example with Brady above.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Each of the dots in blue represent Brady’s completion rate at each of the yardage distances he has thrown to in 2019. You’ll notice higher variability in the dots after 30 yards – he doesn’t often throw that far, so averages at 0 or 1 will be more common.&lt;/p&gt;
+&lt;p&gt;This traditional approach is usually sufficient at highlighting how quarterbacks perform.&lt;/p&gt;
+&lt;p&gt;However, there are a few limitations.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;The trend line corresponds to each dot. But each dot represents a different number of passes, something that the trend line doesn’t know.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Standard errors (if shown) reflect uncertainty in the trend line between the dots, not in the uncertainty in a quarterback’s completion percentage at a certain air yards.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;making-improvements&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Making improvements&lt;/h2&gt;
+&lt;p&gt;There are several approaches that can leverage the number of passes at each air yards integer. I’ll use a generalized additive model (GAM), where a completion (Yes/No) is my outcome and air-yards is my explanatory variable. GAMs are attractive to measure the effect of any &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-variable that might be related to &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in a non-linear fashion, as they allow for a more flexible association. Additionally, GAMs include cross-validation by default to help prevent overfitting.&lt;/p&gt;
+&lt;p&gt;Here’s what a GAM would look like for Brady (with calculations for uncertainty also shown).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mgcv)
+### ay_all contains nflscrapr data from the 2017-19 seasons
+ay_brady &amp;lt;- ay_all %&amp;gt;%
+  filter(season == 2019, passer_player_name == &amp;quot;T.Brady&amp;quot;)
+
+model_player_gam &amp;lt;- bam(complete_pass ~ s(air_yards), data = ay_brady,
+                    method = &amp;quot;fREML&amp;quot;, discrete = TRUE, family = binomial(link=&amp;#39;logit&amp;#39;))
+fit_predict &amp;lt;- expand.grid(air_yards = -10:50)
+fit_predict$comp_logit = predict(model_player_gam, fit_predict)
+fit_predict$comp_error = predict(model_player_gam, fit_predict, se = TRUE)$se.fit
+fit_predict &amp;lt;- fit_predict %&amp;gt;%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+fit_predict %&amp;gt;%
+  ggplot(aes(air_yards, comp_hat)) +
+  geom_line(colour = &amp;quot;red&amp;quot;) +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high), fill = &amp;quot;red&amp;quot;, alpha = 0.3) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = &amp;quot;grey70&amp;quot;, se = FALSE) +
+  labs(title = &amp;quot;Completion % ~ Air yards, 2019&amp;quot;, y = &amp;quot;&amp;quot;, x = &amp;quot;Air yards&amp;quot;,
+       subtitle = &amp;quot;Alternative method: model estimates (GAM)&amp;quot;) +
+  annotate(x = 50, y = 0.31, &amp;quot;text&amp;quot;, label = expression(italic(&amp;quot;League Avg&amp;quot;)), colour = &amp;quot;grey70&amp;quot;) +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p_new&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;When comparing the two versions, it’s less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive.&lt;/p&gt;
+&lt;p&gt;Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extrapolating&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Extrapolating&lt;/h2&gt;
+&lt;p&gt;Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The dark blue-line corresponds to the traditional approach (average by integer), while the dotted line represents estimates from a GAM (separate for each QB).&lt;/p&gt;
+&lt;p&gt;As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz has 1 pass at -8 air yards, which fell incomplete. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. Thus, a model-based approach is much less likely to care about his one incompletion at -8 air yards.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;for-fun&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;For fun&lt;/h2&gt;
+&lt;p&gt;Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts, no player has posted a single-game completion percentage higher than Brees.&lt;/p&gt;
+&lt;p&gt;It got me thinking about one thing that assuredly did not hurt Brees reach that mark – the game took place in the Mercedes-Benz Superdome.&lt;/p&gt;
+&lt;p&gt;So, using a separate function for games played in the eight NFL stadia with domes, here’s how the air-yards curves compare.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For what it’s worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing away teams only yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>R for NFL analysis</title>
       <link>/post/r-for-nfl-analysis/</link>
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
@@ -1592,59 +1677,6 @@ sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;
 &lt;li&gt;Submission 1: &lt;span class=&#34;math inline&#34;&gt;\(\hat{\mu}_1\)&lt;/span&gt; = 2, &lt;span class=&#34;math inline&#34;&gt;\(\hat{\sigma}\)&lt;/span&gt; = 1.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The impact of make-up calls is probably bigger than you think</title>
-      <link>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
-      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
-      <description>
-
-&lt;p&gt;One of the more reliable indicators of which NHL team is likely to get the next power play has little to do with score or style of play. Instead, it&amp;rsquo;s been shown repeatedly (&lt;a href=&#34;https://fivethirtyeight.com/features/hockey-refs-are-out-to-get-you-if-they-already-got-the-other-guy/&#34; target=&#34;_blank&#34;&gt;Ex 1&lt;/a&gt;, &lt;a href=&#34;http://people.stat.sfu.ca/~tim/papers/penalty.pdf&#34; target=&#34;_blank&#34;&gt;Ex 2&lt;/a&gt;) that referees call a substantially higher number of make-up penalties than would otherwise be expected in order to maintain an overall even number of violations on each team. Call it a &lt;a href=&#34;https://creativematter.skidmore.edu/cgi/viewcontent.cgi?article=1004&amp;amp;context=math_fac_schol&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;biased impartiality&lt;/em&gt;&lt;/a&gt; &amp;ndash; in order to appear impartial by game&amp;rsquo;s end, ref&amp;rsquo;s let previous decisions drive future ones.&lt;/p&gt;
-
-&lt;p&gt;A common line of reasoning behind call reversals is that referees would prefer to $not$ be part of the final narrative as to why a particular team won or lost. If each team has a relatively similar number of power plays, media and fans clamoring that one team was favored would have less support. Turns out, however, that by evening up penalty calls, hockey ref&amp;rsquo;s are impacting the same game narratives that they are trying to avoid being a part of. In this post, I&amp;rsquo;ll both confirm the existance of make-up calls and extend a similar analysis to look at the impact of make-up calls on game outcomes.&lt;/p&gt;
-
-&lt;h2 id=&#34;the-make-up-call&#34;&gt;The make-up call&lt;/h2&gt;
-
-&lt;p&gt;Claiming that a call in any sport is due to anything besides an unbiased referee assessment is a non-trivial task. Fortunately, hockey boasts several settings that make looking for make-up calls somewhat feasible. Game&amp;rsquo;s are often tied, and looking at penalties in tied-game states can avoid results being impacted by changes in style of play due to the score. Moreover, with an average of about eight minors a game &amp;ndash; most of them judgement calls &amp;ndash;  there&amp;rsquo;s a large enough sample size within each game on which to evaluate ref choices.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s an initial chart comparing the penalty differential between each team at the end of the first period (y-axis, where positive means more penalties) to penalty differential over the remainder of the game (shown in the darkness and color of the grid).&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; The x-axis corresponds to the home team&amp;rsquo;s estimated pre-game win probability, calculated using odds implied by betting markets (you can get that data &lt;a href=&#34;https://github.com/bigfour/competitiveness/blob/master/data/bigfour_public.rda&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;). Accounting for relative team talent is potentially important, as its a variable that&amp;rsquo;s quite possibly linked to penalty calls and team aggressiveness. Only games that were tied at the end of the first period are included in this chart &amp;ndash; the data goes from the 05-06 to 15-16 regular seasons.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/img/makeupF1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When home teams have two more infractions than their opponent at the end of the first period, they average roughly 0.8 fewer infractions the rest of the game. Alternatively, when home teams have two fewer penalties at the end of the first, they average about 0.5 more violations in periods 2 and 3. The difference between having more and fewer penalties in tied games is quite significant from a statistical perspective. Of course, if you had read a few of the links above, you probably would have guessed that there would be this type of impact. But the effect size (an extra 1.3 power plays in 2 periods), as well as the shading consistency of the chart above, seemed noteworthy.&lt;/p&gt;
-
-&lt;h2 id=&#34;the-impact-of-the-make-up-call&#34;&gt;The impact of the make-up call&lt;/h2&gt;
-
-&lt;p&gt;A make-up calls is all well and good until one team loses a game because of it.&lt;/p&gt;
-
-&lt;p&gt;To check how future games are impacted by make-up calls, I used a chart similar to the one shown above. In this one, however, shading reflects the percent of games eventually won by the home team.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/img/makeupF2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In this version, the shading is reversed &amp;ndash; more first period penalties are linked to an increased win rate, just as fewer penalties are linked to a decreased win rate. Again, remember that we&amp;rsquo;re only looking at tied games, and we&amp;rsquo;re accounting for how good each team is!&lt;/p&gt;
-
-&lt;p&gt;Altogether, when the game is expected to be a relative toss-up, the difference between having two more first period penalties and two fewer first period penalties is about 7 or 8 percentage points in terms of the home team&amp;rsquo;s chances. The effect is a bit larger when the home team is not expected to win, with differences between fewer and more first period worth an estimated 10 percentage points.&lt;/p&gt;
-
-&lt;p&gt;While this may seem like a relatively minor change, the fact that there&amp;rsquo;s $any$ change in win rate based on prior penalties is curious given that we&amp;rsquo;re only looking at tied games. Additionally, we may be underestimating the impact of make-up calls &amp;ndash; if a team had more first period penalties, it would have likewise been more likely to start the second period on a penalty kill, a quirk that I did not account for above. Further, this isn&amp;rsquo;t a peculiar set of games  &amp;ndash; about a third of NHL games end the first period tied. Finally, although it&amp;rsquo;d require further assumptions with respect to playing style, it&amp;rsquo;s also likely that make-up calls have an impact on games that aren&amp;rsquo;t tied.&lt;/p&gt;
-
-&lt;p&gt;One limitation of this post is that, in using observational data, it is feasible that there&amp;rsquo;s something else responsible for the link between first period penalty differential and game outcomes. One possible alternative is that teams that have taken penalties suddenly feel the need to be more aggressive, which then leads to more natural reversals masquerading as make-up calls. However, for tied games, I can&amp;rsquo;t imagine that the revenge factor looms too large. Further, in &lt;a href=&#34;https://creativematter.skidmore.edu/cgi/viewcontent.cgi?article=1004&amp;amp;context=math_fac_schol&#34; target=&#34;_blank&#34;&gt;previous work&lt;/a&gt;, I found that penalty reversals were, if anything, higher in the postseason, where there is almost no desire for revenge (at least via penalties).&lt;/p&gt;
-
-&lt;p&gt;If you are curious about the coding for the project, I used play-by-play data via the now archived &lt;a href=&#34;https://cran.r-project.org/web/packages/nhlscrapr/index.html&#34; target=&#34;_blank&#34;&gt;nhlscrapr&lt;/a&gt; package in R. Matching minors, as well as all major penalties, were dropped. The code for all figures, models, and numbers is &lt;a href=&#34;https://github.com/statsbylopez/BlogPosts/blob/master/NHL_predict_penaltydiff.R&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;I used a generalized additive model (GAM) of penalty differential as a factor of both home team win probability and first period penalty differential. In this and the example below, first period penalty differential was a significant predictor. GAMs make sense in this and other examples, as the true model fit with penalty outcomes is unknown.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;Same model as above, now with a binary outcome.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>

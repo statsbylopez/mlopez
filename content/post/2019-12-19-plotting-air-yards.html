@@ -1,0 +1,94 @@
+---
+title: Plotting air yards
+author: ''
+date: '2019-12-19'
+slug: plotting-air-yards
+categories: []
+tags:
+  - nfl
+  - GAM
+  - ggplot
+header:
+  caption: ''
+  image: ''
+  preview: yes
+---
+
+
+
+<div id="an-example" class="section level2">
+<h2>An example</h2>
+<p>Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, <a href="http://airyards.com/">Josh</a> and <a href="https://twitter.com/benbbaldwin/status/1207369445720690690">Ben</a> have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.</p>
+<p>Here’s one example of an air yards plot, using a pair of players from the 2019 season.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The blue player tends to be slightly worse than the red player at short throws, better than than the red player at distances around 20 yards, and similar for longer distances. Both players are slightly worse than the league average for shorter throws, but better than the league average at longer throws.</p>
+<p>Can you guess who Players A and B are?</p>
+<p>Player A is Tom Brady in 2019.</p>
+<p>Player B is Tom Brady in 2019.</p>
+<p>How is that possible? Let’s dive a bit deeper into plots similar to these.</p>
+</div>
+<div id="air-yards-integer-distance" class="section level2">
+<h2>Air yards ~ integer distance</h2>
+<p>One common approach for assessing the link between completion rate and air yards is to averages completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.</p>
+<p>Here’s the example with Brady above.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Each of the dots in blue represent Brady’s completion rate at each of the yardage distances he has thrown to in 2019. You’ll notice higher variability in the dots after 30 yards – he doesn’t often throw that far, so averages at 0 or 1 will be more common.</p>
+<p>This traditional approach is usually sufficient at highlighting how quarterbacks perform.</p>
+<p>However, there are a few limitations.</p>
+<ol style="list-style-type: decimal">
+<li><p>The trend line corresponds to each dot. But each dot represents a different number of passes, something that the trend line doesn’t know.</p></li>
+<li><p>Standard errors (if shown) reflect uncertainty in the trend line between the dots, not in the uncertainty in a quarterback’s completion percentage at a certain air yards.</p></li>
+</ol>
+</div>
+<div id="making-improvements" class="section level2">
+<h2>Making improvements</h2>
+<p>There are several approaches that can leverage the number of passes at each air yards integer. I’ll use a generalized additive model (GAM), where a completion (Yes/No) is my outcome and air-yards is my explanatory variable. GAMs are attractive to measure the effect of any <span class="math inline">\(x\)</span>-variable that might be related to <span class="math inline">\(y\)</span> in a non-linear fashion, as they allow for a more flexible association. Additionally, GAMs include cross-validation by default to help prevent overfitting.</p>
+<p>Here’s what a GAM would look like for Brady (with calculations for uncertainty also shown).</p>
+<pre class="r"><code>library(mgcv)
+### ay_all contains nflscrapr data from the 2017-19 seasons
+ay_brady &lt;- ay_all %&gt;%
+  filter(season == 2019, passer_player_name == &quot;T.Brady&quot;)
+
+model_player_gam &lt;- bam(complete_pass ~ s(air_yards), data = ay_brady,
+                    method = &quot;fREML&quot;, discrete = TRUE, family = binomial(link=&#39;logit&#39;))
+fit_predict &lt;- expand.grid(air_yards = -10:50)
+fit_predict$comp_logit = predict(model_player_gam, fit_predict)
+fit_predict$comp_error = predict(model_player_gam, fit_predict, se = TRUE)$se.fit
+fit_predict &lt;- fit_predict %&gt;%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+fit_predict %&gt;%
+  ggplot(aes(air_yards, comp_hat)) +
+  geom_line(colour = &quot;red&quot;) +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high), fill = &quot;red&quot;, alpha = 0.3) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = &quot;grey70&quot;, se = FALSE) +
+  labs(title = &quot;Completion % ~ Air yards, 2019&quot;, y = &quot;&quot;, x = &quot;Air yards&quot;,
+       subtitle = &quot;Alternative method: model estimates (GAM)&quot;) +
+  annotate(x = 50, y = 0.31, &quot;text&quot;, label = expression(italic(&quot;League Avg&quot;)), colour = &quot;grey70&quot;) +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))</code></pre>
+<pre class="r"><code>p_new</code></pre>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>When comparing the two versions, it’s less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive.</p>
+<p>Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.</p>
+</div>
+<div id="extrapolating" class="section level2">
+<h2>Extrapolating</h2>
+<p>Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The dark blue-line corresponds to the traditional approach (average by integer), while the dotted line represents estimates from a GAM (separate for each QB).</p>
+<p>As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz has 1 pass at -8 air yards, which fell incomplete. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. Thus, a model-based approach is much less likely to care about his one incompletion at -8 air yards.</p>
+</div>
+<div id="for-fun" class="section level2">
+<h2>For fun</h2>
+<p>Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts, no player has posted a single-game completion percentage higher than Brees.</p>
+<p>It got me thinking about one thing that assuredly did not hurt Brees reach that mark – the game took place in the Mercedes-Benz Superdome.</p>
+<p>So, using a separate function for games played in the eight NFL stadia with domes, here’s how the air-yards curves compare.</p>
+<p><img src="/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>For what it’s worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing away teams only yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights.</p>
+</div>

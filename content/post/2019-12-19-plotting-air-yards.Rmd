@@ -1,0 +1,315 @@
+---
+title: Plotting air yards
+author: ''
+date: '2019-12-19'
+slug: plotting-air-yards
+categories: []
+tags:
+  - nfl
+  - GAM
+  - ggplot
+header:
+  caption: ''
+  image: ''
+  preview: yes
+---
+
+
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE, include=FALSE}
+
+library(data.table); library(tidyverse)
+
+#ay_2019 <- fread("https://raw.githubusercontent.com/ryurko/nflscrapR-data/master/play_by_play_data/regular_season#/reg_pbp_2019.csv") %>% 
+#  select(home_team, posteam, defteam, play_type, pass_attempt, qb_spike, pass_length, air_yards, #passer_player_name, complete_pass) %>% 
+#  mutate(season = 2019)
+#
+#ay_2018 <- fread("https://raw.githubusercontent.com/ryurko/nflscrapR-data/master/play_by_play_data/regular_season#/reg_pbp_2018.csv")%>% 
+#  select(home_team, posteam, defteam, play_type, pass_attempt, qb_spike, pass_length, air_yards, #passer_player_name, complete_pass)%>% 
+#  mutate(season = 2018)
+#
+#ay_2017 <- fread("https://raw.githubusercontent.com/ryurko/nflscrapR-data/master/play_by_play_data/regular_season#/reg_pbp_2017.csv") %>% 
+#  select(home_team, posteam, defteam, play_type, pass_attempt, qb_spike, pass_length, air_yards, #passer_player_name, complete_pass)%>% 
+#  mutate(season = 2017)
+#
+#ay_all <- bind_rows(ay_2017, ay_2018, ay_2019) %>%
+#  filter(air_yards >= -10, air_yards <= 55, qb_spike == 0)
+#
+#write_csv(ay_all, "ay_nflscrapr.csv")
+ay_all <- read_csv("https://raw.githubusercontent.com/statsbylopez/StatsSports/master/ay_nflscrapr.csv")
+
+ay_brady <- ay_all %>%
+  filter(season == 2019, passer_player_name == "T.Brady")
+
+ove_ave <- ay_all %>%
+  group_by(air_yards) %>%
+  summarise(ave_rate = mean(complete_pass))
+
+library(mgcv)
+model_player_gam <- bam(complete_pass ~ s(air_yards), data = ay_brady,
+                    method = "fREML", discrete = TRUE, family = binomial(link='logit'))
+fit_predict <- expand.grid(air_yards = -10:50)
+fit_predict$comp_logit = predict(model_player_gam, fit_predict)
+fit_predict$comp_error = predict(model_player_gam, fit_predict, se = TRUE)$se.fit
+fit_predict <- fit_predict %>%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+p_example <- ay_brady %>%
+  group_by(air_yards) %>%
+  summarise(ave_rate = mean(complete_pass),
+            n_plays = n()) %>%
+  ggplot(aes(air_yards, ave_rate)) +
+  geom_smooth(se = FALSE, colour = "blue4") +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = "grey70",
+              se = FALSE) +
+  geom_line(data = fit_predict, aes(y = comp_hat), colour = "red") +
+  labs(title = "Completion % ~ Air yards, 2019", y = "", x = "Air yards") +
+  annotate(x = 20, y = 0.8, "text", label = "Player A", colour = "blue4") +
+  annotate(x = 20, y = 0.7, "text", label = "Player B", colour = "red") +
+  annotate(x = 50, y = 0.31, "text", label = expression(italic("League Avg")), colour = "grey70") +
+  geom_segment(aes(x = 27, xend = 35, y = 0.8, yend = 0.8), colour = "blue4") +
+  geom_segment(aes(x = 27, xend = 35, y = 0.7, yend = 0.7), colour = "red") +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))
+p_example
+
+
+p_old <- ay_brady %>%
+  group_by(air_yards) %>%
+  summarise(ave_rate = mean(complete_pass),
+            n_plays = n()) %>%
+  ggplot(aes(air_yards, ave_rate)) +
+  geom_smooth(se = FALSE, colour = "blue4") +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = "grey70",
+              se = FALSE) +
+  geom_point() +
+  labs(title = "Completion % ~ Air yards, 2019", y = "", x = "Air yards",
+       subtitle = "Traditional method: smoothed integer air yard averages") +
+  annotate(x = 50, y = 0.31, "text", label = expression(italic("League Avg")), colour = "grey70") +
+ # geom_point(aes(size = n_plays)) +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))
+
+
+p_new <- fit_predict %>%
+  ggplot(aes(air_yards, comp_hat)) +
+  geom_line(colour = "red") +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high), fill = "red", alpha = 0.3) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = "grey70", se = FALSE) +
+  labs(title = "Completion % ~ Air yards, 2019", y = "", x = "Air yards",
+       subtitle = "Alternative method: model estimates (GAM)") +
+  annotate(x = 50, y = 0.31, "text", label = expression(italic("League Avg")), colour = "grey70") +
+ # geom_point(aes(size = n_plays)) +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))
+p_new
+
+
+
+### All players
+ay_qb_2019 <- ay_all %>% 
+  count(passer_player_name, season) %>%
+  filter(n >= 300, season == 2019) %>%
+  inner_join(ay_all) %>%
+  filter(!is.na(passer_player_name))
+model_19 <- bam(complete_pass ~ s(air_yards, by = factor(passer_player_name)),
+                data = ay_qb_2019, method = "fREML",
+                discrete = TRUE, family = binomial(link='logit'))
+fit_predict <- expand.grid(air_yards = -10:50,
+                           passer_player_name = unique(ay_qb_2019$passer_player_name))
+fit_predict$comp_logit = predict(model_19, fit_predict)
+fit_predict$comp_error = predict(model_19, fit_predict, se = TRUE)$se.fit
+fit_predict <- fit_predict %>%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+comp_pct_19 <- ay_qb_2019 %>%
+  group_by(passer_player_name, air_yards) %>%
+  summarise(ave_rate = mean(complete_pass))
+p_all <- comp_pct_19 %>%
+  ggplot(aes(air_yards, ave_rate)) +
+  geom_smooth(se = FALSE) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = "black",
+              se = FALSE) +
+  geom_line(data = fit_predict, aes(y = comp_hat), lty = 2) +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1)) +
+  facet_wrap(~passer_player_name, nrow = 4) +
+  theme(panel.grid.minor = element_blank()) +
+  labs(title = "Completion % ~ Air yards, 2019", y = "", x = "Air yards")
+p_all
+
+p_legend <- ggplot() +
+  annotate(x = 00, y = 0.1, "text", label = "Integer avg", colour = "blue", hjust = 1) +
+  annotate(x = 20, y = 0.1, "text", label = "GAM estimates", colour = "blue", hjust = 1) +
+  annotate(x = 40, y = 0.1, "text", label = "League Avg", colour = "black", hjust = 1) +
+  geom_segment(aes(x = 1, xend = 6, y = 0.1, yend = 0.1), colour = "blue") +
+  geom_segment(aes(x = 21, xend = 26, y = 0.1, yend = 0.1), colour = "blue", lty = 2) +
+  geom_segment(aes(x = 41, xend = 46, y = 0.1, yend = 0.1), colour = "black")  +
+  cowplot::theme_nothing() +
+  xlim(c(-10, 50)) +
+  #scale_x_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0)) +
+  labs(x = NULL, y = NULL)
+
+p_legend  
+library(patchwork)
+p_all + p_legend + plot_layout(heights = c(5, 1), ncol = 1)
+
+ay_all <- ay_all %>%
+  mutate(is_dome = home_team %in% c("NO", "MIN", "IND", "HOU", "DET", "DAL", "ATL", "ARZ"))
+
+
+model_dome <- bam(complete_pass ~ s(air_yards, by = factor(is_dome)), 
+                  data = ay_all, 
+                  method = "fREML", discrete = TRUE, family = binomial(link='logit'))
+fit_predict_dome <- expand.grid(air_yards = -10:50, is_dome = c(TRUE, FALSE))
+fit_predict_dome$comp_logit = predict(model_dome, fit_predict_dome)
+fit_predict_dome$comp_error = predict(model_dome, fit_predict_dome, se = TRUE)$se.fit
+fit_predict_dome <- fit_predict_dome %>%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+p_dome <- fit_predict_dome %>%
+  ggplot(aes(air_yards, comp_hat, colour = is_dome)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high, fill = is_dome), alpha = 0.3) +
+  scale_fill_brewer(palette = "Set1", "Type", labels = c("Non-dome", "Dome")) +
+  scale_color_brewer(palette = "Set1", "Type", labels = c("Non-dome", "Dome")) +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1)) +
+  theme(panel.grid.minor = element_blank()) +
+  labs(title = "Completion % ~ Air yards, domes versus non-domes", y = "", x = "Air yards")
+p_dome
+
+```
+
+## An example
+
+Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, [Josh](http://airyards.com/) and [Ben](https://twitter.com/benbbaldwin/status/1207369445720690690) have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than any individual quarterback metric alone.
+
+Here's one example of an air yards plot, using a pair of players from the 2019 season.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+p_example
+```
+
+The blue player tends to be slightly worse than the red player at short throws, better than than the red player at distances around 20 yards, and similar for longer distances. Both players are slightly worse than the league average for shorter throws, but better than the league average at longer throws. 
+
+Can you guess who Players A and B are? 
+
+Player A is Tom Brady in 2019.
+
+Player B is Tom Brady in 2019.
+
+How is that possible? Let's dive a bit deeper into plots similar to these. 
+
+## Air yards ~ integer distance
+
+One common approach for assessing the link between completion rate and air yards is to averages completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.
+
+Here's the example with Brady above.
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+p_old
+```
+
+Each of the dots in blue represent Brady's completion rate at each of the yardage distances he has thrown to in 2019. You'll notice higher variability in the dots after 30 yards -- he doesn't often throw that far, so averages at 0 or 1 will be more common.
+
+This traditional approach is usually sufficient at highlighting how quarterbacks perform. 
+
+However, there are a few limitations. 
+
+1. The trend line corresponds to each dot. But each dot represents a different number of passes, something that the trend line doesn't know. 
+
+2. Standard errors (if shown) reflect uncertainty in the trend line between the dots, not in the uncertainty in a quarterback's completion percentage at a certain air yards. 
+
+## Making improvements
+
+There are several approaches that can leverage the number of passes at each air yards integer. I'll use a generalized additive model (GAM), where a completion (Yes/No) is my outcome and air-yards is my explanatory variable. GAMs are attractive to measure the effect of any $x$-variable that might be related to $y$ in a non-linear fashion, as they allow for a more flexible association. Additionally, GAMs include cross-validation by default to help prevent overfitting. 
+
+Here's what a GAM would look like for Brady (with calculations for uncertainty also shown). 
+
+```{r, eval = FALSE, echo = TRUE}
+library(mgcv)
+### ay_all contains nflscrapr data from the 2017-19 seasons
+ay_brady <- ay_all %>%
+  filter(season == 2019, passer_player_name == "T.Brady")
+
+model_player_gam <- bam(complete_pass ~ s(air_yards), data = ay_brady,
+                    method = "fREML", discrete = TRUE, family = binomial(link='logit'))
+fit_predict <- expand.grid(air_yards = -10:50)
+fit_predict$comp_logit = predict(model_player_gam, fit_predict)
+fit_predict$comp_error = predict(model_player_gam, fit_predict, se = TRUE)$se.fit
+fit_predict <- fit_predict %>%
+  mutate(comp_hat = exp(comp_logit)/(1+exp(comp_logit)),
+         comp_low = exp(comp_logit - 1.96*comp_error)/(1+exp(comp_logit - 1.96*comp_error)),
+         comp_high = exp(comp_logit + 1.96*comp_error)/(1+exp(comp_logit + 1.96*comp_error)))
+
+fit_predict %>%
+  ggplot(aes(air_yards, comp_hat)) +
+  geom_line(colour = "red") +
+  geom_ribbon(aes(ymin = comp_low, ymax = comp_high), fill = "red", alpha = 0.3) +
+  geom_smooth(data = ove_ave,
+              aes(air_yards, y = ave_rate), colour = "grey70", se = FALSE) +
+  labs(title = "Completion % ~ Air yards, 2019", y = "", x = "Air yards",
+       subtitle = "Alternative method: model estimates (GAM)") +
+  annotate(x = 50, y = 0.31, "text", label = expression(italic("League Avg")), colour = "grey70") +
+  theme_bw(13) +
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
+  coord_cartesian(ylim = c(0,1))
+```
+
+```{r, eval = echo, message = FALSE, warning = FALSE, eval = TRUE}
+p_new
+```
+
+When comparing the two versions, it's less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive. 
+
+Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.
+
+## Extrapolating 
+
+Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts. 
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+p_all + p_legend + plot_layout(heights = c(5, 1), ncol = 1)
+```
+
+The dark blue-line corresponds to the traditional approach (average by integer), while the dotted line represents estimates from a GAM (separate for each QB). 
+
+As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz has 1 pass at -8 air yards, which fell incomplete. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. Thus, a model-based approach is much less likely to care about his one incompletion at -8 air yards. 
+
+## For fun
+
+Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts, no player has posted a single-game completion percentage higher than Brees.
+
+It got me thinking about one thing that assuredly did not hurt Brees reach that mark -- the game took place in the Mercedes-Benz Superdome. 
+
+So, using a separate function for games played in the eight NFL stadia with domes, here's how the air-yards curves compare. 
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+p_dome
+```
+
+For what it's worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing away teams only yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights. 
+
