@@ -1,0 +1,241 @@
+---
+title: Assessing running back performance using distributions
+author: ''
+date: '2020-01-28'
+slug: assessing-running-back-performance-using-distributions
+categories: []
+tags: []
+header:
+  caption: ''
+  image: ''
+  preview: yes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+Most often, running backs in the National Football League are compared by taking summary statistics from each play. Traditional metrics include yards-per-carry, expected points added per play (EPA), and win probability added per play (WPA). While comparing backs based on average yards, EPA, and WPA is the most straightforward approach to compare players, averages can be particularly sensitive to outlying observations and distributions with heavy tails. Unfortunately, each of the metrics above are all strongly skewed right (EPA also has outliers to the left), which means that taking averages may not be an optimal approach.
+
+
+As part of the NFL's Big Data Bowl, participants dove deeper into running back performance. In this post, I'll use one set of Big Data Bowl predictions (provided by the Zoo, [link](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400)) to examine two newer metrics -- yards over expectation and yardage percentiles. 
+
+## Yards over expectation
+
+The first way to look at Big Data Bowl projections was to boil each carry down to a single number peformance -- expected yards. Using the Zoo's predictions, each carry's expected yards is the cumulative sum of the probability that the ball carrier finished with each yardage total, multiplied by that yardage total. Ex: if a back has a 25% chance at losing 1 yard (-1), a 25 percent chance at 0 yards, and a 50 percent chance at 1 yard, the expected yards gained would be 0.25 ($-1*0.25 + 0*0.25 + 1*0.50 = 0.25$). 
+
+Here's a histogram of yards over expectation. 
+
+```{r}
+library(tidyverse); library(ggrepel); library(ggridges)
+df_zoo <- read_csv("~/Dropbox/BlogPosts/zoo_predictions_19_v2.csv")
+
+
+plot_yds <- df_zoo %>% filter(YardsBeingPredicted == 0) %>% 
+  ggplot(aes(Yards)) + 
+  geom_histogram() + 
+  labs(title = "Distribution of yards") + 
+  theme_bw(12)
+
+df_yoe = df_zoo %>% 
+  group_by(PlayId, displayName, gameId) %>%
+  summarise(yds_hat = sum(YardsProbability*YardsBeingPredicted), 
+            yds_act = mean(Yards), 
+            yoe = yds_act - yds_hat)
+
+plot_yoe <- df_yoe %>% 
+  ggplot(aes(yoe)) + 
+  geom_histogram() + 
+  labs(title = "Distribution of yards over average") + 
+  theme_bw(12)
+library(patchwork)
+plot_yds + plot_yoe
+```
+
+Yards above expectation is centered at 0 and is slightly more symmetric, but there remain outliers and a heavy tail to the right. That is, despite the Zoo's projections [being accurate on aggregate](https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/), yards over expectation boasts a fairly similar distribution to yards.
+
+The skewness of each distribution, combined with the relatively small number of carries that are afforded to running backs each season, can make it difficult to infer much about player talent using averages alone. Damien Williams' 91 yard touchdown run, for example, was only expected to gain 5.2 yards. In the histograms above, there's not much difference between 91 yards and 95.8 yards above expectation. 
+
+### Assessing repeatability using yards over expectation
+
+A frequent goal of sports analytics is to find players that are able to consistently able to outperform expectations. This is generally done by splitting samples into two samples (say, odd games and even games, training and test data, or year over year preformances). Steph Curry shooting 3-pointers, Lionel Messi on set pieces, and Mike Trout's exit velocity are examples of players who will consistently outperform expectations. 
+Running back metrics have traditionally been shown to be unpredictable, and the skewness of the distributions above is part of the reason why. Here's a histogram of yards over expectation for Damien Williams' 82 carries. 
+
+```{r}
+df_yoe %>% filter(displayName == "Damien Williams") %>% 
+  ggplot(aes(x = yoe)) + 
+  geom_histogram()+ 
+  labs(title = "Distribution of yards over average, Damien Williams") + 
+  theme_bw(12)
+```
+
+Williams has 81 carries with between -10 and 7 yards +/- expectation, and one carry with +85.8 yards over average. If you split Williams' carries into two even subsamples, each with half of his carries, the 91 yards (or 85.8 yards above expectation) is only going to end up in one of them. Doesn't really matter how many times you sample, and you could even sample with replacement. At the end of the day, the inclusion of that one play will determine how consistent (or inconsistent) you view Williams' season.    
+
+More generally, the chart below splits Big Data Bowl predictions into two random data sets (sample's 1 and 2), and compares each RBs average yards gained above and below expectation between the two samples. 
+
+
+```{r}
+set.seed(100)
+df_yoe$rand <- ifelse(rnorm(nrow(df_yoe)) > 0, "train", "test")
+options(digits = 2)
+df_yoe_sum <- df_yoe %>% 
+  ungroup() %>% 
+  group_by(rand, displayName) %>% 
+  summarise(success_rate = mean(yoe), 
+            n_carries = n()) %>% 
+  filter(n_carries >= 25) %>% 
+  select(-n_carries) %>% 
+  spread(rand, success_rate) %>% 
+  na.omit() 
+
+
+df_yoe_sum %>% 
+  ggplot(aes(train, test)) + 
+  geom_point() +  
+  geom_smooth() +
+  geom_point(data = filter(df_yoe_sum, displayName == "Damien Williams"), fill = "#e31837", pch = 21, 
+             colour = "yellow",
+             size = 3) + 
+  annotate(x = -1.4, y = 0.66, hjust = 1.2, vjust = -0.2, "text", label = "Damien \nWilliams", 
+           colour = "#e31837") + 
+  theme_bw(12) + 
+  scale_x_continuous("Avg yards +/-, sample 1") + 
+  scale_y_continuous("Avg yards +/-, sample 2") +
+  labs(title = "Yards above/below expectation", 
+       subtitle = "Using The Zoo Big Data Bowl expected yards predictions") 
+```
+
+There's potentially a small link between ball carrier performance in the two samples, but it's hard to separate from noise (even scatter). Sampling in this fashion 1000 times averages a correlation coefficient of 0.17. By and large, there's a weak, linear association in yardage above/below expectation when cut between two random splits of data. 
+
+If you are curious where Williams is, he's always in the top left (if his touchdown run was in sample 2) or bottom right (sample 1), depending on chance.
+
+## What else is there?
+
+Big Data Bowl predictions aren't just expected yards -- they're distributions. Here's the empirical cumulative density function (CDF) for two sample carries, a Cordarrelle Patterson two-yard loss and a Raheem Mostert 41-yard touchdown run.
+
+
+```{r}
+df_zoo %>%
+  filter(PlayId_Kaggle == 20190905001318|PlayId_Kaggle == 20191027093982) %>% 
+  ggplot(aes(YardsBeingPredicted, YardsCDF, group = PlayId_Kaggle)) + 
+  xlim(c(-10, 50)) + 
+  geom_step() + 
+  labs(title= "Empirical CDF of two sample carries", 
+       x = "Yards being predicted", y = "Cumulative probability") + 
+  annotate(x = 40, y = 0.825, "text", label = "Mostert \n 41-yard TD") + 
+  annotate("point", x = 41, y = 1, size = 2) + 
+  annotate("point", x = -2, y = 0.295, size = 2) + 
+  annotate(x = -3, y = 0.32, "text", label = "Patterson \n2-yard loss", hjust = 1)
+```
+
+There's basically nothing about the two plays that's similar. As an example, Mostert was as likely to reach 12 yards as Patterson was to lose a yard (50%), which is a fairly wide gap in terms of modal performance. 
+
+Using expected yards, Mostert overperformed by about 30 yards, while Patterson fell about a yard short. But I'm not sure those numbers tell the best story. There's basically 0 chance Patterson could've finished with 30-yards over expectation on his carry (even though his play started near midfield). In fact, if we judge by yardage over expectation, Patterson would need to replicate his play seven times, and on each play gain seven yards (probability ~ 0) to match Mostert's yards above average.
+
+In place of yardage expectations, there's a more intuitive way of comparing Patterson's run to Mostert's -- their CDFs. That is, each point on the y-axis in the chart above maps to yardage gains that are equivalent between the two runs. The following chart shows how Patterson losing two yards was equivalent to a carry where Mostert gained 8 yards. Both gains correspond to roughly 0.30 on the y-axis.
+
+```{r}
+df_zoo %>%
+  filter(PlayId_Kaggle == 20190905001318|PlayId_Kaggle == 20191027093982) %>% 
+  ggplot(aes(YardsBeingPredicted, YardsCDF, group = PlayId_Kaggle)) + 
+  xlim(c(-10, 50)) + 
+  geom_step() + 
+  labs(title= "Empirical CDF of two sample carries", 
+       x = "Yards being predicted", y = "Cumulative probability") + 
+  annotate(x = 15, y = 0.30, "text", label = "Mostert \n 8-yard run") + 
+  annotate(x = -3, y = 0.30, "text", label = "Patterson \n2-yard loss", hjust = 1) + 
+  geom_segment(aes(x = 8, xend = 8, y = 0, yend = 0.295), lty = 2) + 
+  annotate("point", x = -2, y = 0.295, size = 2) + 
+  annotate("point", x = 8, y = 0.295, size = 2) + 
+  geom_hline(aes(yintercept = 0.295), lty = 2)
+```
+
+As an alternative comparison, an 8-yard gain for Patterson is roughly the equivalent of what Mostert did on his touchdown run. 
+
+Side benefits of using these CDFs? 
+
+First, they're intuitive -- the cdf is a percentile. Patterson losing 2 yards and Mostert (hypothetically) gaining 8 yards both correspond to the 30th percentile.
+
+Second, percentiles will (roughly) follow a uniform distribution, which means they aren't as prone to outliers.
+
+### What do CDFs from the Big Data Bowl tell us?
+
+Using all plays in the Big Data Bowl, I mapped each observed yardage gained to the corresponding percentile. That percentile roughly corresponds to a play-level performance for a running back, using the distribution of The Zoo's predictions. Higher is better.
+
+Here are density plots looking at the percentiles for the 28 players with at least 100 carries in the sample. Players are ordered in order from lowest to highest median percentiles. 
+
+```{r}
+
+play_sum <- df_zoo %>% 
+  arrange(PlayId_Kaggle, YardsBeingPredicted) %>%
+  group_by(PlayId_Kaggle) %>% 
+  mutate(YardsCDF = cumsum(YardsProbability))  %>% 
+  group_by(displayName, PlayId_Kaggle) %>% 
+  summarise(yds_percentile = sum(YardsCDF*(YardsBeingPredicted == Yards)))
+
+
+play_sum %>% 
+  group_by(displayName) %>% 
+  summarise(ave_percentile = median(yds_percentile), 
+            n_carries = n()) %>% 
+  filter(n_carries >= 100) %>% 
+  inner_join(play_sum) %>% 
+  ggplot(aes(x = yds_percentile, 
+             y = fct_reorder(displayName, ave_percentile))) + 
+  stat_density_ridges(aes(fill = stat(quantile)), 
+                      geom = "density_ridges_gradient", 
+                      calc_ecdf = TRUE, quantiles = 4, quantile_lines = FALSE) + 
+  scale_fill_viridis_d("RB quartiles") + 
+  scale_x_continuous(lim = c(0, 1), labels = c("0th", "25th", "50th", "75th", "100th")) + 
+  theme_bw() + 
+  labs(title = "Running back percentile scores, 2019", 
+       subtitle = "Percentile: % of running back carries at or below observed yardage", x = "Percentile: percent of RBs you've exceeded on each carry", y = "") 
+  
+```
+
+Ezekial Elliot's typical carry ended in the 67th-percentile of what a typical running back would gain, while Devonta Freeman was in the 37th-percentile. Roughly, it was just as common for Freeman to finish in the top-quarter of running back distributions as it was for Elliot to finish in the top half. Le'Veon Bell, Chris Carson, and Jordan Howard are other names atop the chart.
+
+As a final step, we check to see if there's any more consistency in running back percentile scores. The chart below splits again splits players into two samples randomly, but this time focuses on the average percentile for each run.
+
+```{r}
+set.seed(10)
+play_sum$rand <- ifelse(rnorm(nrow(play_sum)) > 0, "train", "test")
+
+options(digits = 2)
+df_player <- play_sum %>% 
+  ungroup() %>% 
+  group_by(rand, displayName) %>% 
+  summarise(success_rate = mean(yds_percentile), 
+         n_carries = n()) %>% 
+  filter(n_carries >= 25) %>% 
+  select(-n_carries) %>% 
+  spread(rand, success_rate) %>% 
+  na.omit() 
+
+df_player %>% 
+  ggplot(aes(train, test)) + 
+  geom_point() + 
+  geom_smooth() + 
+  theme_bw() + 
+  scale_x_continuous("Avg percentile, sample 1", lim = c(0.35, 0.65), 
+                     labels = c("40th", "50th", "60th"), breaks = c(0.4, 0.5, 0.6)) + 
+  scale_y_continuous(labels = c("40th", "50th", "60th"), breaks = c(0.4, 0.5, 0.6), "Avg percentile, sample 2", lim = c(0.35, 0.65)) +
+  labs(title = "Avg carry percentile in split samples, 2019", 
+       subtitle = "Percentile: probability of reaching at least observed yards gained given handoff conditions") + 
+  geom_label_repel(data = filter(df_player, train < 0.45|
+                                   (train>0.58 & test > 0.58)|displayName == "Damien Williams"), aes(label = displayName))
+```
+
+Freeman, Elliott, and Williams are all highlighted, with performances that appear consistent in the two samples. Williams, with his long touchdown run reduced from extreme outlier to simply the 100th-percentile, is no longer as impacted by an outlier.
+
+The correlation in the above plot is 0.40 -- that matches what occurs if you take a few thousand such random samples.
+
+To repeat: using percentile in place of yards +/-, even when looking at the identical set of plays, allows us to upp our split sample correlation coefficient from 0.17 to 0.40 when looking at running back performance. 
+
+## What's it all mean
+
+Not that yardage is ever perfect, but looking at yards and yards over expectation is tricky in football given the influence of outlying observations. This weakness is likely also the case with win probability added and, to a lesser extent, expected yards. In place, comparing running back performance by matching the observed yards gained to an entire distribution of yards gained potentially provides deeper insight into running backs that over or underperform the opportunities in front of them. In addition to being able to put carries from much different settings into similar context, the percentiles appear more predictable, on a per-ball carrier basis, from one sample to the next.  
+
+As one caveat to this analysis, Big Data Bowl projections include ball carrier speed and acceleration at handoff. If you consider those to be proxies for player skill, then there's already some player characteristics baked into the projections. In other words, maybe the projections for Mostert's touchdown run were really high because Mostert was running fast at handoff. If that's the case (and as referenced by Sam et al [here](https://arxiv.org/abs/1906.01760)), a model designed for player evaluation would use player average speed/accelerations at handoff.
+

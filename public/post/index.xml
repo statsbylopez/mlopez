@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 19 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Assessing running back performance using distributions</title>
+      <link>/post/assessing-running-back-performance-using-distributions/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/assessing-running-back-performance-using-distributions/</guid>
+      <description>Most often, running backs in the National Football League are compared by taking summary statistics from each play. Traditional metrics include yards-per-carry, expected points added per play (EPA), and win probability added per play (WPA). While comparing backs based on average yards, EPA, and WPA is the most straightforward approach to compare players, averages can be particularly sensitive to outlying observations and distributions with heavy tails. Unfortunately, each of the metrics above are all strongly skewed right (EPA also has outliers to the left), which means that taking averages may not be an optimal approach.</description>
+    </item>
     
     <item>
       <title>Plotting air yards</title>

@@ -11,6 +11,66 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Assessing running back performance using distributions</title>
+      <link>/post/assessing-running-back-performance-using-distributions/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/assessing-running-back-performance-using-distributions/</guid>
+      <description>&lt;p&gt;Most often, running backs in the National Football League are compared by taking summary statistics from each play. Traditional metrics include yards-per-carry, expected points added per play (EPA), and win probability added per play (WPA). While comparing backs based on average yards, EPA, and WPA is the most straightforward approach to compare players, averages can be particularly sensitive to outlying observations and distributions with heavy tails. Unfortunately, each of the metrics above are all strongly skewed right (EPA also has outliers to the left), which means that taking averages may not be an optimal approach.&lt;/p&gt;
+&lt;p&gt;As part of the NFL’s Big Data Bowl, participants dove deeper into running back performance. In this post, I’ll use one set of Big Data Bowl predictions (provided by the Zoo, &lt;a href=&#34;https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400&#34;&gt;link&lt;/a&gt;) to examine two newer metrics – yards over expectation and yardage percentiles.&lt;/p&gt;
+&lt;div id=&#34;yards-over-expectation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Yards over expectation&lt;/h2&gt;
+&lt;p&gt;The first way to look at Big Data Bowl projections was to boil each carry down to a single number peformance – expected yards. Using the Zoo’s predictions, each carry’s expected yards is the cumulative sum of the probability that the ball carrier finished with each yardage total, multiplied by that yardage total. Ex: if a back has a 25% chance at losing 1 yard (-1), a 25 percent chance at 0 yards, and a 50 percent chance at 1 yard, the expected yards gained would be 0.25 (&lt;span class=&#34;math inline&#34;&gt;\(-1*0.25 + 0*0.25 + 1*0.50 = 0.25\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;Here’s a histogram of yards over expectation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Yards above expectation is centered at 0 and is slightly more symmetric, but there remain outliers and a heavy tail to the right. That is, despite the Zoo’s projections &lt;a href=&#34;https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/&#34;&gt;being accurate on aggregate&lt;/a&gt;, yards over expectation boasts a fairly similar distribution to yards.&lt;/p&gt;
+&lt;p&gt;The skewness of each distribution, combined with the relatively small number of carries that are afforded to running backs each season, can make it difficult to infer much about player talent using averages alone. Damien Williams’ 91 yard touchdown run, for example, was only expected to gain 5.2 yards. In the histograms above, there’s not much difference between 91 yards and 95.8 yards above expectation.&lt;/p&gt;
+&lt;div id=&#34;assessing-repeatability-using-yards-over-expectation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Assessing repeatability using yards over expectation&lt;/h3&gt;
+&lt;p&gt;A frequent goal of sports analytics is to find players that are able to consistently able to outperform expectations. This is generally done by splitting samples into two samples (say, odd games and even games, training and test data, or year over year preformances). Steph Curry shooting 3-pointers, Lionel Messi on set pieces, and Mike Trout’s exit velocity are examples of players who will consistently outperform expectations.
+Running back metrics have traditionally been shown to be unpredictable, and the skewness of the distributions above is part of the reason why. Here’s a histogram of yards over expectation for Damien Williams’ 82 carries.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Williams has 81 carries with between -10 and 7 yards +/- expectation, and one carry with +85.8 yards over average. If you split Williams’ carries into two even subsamples, each with half of his carries, the 91 yards (or 85.8 yards above expectation) is only going to end up in one of them. Doesn’t really matter how many times you sample, and you could even sample with replacement. At the end of the day, the inclusion of that one play will determine how consistent (or inconsistent) you view Williams’ season.&lt;/p&gt;
+&lt;p&gt;More generally, the chart below splits Big Data Bowl predictions into two random data sets (sample’s 1 and 2), and compares each RBs average yards gained above and below expectation between the two samples.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There’s potentially a small link between ball carrier performance in the two samples, but it’s hard to separate from noise (even scatter). Sampling in this fashion 1000 times averages a correlation coefficient of 0.17. By and large, there’s a weak, linear association in yardage above/below expectation when cut between two random splits of data.&lt;/p&gt;
+&lt;p&gt;If you are curious where Williams is, he’s always in the top left (if his touchdown run was in sample 2) or bottom right (sample 1), depending on chance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-else-is-there&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What else is there?&lt;/h2&gt;
+&lt;p&gt;Big Data Bowl predictions aren’t just expected yards – they’re distributions. Here’s the empirical cumulative density function (CDF) for two sample carries, a Cordarrelle Patterson two-yard loss and a Raheem Mostert 41-yard touchdown run.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There’s basically nothing about the two plays that’s similar. As an example, Mostert was as likely to reach 12 yards as Patterson was to lose a yard (50%), which is a fairly wide gap in terms of modal performance.&lt;/p&gt;
+&lt;p&gt;Using expected yards, Mostert overperformed by about 30 yards, while Patterson fell about a yard short. But I’m not sure those numbers tell the best story. There’s basically 0 chance Patterson could’ve finished with 30-yards over expectation on his carry (even though his play started near midfield). In fact, if we judge by yardage over expectation, Patterson would need to replicate his play seven times, and on each play gain seven yards (probability ~ 0) to match Mostert’s yards above average.&lt;/p&gt;
+&lt;p&gt;In place of yardage expectations, there’s a more intuitive way of comparing Patterson’s run to Mostert’s – their CDFs. That is, each point on the y-axis in the chart above maps to yardage gains that are equivalent between the two runs. The following chart shows how Patterson losing two yards was equivalent to a carry where Mostert gained 8 yards. Both gains correspond to roughly 0.30 on the y-axis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;As an alternative comparison, an 8-yard gain for Patterson is roughly the equivalent of what Mostert did on his touchdown run.&lt;/p&gt;
+&lt;p&gt;Side benefits of using these CDFs?&lt;/p&gt;
+&lt;p&gt;First, they’re intuitive – the cdf is a percentile. Patterson losing 2 yards and Mostert (hypothetically) gaining 8 yards both correspond to the 30th percentile.&lt;/p&gt;
+&lt;p&gt;Second, percentiles will (roughly) follow a uniform distribution, which means they aren’t as prone to outliers.&lt;/p&gt;
+&lt;div id=&#34;what-do-cdfs-from-the-big-data-bowl-tell-us&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What do CDFs from the Big Data Bowl tell us?&lt;/h3&gt;
+&lt;p&gt;Using all plays in the Big Data Bowl, I mapped each observed yardage gained to the corresponding percentile. That percentile roughly corresponds to a play-level performance for a running back, using the distribution of The Zoo’s predictions. Higher is better.&lt;/p&gt;
+&lt;p&gt;Here are density plots looking at the percentiles for the 28 players with at least 100 carries in the sample. Players are ordered in order from lowest to highest median percentiles.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Ezekial Elliot’s typical carry ended in the 67th-percentile of what a typical running back would gain, while Devonta Freeman was in the 37th-percentile. Roughly, it was just as common for Freeman to finish in the top-quarter of running back distributions as it was for Elliot to finish in the top half. Le’Veon Bell, Chris Carson, and Jordan Howard are other names atop the chart.&lt;/p&gt;
+&lt;p&gt;As a final step, we check to see if there’s any more consistency in running back percentile scores. The chart below splits again splits players into two samples randomly, but this time focuses on the average percentile for each run.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Freeman, Elliott, and Williams are all highlighted, with performances that appear consistent in the two samples. Williams, with his long touchdown run reduced from extreme outlier to simply the 100th-percentile, is no longer as impacted by an outlier.&lt;/p&gt;
+&lt;p&gt;The correlation in the above plot is 0.40 – that matches what occurs if you take a few thousand such random samples.&lt;/p&gt;
+&lt;p&gt;To repeat: using percentile in place of yards +/-, even when looking at the identical set of plays, allows us to upp our split sample correlation coefficient from 0.17 to 0.40 when looking at running back performance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;whats-it-all-mean&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What’s it all mean&lt;/h2&gt;
+&lt;p&gt;Not that yardage is ever perfect, but looking at yards and yards over expectation is tricky in football given the influence of outlying observations. This weakness is likely also the case with win probability added and, to a lesser extent, expected yards. In place, comparing running back performance by matching the observed yards gained to an entire distribution of yards gained potentially provides deeper insight into running backs that over or underperform the opportunities in front of them. In addition to being able to put carries from much different settings into similar context, the percentiles appear more predictable, on a per-ball carrier basis, from one sample to the next.&lt;/p&gt;
+&lt;p&gt;As one caveat to this analysis, Big Data Bowl projections include ball carrier speed and acceleration at handoff. If you consider those to be proxies for player skill, then there’s already some player characteristics baked into the projections. In other words, maybe the projections for Mostert’s touchdown run were really high because Mostert was running fast at handoff. If that’s the case (and as referenced by Sam et al &lt;a href=&#34;https://arxiv.org/abs/1906.01760&#34;&gt;here&lt;/a&gt;), a model designed for player evaluation would use player average speed/accelerations at handoff.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Plotting air yards</title>
       <link>/post/plotting-air-yards/</link>
       <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
@@ -1616,63 +1676,6 @@ sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
 &lt;p&gt;The above code implements a Bayesian state-space model to etimate team strength in the NHL season using betting market numbers. Though the &lt;code&gt;rjags&lt;/code&gt; package is not the most user-friendly for first-time practitioners, it provides a mechanism for fitting complex models using R. The resulting team strengths are fun to graph and expore, and I encourage you to try it out yourself.&lt;/p&gt;
 &lt;p&gt;In future work, there are a few questions that I hope to tackle: Can our model detect if certain teams have better home advantages than others? Was there a so-called &lt;code&gt;Vegas flu&lt;/code&gt;? And when did betting markets begin to pick up on it? What is the probability that any given team is better than any given other team? How did the NHLs shifting postseason structure (to a divisional format) impact postseason chances?&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>On log-loss and scoring the NCAA tournament</title>
-      <link>/post/on-log-loss-in-the-ncaa-tournament/</link>
-      <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/on-log-loss-in-the-ncaa-tournament/</guid>
-      <description>&lt;p&gt;In 2014, &lt;a href=&#34;www.statsinthewild.com&#34;&gt;Greg&lt;/a&gt; and I won the first annual Kaggle March Madness contest. This led to really cool things happening to a pair of nondescript statisticians that, to the likely detriment of our social lives, happened to know where to find good basketball data while also remembering, on a tight deadline, to enter &lt;code&gt;type = &amp;quot;response&amp;quot;&lt;/code&gt; in our &lt;code&gt;glm&lt;/code&gt; code.&lt;/p&gt;
-&lt;p&gt;The Kaggle victory was simultaneously awesome – like &lt;a href=&#34;https://www.nytimes.com/2015/03/22/opinion/sunday/making-march-madness-easy.html&#34;&gt;New York Times&lt;/a&gt; awesome – and embarassing, as Greg and I realized how lucky we were to have finished on top.&lt;/p&gt;
-&lt;p&gt;To wit:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Even if we assumed that our model contained the true probabilities for every 2014 NCAA tournament game, &lt;a href=&#34;https://statsbylopez.files.wordpress.com/2013/08/jqas-2014-0058.pdf&#34;&gt;there was a better chance that our submission finished outside the top-10&lt;/a&gt; than inside it. It’s humbling to know that you can have precise numbers for every possible game, and in all likelhood, not have increased your chances of winning by much more than a factor of five.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We are pretty sure we actually mis-typed Ohio State as Ohio during our data wrangling process, thus giving what was a pretty good Ohio State team a fairly mediocre ranking. This helped us immensely when Ohio State lost to Dayton in a first round upset. Note the caveat that I am “pretty sure” this was the case; honestly, that’s about as good as I can get looking at our old files.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;We won on a disqualification, when someone who had submitted multiple entries was banned from winning.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;It’s a few years later now, but the luck required for us to have won the Kaggle contest has stayed with us. And it’s an important backdrop for the point of this post – &lt;strong&gt;it’s time for Kaggle to change its scoring rule&lt;/strong&gt;.&lt;/p&gt;
-&lt;div id=&#34;log-loss-as-a-scoring-rule.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Log loss as a scoring rule.&lt;/h2&gt;
-&lt;p&gt;Kaggle scores contest submissions using &lt;a href=&#34;https://www.r-bloggers.com/making-sense-of-logarithmic-loss/&#34;&gt;log-loss (LL)&lt;/a&gt;, and allows participants two unique submissions. As a scoring rule, LL boasts a few critical properties:&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;LL is a &lt;a href=&#34;https://www.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf&#34;&gt;proper scoring rule&lt;/a&gt; – that is, in expectation, the best log-loss is obtained by reporting the true probabilities.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Penalties are disproportionately larger for high-confident decisions that go wrong. As an example, giving Virginia a 97% probability against UMBC results in a LL of 3.5 (higher is worse), while a coin flip of 0.5 scores only a LL of 0.7. But note how much better 95% would have been – (LL of 3) – relative to a 99% submission (LL of 4.6).&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In the long run of hypothetical NCAA tournament games between a fixed number of Kaggle participants, LL makes sense as a scoring system. But the NCAA tournament scores only 63 games, and the number of Kaggle participants has nearly quadrupled in the last four years. That’s a tricky setting moving forward.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;limitations-of-log-loss&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Limitations of Log loss&lt;/h2&gt;
-&lt;p&gt;There are a few important limitations to log loss as a scoring rule with NCAA tournament data (see Christopher Long’s post &lt;a href=&#34;angrystatistician.blogspot.com/2017/04/why-does-kaggle-use-log-loss.html&#34;&gt;here&lt;/a&gt; for more).&lt;/p&gt;
-&lt;p&gt;First, the small sample of games means that submissions maximizing your chance of finishing first are &lt;em&gt;not&lt;/em&gt; the same as those minimizing your expected log-loss. The 2017 winner, Andrew Landgraf, has a &lt;a href=&#34;http://blog.kaggle.com/2017/05/19/march-machine-learning-mania-1st-place-winners-interview-andrew-landgraf/&#34;&gt;fascinating interview&lt;/a&gt; in which he identifies that his strategy was to &lt;em&gt;not&lt;/em&gt; choose his most accurate probabilities. Instead, Andrew created hypothetical distributions of what he thought other participants would submit, and used these simulations to derive an optimal set of predictions.&lt;/p&gt;
-&lt;p&gt;Second, and along similar lines, there is now a massive, and growing, incentive to predict upsets. With the 2014 data, I estimated that, under a few assumptions, picking a single first round upset with probability 1 would have increased our chances of winning from about 1 in 40 to about 1 in 15. That’s a massive gain, and its a strategy that several recent teams inside the top-5 have employed. As one example, check out the team BAYZ – in 2016, BAYZ finished &lt;a href=&#34;https://www.kaggle.com/c/march-machine-learning-mania-2016/leaderboard&#34;&gt;third overall&lt;/a&gt;. &lt;a href=&#34;https://www.kaggle.com/c/march-machine-learning-mania-2017/leaderboard&#34;&gt;Last year&lt;/a&gt; and &lt;a href=&#34;https://www.kaggle.com/c/mens-machine-learning-competition-2018/leaderboard&#34;&gt;this year&lt;/a&gt;, however, BAYZ will finish in the bottom 15. Did BAYZ get worse? No. But it is picking upsets, and both living and dying with the results. And the more teams that pick upsets, the more of an uphill fight that those who aren’t picking upsets will have. Note that even though we know it makes our chances of winning worse, Greg and I have opted against picking upsets.&lt;/p&gt;
-&lt;p&gt;Third, combining LL with the prize structure of Kaggle – only the top few finishers pay out, and the prizes are massive – encourages cheating, where people submit multiple entries under different names. As mentioned above, Greg and I only won when someone else got disqualified for multiple entries. Why did this person enter multiple times? He wanted to game LL by choosing upsets. How did this person enter multiple times? He entered the same submission, just changing one unique upset on each sheet. And why did he finish in front of us? Because Mercer beat Duke in 2014, and so instead of a typical LL penalty of about 3 (&lt;code&gt;log(0.05) = -3&lt;/code&gt;), his penalty for the Duke/Mercer game was 0. Fortunately, the good folks at Kaggle were able to catch that cheater and drop him from the leaderboard … but I’m not so sure that will always be the case moving forward.&lt;/p&gt;
-&lt;p&gt;Fourth, and finally, in allowing &lt;em&gt;two&lt;/em&gt; entries, the current Kaggle rules are essentially doubling the options that entrants have to pick upsets. Like several other participants, Greg and I enter the same model, changing only the final game: on one sheet, we enter 1’s for the teams on the left side of the bracket, and on the other sheet, we enter 1’s for teams on the right side of the bracket. This ad-hoc scoring is not without motivation – using simulations in the 2014 tournament, I estimated that our chances of winning roughly doubled when employing this strategy – but the overall strategy as a whole does seem disingenous.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-other-scoring-rules-are-possible&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What other scoring rules are possible?&lt;/h2&gt;
-&lt;p&gt;In an ideal world, Kaggle would reward participants for accuracy and not luck. The current set-up, however, disproportionately rewards upsets and contrarion strategies. In place, here are a few options to consider.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Predict the point differential, and score using RMSE or MAE.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Point differential is commonly mentioned in the Kaggle forums as an alternative outcome, as it boasts a few benefits over LL. First, upset-based strategies are not as obvious. If Virginia is a 20-point favorite over UMBC, a rogue Kaggler predicting a 41-point Virginia win would be taking the same risk as one predicting a one-point UMBC win. Second, point-differential tells us more about the participating teams. This is why statistical models using point differential as an outcome almost always perform better than ones that use win-loss results as an outcome.&lt;/p&gt;
-&lt;p&gt;Note that a common response to this suggestion is “I don’t want results being swayed by bench players in garbage time.” However, these swings are minor in comparison to the enormous swings that are already currently occuring with won-loss outcomes. As an example, a Kaggler with Loyola 0.51 &amp;gt; Miami assuredly had the better prediction that one with Loyola 0.99 &amp;gt; Miami (Loyola won on a last second shot). However, the second Kaggler receives a better score than the first. This does not seem fair.&lt;/p&gt;
-&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Predict the point differential, score using RMSE or MAE, and merge with current LL predictions.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Having two scoring rules would make the contest a bit more challenging to enter, but the benefit of having multiple approaches for measuring model performance could be worth it. In this instance, whoever finishes with the best average rank under each scoring rule would be the winner.&lt;/p&gt;
-&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Predict point differential and uncertainty in that point differential, and score using the normal distribution.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I think this is my preferred scoring rule, and it is inspired by Micah’s &lt;a href=&#34;http://hockeyviz.com/txt/predictionContest1718&#34;&gt;Sour Candy Contest&lt;/a&gt; in the NHL.&lt;/p&gt;
-&lt;p&gt;In this set-up, participants submit a prediction for point differential as well as a standard deviation to reflect uncertainty in that point differential. The score associated with each game combines the predicted result, the observed result, and the standard deviation, by estimating the likelihood that the observed result occurs given the . Though it could be rescaled, the maximum score for any given game is 1 – this occurs when a prediction is perfectly accurate and the proposed standard deviation is 0.&lt;/p&gt;
-&lt;p&gt;As a hypothetical, consider Loyola versus Miami, which finished as a two-point Loyola win.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Submission 1: &lt;span class=&#34;math inline&#34;&gt;\(\hat{\mu}_1\)&lt;/span&gt; = 2, &lt;span class=&#34;math inline&#34;&gt;\(\hat{\sigma}\)&lt;/span&gt; = 1.&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>
