@@ -167,6 +167,8 @@
     
     <url>
     
+      <xhtml:link rel="alternate" href="/publication/" hreflang="en"/>
+    
       <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
@@ -220,6 +222,16 @@
     <url>
     
       <loc>/post/2018-08-22-part-iii-rocky-mountain-high-s-the-benefit-of-playing-at-home/</loc>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="/publication/" hreflang="en"/>
+    
+      <loc>/publication/</loc>
     </url>
     
   

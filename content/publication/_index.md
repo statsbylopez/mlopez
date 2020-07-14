@@ -21,9 +21,12 @@ caption = ""
 
 -  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport," Annals of Applied Statistics, 2018. [(link](https://projecteuclid.org/euclid.aoas/1542078053), [preprint)](https://arxiv.org/abs/1701.05976)
 
+- Derrick Yam, **Michael J. Lopez**, "What was lost? A causal estimate of fourth down behavior in the National Football League", Journal of Sports Analytics, 2019.  [(link)](https://content.iospress.com/articles/journal-of-sports-analytics/jsa190294)
+
+
 - Jessica Sullivan, Corrine Moss-Racusin, **Michael J. Lopez**, Katherine Williams, "Backlash against gender stereotype-violating preschool children", PLOS ONE, 2018. [(link)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195503)
 
--	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2018. [(link](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
+-	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2019. [(link](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
 
 - **Michael J. Lopez**, Roee Gutman, "Estimation of causal effects with multiple treatments: a review and new ideas," Statistical Science, 2017 [(link)](https://arxiv.org/pdf/1701.05132.pdf)
 
@@ -54,12 +57,8 @@ caption = ""
 
 ## Submitted
 
-- Derrick Yam, **Michael J. Lopez**, "Quantifying the Causal Effects of Conservative Fourth Down Decision Making in the National Football League", 2018. Forthcoming in Journal of Sports Analytics. [(link)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3114242)
+- Liangyuan Hu, Chenyang Gu, **Michael J Lopez**, Jiayi Ji, Juan Wisnivesky, "Estimation of Causal Effects of Multiple Treatments in Observational Studies with a Binary Outcome", under review ([Pre-print](https://arxiv.org/abs/2001.06483)) 
 
-- Chenyang Gu, **Michael J. Lopez**, Liangyuan Hu, "Non-parametric Bayesian approaches to estimating the causal effects of multiple treatments"
 
-## In production
-
-- Katherine Evans, **Michael J. Lopez**, "Treatment Effect Heterogeneity in MLB Bunting Strategies" 
-
+- **Michael J Lopez**, "Analyzing the National Football League is challenging, but player tracking data is here to help", ([Pre-print](https://arxiv.org/abs/1909.10631)) 
 
