@@ -1,5 +1,7 @@
 ## Academic Publications
 
+
+
 ### In press
 
 - **Michael J Lopez**, "Bigger data, better questions, and a return to fourth down behavior: an introduction to a special issue on tracking data in the National football League", Journal of Quantitative Analysis in Sports, 2019. [(link](https://www.degruyter.com/view/journals/jqas/16/2/article-p73.xml?rskey=biywzx&result=7), [preprint)](https://arxiv.org/abs/1909.10631)
