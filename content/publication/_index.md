@@ -7,9 +7,7 @@ highlight = false
 # List format.
 #   0 = Simple
 #   1 = Detailed
-#   2 = APA
-#   3 = MLA
-list_format = 3
+list_format = 0
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
@@ -19,16 +17,19 @@ caption = ""
 
 ## In press
 
+- **Michael J Lopez**, "Bigger data, better questions, and a return to fourth down behavior: an introduction to a special issue on tracking data in the National football League", Journal of Quantitative Analysis in Sports, 2019. [(link](https://www.degruyter.com/view/journals/jqas/16/2/article-p73.xml?rskey=biywzx&result=7), [preprint)](https://arxiv.org/abs/1909.10631)
+
 -  **Michael J. Lopez**, Gregory J. Matthews, and Benjamin S. Baumer. "How often does the best team win? A unified approach to understanding randomness in North American sport," Annals of Applied Statistics, 2018. [(link](https://projecteuclid.org/euclid.aoas/1542078053), [preprint)](https://arxiv.org/abs/1701.05976)
 
-- Derrick Yam, **Michael J. Lopez**, "What was lost? A causal estimate of fourth down behavior in the National Football League", Journal of Sports Analytics, 2019.  [(link)](https://content.iospress.com/articles/journal-of-sports-analytics/jsa190294)
+- Liangyuan Hu, Chenyang Gu, **Michael J Lopez**, Jiayi Ji, Juan Wisnivesky, "Estimation of Causal Effects of Multiple Treatments in Observational Studies with a Binary Outcome", Statistical Methods in Medical Research, 2019.  [(link](https://journals.sagepub.com/doi/full/10.1177/0962280220921909), [preprint)](https://arxiv.org/abs/2001.06483)
 
+- Derrick Yam, **Michael J. Lopez**, "What was lost? A causal estimate of fourth down behavior in the National Football League", Journal of Sports Analytics, 2019.  [(link)](https://content.iospress.com/articles/journal-of-sports-analytics/jsa190294)
 
 - Jessica Sullivan, Corrine Moss-Racusin, **Michael J. Lopez**, Katherine Williams, "Backlash against gender stereotype-violating preschool children", PLOS ONE, 2018. [(link)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195503)
 
 -	**Michael J. Lopez**, Brian Mills, "Opportunistic shirking during unpaid overtime", Applied Economics Letters, 2019. [(link](https://www.tandfonline.com/doi/abs/10.1080/13504851.2018.1488048), [preprint)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084)
 
-- **Michael J. Lopez**, Roee Gutman, "Estimation of causal effects with multiple treatments: a review and new ideas," Statistical Science, 2017 [(link)](https://arxiv.org/pdf/1701.05132.pdf)
+- **Michael J. Lopez**, Roee Gutman, "Estimation of causal effects with multiple treatments: a review and new ideas," Statistical Science, 2017 [(link)](https://projecteuclid.org/euclid.ss/1504253125), [preprint)](https://arxiv.org/pdf/1701.05132.pdf)
 
 - **Michael J. Lopez**, Michael Schuckers, "Predicting coin flips: using resampling and hierarchical modeling to untangle the NHL’s shootout." Journal of Sports Sciences, 2016 [(link)](https://statsbylopez.files.wordpress.com/2013/08/jss_nhl-21.pdf)
 
@@ -54,11 +55,4 @@ caption = ""
 
 - **Michael J. Lopez**, Book review for the American Statistician: “Data Analysis for the Life Sciences with R” by R. Irizarry, 2017. 
 
-
-## Submitted
-
-- Liangyuan Hu, Chenyang Gu, **Michael J Lopez**, Jiayi Ji, Juan Wisnivesky, "Estimation of Causal Effects of Multiple Treatments in Observational Studies with a Binary Outcome", under review ([Pre-print](https://arxiv.org/abs/2001.06483)) 
-
-
-- **Michael J Lopez**, "Analyzing the National Football League is challenging, but player tracking data is here to help", ([Pre-print](https://arxiv.org/abs/1909.10631)) 
 
