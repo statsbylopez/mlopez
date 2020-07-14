@@ -1,5 +1,3 @@
-## Academic Publications
-
 
 ### In press
 
