@@ -34,4 +34,6 @@ weight = 5
 
 # Biography
 
-Michael Lopez is the Director of Data and Analytics at the National Football League, and holds an adjunct role as a statistics professor at Skidmore College. His research spans causal inference -- with a specific focus on causal inference methods for multiple exposures or multiple exposure doses -- and the application of statistics to sports. 
+Michael Lopez is the Director of Football Data and Analytics at the National Football League and a Lecturer of Statistics and Research Associate at Skidmore College. 
+
+At the National Football League, his work centers on how to use data to enhance and better understand the game of football. Academically, his research is split between causal inference -- with a specific focus on causal inference methods for multiple exposures or multiple exposure doses -- and the application of statistics to sports. He is an Associate Editor at the Journal of Quantitative Analysis in Sports, and has written for FiveThirtyEight, Deadspin, Sports Illustrated, and Hockey News. 

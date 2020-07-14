@@ -55,7 +55,8 @@ defaultContentLanguageInSubdir = false
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Football League", url = "www.nfl.com" }]
+  organizations = [ { name = "National Football League", url = "www.nfl.com" }, 
+  { name = "Skidmore College", url = "www.skidmore.edu" }]
 
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
