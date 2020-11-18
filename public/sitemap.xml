@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/don-t-running-backs-matter/</loc>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/assessing-running-back-performance-using-distributions/</loc>
       <lastmod>2020-01-28T00:00:00+00:00</lastmod>
     </url>
@@ -259,7 +268,7 @@
     <url>
     
       <loc>/tags/bootstrap/</loc>
-      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -327,6 +336,16 @@
     
     <url>
     
+      <loc>/tags/matter/</loc>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/nba/</loc>
       <lastmod>2018-08-22T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -348,7 +367,7 @@
     <url>
     
       <loc>/tags/nfl/</loc>
-      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -368,7 +387,7 @@
     <url>
     
       <loc>/tags/nfl/</loc>
-      <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -398,7 +417,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2020-01-28T00:00:00+00:00</lastmod>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -426,7 +445,7 @@
     <url>
     
       <loc>/tags/resampling/</loc>
-      <lastmod>2019-05-06T00:00:00+00:00</lastmod>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -437,6 +456,16 @@
     
       <loc>/tags/rstats/</loc>
       <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/running-backs/</loc>
+      <lastmod>2020-11-18T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

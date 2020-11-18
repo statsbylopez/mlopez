@@ -11,6 +11,503 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Don’t running backs matter?</title>
+      <link>/post/don-t-running-backs-matter/</link>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/don-t-running-backs-matter/</guid>
+      <description>&lt;p&gt;The first of Tomas Plekanec’s 15 seasons in the NHL came in 2005-06, which coincided with the league’s introduction of a shootout.&lt;/p&gt;
+&lt;p&gt;The shootout was not kind to Plekanec. Among all NHL players with at least 20 attempts, Plekanec’s career shootout percentage of 13% is the lowest league history. A deeper look into Plekanec’s &lt;a href=&#34;https://www.hockey-reference.com/players/p/plekato01.html&#34;&gt;shootout usage&lt;/a&gt; reveals an interesting pattern:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Seasons&lt;/th&gt;
+&lt;th&gt;# Years&lt;/th&gt;
+&lt;th&gt;Plekanec Shootout Attempts&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;2005-06 to 2014-15&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;2015-16 to 2018-19&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Each of Plekanec’s shootout attempts occured in his first 10 seasons, and his success rate was so bad in that timeframe that he never again got an opportunity.&lt;/p&gt;
+&lt;p&gt;Plekanec’s usage underpins a deeper limitation of analyzing shootout data, in that we only get to observe players in the shootout if their coaches give them an opportunity. This form of selection bias is, in part, why it took &lt;a href=&#34;https://statsbylopez.com/2014/03/12/nhl-shootouts-arent-random-so-lets-stop-calling-them-that/&#34;&gt;researchers&lt;/a&gt; so long to identify that shootouts were not the coin flips that we initially thought they were. Turns out, not only were shootouts &lt;em&gt;not&lt;/em&gt; random, but the best shooters (e.g, the opposite of Plekanec) were likely worth more than a half a million dollars per year in salary based on shootout performances alone (see &lt;a href=&#34;https://statsbylopez.files.wordpress.com/2013/08/jss_nhl-21.pdf&#34;&gt;Schuckers and I on this topic&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Perhaps a more optimistic view is that Plekanec’s coaches were rational in evaluating him. They correctly recognized Plekanec as a below average shootout player, and didn’t give him any further opportunities.&lt;/p&gt;
+&lt;p&gt;This post discusses how a similar trend seems to exist within an entire positional group: NFL running backs.&lt;/p&gt;
+&lt;div id=&#34;expected-rush-yards-and-nfl-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Expected rush yards and NFL data&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400&#34;&gt;top solution&lt;/a&gt; in the NFL’s 2020 Big Data Bowl used machine learning to estimate the probability of a ball carrier reaching each possible yard line on an NFL handoff. With the winning code as a baseline, the league’s Next Gen Stats media team has integrated &lt;a href=&#34;https://www.nfl.com/news/next-gen-stats-intro-to-expected-rushing-yards&#34;&gt;a new suite of metrics&lt;/a&gt; based on this algorithm. This data is provided to NFL clubs and media, and has even been used with wide receiver models (&lt;a href=&#34;https://twitter.com/NextGenStats/status/1328803741856903170&#34;&gt;Example&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;One new metric is expected rush yards, defined as the average number of yards that an NFL player would gain, using the speed, acceleration, direction, and location of the 22 players on the field at handoff. The stat appears &lt;a href=&#34;https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/&#34;&gt;well calibrated&lt;/a&gt;, as judged by out-of-sample prediction on 2019 rushing plays.&lt;/p&gt;
+&lt;p&gt;Calibration doesn’t always entail repeatability, and one unknown with expected yards is whether or not overperformance (e.g, carring for more yards than was expected) is due to skill or luck. This post uses expected yards as a baseline for two arguments:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;There exists a selection bias in how running backs are given carries.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Despite this limitation, there’s a non-zero consistency in running back performance relative to expectation.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;remember-legarrette-blount&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Remember LeGarrette Blount?&lt;/h2&gt;
+&lt;p&gt;Having expected yards makes it straightforward to estimate performances above or below average. If a running back was expected to pick up 3.5 yards and gained 6, he gets credited with +2.5 yards over expectation. A gain of 2 yards? -1.5 yards over expectation.&lt;/p&gt;
+&lt;p&gt;Here’s a table that shows the five players with the highest (in blue) and lowest (red) cumulative yardages over expectation in the 2018 regular season, alongside the number of carries each player received in 2019.&lt;/p&gt;
+&lt;style&gt;html {
+  font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, &#39;Fira Sans&#39;, &#39;Droid Sans&#39;, Arial, sans-serif;
+}
+
+#wlvaofjgby .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wlvaofjgby .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wlvaofjgby .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wlvaofjgby .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wlvaofjgby .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wlvaofjgby .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wlvaofjgby .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wlvaofjgby .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wlvaofjgby .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wlvaofjgby .gt_from_md &gt; :first-child {
+  margin-top: 0;
+}
+
+#wlvaofjgby .gt_from_md &gt; :last-child {
+  margin-bottom: 0;
+}
+
+#wlvaofjgby .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wlvaofjgby .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#wlvaofjgby .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wlvaofjgby .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wlvaofjgby .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wlvaofjgby .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wlvaofjgby .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wlvaofjgby .gt_left {
+  text-align: left;
+}
+
+#wlvaofjgby .gt_center {
+  text-align: center;
+}
+
+#wlvaofjgby .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wlvaofjgby .gt_font_normal {
+  font-weight: normal;
+}
+
+#wlvaofjgby .gt_font_bold {
+  font-weight: bold;
+}
+
+#wlvaofjgby .gt_font_italic {
+  font-style: italic;
+}
+
+#wlvaofjgby .gt_super {
+  font-size: 65%;
+}
+
+#wlvaofjgby .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+&lt;/style&gt;
+&lt;div id=&#34;wlvaofjgby&#34; style=&#34;overflow-x:auto;overflow-y:auto;width:auto;height:auto;&#34;&gt;&lt;table class=&#34;gt_table&#34;&gt;
+  &lt;thead class=&#34;gt_header&#34;&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_title gt_font_normal&#34; style&gt;&lt;strong&gt;2018 Performance --&amp;gt; 2019 Opportunity&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th colspan=&#34;3&#34; class=&#34;gt_heading gt_subtitle gt_font_normal gt_bottom_border&#34; style&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;thead class=&#34;gt_col_headings&#34;&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_left&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Rusher&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;Yards over average, 2018&lt;/th&gt;
+      &lt;th class=&#34;gt_col_heading gt_columns_bottom_border gt_right&#34; rowspan=&#34;1&#34; colspan=&#34;1&#34;&gt;# Carries, 2019&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody class=&#34;gt_table_body&#34;&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: blue;&#34;&gt;Saquon Barkley&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;293&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;213&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: blue;&#34;&gt;Nick Chubb&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;240&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;295&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: blue;&#34;&gt;Derrick Henry&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;218&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;287&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: blue;&#34;&gt;Kerryon Johnson&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;177&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;110&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: blue;&#34;&gt;Joe Mixon&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;171&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: blue;&#34;&gt;274&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: red;&#34;&gt;Elijah McGuire&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;-65&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: red;&#34;&gt;Nyheim Hines&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;-66&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;52&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: red;&#34;&gt;Jordan Howard&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;-95&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;119&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: red;&#34;&gt;LeGarrette Blount&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;-146&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td class=&#34;gt_row gt_left&#34; style=&#34;color: red;&#34;&gt;LeSean McCoy&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;-155&lt;/td&gt;
+      &lt;td class=&#34;gt_row gt_right&#34; style=&#34;color: red;&#34;&gt;98&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  
+  
+&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;The five best running backs in the 2018 season based on yardage above expectation received an average of 236 carries in 2019. The five running backs furthest below expectation, by comparison, received an average of 54 carries, including LeGarrette Blount and Elijah McGuire, neither of whom saw the field in 2019 (no injuries appear evident).&lt;/p&gt;
+&lt;p&gt;Why does this matter?&lt;/p&gt;
+&lt;p&gt;First, there’s an immediate link to Thomas Plekanec in the shootout. We can’t observe what we can’t see, which means that for the same reason Plekanec stopped getting chances at shootouts, Legarrette Blount stopped getting handoffs in NFL games. Alternatively, Derrick Henry keeps getting the ball, sort of like Team USA going to &lt;a href=&#34;https://www.youtube.com/watch?v=MUxJXzKY4LE&#34;&gt;TJ Oshie&lt;/a&gt; in their Olympic shootout against Russia.&lt;/p&gt;
+&lt;p&gt;Second, at some level, this suggests that NFL coaches are rational in their running back usage. Assuming there is some signal to rushing yards over expectation, it makes more sense to feed the Barkley’s, Chubb’s, and Henry’s of the world than it does the McCoy’s, Blount’s, and Howard’s, and that’s why they keep doing it. (&lt;em&gt;Postscript: after I started this post, Howard was cut by the Dolphins&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;Third, perhaps there’s something that coaches are following that is &lt;em&gt;not&lt;/em&gt; seen in traditional stats. Player carries in 2019 was more closely tied to 2018 yards above average per carry (correlation of 0.50) than 2018 yards per carry (correlation of 0.37).&lt;/p&gt;
+&lt;p&gt;Finally, if we’re interested in the repeatability of expected yards (and in the repeatability of yards over expected), we have to reckon with the reality that not all players will themselves be allowed to repeat. Perhaps year over year correlations are not the best approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;does-expected-yards-over-average-predict-itself&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Does expected yards over average predict itself?&lt;/h2&gt;
+&lt;p&gt;The stability of yards over average mostly unknown. I’ll use a larger sample of plays (through Week 9 of 2020) to find some evidence that players that are above average are more likely than not to stay above average.&lt;/p&gt;
+&lt;p&gt;Let’s start by splitting ball carriers into random sets of carries. Instead of looking year over year (which would miss players that don’t play a season after poor performances), I’ll split each back’s carries over the entirety of data evenly into two groups, each corresponding to roughly half of their opportunities. In each split, median yards over expectation are calculated in the two groups. I’ve done this 1000 times – nine examples of which are shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/ey_out.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Backs in the top right of the chart register better-than-typical performances in both random splits of the data, while backs in the bottom left are worse than average in both. Correlation coefficients within each plot are provided in the titles.&lt;/p&gt;
+&lt;p&gt;Two images are shown where their dots appear: Blount and Henry. In all 9 splits of the data, Henry is over average while Blount is below. It shouldn’t be surprising that Henry’s performance looks better than Blount’s over the last few years, but the fact that this is a repeatable finding is notable.&lt;/p&gt;
+&lt;p&gt;Replicating this process 1000 times, the typical correlation coefficient was 0.36 (95 percent of correlation coefficients were between 0.18 and 0.52). In sum, this suggests there is &lt;em&gt;some&lt;/em&gt; repeatability to yards over average.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-about-other-metrics-that-use-expected-yards&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What about other metrics that use expected yards?&lt;/h2&gt;
+&lt;p&gt;More generally, I looked at four metrics as far as repeatability.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Yards Over Expectation (median, as shown above)&lt;/li&gt;
+&lt;li&gt;Success Probability, defined as the likelihood the ball carrier has a successful play (40 percent of yards to go on 1st down, 50 percent on 2nd down, 100 percent on 3rd/4th down) given the information known at handoff&lt;/li&gt;
+&lt;li&gt;Expected Yards&lt;/li&gt;
+&lt;li&gt;Rush Over Expectation Percent, defined as the percent of a rusher’s carries where he exceeds Expected Yards&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The following chart tracks split-sample correlations of these four metrics across the 1000 samples, for two sample size cutoffs (50 and 150 handoff plays).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/corr_coeff.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;most&lt;/em&gt; repeatable metric is Success Probability, with a typical correlation coefficient of 0.63. &lt;em&gt;Several&lt;/em&gt; football factors tie into Success Probability, including coaching, play calling, blocking, and defensive scheme. This metric’s relative consistency is a sign that players that tend to have opportunities for successful plays are likely to keep that up (and that deeper work to separate out player versus team is likely needed).&lt;/p&gt;
+&lt;p&gt;Right behind Success Probability is Expected Yards. Because teams use running backs differently based on down and distance, it’s likely that the space (and available yardage) vary consistently between ball carriers. You can check out an example plot of 2020 expected yards data &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/1326245845155647492&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yards Over Expectation and Rush Over Expectation Percent were both &lt;em&gt;less&lt;/em&gt; stable, but still appear to show a non-zero consistency. For Yards Over Expectation, the typical correlation coefficient &lt;a href=&#34;https://fantasy.fangraphs.com/the-updated-xstats-and-their-year-to-year-correlations/&#34;&gt;roughly corresponds&lt;/a&gt; to the year-over-year correlations of both an MLB pitchers’ batting average allowed and on base percentage allowed.&lt;/p&gt;
+&lt;p&gt;To sum: there are appear to be non-zero split sample correlations when looking at the expected yards suite of metrics. The two metrics more closely tied to team usage and coaching are more consistent, while metrics corresponding to individual performance are less so.&lt;/p&gt;
+&lt;p&gt;A few comments to end with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;How useful are these positive correlations? Do running backs now matter? The combination of selection bias/rational coaching (e.g, the Tomas Plekanec problem) and the non-zero consistency of running back performance is worth keeping in mind.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I still haven’t done a great job of accounting for drop-out. If a ball carrier had 49 career carries and they were all terrible, he wouldn’t appear in our data set.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Not all yards above average should be treated equally. Last year, I used running back &lt;a href=&#34;https://statsbylopez.netlify.app/post/assessing-running-back-performance-using-distributions/&#34;&gt;percentile&lt;/a&gt; and perhaps that’s a metric I’ll look at into again in the offseason.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;There’s a reasonable amount of noise between the correlations in each split sample. I’d recommend folks (including myself, going forward) be up front about how they choose their training and test data, and to check how much of an impact that decision has on findings.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Expected yards uses ball carrier speed at handoff, which could artificially punish or reward players based on how they are moving. Perhaps the most optimal approach for calculating expected yards would impute an average running back speed to be expected on a typical play.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Assessing running back performance using distributions</title>
       <link>/post/assessing-running-back-performance-using-distributions/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
@@ -1378,304 +1875,6 @@ includes binary indicators &lt;span class=&#34;math inline&#34;&gt;\(Rest_i\)&lt
 &lt;p&gt;First, market-perceived home advantage correlates to team strength. If the Blackhawks or Oilers stink, it is reasonable to think that playing in Chicago or Edmonton is less of worry for opponents. Fewer fans are showing up, referees are less likely to give the home team a call, and the home team is, even after accounting for team strength, a hair less likely to win.&lt;/p&gt;
 &lt;p&gt;Second, which is an important caveat, our model can’t pick up when teams play different players (e.g. backup goalies). In other words, if opponents started the year playing their backups in Chicago, but ended the year playing their starters at Chicago, we’d likely be calling what was really a change in opponent behavior a change in home advantage. Alternatively, if the Blackhawks started the year playing Corey Crawford in net for all of their home games but ended the year playing, for sake of argument, a beer-league goalie off of the street, our model would not pick up on that.&lt;/p&gt;
 &lt;p&gt;Either way, hopefully this post highlights some of the potential that can be found when analyzing market numbers. We can be sure that the market values each teams’ home advantage different, and that by years’ end, Vegas was given the biggest adjustment when playing at home. It’s also possible that how the market views each teams home advantage is tied to how good that team is at a particular time point.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A state-space model to evaluate sports teams</title>
-      <link>/post/a-state-space-model-to-evaluate-sports-teams/</link>
-      <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/a-state-space-model-to-evaluate-sports-teams/</guid>
-      <description>&lt;p&gt;A few years ago at a statistics conference, &lt;a href=&#34;https://www.luc.edu/math/ftfaculty/matthewsgregory.shtml&#34;&gt;Greg&lt;/a&gt;, &lt;a href=&#34;http://www.science.smith.edu/~bbaumer/w/&#34;&gt;Ben&lt;/a&gt; and I sat down to air a few greviences about our favorite sports. They were upset about baseball, and I was irked about hockey. Why the irritation?&lt;/p&gt;
-&lt;p&gt;Relative to other popular sports like basketball and football, it seemed to us at the time that the best team was winning less often in baseball and hockey. And as fans wanting skilled teams to be rewarded, it was frustrating to so often have well-constructed teams fall short of titles.&lt;/p&gt;
-&lt;p&gt;And so we decided to write a paper (pre-print &lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34;&gt;here&lt;/a&gt;), now forthcoming in &lt;em&gt;Annals of Applied Statistics&lt;/em&gt;, that extends Glickman and Stern’s &lt;a href=&#34;https://homepages.cae.wisc.edu/~dwilson/rsfc/rate/papers/a-state-space-model.pdf&#34;&gt;state-space model&lt;/a&gt; to make comparisons between the NFL, NHL, NBA and MLB. In this post, I’ll describe the attraction of a state-space model, how to build one yourself (using the 2017-18 NHL season), and use our model estimates to answer a few hockey-specific questions. The entire analysis is reproducible, and you should be able to copy-and-paste your way into replicating the findings below.&lt;/p&gt;
-&lt;div id=&#34;the-role-of-betting-market-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;The role of betting market data&lt;/h2&gt;
-&lt;p&gt;Team quality in sports is not static. Players get hurt, traded, or decide to retire. Managers are fired. Teams rest players, switch starting goalies, rotate a pitching staff, or decide they want to tank. All of these aspects make measuring team strength a bit dicey.&lt;/p&gt;
-&lt;p&gt;Moreso than wins and losses or point differential, perhaps the best game-level metric of team strength comes not in what happens during the game, but what’s known before the game begins. Indeed, it’s been shown &lt;a href=&#34;https://www.jstor.org/stable/2287640&#34;&gt;time&lt;/a&gt; and &lt;a href=&#34;https://statsbylopez.files.wordpress.com/2013/08/jqas-2014-0058.pdf&#34;&gt;again&lt;/a&gt; that there’s no better way to judge models in sports than to compare to betting market data. Prior to each contest, betting markets put out probabilities associated with each team winning. The reason this data is so accurate is that it takes into account all of the factors above – injuries, opponent strength, line-ups, tanking, etc. And so as the saying goes – ``if you can’t beat em, use their data to develop a state-space model.’’ Or something like that.&lt;/p&gt;
-&lt;p&gt;Assume home team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (listed at -130 on the money line) is playing away team &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; (+110). Punters backing &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; believe that squad has better than a &lt;span class=&#34;math inline&#34;&gt;\(\frac{130}{230} = 56.5\%\)&lt;/span&gt; chance of winning, while betters on team &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; assume it has at least a &lt;span class=&#34;math inline&#34;&gt;\(\frac{100}{210} = 47.6\%\)&lt;/span&gt; probability of winning. Accounting for the vig – which markets use to ensure a long-term profit – team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; can be assumed to have a &lt;span class=&#34;math inline&#34;&gt;\(54.3\%\)&lt;/span&gt; chance of beating &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Let’s take a look at what this data could look like. Here’s a sample of the 2017-18 NHL season (thanks to &lt;a href=&#34;https://twitter.com/pucktails&#34;&gt;Andy&lt;/a&gt; for sharing his spreadsheet, which loads using the &lt;code&gt;gsheet&lt;/code&gt; package).&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse) 
-library(rjags)
-library(gsheet)
-library(lubridate)
-library(stringr)
-library(knitr)
-
-logit &amp;lt;- function(p) { 
-  out &amp;lt;- log(p/(1 - p))
-  return(out)
-}
-
-## Read in data from google sheets
-urlA &amp;lt;- &amp;quot;https://docs.google.com/spreadsheets/d/1Hsmqphn9kGqWa88aYnimQxOvdV7ulv_jeIj0SYeBr3s/edit?usp=sharing&amp;quot;
-nhl1718 &amp;lt;- gsheet2tbl(urlA)
-
-## Improve the date format
-nhl1718 &amp;lt;- nhl1718 %&amp;gt;% separate(date, c(&amp;quot;day&amp;quot;, &amp;quot;month&amp;quot;), &amp;quot;-&amp;quot;) %&amp;gt;% 
-  mutate(date = ymd(paste(year, month, day)))
-
-min.day &amp;lt;- min(nhl1718$date)
-nhl1718 &amp;lt;- nhl1718 %&amp;gt;%
-  mutate(day = date - min.day, week = as.numeric(floor(day/7) + 1))
-
-tab.out &amp;lt;- head(nhl1718, 4) %&amp;gt;% select(date, home, away, p_home)
-kable(tab.out)&lt;/code&gt;&lt;/pre&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;date&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;home&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;away&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;p_home&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;2017-10-04&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Winnipeg Jets&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Toronto Maple Leafs&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.5284&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;2017-10-04&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Pittsburgh Penguins&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;St. Louis Blues&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.6275&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;2017-10-04&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Edmonton Oilers&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Calgary Flames&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.5900&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;2017-10-04&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;San Jose Sharks&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Philadelphia Flyers&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.5810&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;In the first four games of the year, Winnipeg, Pittsburgh, Edmonton, and San Jose were all favorites to some degree, with Pittsburgh the most plausible winner.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;building-a-state-space-model&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Building a state-space model&lt;/h2&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(y_{i,j,w} = \text{logit}(p_{i,j,w})\)&lt;/span&gt; (in our data, this is called &lt;code&gt;p_home&lt;/code&gt;) be the log-odds of the observed betting market probability in a game played between &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; during week &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;. We take the &lt;code&gt;logit&lt;/code&gt; transform of each probability, which more closely aligns our outcomes with a normal distribution.&lt;/p&gt;
-&lt;p&gt;We formally assume that:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\text{E}[\text{logit}(p_{i,j,w})] = \theta_{i,w} - \theta_{j,w} + \alpha,
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(\theta_{i,w}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\theta_{j,w}\)&lt;/span&gt; reflect the corresponding team strengths of &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; during week &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is the home advantage parameter. You’ll note that as &lt;span class=&#34;math inline&#34;&gt;\(\theta_{i,w}\)&lt;/span&gt; goes up, so to does team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;’s probability of winning; followers of paired comparison comparison models will recognize this formulation as identical to Bradley-Terry.&lt;/p&gt;
-&lt;p&gt;A state-space model assumes that the team strength estimates (&lt;span class=&#34;math inline&#34;&gt;\(\theta_{i,w}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\theta_{j,w}\)&lt;/span&gt;, etc.) evolve over time, with team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;’s strength at week &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; a function of both how good it was last week (&lt;span class=&#34;math inline&#34;&gt;\(\theta_{i,(w-1)}\)&lt;/span&gt;), as well as some prior noise. This is perfect for sports data – teams generally evolve slowly, and the best predictor of how good any given team is at a given time point is likely closely related to how good it was at the time just prior.&lt;/p&gt;
-&lt;p&gt;Formally, we assume that for any given team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;,&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\theta_{i,w} \sim N(\gamma\theta_{i,(w-1)},\tau_w^2),
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;which imposes a first-order auto-regressive process to team strength (denoted by &lt;span class=&#34;math inline&#34;&gt;\(\gamma\)&lt;/span&gt;). Above, &lt;span class=&#34;math inline&#34;&gt;\(\tau_w^2\)&lt;/span&gt; corresponds to week-level uncertainty in the evolution of team strength. In the long run, we assume &lt;span class=&#34;math inline&#34;&gt;\(\gamma &amp;lt; 1\)&lt;/span&gt;, which prevents team strengths from exploding, and corresponds to the fact that, eventually, the best and worst teams in pro-sports will revert towards the league average.&lt;/p&gt;
-&lt;p&gt;Here’s how we can built the model above, where we use the &lt;code&gt;rjags&lt;/code&gt; package in R to do some Bayesian inference using Gibbs sampling. First, we define our model inputs using outcome &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, week &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;, and design matrix &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. For an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-game season played between &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;-number of teams, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; corresponds to an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; x &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt; matrix, where each row contains exactly one 1 (for the home team) and one -1 (for the away team).&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- logit(nhl1718$p_home)
-w &amp;lt;- nhl1718$week
-
-#create a design matrix 
-Teams &amp;lt;- sort(as.character(unique(c(as.character(nhl1718$home)))))
-
-#Defining the number of things
-nTeams &amp;lt;- length(Teams)
-nWeeks &amp;lt;- max(nhl1718$week)
-n &amp;lt;- nrow(nhl1718)
-
-#Defining the design matrix
-x &amp;lt;- matrix(0, nrow = dim(nhl1718)[1], ncol = length(Teams))
-for (i in 1:dim(nhl1718)[1]) {
-  x[i, which(as.character(nhl1718[i,&amp;quot;home&amp;quot;]) == Teams)] &amp;lt;- (1)
-  x[i, which(as.character(nhl1718[i,&amp;quot;away&amp;quot;]) == Teams)] &amp;lt;- (-1)
-} &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As an example, row 1, a game between home team Winnipeg (the 31st NHL team, alphabetically) and away team Toronto (27th), has a &lt;code&gt;1&lt;/code&gt; in the 31st column and a &lt;code&gt;-1&lt;/code&gt; in the 27th column, with the rest of the entries equal to zero.&lt;/p&gt;
-&lt;p&gt;Next, our Bayesian approach requires prior distributions on the parameters of interest. I’m happy to answer specific questions if you’d like, but the BUGS code below corresponds to the models above, along with some additional variance parameters that use vague priors. The &lt;code&gt;rjags&lt;/code&gt; package is a bit outdated, but here’s &lt;a href=&#34;http://www.jkarreth.net/files/bayes-cph_Tutorial-JAGS.pdf&#34;&gt;one resource&lt;/a&gt; where you can learn more.&lt;/p&gt;
-&lt;p&gt;Here’s what the BUGS code looks like:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;model.string &amp;lt;-&amp;quot;
-  model { 
-for (i in 1:n) {
-  y[i] ~ dnorm(mu[i], tauGame)
-  mu[i] &amp;lt;- alpha + inprod(theta[w[i],],x[i,])
-}
-for (j in 1:nTeams){
-  theta[1,j] ~ dnorm(0, tauSeason)
-}
-for (www in 2:nWeeks) {  
-  for (j in 1:nTeams) {
-    theta[www,j] ~ dnorm(gammaWeek*theta[www-1,j], tauWeek)
-  }
-}
-alpha ~ dnorm(0,0.0001)
-tauGame ~ dunif(0,1000) #uncertainty in outcome for each game
-tauWeek ~ dunif(0,1000) 
-tauSeason ~ dunif(0,1000) #variance parameter for the first week of the season
-gammaWeek ~ dunif(0,1.5)
-}
-&amp;quot;
-model.spec&amp;lt;-textConnection(model.string)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we’re ready to fit the model. In this example, I used 3 chains, 1000 posterior draws, and a thin of 5, which yields 3 sets of 200 draws for each parameter. The model converges quickly, otherwise we’d want to increase the number of draws at each step.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rjags)
-n.chains &amp;lt;- 3 
-n.adapt &amp;lt;- n.update &amp;lt;- n.draws &amp;lt;- 1000
-
-posteriorDraws = c(&amp;#39;alpha&amp;#39;,&amp;#39;theta&amp;#39;)
-thin &amp;lt;- 5
-jags &amp;lt;- jags.model(model.spec,
-                   data = list(&amp;#39;y&amp;#39; = y,&amp;#39;x&amp;#39; = x, &amp;#39;w&amp;#39; = w, &amp;#39;n&amp;#39; = n,&amp;#39;nTeams&amp;#39; = nTeams,&amp;#39;nWeeks&amp;#39; = nWeeks), 
-                   n.chains = n.chains, n.adapt = n.adapt)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Compiling model graph
-##    Resolving undeclared variables
-##    Allocating nodes
-## Graph information:
-##    Observed stochastic nodes: 1271
-##    Unobserved stochastic nodes: 842
-##    Total graph size: 47475
-## 
-## Initializing model&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;update(jags, n.update)
-z &amp;lt;- jags.samples(jags, posteriorDraws, n.draws, thin = thin)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;examining-model-output&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Examining model output&lt;/h2&gt;
-&lt;p&gt;Our output file &lt;code&gt;z&lt;/code&gt; contains information related to each of the parameters we were interested in. In this case, we have &lt;code&gt;z$alpha&lt;/code&gt; (home advantage) and &lt;code&gt;z$theta&lt;/code&gt; (team strengths), which have dimensions shown below.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(z$alpha)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           iteration     chain 
-##         1       200         3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dim(z$theta)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##                     iteration     chain 
-##        27        31       200         3&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It’s generally a good idea to start a Bayesian analysis by assessing convergence – we do this extensively in our &lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34;&gt;paper&lt;/a&gt; – but here’s one trace plot of &lt;code&gt;alpha&lt;/code&gt;, which shows that it’s generally well-behaved. Note the y-axis scale – given that our model uses log-odds as an outcome, each of our coefficients are likewise on a log-odds scale. Each color reflects one of the three chains from our Gibbs sampler.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colours &amp;lt;- c(&amp;quot;#7fc97f&amp;quot;, &amp;quot;#beaed4&amp;quot;, &amp;quot;#fdc086&amp;quot;)
-hfas &amp;lt;- data.frame(round(z$alpha[,,], 3))  %&amp;gt;% mutate(draw = 1:n())
-hfas %&amp;gt;% ggplot(aes(draw, X1)) +
-  geom_line(colour = colours[1]) + 
-  geom_line(data = hfas, aes(draw, X2), colour = colours[2]) + 
-  geom_line(data = hfas, aes(draw, X3), colour = colours[3]) + 
-  xlab(&amp;quot;Draw&amp;quot;) + 
-  ggtitle(&amp;quot;Home advantage (logit scale)&amp;quot;) + 
-  ylab(&amp;quot;&amp;quot;) + 
-  theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;The posterior distrbution of &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is centered at about 0.208. This suggests that home teams, when playing a similarly talented opponent, have about a &lt;span class=&#34;math inline&#34;&gt;\(\frac{e^{0.208.}}{1 + e^{0.208}} = 55\%\)&lt;/span&gt; chance of winning. For those scoring at home, the NHL has the third best home advantage among the four sports we analyzed.&lt;/p&gt;
-&lt;p&gt;Next, we examine team strengths.&lt;/p&gt;
-&lt;p&gt;In the code below, I averaged each team strength over each week of the NHL season, and highlight the Vegas Golden Knights, a team that rose from the bottom of the league towards the top.&lt;/p&gt;
-&lt;p&gt;As with the home advantage parameter, the y-axis reflects a log-odds scale. In this case, a coefficient of 0.5 reflects that a team has an &lt;span class=&#34;math inline&#34;&gt;\(\frac{e^{0.5}}{1+e^{0.5}} = 62\%\)&lt;/span&gt; chance of beating a league average team at a neutral site.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;avgs &amp;lt;- apply(z$theta, c(1,2), mean)
-dims &amp;lt;- dim(avgs)
-names(dims) &amp;lt;- c(&amp;quot;nweeks&amp;quot;, &amp;quot;nteams&amp;quot;)
-df.beta &amp;lt;- data.frame(
-    theta = as.vector(avgs),
-    week = rep(1:dims[&amp;quot;nweeks&amp;quot;]), 
-    team_id = rep(Teams, each =dims[&amp;quot;nweeks&amp;quot;]) )
-vegas &amp;lt;- filter(df.beta, team_id == &amp;quot;Vegas Golden Knights&amp;quot;)
-
-ggplot(df.beta, aes(week, theta, group = team_id)) + 
-  geom_point(colour = &amp;quot;grey&amp;quot;) + 
-  geom_line(colour = &amp;quot;grey&amp;quot;) + 
-  geom_line(data = vegas, colour = &amp;quot;#b4975a&amp;quot;) + 
-  geom_point(data = vegas, colour = &amp;quot;#b4975a&amp;quot;) + 
-  ggtitle(&amp;quot;NHL team strengths by week of season, 2017-18&amp;quot;) + 
-  ylab(&amp;quot;theta (log-odds scale)&amp;quot;) + 
-  ylim(c(-0.56, 0.56)) + 
-  annotate(&amp;quot;text&amp;quot;,x = 5, y = -0.4, label = &amp;quot;Vegas&amp;quot;, colour = &amp;quot;gold4&amp;quot;, size = 5) + 
-  xlab(&amp;quot;Week&amp;quot;) + theme_bw(14)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Vegas had a pretty incredible season.&lt;/p&gt;
-&lt;p&gt;Of course, it’d be nice to see every team. Next, we use the &lt;code&gt;teamcolors&lt;/code&gt; package &lt;a href=&#34;https://github.com/beanumber/teamcolors&#34;&gt;(link)&lt;/a&gt; and a bit of &lt;code&gt;ggplot2&lt;/code&gt; wizardry to facet each NHL division in order to observe each team.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(teamcolors)
-teamcolors1 &amp;lt;- teamcolors %&amp;gt;% filter(league == &amp;quot;nhl&amp;quot;) %&amp;gt;% rename(team_id = name) %&amp;gt;% 
-  mutate(rand.color = ifelse(primary == &amp;quot;#010101&amp;quot;, secondary, primary))
-
-df.beta1 &amp;lt;- df.beta %&amp;gt;% left_join(teamcolors1, by = c(&amp;quot;team_id&amp;quot; = &amp;quot;team_id&amp;quot;))
-
-df.overall &amp;lt;- ggplot(data = df.beta1, 
-       aes(x = week, y = theta, 
-           color = team_id, fill = team_id)) +
-  geom_line(alpha = 0.5) + 
-  geom_point(shape = 21) + 
-  ylim(c(-0.56, 0.56)) + 
-  scale_color_manual(name = NULL, values = teamcolors1$primary) + 
-  scale_fill_manual(name = NULL, values = teamcolors1$secondary) + 
-  guides(color = FALSE, fill = FALSE) +
-  theme_bw(base_size = 14)
-
-df.overall + 
-  geom_line(data = select(df.beta1, -division), color = &amp;quot;darkgray&amp;quot;, alpha = 0.3) + 
-  geom_line(alpha = 0.5) + 
-  geom_point(shape = 21, size = 0.5, alpha = 0.8) + 
-  facet_wrap(~division, ncol = 2, dir = &amp;quot;v&amp;quot;) + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + ylab(&amp;quot;&amp;quot;) + xlab(&amp;quot;Week&amp;quot;) + 
-  ggtitle(&amp;quot;Team strength during the 2017/2018 NHL season&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;My favorite part about this graph is the distinction between the two Divisions in the Eastern Conference. In the Atlantic Division, Boston, Tampa, and Toronto are three top teams, and apart from the Panthers, the other teams are bottom-dwellers. Meanwhile, nearly every Metropolitan team fits somewhere between the top and bottom of the Atlantic.&lt;/p&gt;
-&lt;p&gt;Also impressive – check out Colorado’s slow improvement in the Central. The Avalanche started the year as the league’s third worst team (perception-wise), and are now in the playoffs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;comparisons-among-teams&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Comparisons among teams&lt;/h2&gt;
-&lt;p&gt;One benefit of using a Bayesian approach is that we can more precisely interpret team strength parameters. As an example, let’s look at the posterior distributions of team strength of three NHL teams, the Penguins, Flyers, and Hurricanes. For this task, I focus on the last six weeks of the NHL regular season, to roughly reflect team strength at season’s end.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;teams &amp;lt;- c(&amp;quot;Carolina Hurricanes&amp;quot;, &amp;quot;Pittsburgh Penguins&amp;quot;, &amp;quot;Philadelphia Flyers&amp;quot;)
-thetas &amp;lt;- z$theta[20:26, Teams %in% teams, ,]
-colors &amp;lt;- teamcolors1$secondary[Teams %in% teams]
-team.1 &amp;lt;- data.frame(team_id = teams[1], beta = c(thetas[,1,,]))
-team.2 &amp;lt;- data.frame(team_id = teams[2], beta = c(thetas[,2,,]))
-team.3 &amp;lt;- data.frame(team_id = teams[3], beta = c(thetas[,3,,]))
-
-df.matchup &amp;lt;- rbind(team.1, team.2, team.3) 
-lmin &amp;lt;- quantile(df.matchup$beta, 0.01)
-umin &amp;lt;- quantile(df.matchup$beta, 0.99)
-
-df.matchup %&amp;gt;% ggplot(aes(beta, fill = team_id, group = team_id)) + 
-  geom_density(alpha = 0.5) + 
-  scale_fill_manual(name = NULL, values = colors) + 
-  annotate(&amp;quot;text&amp;quot;, x = lmin, y = 4, label = &amp;quot;Hurricanes&amp;quot;,colour = colors[1], size = 5) + 
-  annotate(&amp;quot;text&amp;quot;, x = .19, y = 4, label = &amp;quot;Flyers&amp;quot;, colour = colors[2], size = 5) + 
-  annotate(&amp;quot;text&amp;quot;, x = umin, y = 4, label = &amp;quot;Penguins&amp;quot;, colour = colors[3], size = 5) +
-  ggtitle(&amp;quot;Posterior draws of team strength&amp;quot;) + 
-  xlab(&amp;quot;Team strength: log-odds scale&amp;quot;) + ylab(&amp;quot;Density&amp;quot;) + 
-  guides(color = FALSE, fill = FALSE) + theme_bw(14) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-09-a-state-space-model-to-evaluate-sports-team-performance_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Above, the Penguins stand out as the best of the three teams. However, although it’s clear the Penguins are better than both the Flyers and the Hurricanes – note the lack of overlap in the density plots – it’s not as clear that the Flyers are better than the Hurricanes.&lt;/p&gt;
-&lt;p&gt;Using samples from the posterior distribution, we can be a bit more precise: there’s only about a 1 in 2000 chance that the Hurricanes are better than the Penguins, a 1 in 150 chance that the Flyers are better than the Penguins, and a 1 in 5 chance that the Hurricanes are better than the Flyers.&lt;/p&gt;
-&lt;p&gt;But here’s where the NHL is tricky (e.g, random).&lt;/p&gt;
-&lt;p&gt;Knowing that the Penguins are better than the Flyers with probability 99.4 percent does not precisely correspond to their chances of actually beating the Flyers when the two teams square off in the 1st round of the 2018 NHL playoffs. In fact, we can use our team strength estimates to sample what a 7-game playoff series could look like, and check how often each team wins. Below, I assume that the Penguins have the home advantage.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(0)
-flyers.strength &amp;lt;- sample(team.2$beta, 7)
-penguins.strength &amp;lt;- sample(team.3$beta, 7)
-home.advantage &amp;lt;- sample(z$alpha, 7)
-logit.games &amp;lt;- penguins.strength - flyers.strength + 
-  home.advantage*c(1, 1, -1, -1, 1, -1, 1)
-prob.games &amp;lt;- exp(logit.games)/(1 + exp(logit.games))
-penguin.wins &amp;lt;- rbinom(7, 1, prob = prob.games)
-do.penguins.win &amp;lt;- sum(penguin.wins) &amp;gt;= 4
-do.penguins.win&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In the example above, the Penguins emerge victorious – congrats &lt;a href=&#34;https://www.nhl.com/penguins/news/penguins-hire-sam-ventura-as-director-of-hockey-research/c-289961770&#34;&gt;Sam&lt;/a&gt;!! – but that doesn’t happen every iteration. Here’s what 10,000 series outcomes would look like:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(0)
-penguins.sim.wins &amp;lt;- 0
-for (i in 1:10000){
-  flyers.strength &amp;lt;- sample(team.2$beta, 7)
-  penguins.strength &amp;lt;- sample(team.3$beta, 7)
-  home.advantage &amp;lt;- sample(z$alpha, 7)
-  logit.games &amp;lt;- penguins.strength - flyers.strength + home.advantage*c(1, 1, -1, -1, 1, -1, 1)
-  prob.games &amp;lt;- exp(logit.games)/(1 + exp(logit.games))
-  penguin.wins &amp;lt;- rbinom(7, 1, prob = prob.games)
-  do.penguins.win &amp;lt;- sum(penguin.wins) &amp;gt;= 4
-  penguins.sim.wins &amp;lt;- penguins.sim.wins + do.penguins.win
-}
-sum(penguins.sim.wins)/10000&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.6632&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Our numbers suggest that the Penguins would beat the Flyers roughly 2 out of every 3 times they played a 7-game series. Unsurprisingly, this almost exactly matches the probability implied in sportsbook series odds, which currently price the Penguins at -225 and the Flyers at +195.&lt;/p&gt;
-&lt;p&gt;One last thought: how much is the home advantage worth for Pittsburgh? Tweaking the code above, the Flyers would win about 4% more often if they were the team with an extra home game. In other words, only roughly 1 in 25 series outcomes would change were the Penguins to lose their home advantage to the Flyers. This does not appear to be the answer that my Twitter followers &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/983686397818298368&#34;&gt;expected&lt;/a&gt;, as 1 in 25 was the least likely of four outcomes (10, 15, 20, 25).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;summary&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Summary&lt;/h2&gt;
-&lt;p&gt;The above code implements a Bayesian state-space model to etimate team strength in the NHL season using betting market numbers. Though the &lt;code&gt;rjags&lt;/code&gt; package is not the most user-friendly for first-time practitioners, it provides a mechanism for fitting complex models using R. The resulting team strengths are fun to graph and expore, and I encourage you to try it out yourself.&lt;/p&gt;
-&lt;p&gt;In future work, there are a few questions that I hope to tackle: Can our model detect if certain teams have better home advantages than others? Was there a so-called &lt;code&gt;Vegas flu&lt;/code&gt;? And when did betting markets begin to pick up on it? What is the probability that any given team is better than any given other team? How did the NHLs shifting postseason structure (to a divisional format) impact postseason chances?&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
