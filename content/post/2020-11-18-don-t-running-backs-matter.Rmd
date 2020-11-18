@@ -1,0 +1,186 @@
+---
+title: "Don’t running backs matter?"
+author: "Michael Lopez"
+date: '2020-11-18'
+header:
+  caption: ''
+  image: ''
+  preview: yes
+slug: don-t-running-backs-matter
+tags:
+- resampling
+- bootstrap
+- NFL
+- Running Backs
+- Matter
+categories: []
+---
+
+
+The first of Tomas Plekanec's 15 seasons in the NHL came in 2005-06, which coincided with the league's introduction of a shootout.
+
+The shootout was not kind to Plekanec. Among all NHL players with at least 20 attempts, Plekanec's career shootout percentage of 13\% is the lowest league history. A deeper look into Plekanec's  [shootout usage](https://www.hockey-reference.com/players/p/plekato01.html) reveals an interesting pattern:
+
+| Seasons      | # Years|Plekanec Shootout Attempts |
+| ----------- | ----------- |----------- |
+| 2005-06 to 2014-15| 10     | 23       |
+| 2015-16 to 2018-19| 5  | 0        |
+
+Each of Plekanec's shootout attempts occured in his first 10 seasons, and his success rate was so bad in that timeframe that he never again got an opportunity. 
+
+Plekanec's usage underpins a deeper limitation of analyzing shootout data, in that we only get to observe players in the shootout if their coaches give them an opportunity. This form of selection bias is, in part, why it took [researchers](https://statsbylopez.com/2014/03/12/nhl-shootouts-arent-random-so-lets-stop-calling-them-that/) so long to identify that shootouts were not the coin flips that we initially thought they were. Turns out, not only were shootouts *not* random, but the best shooters (e.g, the opposite of Plekanec) were likely worth more than a half a million dollars per year in salary based on shootout performances alone (see [Schuckers and I on this topic](https://statsbylopez.files.wordpress.com/2013/08/jss_nhl-21.pdf)). 
+
+Perhaps a more optimistic view is that Plekanec's coaches were rational in evaluating him. They correctly recognized Plekanec as a below average shootout player, and didn't give him any further opportunities. 
+
+This post discusses how a similar trend seems to exist within an entire positional group: NFL running backs.
+
+
+
+## Expected rush yards and NFL data
+
+The [top solution](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400) in the NFL's 2020 Big Data Bowl used machine learning to estimate the probability of a ball carrier reaching each possible yard line on an NFL handoff. With the winning code as a baseline, the league's Next Gen Stats media team has integrated [a new suite of metrics](https://www.nfl.com/news/next-gen-stats-intro-to-expected-rushing-yards) based on this algorithm. This data is provided to NFL clubs and media, and has even been used with wide receiver models ([Example](https://twitter.com/NextGenStats/status/1328803741856903170)). 
+
+One new metric is expected rush yards, defined as the average number of yards that an NFL player would gain, using the speed, acceleration, direction, and location of the 22 players on the field at handoff. The stat appears [well calibrated](https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/), as judged by out-of-sample prediction on 2019 rushing plays.
+
+Calibration doesn't always entail repeatability, and one unknown with expected yards is whether or not overperformance (e.g, carring for more yards than was expected) is due to skill or luck. This post uses expected yards as a baseline for two arguments: 
+
+1. There exists a selection bias in how running backs are given carries. 
+
+2. Despite this limitation, there's a non-zero consistency in running back performance relative to expectation. 
+
+## Remember LeGarrette Blount?
+
+Having expected yards makes it straightforward to estimate performances above or below average. If a running back was expected to pick up 3.5 yards and gained 6, he gets credited with +2.5 yards over expectation. A gain of 2 yards? -1.5 yards over expectation. 
+
+Here's a table that shows the five players with the highest (in blue) and lowest (red) cumulative yardages over expectation in the 2018 regular season, alongside the number of carries each player received in 2019. 
+
+```{r, warning = FALSE, message = FALSE, echo = FALSE}
+require(tidyverse)
+df_rush_18 <- read_csv("~/Dropbox/JQAS v2/post/rush_expectation_2018.csv")
+df_rush_19 <- read_csv("~/Dropbox/JQAS v2/post/rush_expectation_2019.csv")
+df_rush_20 <- read_csv("~/Dropbox/JQAS v2/post/rush_expectation_2020.csv")
+
+df_rush_all <- bind_rows(df_rush_18, df_rush_19, df_rush_20)
+
+
+n_carries <- df_rush_all %>% mutate(season = paste0("n", substr(gameId, 1, 4))) %>% 
+  group_by(season, rusher) %>% 
+  summarise(n_carries = n()) %>% 
+  spread(season, n_carries) %>% 
+  replace_na(list(n2018 = 0, n2019 = 0, n2020 = 0))
+  
+yoe <- df_rush_all %>% mutate(season = paste0("yoe", substr(gameId, 1, 4))) %>% 
+  group_by(season, rusher) %>% 
+  summarise(yoe_season = sum(rushYardsOverExpected)) %>% 
+  spread(season, yoe_season) %>% 
+  replace_na(list(yoe2018 = 0, yoe2019 = 0, yoe2020 = 0))
+
+yds <- df_rush_all %>% 
+  mutate(season = paste0("yds", substr(gameId, 1, 4))) %>% 
+  group_by(season, rusher) %>% 
+  summarise(yds_season = sum(rushYardsOverExpected+expectedRushYards)) %>% 
+  spread(season, yds_season) %>% 
+  replace_na(list(yds_season = 0, yds_season = 0, yds_season = 0))
+
+
+season_sum <- n_carries %>% inner_join(yoe) %>% inner_join(yds)
+
+
+#season_sum %>% filter(n2018 >= 20) %>% summarise(cor_yoy = cor(n2019, yoe2018))
+#season_sum %>% filter(n2018 >= 20) %>% summarise(cor_yoy = cor(n2019, yds2018))
+
+
+
+
+top_5 <- season_sum %>% arrange(-yoe2018) %>% head(5) %>% select(rusher, yoe2018, n2019)
+bottom_5 <- season_sum %>% arrange(yoe2018) %>% head(5) %>% arrange(-yoe2018) %>% select(rusher, yoe2018, n2019)
+library(gt)
+bind_rows(top_5, bottom_5) %>% 
+  mutate(yoe2018 = round(yoe2018)) %>% 
+  rename(Rusher = rusher, `Yards over average, 2018` = yoe2018, `# Carries, 2019` = n2019) %>% 
+  gt() %>% tab_header(
+    title = md("**2018 Performance --> 2019 Opportunity**")
+  )%>%
+  tab_style(
+    style = list(
+      cell_text(color = "blue")
+    ),
+    locations = cells_body(
+      columns = vars(Rusher, `Yards over average, 2018`, `# Carries, 2019`),
+      rows = `Yards over average, 2018` >= 0)
+  ) %>% 
+  tab_style(
+    style = list(
+      cell_text(color = "red")
+    ),
+    locations = cells_body(
+      columns = vars(Rusher, `Yards over average, 2018`, `# Carries, 2019`),
+      rows = `Yards over average, 2018` <= 0)
+  )
+
+```
+
+
+
+The five best running backs in the 2018 season based on yardage above expectation received an average of 236 carries in 2019. The five running backs furthest below expectation, by comparison, received an average of 54 carries, including LeGarrette Blount and Elijah McGuire, neither of whom saw the field in 2019 (no injuries appear evident).
+
+Why does this matter? 
+
+First, there's an immediate link to Thomas Plekanec in the shootout. We can't observe what we can't see, which means that for the same reason Plekanec stopped getting chances at shootouts, Legarrette Blount stopped getting handoffs in NFL games. Alternatively, Derrick Henry keeps getting the ball, sort of like Team USA going to [TJ Oshie](https://www.youtube.com/watch?v=MUxJXzKY4LE) in their Olympic shootout against Russia.  
+
+Second, at some level, this suggests that NFL coaches are rational in their running back usage. Assuming there is some signal to rushing yards over expectation, it makes more sense to feed the Barkley's, Chubb's, and Henry's of the world than it does the McCoy's, Blount's, and Howard's, and that's why they keep doing it. (*Postscript: after I started this post, Howard was cut by the Dolphins*) 
+
+Third, perhaps there's something that coaches are following that is *not* seen in traditional stats. Player carries in 2019 was more closely tied to 2018 yards above average per carry (correlation of 0.50) than 2018 yards per carry (correlation of 0.37). 
+
+Finally, if we're interested in the repeatability of expected yards (and in the repeatability of yards over expected), we have to reckon with the reality that not all players will themselves be allowed to repeat. Perhaps year over year correlations are not the best approach.
+
+## Does expected yards over average predict itself?
+
+The stability of yards over average mostly unknown. I'll use a larger sample of plays (through Week 9 of 2020) to find some evidence that players that are above average are more likely than not to stay above average. 
+
+Let's start by splitting ball carriers into random sets of carries. Instead of looking year over year (which would miss players that don't play a season after poor performances), I'll split each back's carries over the entirety of data evenly into two groups, each corresponding to roughly half of their opportunities. In each split, median yards over expectation are calculated in the two groups. I've done this 1000 times -- nine examples of which are shown below. 
+
+
+![ ](/img/ey_out.png)
+
+Backs in the top right of the chart register better-than-typical performances in both random splits of the data, while backs in the bottom left are worse than average in both. Correlation coefficients within each plot are provided in the titles. 
+
+Two images are shown where their dots appear: Blount and Henry. In all 9 splits of the data, Henry is over average while Blount is below. It shouldn't be surprising that Henry's performance looks better than Blount's over the last few years, but the fact that this is a repeatable finding is notable.
+
+Replicating this process 1000 times, the typical correlation coefficient was 0.36 (95 percent of correlation coefficients were between 0.18 and 0.52). In sum, this suggests there is *some* repeatability to yards over average. 
+
+## What about other metrics that use expected yards?
+
+
+More generally, I looked at four metrics as far as repeatability.
+
+1. Yards Over Expectation (median, as shown above)
+2. Success Probability, defined as the likelihood the ball carrier has a successful play (40 percent of yards to go on 1st down, 50 percent on 2nd down, 100 percent on 3rd/4th down) given the information known at handoff
+3. Expected Yards 
+4. Rush Over Expectation Percent, defined as the percent of a rusher's carries where he exceeds Expected Yards
+
+The following chart tracks split-sample correlations of these four metrics across the 1000 samples, for two sample size cutoffs (50 and 150 handoff plays). 
+
+
+![ ](/img/corr_coeff.png)
+
+
+The *most* repeatable metric is Success Probability, with a typical correlation coefficient of 0.63. *Several* football factors tie into Success Probability, including coaching, play calling, blocking, and defensive scheme. This metric's relative consistency is a sign that players that tend to have opportunities for successful plays are likely to keep that up (and that deeper work to separate out player versus team is likely needed). 
+
+Right behind Success Probability is Expected Yards. Because teams use running backs differently based on down and distance, it's likely that the space (and available yardage) vary consistently between ball carriers. You can check out an example plot of 2020 expected yards data [here](https://twitter.com/StatsbyLopez/status/1326245845155647492).
+
+Yards Over Expectation and Rush Over Expectation Percent were both *less* stable, but still appear to show a non-zero consistency. For Yards Over Expectation, the typical correlation coefficient [roughly corresponds](https://fantasy.fangraphs.com/the-updated-xstats-and-their-year-to-year-correlations/) to the year-over-year correlations of both an MLB pitchers' batting average allowed and on base percentage allowed. 
+
+To sum: there are appear to be non-zero split sample correlations when looking at the expected yards suite of metrics. The two metrics more closely tied to team usage and coaching are more consistent, while metrics corresponding to individual performance are less so. 
+
+A few comments to end with:
+
+- How useful are these positive correlations? Do running backs now matter? The combination of selection bias/rational coaching (e.g, the Tomas Plekanec problem) and the non-zero consistency of running back performance is worth keeping in mind. 
+
+- I still haven't done a great job of accounting for drop-out. If a ball carrier had 49 career carries and they were all terrible, he wouldn't appear in our data set. 
+
+- Not all yards above average should be treated equally. Last year, I used running back [percentile](https://statsbylopez.netlify.app/post/assessing-running-back-performance-using-distributions/) and perhaps that's a metric I'll look at into again in the offseason. 
+
+- There's a reasonable amount of noise between the correlations in each split sample. I'd recommend folks (including myself, going forward) be up front about how they choose their training and test data, and to check how much of an impact that decision has on findings.
+
+- Expected yards uses ball carrier speed at handoff, which could artificially punish or reward players based on how they are moving. Perhaps the most optimal approach for calculating expected yards would impute an average running back speed to be expected on a typical play. 

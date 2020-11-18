@@ -1,0 +1,508 @@
+---
+title: "Don’t running backs matter?"
+author: "Michael Lopez"
+date: '2020-11-18'
+header:
+  caption: ''
+  image: ''
+  preview: yes
+slug: don-t-running-backs-matter
+tags:
+- resampling
+- bootstrap
+- NFL
+- Running Backs
+- Matter
+categories: []
+---
+
+
+
+<p>The first of Tomas Plekanec’s 15 seasons in the NHL came in 2005-06, which coincided with the league’s introduction of a shootout.</p>
+<p>The shootout was not kind to Plekanec. Among all NHL players with at least 20 attempts, Plekanec’s career shootout percentage of 13% is the lowest league history. A deeper look into Plekanec’s <a href="https://www.hockey-reference.com/players/p/plekato01.html">shootout usage</a> reveals an interesting pattern:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Seasons</th>
+<th># Years</th>
+<th>Plekanec Shootout Attempts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2005-06 to 2014-15</td>
+<td>10</td>
+<td>23</td>
+</tr>
+<tr class="even">
+<td>2015-16 to 2018-19</td>
+<td>5</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Each of Plekanec’s shootout attempts occured in his first 10 seasons, and his success rate was so bad in that timeframe that he never again got an opportunity.</p>
+<p>Plekanec’s usage underpins a deeper limitation of analyzing shootout data, in that we only get to observe players in the shootout if their coaches give them an opportunity. This form of selection bias is, in part, why it took <a href="https://statsbylopez.com/2014/03/12/nhl-shootouts-arent-random-so-lets-stop-calling-them-that/">researchers</a> so long to identify that shootouts were not the coin flips that we initially thought they were. Turns out, not only were shootouts <em>not</em> random, but the best shooters (e.g, the opposite of Plekanec) were likely worth more than a half a million dollars per year in salary based on shootout performances alone (see <a href="https://statsbylopez.files.wordpress.com/2013/08/jss_nhl-21.pdf">Schuckers and I on this topic</a>).</p>
+<p>Perhaps a more optimistic view is that Plekanec’s coaches were rational in evaluating him. They correctly recognized Plekanec as a below average shootout player, and didn’t give him any further opportunities.</p>
+<p>This post discusses how a similar trend seems to exist within an entire positional group: NFL running backs.</p>
+<div id="expected-rush-yards-and-nfl-data" class="section level2">
+<h2>Expected rush yards and NFL data</h2>
+<p>The <a href="https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400">top solution</a> in the NFL’s 2020 Big Data Bowl used machine learning to estimate the probability of a ball carrier reaching each possible yard line on an NFL handoff. With the winning code as a baseline, the league’s Next Gen Stats media team has integrated <a href="https://www.nfl.com/news/next-gen-stats-intro-to-expected-rushing-yards">a new suite of metrics</a> based on this algorithm. This data is provided to NFL clubs and media, and has even been used with wide receiver models (<a href="https://twitter.com/NextGenStats/status/1328803741856903170">Example</a>).</p>
+<p>One new metric is expected rush yards, defined as the average number of yards that an NFL player would gain, using the speed, acceleration, direction, and location of the 22 players on the field at handoff. The stat appears <a href="https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/">well calibrated</a>, as judged by out-of-sample prediction on 2019 rushing plays.</p>
+<p>Calibration doesn’t always entail repeatability, and one unknown with expected yards is whether or not overperformance (e.g, carring for more yards than was expected) is due to skill or luck. This post uses expected yards as a baseline for two arguments:</p>
+<ol style="list-style-type: decimal">
+<li><p>There exists a selection bias in how running backs are given carries.</p></li>
+<li><p>Despite this limitation, there’s a non-zero consistency in running back performance relative to expectation.</p></li>
+</ol>
+</div>
+<div id="remember-legarrette-blount" class="section level2">
+<h2>Remember LeGarrette Blount?</h2>
+<p>Having expected yards makes it straightforward to estimate performances above or below average. If a running back was expected to pick up 3.5 yards and gained 6, he gets credited with +2.5 yards over expectation. A gain of 2 yards? -1.5 yards over expectation.</p>
+<p>Here’s a table that shows the five players with the highest (in blue) and lowest (red) cumulative yardages over expectation in the 2018 regular season, alongside the number of carries each player received in 2019.</p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#wlvaofjgby .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wlvaofjgby .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wlvaofjgby .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wlvaofjgby .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wlvaofjgby .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wlvaofjgby .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wlvaofjgby .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wlvaofjgby .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wlvaofjgby .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wlvaofjgby .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wlvaofjgby .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wlvaofjgby .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wlvaofjgby .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#wlvaofjgby .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wlvaofjgby .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wlvaofjgby .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wlvaofjgby .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wlvaofjgby .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wlvaofjgby .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wlvaofjgby .gt_left {
+  text-align: left;
+}
+
+#wlvaofjgby .gt_center {
+  text-align: center;
+}
+
+#wlvaofjgby .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wlvaofjgby .gt_font_normal {
+  font-weight: normal;
+}
+
+#wlvaofjgby .gt_font_bold {
+  font-weight: bold;
+}
+
+#wlvaofjgby .gt_font_italic {
+  font-style: italic;
+}
+
+#wlvaofjgby .gt_super {
+  font-size: 65%;
+}
+
+#wlvaofjgby .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="wlvaofjgby" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style><strong>2018 Performance --&gt; 2019 Opportunity</strong></th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Rusher</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Yards over average, 2018</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"># Carries, 2019</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left" style="color: blue;">Saquon Barkley</td>
+      <td class="gt_row gt_right" style="color: blue;">293</td>
+      <td class="gt_row gt_right" style="color: blue;">213</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: blue;">Nick Chubb</td>
+      <td class="gt_row gt_right" style="color: blue;">240</td>
+      <td class="gt_row gt_right" style="color: blue;">295</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: blue;">Derrick Henry</td>
+      <td class="gt_row gt_right" style="color: blue;">218</td>
+      <td class="gt_row gt_right" style="color: blue;">287</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: blue;">Kerryon Johnson</td>
+      <td class="gt_row gt_right" style="color: blue;">177</td>
+      <td class="gt_row gt_right" style="color: blue;">110</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: blue;">Joe Mixon</td>
+      <td class="gt_row gt_right" style="color: blue;">171</td>
+      <td class="gt_row gt_right" style="color: blue;">274</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: red;">Elijah McGuire</td>
+      <td class="gt_row gt_right" style="color: red;">-65</td>
+      <td class="gt_row gt_right" style="color: red;">0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: red;">Nyheim Hines</td>
+      <td class="gt_row gt_right" style="color: red;">-66</td>
+      <td class="gt_row gt_right" style="color: red;">52</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: red;">Jordan Howard</td>
+      <td class="gt_row gt_right" style="color: red;">-95</td>
+      <td class="gt_row gt_right" style="color: red;">119</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: red;">LeGarrette Blount</td>
+      <td class="gt_row gt_right" style="color: red;">-146</td>
+      <td class="gt_row gt_right" style="color: red;">0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="color: red;">LeSean McCoy</td>
+      <td class="gt_row gt_right" style="color: red;">-155</td>
+      <td class="gt_row gt_right" style="color: red;">98</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<p>The five best running backs in the 2018 season based on yardage above expectation received an average of 236 carries in 2019. The five running backs furthest below expectation, by comparison, received an average of 54 carries, including LeGarrette Blount and Elijah McGuire, neither of whom saw the field in 2019 (no injuries appear evident).</p>
+<p>Why does this matter?</p>
+<p>First, there’s an immediate link to Thomas Plekanec in the shootout. We can’t observe what we can’t see, which means that for the same reason Plekanec stopped getting chances at shootouts, Legarrette Blount stopped getting handoffs in NFL games. Alternatively, Derrick Henry keeps getting the ball, sort of like Team USA going to <a href="https://www.youtube.com/watch?v=MUxJXzKY4LE">TJ Oshie</a> in their Olympic shootout against Russia.</p>
+<p>Second, at some level, this suggests that NFL coaches are rational in their running back usage. Assuming there is some signal to rushing yards over expectation, it makes more sense to feed the Barkley’s, Chubb’s, and Henry’s of the world than it does the McCoy’s, Blount’s, and Howard’s, and that’s why they keep doing it. (<em>Postscript: after I started this post, Howard was cut by the Dolphins</em>)</p>
+<p>Third, perhaps there’s something that coaches are following that is <em>not</em> seen in traditional stats. Player carries in 2019 was more closely tied to 2018 yards above average per carry (correlation of 0.50) than 2018 yards per carry (correlation of 0.37).</p>
+<p>Finally, if we’re interested in the repeatability of expected yards (and in the repeatability of yards over expected), we have to reckon with the reality that not all players will themselves be allowed to repeat. Perhaps year over year correlations are not the best approach.</p>
+</div>
+<div id="does-expected-yards-over-average-predict-itself" class="section level2">
+<h2>Does expected yards over average predict itself?</h2>
+<p>The stability of yards over average mostly unknown. I’ll use a larger sample of plays (through Week 9 of 2020) to find some evidence that players that are above average are more likely than not to stay above average.</p>
+<p>Let’s start by splitting ball carriers into random sets of carries. Instead of looking year over year (which would miss players that don’t play a season after poor performances), I’ll split each back’s carries over the entirety of data evenly into two groups, each corresponding to roughly half of their opportunities. In each split, median yards over expectation are calculated in the two groups. I’ve done this 1000 times – nine examples of which are shown below.</p>
+<p><img src="/img/ey_out.png" /></p>
+<p>Backs in the top right of the chart register better-than-typical performances in both random splits of the data, while backs in the bottom left are worse than average in both. Correlation coefficients within each plot are provided in the titles.</p>
+<p>Two images are shown where their dots appear: Blount and Henry. In all 9 splits of the data, Henry is over average while Blount is below. It shouldn’t be surprising that Henry’s performance looks better than Blount’s over the last few years, but the fact that this is a repeatable finding is notable.</p>
+<p>Replicating this process 1000 times, the typical correlation coefficient was 0.36 (95 percent of correlation coefficients were between 0.18 and 0.52). In sum, this suggests there is <em>some</em> repeatability to yards over average.</p>
+</div>
+<div id="what-about-other-metrics-that-use-expected-yards" class="section level2">
+<h2>What about other metrics that use expected yards?</h2>
+<p>More generally, I looked at four metrics as far as repeatability.</p>
+<ol style="list-style-type: decimal">
+<li>Yards Over Expectation (median, as shown above)</li>
+<li>Success Probability, defined as the likelihood the ball carrier has a successful play (40 percent of yards to go on 1st down, 50 percent on 2nd down, 100 percent on 3rd/4th down) given the information known at handoff</li>
+<li>Expected Yards</li>
+<li>Rush Over Expectation Percent, defined as the percent of a rusher’s carries where he exceeds Expected Yards</li>
+</ol>
+<p>The following chart tracks split-sample correlations of these four metrics across the 1000 samples, for two sample size cutoffs (50 and 150 handoff plays).</p>
+<p><img src="/img/corr_coeff.png" /></p>
+<p>The <em>most</em> repeatable metric is Success Probability, with a typical correlation coefficient of 0.63. <em>Several</em> football factors tie into Success Probability, including coaching, play calling, blocking, and defensive scheme. This metric’s relative consistency is a sign that players that tend to have opportunities for successful plays are likely to keep that up (and that deeper work to separate out player versus team is likely needed).</p>
+<p>Right behind Success Probability is Expected Yards. Because teams use running backs differently based on down and distance, it’s likely that the space (and available yardage) vary consistently between ball carriers. You can check out an example plot of 2020 expected yards data <a href="https://twitter.com/StatsbyLopez/status/1326245845155647492">here</a>.</p>
+<p>Yards Over Expectation and Rush Over Expectation Percent were both <em>less</em> stable, but still appear to show a non-zero consistency. For Yards Over Expectation, the typical correlation coefficient <a href="https://fantasy.fangraphs.com/the-updated-xstats-and-their-year-to-year-correlations/">roughly corresponds</a> to the year-over-year correlations of both an MLB pitchers’ batting average allowed and on base percentage allowed.</p>
+<p>To sum: there are appear to be non-zero split sample correlations when looking at the expected yards suite of metrics. The two metrics more closely tied to team usage and coaching are more consistent, while metrics corresponding to individual performance are less so.</p>
+<p>A few comments to end with:</p>
+<ul>
+<li><p>How useful are these positive correlations? Do running backs now matter? The combination of selection bias/rational coaching (e.g, the Tomas Plekanec problem) and the non-zero consistency of running back performance is worth keeping in mind.</p></li>
+<li><p>I still haven’t done a great job of accounting for drop-out. If a ball carrier had 49 career carries and they were all terrible, he wouldn’t appear in our data set.</p></li>
+<li><p>Not all yards above average should be treated equally. Last year, I used running back <a href="https://statsbylopez.netlify.app/post/assessing-running-back-performance-using-distributions/">percentile</a> and perhaps that’s a metric I’ll look at into again in the offseason.</p></li>
+<li><p>There’s a reasonable amount of noise between the correlations in each split sample. I’d recommend folks (including myself, going forward) be up front about how they choose their training and test data, and to check how much of an impact that decision has on findings.</p></li>
+<li><p>Expected yards uses ball carrier speed at handoff, which could artificially punish or reward players based on how they are moving. Perhaps the most optimal approach for calculating expected yards would impute an average running back speed to be expected on a typical play.</p></li>
+</ul>
+</div>
