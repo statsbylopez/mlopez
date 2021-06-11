@@ -34,6 +34,6 @@ weight = 5
 
 # Biography
 
-Michael Lopez is a Director of Football Data and Analytics at the National Football League, where he has worked in Football Operations since 2018.
+Michael Lopez is a Director of Football Data and Analytics at the National Football League.
 
 At the National Football League, his work centers on how to use data to enhance and better understand the game of football. Academically, his research is split between causal inference -- with a specific focus on causal inference methods for multiple exposures -- and the application of statistics to sports. He is an Associate Editor at the Journal of Quantitative Analysis in Sports, and has written for FiveThirtyEight, Deadspin, Sports Illustrated, and Hockey News. From 2014 through 2021, he worked at Skidmore College, first as an Assistant Professor and then as a Lecturer and Research Associate. In 2020, he was named the American Statistical Association's Statistics in Sports Significant Contributor Award. 
