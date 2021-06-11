@@ -1,4 +1,5 @@
 
+
 ### Submitted
 
 -  Luke S. Benz, **Michael J. Lopez**. "Estimating the change in soccer's home advantage during the Covid-19 pandemic using bivariate Poisson regression," 2020. [(preprint)](https://arxiv.org/abs/2012.14949)
