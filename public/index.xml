@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statsbylopez on Statsbylopez</title>
-    <link>/</link>
+    <link>https://statsbylopez.netlify.com/</link>
     <description>Recent content in Statsbylopez on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Don’t running backs matter?</title>
-      <link>/post/don-t-running-backs-matter/</link>
+      <link>https://statsbylopez.netlify.com/post/don-t-running-backs-matter/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/don-t-running-backs-matter/</guid>
+      <guid>https://statsbylopez.netlify.com/post/don-t-running-backs-matter/</guid>
       <description>&lt;p&gt;The first of Tomas Plekanec’s 15 seasons in the NHL came in 2005-06, which coincided with the league’s introduction of a shootout.&lt;/p&gt;
 &lt;p&gt;The shootout was not kind to Plekanec. Among all NHL players with at least 20 attempts, Plekanec’s career shootout percentage of 13% is the lowest league history. A deeper look into Plekanec’s &lt;a href=&#34;https://www.hockey-reference.com/players/p/plekato01.html&#34;&gt;shootout usage&lt;/a&gt; reveals an interesting pattern:&lt;/p&gt;
 &lt;table&gt;
@@ -475,7 +475,7 @@
 &lt;h2&gt;Does expected yards over average predict itself?&lt;/h2&gt;
 &lt;p&gt;The stability of yards over average mostly unknown. I’ll use a larger sample of plays (through Week 9 of 2020) to find some evidence that players that are above average are more likely than not to stay above average.&lt;/p&gt;
 &lt;p&gt;Let’s start by splitting ball carriers into random sets of carries. Instead of looking year over year (which would miss players that don’t play a season after poor performances), I’ll split each back’s carries over the entirety of data evenly into two groups, each corresponding to roughly half of their opportunities. In each split, median yards over expectation are calculated in the two groups. I’ve done this 1000 times – nine examples of which are shown below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/ey_out.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/ey_out.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Backs in the top right of the chart register better-than-typical performances in both random splits of the data, while backs in the bottom left are worse than average in both. Correlation coefficients within each plot are provided in the titles.&lt;/p&gt;
 &lt;p&gt;Two images are shown where their dots appear: Blount and Henry. In all 9 splits of the data, Henry is over average while Blount is below. It shouldn’t be surprising that Henry’s performance looks better than Blount’s over the last few years, but the fact that this is a repeatable finding is notable.&lt;/p&gt;
 &lt;p&gt;Replicating this process 1000 times, the typical correlation coefficient was 0.36 (95 percent of correlation coefficients were between 0.18 and 0.52). In sum, this suggests there is &lt;em&gt;some&lt;/em&gt; repeatability to yards over average.&lt;/p&gt;
@@ -490,7 +490,7 @@
 &lt;li&gt;Rush Over Expectation Percent, defined as the percent of a rusher’s carries where he exceeds Expected Yards&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;The following chart tracks split-sample correlations of these four metrics across the 1000 samples, for two sample size cutoffs (50 and 150 handoff plays).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/corr_coeff.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/corr_coeff.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;em&gt;most&lt;/em&gt; repeatable metric is Success Probability, with a typical correlation coefficient of 0.63. &lt;em&gt;Several&lt;/em&gt; football factors tie into Success Probability, including coaching, play calling, blocking, and defensive scheme. This metric’s relative consistency is a sign that players that tend to have opportunities for successful plays are likely to keep that up (and that deeper work to separate out player versus team is likely needed).&lt;/p&gt;
 &lt;p&gt;Right behind Success Probability is Expected Yards. Because teams use running backs differently based on down and distance, it’s likely that the space (and available yardage) vary consistently between ball carriers. You can check out an example plot of 2020 expected yards data &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/1326245845155647492&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Yards Over Expectation and Rush Over Expectation Percent were both &lt;em&gt;less&lt;/em&gt; stable, but still appear to show a non-zero consistency. For Yards Over Expectation, the typical correlation coefficient &lt;a href=&#34;https://fantasy.fangraphs.com/the-updated-xstats-and-their-year-to-year-correlations/&#34;&gt;roughly corresponds&lt;/a&gt; to the year-over-year correlations of both an MLB pitchers’ batting average allowed and on base percentage allowed.&lt;/p&gt;
@@ -509,27 +509,27 @@
     
     <item>
       <title>Assessing running back performance using distributions</title>
-      <link>/post/assessing-running-back-performance-using-distributions/</link>
+      <link>https://statsbylopez.netlify.com/post/assessing-running-back-performance-using-distributions/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/assessing-running-back-performance-using-distributions/</guid>
+      <guid>https://statsbylopez.netlify.com/post/assessing-running-back-performance-using-distributions/</guid>
       <description>&lt;p&gt;Most often, running backs in the National Football League are compared by taking summary statistics from each play. Traditional metrics include yards-per-carry, expected points added per play (EPA), and win probability added per play (WPA). While comparing players based on these their averages is the straightforward, means can be sensitive to outlying observations and distributions with heavy tails. Unfortunately, yards, EPA, and WPA are all strongly skewed, which means that taking averages may not be an optimal approach.&lt;/p&gt;
 &lt;p&gt;As part of the NFL’s Big Data Bowl, participants dove deeper into ball carrier performance. In this post, I’ll use one set of Big Data Bowl predictions (provided by the Zoo, &lt;a href=&#34;https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400&#34;&gt;link&lt;/a&gt;) to examine two newer metrics – yards over expectation and yardage percentiles.&lt;/p&gt;
 &lt;div id=&#34;yards-over-expectation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Yards over expectation&lt;/h2&gt;
 &lt;p&gt;The first way to look at Big Data Bowl projections was to boil each carry down to a single number peformance – expected yards. Using the Zoo’s predictions, each carry’s expected yards is the cumulative sum of the probability that the ball carrier finished with each yardage total, multiplied by that yardage total. Ex: if a back has a 25% chance at losing 1 yard (-1), a 25 percent chance at 0 yards, and a 50 percent chance at 1 yard, the expected yards gained would be 0.25 (&lt;span class=&#34;math inline&#34;&gt;\(-1*0.25 + 0*0.25 + 1*0.50 = 0.25\)&lt;/span&gt;).&lt;/p&gt;
 &lt;p&gt;Here’s are two histograms, both for yards (left side) and of yards over expectation (right side).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The distribution of yards above expectation is centered at 0 and is slightly more symmetric than the distribution for yards, but there remain outliers and a heavy tail to the right. That is, despite the Zoo’s projections &lt;a href=&#34;https://operations.nfl.com/stats-central/stats-articles/what-the-top-predictions-looked-like-in-the-nfls-big-data-bowl/&#34;&gt;being accurate on aggregate&lt;/a&gt;, yards over expectation boasts a fairly similar distribution to yards.&lt;/p&gt;
 &lt;p&gt;The skewness of each distribution, combined with the relatively small number of carries that are afforded to running backs each season, can make it difficult to infer much about player talent using averages alone. Damien Williams’ 91 yard &lt;a href=&#34;https://www.youtube.com/watch?v=lseCV0H2LPk&#34;&gt;touchdown&lt;/a&gt; run, for example, was only expected to gain 5.2 yards. In the histograms above, there’s not much difference between 91 yards and 85.8 yards above expectation.&lt;/p&gt;
 &lt;div id=&#34;assessing-repeatability-using-yards-over-expectation&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Assessing repeatability using yards over expectation&lt;/h3&gt;
 &lt;p&gt;A frequent goal of sports analytics is to find players that are able to consistently able to outperform expectations. This is generally done by splitting samples into two samples (say, odd games and even games, training and test data, or year over year preformances). Steph Curry shooting 3-pointers, Lionel Messi on set pieces, and Mike Trout’s exit velocity are examples of players who will consistently outperform expectations.&lt;/p&gt;
 &lt;p&gt;Running back metrics have traditionally been shown to be unpredictable, and the skewness of the distributions above is part of the reason why. Here’s a histogram of yards over expectation for Damien Williams’ 82 carries.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Williams has 81 carries with between -10 and 7 yards +/- expectation, and one carry with +85.8 yards over average. If you split Williams’ carries into two even subsamples, each with half of his carries, the 91 yards (or 85.8 yards above expectation) is only going to end up in one of them. Doesn’t really matter how many times you sample, and you could even sample with replacement. At the end of the day, the inclusion of that one play will determine how consistent (or inconsistent) you view Williams’ season.&lt;/p&gt;
 &lt;p&gt;More generally, the chart below splits Big Data Bowl predictions into two random data sets (sample’s 1 and 2), and compares each RBs average yards gained above and below expectation between the two samples.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There’s potentially a small link between ball carrier performance in the two samples, but it’s hard to separate from noise (even scatter). Sampling in this fashion 1000 times averages a correlation coefficient of 0.17. By and large, there’s a weak, linear association in yardage above/below expectation when cut between two random splits of data.&lt;/p&gt;
 &lt;p&gt;If you are curious where Williams is, he’s always in the top left (if his touchdown run was in sample 2) or bottom right (sample 1), depending on chance.&lt;/p&gt;
 &lt;/div&gt;
@@ -537,11 +537,11 @@
 &lt;div id=&#34;what-else-is-there&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What else is there?&lt;/h2&gt;
 &lt;p&gt;Big Data Bowl predictions aren’t just expected yards – they’re distributions. Here’s the empirical cumulative distribution function (CDF) for two sample carries, a Cordarrelle Patterson two-yard loss and a Raheem Mostert 41-yard touchdown run.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There’s basically nothing about the two plays that’s similar. As an example, Mostert was as likely to reach 12 yards as Patterson was to lose a yard (50%), which is a fairly wide gap in terms of modal performance.&lt;/p&gt;
 &lt;p&gt;Using expected yards, Mostert overperformed by about 30 yards, while Patterson fell about a yard short. But I’m not sure those numbers tell the best story. There’s basically 0 chance Patterson could’ve finished with 30-yards over expectation on his carry (even though his play started near midfield). If we judge by yardage over expectation, Patterson would need to replicate his play seven times, and on each play gain seven yards (probability ~ 0) to match Mostert’s yards above average.&lt;/p&gt;
 &lt;p&gt;In place of yardage expectations, there’s a more intuitive way of comparing Patterson’s run to Mostert’s – their CDFs. That is, each point on the y-axis in the chart above maps to yardage gains that are equivalent between the two runs. The following chart shows how Patterson losing two yards was equivalent to a carry where Mostert gained 8 yards. Both gains correspond to roughly 0.30 on the y-axis.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Mostert picking up eight yards is the closest match to Patterson losing two yards. As an alternative comparison, an eight-yard gain for Patterson is roughly as likely as what Mostert did on his touchdown run.&lt;/p&gt;
 &lt;p&gt;There are a few side benefits of using these CDFs.&lt;/p&gt;
 &lt;p&gt;First, they’re intuitive – the cdf is a percentile. Patterson losing 2 yards and Mostert (hypothetically) gaining 8 yards both correspond to the 30th percentile. That is, 30% of running backs would be expected to perform at or below those yardage marks.&lt;/p&gt;
@@ -550,10 +550,10 @@
 &lt;h3&gt;What do CDFs from the Big Data Bowl tell us?&lt;/h3&gt;
 &lt;p&gt;Using all plays in the Big Data Bowl, I mapped each observed yardage gained to the corresponding percentile. That percentile roughly corresponds to a play-level performance for a running back, using the distribution of The Zoo’s predictions. Higher is better.&lt;/p&gt;
 &lt;p&gt;Here are density plots looking at the percentiles for the 28 players with at least 100 carries in the sample. Players are ordered in order from lowest to highest median percentiles.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ezekial Elliott’s typical carry ended in the 67th-percentile of what a typical running back would gain, while Devonta Freeman was in the 37th-percentile. Roughly, it was just as common for Freeman to finish in the top-quarter of running back distributions as it was for Elliott to finish in the top half. Le’Veon Bell, Chris Carson, and Jordan Howard are other names atop the chart.&lt;/p&gt;
 &lt;p&gt;As a final step, we check to see if there’s any more consistency in running back percentile scores. The chart below splits again splits players into two samples randomly, but this time focuses on the average percentile for each run.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2020-01-28-assessing-running-back-performance-using-distributions_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Freeman, Elliott, and Williams are all highlighted, with performances that appear consistent in the two samples. Williams, with his long touchdown run reduced from extreme outlier to simply the 100th-percentile, is no longer as impacted by that one big carry.&lt;/p&gt;
 &lt;p&gt;The correlation coefficient in the above plot is 0.40 – that matches what occurs if you take a few thousand such random samples.&lt;/p&gt;
 &lt;p&gt;To repeat: using percentile in place of yards +/-, even when looking at the identical set of plays, allows us to upp our split sample correlation coefficient from 0.17 to 0.40 when looking at running back performance.&lt;/p&gt;
@@ -569,13 +569,13 @@
     
     <item>
       <title>Plotting air yards</title>
-      <link>/post/plotting-air-yards/</link>
+      <link>https://statsbylopez.netlify.com/post/plotting-air-yards/</link>
       <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/plotting-air-yards/</guid>
+      <guid>https://statsbylopez.netlify.com/post/plotting-air-yards/</guid>
       <description>&lt;p&gt;Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, &lt;a href=&#34;http://airyards.com/&#34;&gt;Josh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/benbbaldwin/status/1207369445720690690&#34;&gt;Ben&lt;/a&gt; have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than simply looking at completion percentage alone.&lt;/p&gt;
 &lt;p&gt;Here’s one example of an air yards plot, using a pair of players from the 2019 season.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The blue player tends to be slightly worse than the red player at short throws, better than than the red player at distances around 20 yards, and similar for longer distances. Both players are slightly worse than the league average for shorter throws, but better than the league average at longer throws.&lt;/p&gt;
 &lt;p&gt;Can you guess who Players A and B are?&lt;/p&gt;
 &lt;p&gt;Player A is Tom Brady in 2019.&lt;/p&gt;
@@ -585,7 +585,7 @@
 &lt;h2&gt;Air yards ~ integer distance&lt;/h2&gt;
 &lt;p&gt;One common approach for assessing the link between completion rate and air yards is to average completion percentage at each air yards integer. Then, with averages at each distance, we can plot those averages, and smooth out rough edges using a trend line.&lt;/p&gt;
 &lt;p&gt;Here’s the example with Brady above.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Each of the dots in blue represent Brady’s completion rate at each of the yardage distances he has thrown to in 2019. You’ll notice higher variability in the dots after 30 yards – he doesn’t often throw that far, so averages at 0 or 1 will be more common.&lt;/p&gt;
 &lt;p&gt;This traditional approach is usually sufficient at highlighting how quarterbacks perform.&lt;/p&gt;
 &lt;p&gt;However, there are a few limitations.&lt;/p&gt;
@@ -626,14 +626,14 @@ fit_predict %&amp;gt;%
   scale_y_continuous(labels = scales::percent)+
   scale_x_continuous(breaks = c(-10, 0, 10, 20, 30, 40, 50)) +
   coord_cartesian(ylim = c(0,1))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;When comparing the two versions, it’s less that one approach is better than the other, but more about what each plot is actually showing. My intuition is what we ultimately want out of each QBs trend line is an estimated completion percentage, and what we ultimately want out of error bars are an uncertainty around that estimate, which is why a model-based approach could be more attractive.&lt;/p&gt;
 &lt;p&gt;Alternative models (logistic regressions with/without spline terms, hierarchical models, etc) could certainly work here as well.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;extrapolating&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Extrapolating&lt;/h2&gt;
 &lt;p&gt;Brady is just one example, so I made a plot with all passers in 2019 who have made at least 300 attempts.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The dark blue-line corresponds to the traditional approach (averages by integer), while the dotted line represents estimates from a GAM (separate for each QB).&lt;/p&gt;
 &lt;p&gt;As one graph to highlight, note the tail on Carson Wentz at low air-yards. Turns out, Wentz attempted 1 pass at -8 air yards, which fell incomplete, and no other passes at -7 air yards or less. Alternatively, he has 10 completions at 13 attempts between -6 and -5 air yards. A model-based approach is less likely to be sensitive to that one incompletion at -8 air yards.&lt;/p&gt;
 &lt;/div&gt;
@@ -642,7 +642,7 @@ fit_predict %&amp;gt;%
 &lt;p&gt;Last Sunday night, Drew Brees entered the record books by completing 29 of his 30 passes. Among any quarterback with at least 20 attempts in one game, no player has posted a single-game completion percentage higher than Brees.&lt;/p&gt;
 &lt;p&gt;It got me thinking about one thing that assuredly did not hurt Brees reach that mark – the game took place in the Mercedes-Benz Superdome.&lt;/p&gt;
 &lt;p&gt;So, using a separate function for games played in the eight NFL stadia with domes, and one for games that are not played in domes, here’s how the air-yards curves compare. This uses data from 2017 through 2019.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-12-19-plotting-air-yards_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;For what it’s worth, the QB closest to the non-dome line was Cam Newton, and the QB closest to the dome line was Dak Prescott (as assessed visually). It’s a fairly consistent difference of roughly 4 percentage points. A deeper look at domes would more appropriately account for the differences in QB abilities between dome and non-dome teams. Alternatively, a model showing only quarterbacks on away teams yielded similar results to the above. Either way, it is plausible that conditions played a small role in allowing Brees to reach such great heights.&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -650,10 +650,10 @@ fit_predict %&amp;gt;%
     
     <item>
       <title>R for NFL analysis</title>
-      <link>/post/r-for-nfl-analysis/</link>
+      <link>https://statsbylopez.netlify.com/post/r-for-nfl-analysis/</link>
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/r-for-nfl-analysis/</guid>
+      <guid>https://statsbylopez.netlify.com/post/r-for-nfl-analysis/</guid>
       <description>&lt;p&gt;As part of the NFL’s technology conference held last week, I presented to club staffers various approaches on how R could be used to explore NFL data. Here’s a slightly abridged version. This specific audience featured both novice and expert R users. Given that a semester’s long course would be needed to truly cover the breadth of how R could help explore football, note that this particular document is more an overview than anything else. Finally, most of the code is not meant to be run from an outsiders’ perspective, and instead uses a few internal databases. I’m sharing publicly in case it spurs any ideas for analysis or visualization.&lt;/p&gt;
 &lt;div id=&#34;summary-of-session&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Summary of session&lt;/h2&gt;
@@ -914,7 +914,7 @@ fourth_down_rates %&amp;gt;%
   scale_x_continuous(labels = 2005:2018, breaks = 2005:2018) + 
   scale_y_continuous(labels = scales::percent) + 
   labs(title = &amp;quot;Go-for-it rate, 4th-1 or 4th-2&amp;quot;, y = &amp;quot;&amp;quot;, x = &amp;quot;&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;sample-q2-whats-going-on-on-the-punt-play&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Sample Q2: What’s going on on the punt play?&lt;/h3&gt;
@@ -941,7 +941,7 @@ df_punts_keep %&amp;gt;%
   scale_fill_brewer(palette = &amp;quot;Set1&amp;quot;) + 
   scale_y_continuous(labels = scales::percent, &amp;quot;Rate&amp;quot;) + 
   labs(title = &amp;quot;Punt outcomes over time&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-05-10-r-for-nfl-analysis_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;other-charts-of-interest&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Other charts of interest&lt;/h3&gt;
@@ -1096,10 +1096,10 @@ play.length.ex &amp;lt;- length(unique(example.play$frame.id))
     
     <item>
       <title>Estimating NFL drive outcomes under rules that don&#39;t exist</title>
-      <link>/post/resampling-nfl-drives/</link>
+      <link>https://statsbylopez.netlify.com/post/resampling-nfl-drives/</link>
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/resampling-nfl-drives/</guid>
+      <guid>https://statsbylopez.netlify.com/post/resampling-nfl-drives/</guid>
       <description>&lt;p&gt;&lt;strong&gt;How do you estimate outcomes under a set of rules that don’t (yet) exist?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.&lt;/p&gt;
 &lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
@@ -1190,13 +1190,13 @@ for (i in 1:n.sim){
 &lt;div id=&#34;what-a-simulated-drive-looks-like&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;What a simulated drive looks like&lt;/h3&gt;
 &lt;p&gt;Here’s one sampled drive. It starts with an Andy Dalton pass on 1st-10, and ends a few plays later with a long pass to Dez Bryant. Keep in mind that this &lt;em&gt;should&lt;/em&gt; look weird – we’re sampling plays across the last decade of play, and will jump back and forth between offenses.
-&lt;img src=&#34;/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;More importantly, this particular drive shows the importance of replicating what &lt;strong&gt;could&lt;/strong&gt; happen in overtime. Above, the offense went for it on 4th-2 in its own territory, a Mike Gillislee run that is shown in red. In a typical game, most teams in this situation would have punted the ball away. By being forced to be aggressive, what was otherwise a likely punt became a touchdown.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;aggregating-across-drives&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Aggregating across drives&lt;/h3&gt;
 &lt;p&gt;So, how often would an offense score a touchdown in overtime? Here’s a plot of drive outcomes. Each of the 10,000 simulations is a dot, and about 3 of every 10 dots signify an offensive touchdown. In other words, when needing a touchdown and a touchdown only, an offense will score on about 30% of its drives.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2019-05-06-resampling-nfl-drives_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;How’s this compare to non-overtime drives? Well, teams score a touchdown on the first drive of overtime about 20% of the time, which is roughly what matches the first drive of the &lt;a href=&#34;https://twitter.com/StatsbyLopez/status/1118236788974342146&#34;&gt;game&lt;/a&gt;. In other words, the &lt;em&gt;need&lt;/em&gt; to score a touchdown increases a team’s chance of scoring that touchdown by about a factor of 1.5.&lt;/p&gt;
 &lt;p&gt;But wait, there’s more.&lt;/p&gt;
 &lt;p&gt;The above simulation dodges a few things that complicate football drives, most notably penalties. In our work at the league office, we got a number closer to 40% than 30%. That is, when you add in penalties, which tend to help the offense more than they help the defense, you’ll likely get a rate higher than the 30% I got above. Additionally, changes to the game (recently, more passing) and potential changes in third-down behavior (perhaps teams would run more if they know they are going to go for it?) are two weaknesses that jump out in the above approach.&lt;/p&gt;
@@ -1208,10 +1208,10 @@ for (i in 1:n.sim){
     
     <item>
       <title>In an NHL game, the next penalty is easier to predict than the next goal</title>
-      <link>/post/next-nhl-event/</link>
+      <link>https://statsbylopez.netlify.com/post/next-nhl-event/</link>
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/next-nhl-event/</guid>
+      <guid>https://statsbylopez.netlify.com/post/next-nhl-event/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s NHL playoff season, which means that, given the relative &lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34; target=&#34;_blank&#34;&gt;league parity&lt;/a&gt;, every call and no-call comes under a microscope. In the third period of close games, for example, a penalty call alone can decrease a team&amp;rsquo;s chance of winning by &lt;a href=&#34;http://moneypuck.com/g.htm?id=2018030174&#34; target=&#34;_blank&#34;&gt;10 percentage points&lt;/a&gt; or more.&lt;/p&gt;
 
 &lt;p&gt;One characteristic of NHL games that a few prominent members of the media &lt;a href=&#34;https://twitter.com/domluszczyszyn/status/1116450841022488576&#34; target=&#34;_blank&#34;&gt;have picked up on&lt;/a&gt; is that penalty calls tend to &amp;ldquo;even-up&amp;rdquo; within a game &amp;ndash; that is, it is unlikely that either team ends the game with a substantially larger number of penalties than its opponent. &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2259798&#34; target=&#34;_blank&#34;&gt;Kevin and I&lt;/a&gt;, as well as a few others (&lt;a href=&#34;http://people.stat.sfu.ca/~tim/papers/penalty.pdf&#34; target=&#34;_blank&#34;&gt;ex 1&lt;/a&gt;, &lt;a href=&#34;https://www.researchgate.net/publication/274325288_Reversal_of_Fortune_A_Statistical_Analysis_of_Penalty_Calls_in_the_National_Hockey_League&#34; target=&#34;_blank&#34;&gt;ex 2&lt;/a&gt;), have covered this in depth over the last few years.&lt;/p&gt;
@@ -1220,7 +1220,7 @@ for (i in 1:n.sim){
 
 &lt;p&gt;Using all games from 2005-2016, here&amp;rsquo;s the likelihood that (i) the first penalty of the second period is called on the home team (left plot) and (ii) the first goal of the second period is scored by the home team (right plot), given both the goal and penalty differentials in the first period. Goal and penalty differentials are given relative to the home team.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/nhlpens.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/nhlpens.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Two aspects stand out.&lt;/p&gt;
 
@@ -1238,10 +1238,10 @@ for (i in 1:n.sim){
     
     <item>
       <title>NFL team logos using ggimage</title>
-      <link>/post/nfl-team-logos-using-ggimage/</link>
+      <link>https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/nfl-team-logos-using-ggimage/</guid>
+      <guid>https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/bburkeESPN/status/1055150920340774912&#34;&gt;Brian&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/abresler/status/1055446174730240000&#34;&gt;Alex&lt;/a&gt;, and a host of others have done nice work recently when it comes to creating better scatter plots using images in &lt;code&gt;ggplot&lt;/code&gt; in &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;R&lt;/a&gt;. In this post, I’ll show how easy it is to use the &lt;code&gt;ggimage&lt;/code&gt; package and do the same.&lt;/p&gt;
 &lt;div id=&#34;what-data-to-use&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What data to use?&lt;/h2&gt;
@@ -1274,7 +1274,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass, label = posteam)) +
   geom_vline(aes(xintercept = 0), lty = 2, col = &amp;quot;red&amp;quot;, alpha = 0.5) + 
   xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
   geom_text(data = df.text, aes(x, y, label = lab.text), colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There’s a bunch that can be gleamed from the chart above. As one example, the team-to-team variability in average pass EPA is greater than that of the team-to-team variability in average rush EPA. As another, 23 of 32 teams boast a greater-than-0 average pass EPA, compared to 14 of 32 teams that have an average rush EPA greater than 0. This doesn’t exactly mean teams should pass more – averages are impacted by skewness, and the distribution of play-level EPA on passes is strongly skewed right.&lt;/p&gt;
 &lt;p&gt;None of these findings are particularly new, however, and to date, there is a large amount of literature regarding the run versus pass debate. In fact, there’s someone who has probably already made the exact graph above.&lt;/p&gt;
 &lt;/div&gt;
@@ -1298,7 +1298,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
   geom_vline(aes(xintercept = 0), lty = 2, col = &amp;quot;red&amp;quot;, alpha = 0.5) + 
   xlim(c(-0.45, 0.45)) + ylim(c(-0.45, 0.45)) + 
   geom_text(data = df.text, aes(x, y, label = lab.text), colour = &amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-10-25-nfl-team-logos-using-ggimage_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Same chart as we initially had, and one-less line of code. The key command is &lt;code&gt;geom_image&lt;/code&gt;, which functions similar to &lt;code&gt;geom_point&lt;/code&gt; but requires a url to draw an image from.&lt;/p&gt;
 &lt;p&gt;Feel free to use the logo file in similar fashion – and I hope you do! Graphs with logos often look better than their text counterparts. One next step will be to jitter team-logos to prevent overlap, but that’s for another day.&lt;/p&gt;
 &lt;/div&gt;
@@ -1307,10 +1307,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Lessons hidden in sports betting markets</title>
-      <link>/post/lessons-hidden-in-sports-betting-markets/</link>
+      <link>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/lessons-hidden-in-sports-betting-markets/</guid>
+      <guid>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</guid>
       <description>&lt;p&gt;With sports betting now legal in several US states, I might as well give away my number one piece of advice for amateurs looking to gamble:&lt;/p&gt;
 
 &lt;p&gt;Don&amp;rsquo;t bet.&lt;/p&gt;
@@ -1341,10 +1341,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</title>
-      <link>/post/part-i-randomness-of-games/</link>
+      <link>https://statsbylopez.netlify.com/post/part-i-randomness-of-games/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-i-randomness-of-games/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-i-randomness-of-games/</guid>
       <description>&lt;p&gt;The best team in baseball during the 2013 season was the Detroit Tigers.&lt;/p&gt;
 
 &lt;p&gt;Detroit&amp;rsquo;s rotation featured the eventual Cy Young award winner (Max Scherzer), alongside both the 2011 and 2016 Cy winners (Justin Verlander and Rick Porcello, respectively). The Tigers line-up was spearheaded by Prince Fielder and Miguel Cabrera, the latter of whom would win his second consecutive MVP. Indeed, betting market rankings had the Tigers atop the sport &lt;a href=&#34;https://statsbylopez.github.io/NESSIS2017_files/NESSIS_2017.html#section-2&#34; target=&#34;_blank&#34;&gt;for basically the entire season&lt;/a&gt;.&lt;/p&gt;
@@ -1355,13 +1355,13 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 
 &lt;p&gt;It started with a runner on second, one out, and Xander Bogaerts at the plate. With a full count, Scherzer threw a pitch that umpires almost always call a strike 3.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/xander.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But instead of strike 3, home plate umpire Dan Iassogna called the pitch ball 4. And so instead of a runner on 2nd and two outs, the Red Sox now had two runners on and out out. Iassogna&amp;rsquo;s decision &amp;ndash; one umpires only call a ball about 1 in 7 times &amp;ndash; dropped the Tigers&amp;rsquo; win expectency by about 12 percentage points.&lt;/p&gt;
 
 &lt;p&gt;Next, Detroit reliever Drew Smily induced a chopper up the middle off the bat of Jacoby Ellsbury, hit in the direction of shortstop Jose Iglesias. It&amp;rsquo;s the type of play Iglesias often starts a double play on. Worst case for the Tigers, one would think, he&amp;rsquo;d record only one out.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/jose.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/jose.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But Iglesias bumbled the ball, recording no outs and leaving the bases loaded. Allowing for one out on the play, the error was worth about a 20 perentage point drop in win expectency for Detroit.&lt;/p&gt;
 
@@ -1371,7 +1371,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 
 &lt;p&gt;When Greg, Ben and I set out to compare North American sports, our principal goal was to consider how often, in each sport, the better team ended up winning. Here&amp;rsquo;s our main take-home, which summarizes the game-level randomness of each league.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/parity2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/parity2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;On the far left, the NHL and MLB games cluster closer to coin flips; that is, if we were to randomly take a game between two randomly drawn teams, it&amp;rsquo;s less likely that the best team will win. As referenced above, part of this is luck &amp;ndash; one can surmise that given the low amounts of scoring involved in baseball and hockey, more breaks are needed to win &amp;ndash; but a related part of it is also because the best teams in the MLB and in the NHL can still lose to the worse teams and fans wouldn&amp;rsquo;t be &lt;em&gt;that&lt;/em&gt; surprised. The gaps in talent in those leagues are, at least relatively, not as wide.&lt;/p&gt;
 
@@ -1409,10 +1409,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</title>
-      <link>/post/part-ii-randomness-of-series/</link>
+      <link>https://statsbylopez.netlify.com/post/part-ii-randomness-of-series/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-ii-randomness-of-series/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-ii-randomness-of-series/</guid>
       <description>
 
 &lt;p&gt;In the 2016-17 season, the Washington Capitals &lt;a href=&#34;https://www.washingtonpost.com/news/fancy-stats/wp/2017/02/09/this-is-the-most-dominating-washington-capitals-team-ever-so-whats-it-mean-for-the-cup/?noredirect=on&amp;amp;utm_term=.940cf4c44b8f&#34; target=&#34;_blank&#34;&gt;dominated&lt;/a&gt; the NHL like few teams in recent history, winning the Presidents&amp;rsquo; Trophy with 118 points.&lt;/p&gt;
@@ -1463,7 +1463,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 
 &lt;p&gt;Here&amp;rsquo;s a plot that summarizes the equivalence of current postseason formats in each of the MLB, NFL, NHL, and NBA. Tournaments where the better team always advanced would score on the far right, while tournaments where every franchise had an equal chance in each round would show up on the far left.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/parity.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-08-22-part-i-randomness-of-regular-season-competition_files/parity.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Unsurprisingly, the NBA stands out.* Better NBA teams more often advance, and the best NBA team more often wins out.&lt;/p&gt;
 
@@ -1517,17 +1517,17 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Part III: Rocky Mountain High (the benefit of playing at home)</title>
-      <link>/post/playing-at-home/</link>
+      <link>https://statsbylopez.netlify.com/post/playing-at-home/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/playing-at-home/</guid>
+      <guid>https://statsbylopez.netlify.com/post/playing-at-home/</guid>
       <description>&lt;p&gt;One way in which professional sports are relatively fair is that, in each season, teams are almost always given an identical number of home games. This seems like an obvious way to run a sports organization, until you remember that postseason berths in NCAA hoops and football often hinge on incredibly unbalanced schedules.&lt;/p&gt;
 
 &lt;p&gt;Playing at home is a benefit, and while the reasons for the overall advantage are somewhat up for &lt;a href=&#34;https://www.amazon.com/dp/B004C43GC4/ref=dp-kindle-redirect?_encoding=UTF8&amp;amp;btkr=1&#34; target=&#34;_blank&#34;&gt;debate&lt;/a&gt;, there &lt;em&gt;are&lt;/em&gt; obvious and unique advantages that make playing at home different each sport.&lt;/p&gt;
 
 &lt;p&gt;In our cross-sport paper, Ben designed a pretty amazing chart that highlights, on a probability scale, how the home advantage compares both by sport and franchise. Bars for each term correspond to 95% credible intervals.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/home_benefit.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/home_benefit.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It is substantially more beneficial to play at home in the NBA, and to a lesser extent the NFL, than it is in MLB and the NHL. This isn&amp;rsquo;t surprising, and confirms what several authors before us have found.&lt;/p&gt;
 
@@ -1553,10 +1553,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Part IV: The Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)</title>
-      <link>/post/part-iv-schedule-strength/</link>
+      <link>https://statsbylopez.netlify.com/post/part-iv-schedule-strength/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-iv-schedule-strength/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-iv-schedule-strength/</guid>
       <description>
 
 &lt;h2 id=&#34;taking-a-step-back&#34;&gt;Taking a step back&lt;/h2&gt;
@@ -1575,7 +1575,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 
 &lt;p&gt;Here&amp;rsquo;s a chart that shows the yearly impact (in terms of wins added or lost) for each AL East team that comes as a function of them simply playing the schedule they were assigned to play.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/ALEast1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/ALEast1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A negative y-axis means a drop in wins. In other words, the chart shows that by playing in the AL East, the Orioles lose, on average, about three wins a year than what their talent suggests they otherwise deserve. The rest of the AL East isn&amp;rsquo;t far behind.&lt;/p&gt;
 
@@ -1619,23 +1619,23 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>The within-game evolution of MLB’s strike zone</title>
-      <link>/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
+      <link>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
       <description>&lt;p&gt;Baseball games are &lt;a href=&#34;https://www.nytimes.com/2017/03/01/sports/baseball/baseballs-too-slow-heres-how-you-fix-it.html&#34;&gt;too slow&lt;/a&gt;, &lt;a href=&#34;https://slate.com/culture/2018/05/major-league-baseball-games-are-too-long-heres-how-to-make-them-longer.html&#34;&gt;too long&lt;/a&gt;, &lt;a href=&#34;https://www.sbnation.com/a/mlb-2017-season-preview/game-length&#34;&gt;so damned long&lt;/a&gt;, and, like my seven-year old daughter getting dressed in the morning, &lt;a href=&#34;https://fivethirtyeight.com/features/baseballs-biggest-games-are-taking-forever/&#34;&gt;taking forever&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, &lt;a href=&#34;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3129084&#34;&gt;calls tend to favor&lt;/a&gt; whichever team is closer to winning. By that point in the game, we argue, &lt;a href=&#34;https://fivethirtyeight.com/features/everyone-wants-to-go-home-during-extra-innings-maybe-even-the-umps/&#34;&gt;everyone wants to go home&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Although our evidence is strong that umpires react to the scoreline in extra innings, given the frequency with which these games happen, such extra bits of discretion are only likely to impact a game or two a week. Meanwhile, innings one through nine have, to the best of my knowledge, to-date gone unanalyzed with respect to a varying strike zone. But with the score-state for each game now available on &lt;a href=&#34;https://baseballsavant.mlb.com/&#34;&gt;baseballsavant&lt;/a&gt;, I figured a look at all innings would be more appropriate.&lt;/p&gt;
 &lt;p&gt;First, I used the &lt;code&gt;baseballr&lt;/code&gt; package to acquire pitch-level data for all balls and strike calls between the 2008 and 2017 seasons (scraping code &lt;a href=&#34;https://github.com/statsbylopez/mlb-shirking/blob/master/Code/scraping.R&#34;&gt;here&lt;/a&gt;). For each pitch, I adjusted the corresponding vertical coordinate to standardize for each batter personal strike zone.&lt;/p&gt;
 &lt;p&gt;Next, I averaged across each of the nine-innings and each three-inch window of a strike zone grid to identify the likelihood of a pitch in a given part of the zone being called a strike. Finally, as a baseline, I focused on the differences between each score state where one team is leading (by 1 to 3 runs, or by 4 runs or more), relative to the game being tied, done separately for each inning.&lt;/p&gt;
 &lt;p&gt;Here’s a gif that works through how the strike zone changes by inning and score state. Shades of the graph in green correspond to more strikes, while purple reflects fewer strikes. You shouldn’t see much early. But please wait for the 9th-inning.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/output_inning.gif&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/output_inning.gif&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Late in games, beginning with the 8th-inning, there’s a marked increase in strike calls when one of the teams is leading. Differences are as large as 30 percentage points in the 9th-inning, and seem somewhat consistent between types of leads. This latter point is important – if the strike zone expands as equally with a 2-run lead as it does with a 12-run lead, we can be more confident that what’s driving the expansion isn’t the insertion of a star closer, as those players are only likely to be pitching with small leads.&lt;/p&gt;
 &lt;p&gt;Why does this matter?&lt;/p&gt;
 &lt;p&gt;For starters, let’s think about closers in general. MLB managers traditionally save their best relief pitcher for the 9th inning, with several of these players turning into generational stars that can occassionally get &lt;a href=&#34;https://thebiglead.com/2013/05/15/mariano-rivera-gets-quite-a-generous-strike-zone/&#34;&gt;strike-calls&lt;/a&gt; on balls crossed that cross into the batter’s box. But if part of why closers are perceived to be so valuable is that, in general, the strike zone is wider in the 9th-inning, perhaps that may say something about the fluidity of this role.&lt;/p&gt;
 &lt;p&gt;Precisely answering this question is less straightforward, however, as there are several pitchers who have only performed in one type of spot (set-up or closer), but not both. This can be problematic from a causation standpoint, as perhaps there are different characteristics about pitchers who pitch the 9th-inning – ones that also lead to more strike calls – that are responsible for the increase. However, one way around this issue is to look only at pitchers who have performed in both roles.&lt;/p&gt;
 &lt;p&gt;Here’s a chart comparing differences in strike rates between the 9th and 8th innings, using situations where the pitching team has a small lead (defined as between one and four runs). In the 9th-inning, this is traditionally the spot where teams use a closer. To lessen the worry about the impact of certain pitchers, I used only the 113 pitchers who threw at least 250 pitches in each inning in this specific situation (tight lead) between 2008 and 2017.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/output_98.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/output_98.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Across most fringe areas of the strike zone, there’s between a 5 and 10 percentage point increase in the likelihood of a strike when looking in 9th-inning pitches. In other words, even among the pitchers who tend to pitch the most, and even when considering only one specific type of situation (pitching with a tight lead), it’s better to be on the mound in the 9th-inning than in the 8th-inning.&lt;/p&gt;
 &lt;p&gt;It’s worth noting that the above, to this point, is but an aggregated summary of strike rates based on a few game characteristics. Thus, there may be explanations besides umpire discretion that drive differences in strike zone size late in games. As one alternative possibility, … actually, I can’t think of one. But maybe you can?&lt;/p&gt;
 &lt;p&gt;In any case, for now, we note that MLB umpires tend to call higher rates of strikes late in games when one team has a lead. Moreover, there’s a particular jump in the ninth-inning. These findings are potentially explained by an effort to speed up the game, and cannot be fully explained by a preference for star relief pitchers.&lt;/p&gt;
@@ -1644,10 +1644,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>Rethinking draft curves</title>
-      <link>/post/rethinking-draft-curve/</link>
+      <link>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/rethinking-draft-curve/</guid>
+      <guid>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</guid>
       <description>&lt;p&gt;When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty &lt;a href=&#34;https://statsbylopez.com/2016/06/22/the-making-and-comparison-of-draft-curves/&#34;&gt;draft curve&lt;/a&gt; to see what it said about the trade.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1738,7 +1738,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 &lt;/table&gt;
 &lt;p&gt;Among the players meeting our star criterion listed above, Westbrook, Timmons, and Thomas all made the Pro Bowl at least once in their careers, and each player was also named to at least one all-Pro team, so this seems like a reasonable cutoff to make.&lt;/p&gt;
 &lt;p&gt;Here’s a side-by-side comparison of the two competing charts. On the left is my original draft curve, and on the right is the superstar-specific one.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are notable differences between the two curves. Primarily, the &lt;code&gt;superstar&lt;/code&gt; curve on the right features a much steeper cutoff than the &lt;code&gt;average&lt;/code&gt; curve. The &lt;code&gt;superstar&lt;/code&gt; curve also makes it quite clear that by pick 100, it is exceedingly unlikely to land a superstar player.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;revising-the-jets-trade&#34; class=&#34;section level2&#34;&gt;
@@ -1781,7 +1781,7 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
 &lt;h2&gt;Building the best curve&lt;/h2&gt;
 &lt;p&gt;Perhaps a better draft curve incorporates both overall average pick performance &lt;em&gt;and&lt;/em&gt; star likelihood. To do that, I scaled the curves above so that they each had the same total draft valuation, took an average, and then re-scaled that average so that the first pick was worth a value of 1.&lt;/p&gt;
 &lt;p&gt;Here’s that curve. The curve in the middle (shown in purple) reflects the average between the &lt;code&gt;average&lt;/code&gt; and &lt;code&gt;superstar&lt;/code&gt; curves.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/post/2018-04-25-building-a-better-draft-curve_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Using the so-called &lt;code&gt;blended&lt;/code&gt; draft curve, here’s a final look at the Jets/Colts trade.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1827,10 +1827,10 @@ ggplot(scrimmage.plays.summary, aes(run, pass)) +
     
     <item>
       <title>The Vegas flu looks real — but somehow the Chicago Blackhawks also got sick</title>
-      <link>/post/the-vegas-flu-looks-real/</link>
+      <link>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-vegas-flu-looks-real/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</guid>
       <description>&lt;p&gt;In yesterday’s post, I walked through the use of a &lt;a href=&#34;http://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/&#34;&gt;state-space&lt;/a&gt; model to evaluate NHL team strength over the course of an NHL season.&lt;/p&gt;
 &lt;p&gt;But analyzing team strength is just the start of how we can use this type of framework to analyze betting market data in sports. In today’s post, I’ll ask a different question – What team had the best home advantage? And did perceptions of any teams (cough cough, Vegas) change over the course of the season?&lt;/p&gt;
 &lt;div id=&#34;the-vegas-flu&#34; class=&#34;section level2&#34;&gt;
@@ -1855,7 +1855,7 @@ includes binary indicators &lt;span class=&#34;math inline&#34;&gt;\(Rest_i\)&lt
 &lt;h2&gt;Are home advantages different?&lt;/h2&gt;
 &lt;p&gt;Yes, it appears they are.&lt;/p&gt;
 &lt;p&gt;Here’s a plot of the posterior distribution of &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i\)&lt;/span&gt; for each team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/vegas1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/vegas1.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Each teams’ curve corresponds to their estimated prediction of beating an equal-caliber opponent at home. League-wide, the average is about 55%, but some teams lie above and below that average.&lt;/p&gt;
 &lt;p&gt;Overall, betting markets linked Vegas with the best home advantage during the 2017/18 season, as judged by the posterior distribution of the Golden Knights’ &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. However, we can be more precise: there’s about a 90% chance (using the overlap in the density curves) that Vegas was given a better home adjustment than the second best team (LA Kings). Altogether, the gaps between teams with the best and worst home advantages appear unlikely to be due to chance, which matches our findings in our original paper (&lt;a href=&#34;https://arxiv.org/abs/1701.05976&#34;&gt;link&lt;/a&gt;).&lt;/p&gt;
 &lt;/div&gt;
@@ -1863,11 +1863,11 @@ includes binary indicators &lt;span class=&#34;math inline&#34;&gt;\(Rest_i\)&lt
 &lt;h2&gt;Did home advantages change?&lt;/h2&gt;
 &lt;p&gt;I replicated the same model fit above using both games before and after December 20th. Why that date? First, it’s the date of the ESPN article that publicized the idea of the Vegas Flu. Second, it’s close enough to the halfway mark of the season that it’s likely we have enough home games to judge each team with.&lt;/p&gt;
 &lt;p&gt;Here’s the Golden Knights’ home advantage, both before (dark curve) and after (light curve) December 20th.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/vegas2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/vegas2.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Altogether, it looked like the Knights’ expected win percentage at home was given about a 1.75 percentage point bump after December 20th. This appears significant – but there’s also enough overlap in the two density curves that the increase could be due to chance. From a practical standpoint, this increase would plausibly effect the outcome of no more a game or two – but from a betting market standpoint, an increase of 1.75 percentage points is notable.&lt;/p&gt;
 &lt;p&gt;Of course, it’d be more precise to consider the Golden Knights’ increase in light of changes to the home advantage intercepts among other teams.&lt;/p&gt;
 &lt;p&gt;Here’s a plot with &lt;em&gt;every&lt;/em&gt; teams’ density curves, showing the home advantage both before (in dark) and after (in color) December 20th. Curves shaded in red reflect teams where the home advantage decreased – teams in blue correspond with an increase. I also organized teams in a weird order – from those with the biggest drop (Chicago) to the biggest increase (Vegas).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/vegas3.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://statsbylopez.netlify.com/img/vegas3.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I feel a bit like Jack Buck here: I can’t believe what I just saw.&lt;/p&gt;
 &lt;p&gt;The team with the biggest change in home advantage is not Vegas but Chicago, which observes an estimated win percentage drop by nearly 2 percentage points. Edmonton and Montreal, the two franchises that, combined with the Blackhawks, had the three most disappointmenting seasons in the NHL, also observe drops in perceived home advantage.&lt;/p&gt;
 &lt;p&gt;What does this suggest?&lt;/p&gt;

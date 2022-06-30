@@ -51,12 +51,11 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Michael Lopez"
-  role = "Director of Data and Analytics"
+  role = "Sr. Director of Football Data and Analytics"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Football League", url = "www.nfl.com" }, 
-  { name = "Skidmore College", url = "www.skidmore.edu" }]
+  organizations = [ { name = "National Football League", url = "www.nfl.com" }]
 
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)

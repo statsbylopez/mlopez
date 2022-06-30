@@ -2,92 +2,92 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Statsbylopez</title>
-    <link>/post/</link>
+    <link>https://statsbylopez.netlify.com/post/</link>
     <description>Recent content in Posts on Statsbylopez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://statsbylopez.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Don’t running backs matter?</title>
-      <link>/post/don-t-running-backs-matter/</link>
+      <link>https://statsbylopez.netlify.com/post/don-t-running-backs-matter/</link>
       <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/don-t-running-backs-matter/</guid>
+      <guid>https://statsbylopez.netlify.com/post/don-t-running-backs-matter/</guid>
       <description>The first of Tomas Plekanec’s 15 seasons in the NHL came in 2005-06, which coincided with the league’s introduction of a shootout.
 The shootout was not kind to Plekanec. Among all NHL players with at least 20 attempts, Plekanec’s career shootout percentage of 13% is the lowest league history. A deeper look into Plekanec’s shootout usage reveals an interesting pattern:
-  Seasons # Years Plekanec Shootout Attempts    2005-06 to 2014-15 10 23  2015-16 to 2018-19 5 0    Each of Plekanec’s shootout attempts occured in his first 10 seasons, and his success rate was so bad in that timeframe that he never again got an opportunity.</description>
+Seasons# YearsPlekanec Shootout Attempts2005-06 to 2014-1510232015-16 to 2018-1950Each of Plekanec’s shootout attempts occured in his first 10 seasons, and his success rate was so bad in that timeframe that he never again got an opportunity.</description>
     </item>
     
     <item>
       <title>Assessing running back performance using distributions</title>
-      <link>/post/assessing-running-back-performance-using-distributions/</link>
+      <link>https://statsbylopez.netlify.com/post/assessing-running-back-performance-using-distributions/</link>
       <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/assessing-running-back-performance-using-distributions/</guid>
+      <guid>https://statsbylopez.netlify.com/post/assessing-running-back-performance-using-distributions/</guid>
       <description>Most often, running backs in the National Football League are compared by taking summary statistics from each play. Traditional metrics include yards-per-carry, expected points added per play (EPA), and win probability added per play (WPA). While comparing players based on these their averages is the straightforward, means can be sensitive to outlying observations and distributions with heavy tails. Unfortunately, yards, EPA, and WPA are all strongly skewed, which means that taking averages may not be an optimal approach.</description>
     </item>
     
     <item>
       <title>Plotting air yards</title>
-      <link>/post/plotting-air-yards/</link>
+      <link>https://statsbylopez.netlify.com/post/plotting-air-yards/</link>
       <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/plotting-air-yards/</guid>
+      <guid>https://statsbylopez.netlify.com/post/plotting-air-yards/</guid>
       <description>Air yards plots are popular and informative ways for assessing the accuracy of quarterbacks at different depths of the field. As examples, Josh and Ben have both done excellent work in highlighting how using where a quarterback was throwing to tells us more of a story than simply looking at completion percentage alone.
 Here’s one example of an air yards plot, using a pair of players from the 2019 season.</description>
     </item>
     
     <item>
       <title>R for NFL analysis</title>
-      <link>/post/r-for-nfl-analysis/</link>
+      <link>https://statsbylopez.netlify.com/post/r-for-nfl-analysis/</link>
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/r-for-nfl-analysis/</guid>
+      <guid>https://statsbylopez.netlify.com/post/r-for-nfl-analysis/</guid>
       <description>As part of the NFL’s technology conference held last week, I presented to club staffers various approaches on how R could be used to explore NFL data. Here’s a slightly abridged version. This specific audience featured both novice and expert R users. Given that a semester’s long course would be needed to truly cover the breadth of how R could help explore football, note that this particular document is more an overview than anything else.</description>
     </item>
     
     <item>
       <title>Estimating NFL drive outcomes under rules that don&#39;t exist</title>
-      <link>/post/resampling-nfl-drives/</link>
+      <link>https://statsbylopez.netlify.com/post/resampling-nfl-drives/</link>
       <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/resampling-nfl-drives/</guid>
+      <guid>https://statsbylopez.netlify.com/post/resampling-nfl-drives/</guid>
       <description>How do you estimate outcomes under a set of rules that don’t (yet) exist?
 In this post, I’ll walk through how the NFL league office used resampling to estimate metrics related to an offseason proposal related to overtime.
-Background Back in March, the NFL’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime.</description>
+BackgroundBack in March, the NFL’s competition committee and owners debated the merits of a rule change, proposed by Kansas City, that would allow both teams the opportunity to possess the ball at least one time in overtime.</description>
     </item>
     
     <item>
       <title>In an NHL game, the next penalty is easier to predict than the next goal</title>
-      <link>/post/next-nhl-event/</link>
+      <link>https://statsbylopez.netlify.com/post/next-nhl-event/</link>
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/next-nhl-event/</guid>
+      <guid>https://statsbylopez.netlify.com/post/next-nhl-event/</guid>
       <description>It&amp;rsquo;s NHL playoff season, which means that, given the relative league parity, every call and no-call comes under a microscope. In the third period of close games, for example, a penalty call alone can decrease a team&amp;rsquo;s chance of winning by 10 percentage points or more.
 One characteristic of NHL games that a few prominent members of the media have picked up on is that penalty calls tend to &amp;ldquo;even-up&amp;rdquo; within a game &amp;ndash; that is, it is unlikely that either team ends the game with a substantially larger number of penalties than its opponent.</description>
     </item>
     
     <item>
       <title>NFL team logos using ggimage</title>
-      <link>/post/nfl-team-logos-using-ggimage/</link>
+      <link>https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/nfl-team-logos-using-ggimage/</guid>
+      <guid>https://statsbylopez.netlify.com/post/nfl-team-logos-using-ggimage/</guid>
       <description>Brian, Alex, and a host of others have done nice work recently when it comes to creating better scatter plots using images in ggplot in R. In this post, I’ll show how easy it is to use the ggimage package and do the same.
-What data to use? Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.</description>
+What data to use?Ron, Sam, Max, and the folks at nflscrapR have built a pretty amazing tool to analyze football play-by-play data. They’ve nicely stored csv’s that summarize several play-level and team-level characteristics relating to each play.</description>
     </item>
     
     <item>
       <title>Lessons hidden in sports betting markets</title>
-      <link>/post/lessons-hidden-in-sports-betting-markets/</link>
+      <link>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/lessons-hidden-in-sports-betting-markets/</guid>
+      <guid>https://statsbylopez.netlify.com/post/lessons-hidden-in-sports-betting-markets/</guid>
       <description>With sports betting now legal in several US states, I might as well give away my number one piece of advice for amateurs looking to gamble:
 Don&amp;rsquo;t bet.
 It&amp;rsquo;s an easy recommendation. Numbers implied by betting markets are too good, too close to the truth that, when accounting for the vig, it&amp;rsquo;s nearly impossible to make a long term profit.
@@ -96,20 +96,20 @@ But just because your local statistician tells you not to bet doesn&amp;rsquo;t 
     
     <item>
       <title>Part I: Why I feel bad for Max Scherzer (on the game-level randomness in sports)</title>
-      <link>/post/part-i-randomness-of-games/</link>
+      <link>https://statsbylopez.netlify.com/post/part-i-randomness-of-games/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-i-randomness-of-games/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-i-randomness-of-games/</guid>
       <description>The best team in baseball during the 2013 season was the Detroit Tigers.
 Detroit&amp;rsquo;s rotation featured the eventual Cy Young award winner (Max Scherzer), alongside both the 2011 and 2016 Cy winners (Justin Verlander and Rick Porcello, respectively). The Tigers line-up was spearheaded by Prince Fielder and Miguel Cabrera, the latter of whom would win his second consecutive MVP. Indeed, betting market rankings had the Tigers atop the sport for basically the entire season.</description>
     </item>
     
     <item>
       <title>Part II: Rethinking our playoff philosophy (on the role of chance in the postseason)</title>
-      <link>/post/part-ii-randomness-of-series/</link>
+      <link>https://statsbylopez.netlify.com/post/part-ii-randomness-of-series/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-ii-randomness-of-series/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-ii-randomness-of-series/</guid>
       <description>In the 2016-17 season, the Washington Capitals dominated the NHL like few teams in recent history, winning the Presidents&amp;rsquo; Trophy with 118 points.
 The Caps entered a 2nd-round playoff series with Pittsburgh as decent-sized favorites (58 percent), and sure enough, Washington outplayed its rivals. In each of seven consecutive games, the Capitals outshot the Penguins, finishing with 70 total more shots on goal.
 Unfortunately for Washington, not enough shots turned into goals, and because hockey games are decided by goals, it was the Penguins that moved onto the Eastern Conference Finals.</description>
@@ -117,117 +117,90 @@ Unfortunately for Washington, not enough shots turned into goals, and because ho
     
     <item>
       <title>Part III: Rocky Mountain High (the benefit of playing at home)</title>
-      <link>/post/playing-at-home/</link>
+      <link>https://statsbylopez.netlify.com/post/playing-at-home/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/playing-at-home/</guid>
+      <guid>https://statsbylopez.netlify.com/post/playing-at-home/</guid>
       <description>One way in which professional sports are relatively fair is that, in each season, teams are almost always given an identical number of home games. This seems like an obvious way to run a sports organization, until you remember that postseason berths in NCAA hoops and football often hinge on incredibly unbalanced schedules.
 Playing at home is a benefit, and while the reasons for the overall advantage are somewhat up for debate, there are obvious and unique advantages that make playing at home different each sport.</description>
     </item>
     
     <item>
       <title>Part IV: The Orioles should have traded Manny Machado to the Dodgers for a spot in the NL West (on schedule strength)</title>
-      <link>/post/part-iv-schedule-strength/</link>
+      <link>https://statsbylopez.netlify.com/post/part-iv-schedule-strength/</link>
       <pubDate>Wed, 22 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/part-iv-schedule-strength/</guid>
+      <guid>https://statsbylopez.netlify.com/post/part-iv-schedule-strength/</guid>
       <description>Taking a step back Most of sports analytics involve decisions made on the margins. We debate fourth down decisions that, across a season, add up to roughly a a third of an expected win. We compare the merit of Cy Young candidates, when the relative difference of each candidate&amp;rsquo;s WAR equates to nothing more than rounding errors. We tell NHL coaches to pull their goalie a few minutes earlier, knowing that, in more seasons than not, not an extra point will be gained by going so.</description>
     </item>
     
     <item>
       <title>The within-game evolution of MLB’s strike zone</title>
-      <link>/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
+      <link>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-within-game-evolution-of-mlb-s-strike-zone/</guid>
       <description>Baseball games are too slow, too long, so damned long, and, like my seven-year old daughter getting dressed in the morning, taking forever.
 Despite the headlines, there’s one aspect of the game that has actually worked to speed the game up: how umpires call balls and strikes. As one piece of evidence, Brian and I found that, in the bottom half of extra innings, calls tend to favor whichever team is closer to winning.</description>
     </item>
     
     <item>
       <title>Rethinking draft curves</title>
-      <link>/post/rethinking-draft-curve/</link>
+      <link>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/rethinking-draft-curve/</guid>
+      <guid>https://statsbylopez.netlify.com/post/rethinking-draft-curve/</guid>
       <description>When the Jets traded pick No. 6, No. 37, No. 49, and a 2019 pick to the Colts for pick No. 3, I broke out my trusty draft curve to see what it said about the trade.
-  Pick Number Value Team    3 52.5 to the Jets  6 50.6 to the Colts  37 33.5 to the Colts  49 28.3 to the Colts    Even when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers.</description>
+Pick NumberValueTeam352.5to the Jets650.6to the Colts3733.5to the Colts4928.3to the ColtsEven when you ignore the 2019 pick conveyed to the Colts, the Jets are enormous losers.</description>
     </item>
     
     <item>
       <title>The Vegas flu looks real — but somehow the Chicago Blackhawks also got sick</title>
-      <link>/post/the-vegas-flu-looks-real/</link>
+      <link>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-vegas-flu-looks-real/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-vegas-flu-looks-real/</guid>
       <description>In yesterday’s post, I walked through the use of a state-space model to evaluate NHL team strength over the course of an NHL season.
 But analyzing team strength is just the start of how we can use this type of framework to analyze betting market data in sports. In today’s post, I’ll ask a different question – What team had the best home advantage? And did perceptions of any teams (cough cough, Vegas) change over the course of the season?</description>
     </item>
     
     <item>
       <title>A state-space model to evaluate sports teams</title>
-      <link>/post/a-state-space-model-to-evaluate-sports-teams/</link>
+      <link>https://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/</link>
       <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/a-state-space-model-to-evaluate-sports-teams/</guid>
+      <guid>https://statsbylopez.netlify.com/post/a-state-space-model-to-evaluate-sports-teams/</guid>
       <description>A few years ago at a statistics conference, Greg, Ben and I sat down to air a few greviences about our favorite sports. They were upset about baseball, and I was irked about hockey. Why the irritation?
 Relative to other popular sports like basketball and football, it seemed to us at the time that the best team was winning less often in baseball and hockey. And as fans wanting skilled teams to be rewarded, it was frustrating to so often have well-constructed teams fall short of titles.</description>
     </item>
     
     <item>
       <title>On log-loss and scoring the NCAA tournament</title>
-      <link>/post/on-log-loss-in-the-ncaa-tournament/</link>
+      <link>https://statsbylopez.netlify.com/post/on-log-loss-in-the-ncaa-tournament/</link>
       <pubDate>Mon, 26 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/on-log-loss-in-the-ncaa-tournament/</guid>
+      <guid>https://statsbylopez.netlify.com/post/on-log-loss-in-the-ncaa-tournament/</guid>
       <description>In 2014, Greg and I won the first annual Kaggle March Madness contest. This led to really cool things happening to a pair of nondescript statisticians that, to the likely detriment of our social lives, happened to know where to find good basketball data while also remembering, on a tight deadline, to enter type = &amp;quot;response&amp;quot; in our glm code.
 The Kaggle victory was simultaneously awesome – like New York Times awesome – and embarassing, as Greg and I realized how lucky we were to have finished on top.</description>
     </item>
     
     <item>
       <title>The impact of make-up calls is probably bigger than you think</title>
-      <link>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
+      <link>https://statsbylopez.netlify.com/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</link>
       <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
+      <guid>https://statsbylopez.netlify.com/post/the-impact-of-make-up-calls-is-probably-bigger-than-you-think/</guid>
       <description>One of the more reliable indicators of which NHL team is likely to get the next power play has little to do with score or style of play. Instead, it&amp;rsquo;s been shown repeatedly (Ex 1, Ex 2) that referees call a substantially higher number of make-up penalties than would otherwise be expected in order to maintain an overall even number of violations on each team. Call it a biased impartiality &amp;ndash; in order to appear impartial by game&amp;rsquo;s end, ref&amp;rsquo;s let previous decisions drive future ones.</description>
     </item>
     
     <item>
       <title>On the risks of categorizing a continuous variable (with an application to baseball data)</title>
-      <link>/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
+      <link>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</link>
       <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
-      <description>To err is to human In the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.
- Ruled an error on Schwarber, the play gave the a Nationals run in an eventual 9-4 win.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2018-08-12-lessons-hidden-in-sports-betting-markets/</guid>
-      <description>Lessons hidden in sports betting markets /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */ !function(a,b){&#34;object&#34;==typeof module&amp;&amp;&#34;object&#34;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&#34;jQuery requires a window with a document&#34;);return b(a)}:b(a)}(&#34;undefined&#34;!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l=&#34;1.11.3&#34;,m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:&#34;&#34;,length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0a?b:0);return this.pushStack(c=0&amp;&amp;bc?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for(&#34;boolean&#34;==typeof g&amp;&amp;(j=g,g=arguments[h]||{},h++),&#34;object&#34;==typeof g||m.isFunction(g)||(g={}),h===i&amp;&amp;(g=this,h--);ih;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&amp;&amp;(j&amp;&amp;c&amp;&amp;(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&amp;&amp;m.isArray(a)?a:[]):f=a&amp;&amp;m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&amp;&amp;(g[d]=c));return g},m.extend({expando:&#34;jQuery&#34;+(l+Math.random()).replace(/\D/g,&#34;&#34;),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return&#34;function&#34;===m.type(a)},isArray:Array.isArray||function(a){return&#34;array&#34;===m.type(a)},isWindow:function(a){return null!=a&amp;&amp;a==a.window},isNumeric:function(a){return!m.isArray(a)&amp;&amp;a-parseFloat(a)+1=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||&#34;object&#34;!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&amp;&amp;!j.call(a,&#34;constructor&#34;)&amp;&amp;!j.call(a.constructor.prototype,&#34;isPrototypeOf&#34;))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/post/2018-08-22-part-i-randomness-of-regular-season-competition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2018-08-22-part-i-randomness-of-regular-season-competition/</guid>
-      <description>Part I: Randomness of regular season competition       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/post/2018-08-22-part-iii-rocky-mountain-high-s-the-benefit-of-playing-at-home/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2018-08-22-part-iii-rocky-mountain-high-s-the-benefit-of-playing-at-home/</guid>
-      <description>Part III: Rocky Mountain High (the benefit of playing at home) /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */ !function(a,b){&#34;object&#34;==typeof module&amp;&amp;&#34;object&#34;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&#34;jQuery requires a window with a document&#34;);return b(a)}:b(a)}(&#34;undefined&#34;!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l=&#34;1.11.3&#34;,m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:&#34;&#34;,length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0a?b:0);return this.pushStack(c=0&amp;&amp;bc?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for(&#34;boolean&#34;==typeof g&amp;&amp;(j=g,g=arguments[h]||{},h++),&#34;object&#34;==typeof g||m.isFunction(g)||(g={}),h===i&amp;&amp;(g=this,h--);ih;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&amp;&amp;(j&amp;&amp;c&amp;&amp;(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&amp;&amp;m.isArray(a)?a:[]):f=a&amp;&amp;m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&amp;&amp;(g[d]=c));return g},m.extend({expando:&#34;jQuery&#34;+(l+Math.random()).replace(/\D/g,&#34;&#34;),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return&#34;function&#34;===m.type(a)},isArray:Array.isArray||function(a){return&#34;array&#34;===m.type(a)},isWindow:function(a){return null!=a&amp;&amp;a==a.window},isNumeric:function(a){return!m.isArray(a)&amp;&amp;a-parseFloat(a)+1=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||&#34;object&#34;!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&amp;&amp;!j.call(a,&#34;constructor&#34;)&amp;&amp;!j.call(a.constructor.prototype,&#34;isPrototypeOf&#34;))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.</description>
+      <guid>https://statsbylopez.netlify.com/post/on-the-risks-of-categorizing-a-continuous-variable/</guid>
+      <description>To err is to humanIn the third inning during a contest a few weeks back between the Nationals and Cubs, Washington’s Brian Goodwin hit a line drive to left field with two outs and a runner on third. Despite an initial pause, Chicago’s Kyle Schwarber ran in and attempted to field the ball around his knees.
+Ruled an error on Schwarber, the play gave the a Nationals run in an eventual 9-4 win.</description>
     </item>
     
   </channel>
