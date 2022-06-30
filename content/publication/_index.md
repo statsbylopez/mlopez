@@ -1,15 +1,11 @@
 
-
-### Submitted
-
--  Luke S. Benz, **Michael J. Lopez**. "Estimating the change in soccer's home advantage during the Covid-19 pandemic using bivariate Poisson regression," 2020. [(preprint)](https://arxiv.org/abs/2012.14949)
-
--  Liangyuan Hu, Jungang Zou, Chenyang Gu, Jiayi Ji, **Michael J. Lopez**, Minal Kale. "A flexible sensitivity analysis approach for unmeasured confounding with multiple treatments and a binary outcome," 2021. [(preprint)](https://arxiv.org/abs/2012.06093)
-
--  **Michael J. Lopez**, Christina Mack, Thompson Bliss, Erin B. Wasserman, Emily Myers, Gary Solomon, John Lynch, Anthony Casolaro, Michael Osterholm, Dan Hanfling, Thom Mayer, Allen K. Sills. "Observed versus expected COVID-19 infections among National Football League players during the 2020 season," 2021.
-
-
 ### In press
+
+-  Luke S. Benz, **Michael J. Lopez**. "Estimating the change in soccer's home advantage during the Covid-19 pandemic using bivariate Poisson regression," 2021, Advances in Statistical Analysis. [(preprint)](https://arxiv.org/abs/2012.14949)
+
+-  Liangyuan Hu, Jungang Zou, Chenyang Gu, Jiayi Ji, **Michael J. Lopez**, Minal Kale. "A flexible sensitivity analysis approach for unmeasured confounding with multiple treatments and a binary outcome," 2022, Annals of Applied Statistics. [(preprint)](https://arxiv.org/abs/2012.06093)
+
+-  **Michael J. Lopez**, Christina Mack, Thompson Bliss, Erin B. Wasserman, Emily Myers, Gary Solomon, John Lynch, Anthony Casolaro, Michael Osterholm, Dan Hanfling, Thom Mayer, Allen K. Sills. "Observed versus expected COVID-19 infections among National Football League players during the 2020 season," 2021, Epidemiology.
 
 - **Michael J Lopez**, "Bigger data, better questions, and a return to fourth down behavior: an introduction to a special issue on tracking data in the National football League", Journal of Quantitative Analysis in Sports, 2019. [(link](https://www.degruyter.com/view/journals/jqas/16/2/article-p73.xml?rskey=biywzx&result=7), [preprint)](https://arxiv.org/abs/1909.10631)
 
