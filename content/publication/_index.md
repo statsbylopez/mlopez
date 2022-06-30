@@ -1,15 +1,16 @@
 
-
 ### Submitted
 
--  Luke S. Benz, **Michael J. Lopez**. "Estimating the change in soccer's home advantage during the Covid-19 pandemic using bivariate Poisson regression," 2020. [(preprint)](https://arxiv.org/abs/2012.14949)
+- Estimating player age curves using regression and imputation
+Michael Schuckers, **Michael J Lopez**, Brian Macdonald, "Estimating player age curves using regression and imputation", 2022. [(preprint)](https://arxiv.org/pdf/2110.14017.pdf)
 
--  Liangyuan Hu, Jungang Zou, Chenyang Gu, Jiayi Ji, **Michael J. Lopez**, Minal Kale. "A flexible sensitivity analysis approach for unmeasured confounding with multiple treatments and a binary outcome," 2021. [(preprint)](https://arxiv.org/abs/2012.06093)
+### In Press
 
--  **Michael J. Lopez**, Christina Mack, Thompson Bliss, Erin B. Wasserman, Emily Myers, Gary Solomon, John Lynch, Anthony Casolaro, Michael Osterholm, Dan Hanfling, Thom Mayer, Allen K. Sills. "Observed versus expected COVID-19 infections among National Football League players during the 2020 season," 2021.
+-  Luke S. Benz, **Michael J. Lopez**. "Estimating the change in soccer's home advantage during the Covid-19 pandemic using bivariate Poisson regression," Advances in Statistical Analysis, 2021.  [(link](https://link.springer.com/article/10.1007/s10182-021-00413-9), [preprint)](https://arxiv.org/abs/2012.14949)
 
+-  Liangyuan Hu, Jungang Zou, Chenyang Gu, Jiayi Ji, **Michael J. Lopez**, Minal Kale. "A flexible sensitivity analysis approach for unmeasured confounding with multiple treatments and a binary outcome," Annals of Applied Statistics, 2022. [(link](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-16/issue-2/A-flexible-sensitivity-analysis-approach-for-unmeasured-confounding-with-multiple/10.1214/21-AOAS1530.short), [preprint)](https://arxiv.org/abs/2012.06093) 
 
-### In press
+-  **Michael J. Lopez**, Christina Mack, Thompson Bliss, Erin B. Wasserman, Emily Myers, Gary Solomon, John Lynch, Anthony Casolaro, Michael Osterholm, Dan Hanfling, Thom Mayer, Allen K. Sills. "Observed versus expected COVID-19 infections among National Football League players during the 2020 season," Epidemiology, 2021. [(link](https://pubmed.ncbi.nlm.nih.gov/34483266/)]
 
 - **Michael J Lopez**, "Bigger data, better questions, and a return to fourth down behavior: an introduction to a special issue on tracking data in the National football League", Journal of Quantitative Analysis in Sports, 2019. [(link](https://www.degruyter.com/view/journals/jqas/16/2/article-p73.xml?rskey=biywzx&result=7), [preprint)](https://arxiv.org/abs/1909.10631)
 
