@@ -15,7 +15,7 @@ copyright = "&copy; 2018"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 preserveTaxonomyNames = true
 paginate = 10
 
@@ -40,12 +40,6 @@ defaultContentLanguageInSubdir = false
   fractions = true  # `false` disables smart fractions (e.g. 5/12 formatted as a fraction).
   smartypants = true  # `false` disables all smart punctuation substitutions (e.g. smart quotes, dashes, fractions).
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-
 [params]
   # Color theme.
   #   Choose from `default`, `ocean`, `forest`, `coffee`, `dark`, or `1950s`.
@@ -57,11 +51,12 @@ defaultContentLanguageInSubdir = false
 
   # Your details.
   name = "Michael Lopez"
-  role = "Senior Director of Data and Analytics"
+  role = "Director of Data and Analytics"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Football League", url = "www.nfl.com" }]
+  organizations = [ { name = "National Football League", url = "www.nfl.com" }, 
+  { name = "Skidmore College", url = "www.skidmore.edu" }]
 
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
@@ -299,18 +294,3 @@ defaultContentLanguageInSubdir = false
 # Configure the English version of the website.
 [Languages.en]
   languageCode = "en-us"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
